@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 4 - CSS Variables</title>
+
+    <style>
+        :root {
+            --primary: teal;
+            --accent: lightseagreen;
+            --bg: #f0fdfa;
+            --text: #1e293b;
+            --radius: 12px;
+            --spacing: 20px;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+            margin: var(--spacing);
+        }
+
+        .card {
+            background-color: white;
+            padding: var(--spacing);
+            border-radius: var(--radius);
+            border: 2px solid var(--primary);
+            margin-bottom: var(--spacing);
+        }
+
+        button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--radius);
+        }
+
+        button:hover {
+            background-color: var(--accent);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #2dd4bf;
+                --accent: #14b8a6;
+                --bg: #0f172a;
+                --text: #f8fafc;
+                --radius: 12px;
+                --spacing: 20px;
+            }
+
+            .card {
+                background-color: #1e293b;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Variables</h1>
+
+    <div class="card">
+        <h2>My Card</h2>
+        <p>This card uses CSS variables.</p>
+        <button>Click Me</button>
+    </div>
+
+</body>
+</html>

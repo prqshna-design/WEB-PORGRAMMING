@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 3 - Loading Spinner</title>
+
+    <style>
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid lightseagreen;
+            border-top: 4px solid teal;
+            border-radius: 50%;
+
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="spinner"></div>
+
+</body>
+</html>

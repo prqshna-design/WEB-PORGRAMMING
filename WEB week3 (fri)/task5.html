@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 5 - Fixed Navigation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #1e293b;
+            padding: 15px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .links a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .links a:hover {
+            color: teal;
+        }
+
+        main {
+            padding: 100px 30px;
+            height: 1500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">MySite</div>
+
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Fixed Navigation</h1>
+        <p>Scroll down to see that the navigation stays at the top.</p>
+
+        <h2>Section 1</h2>
+        <p>This page is intentionally tall.</p>
+
+        <h2>Section 2</h2>
+        <p>Keep scrolling...</p>
+
+        <h2>Section 3</h2>
+        <p>The navigation bar remains fixed.</p>
+    </main>
+
+</body>
+</html>ta

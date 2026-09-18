@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task 6 - Responsive Grid</title>
+
+    <style>
+        :root {
+            --primary: teal;
+            --bg: #f0fdfa;
+            --card-bg: white;
+            --text: #1e293b;
+            --radius: 12px;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 2px solid var(--primary);
+            border-radius: var(--radius);
+            padding: 25px;
+
+            transition: transform 0.3s ease;
+        }
+
+        .card::before {
+            content: "⭐";
+            font-size: 25px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        @media (min-width: 640px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #2dd4bf;
+                --bg: #0f172a;
+                --card-bg: #1e293b;
+                --text: #f8fafc;
+                --radius: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Skills</h1>
+
+    <div class="grid">
+
+        <div class="card">
+            <h2>HTML</h2>
+            <p>I can create web pages.</p>
+        </div>
+
+        <div class="card">
+            <h2>CSS</h2>
+            <p>I can style web pages.</p>
+        </div>
+
+        <div class="card">
+            <h2>JavaScript</h2>
+            <p>I am learning JavaScript.</p>
+        </div>
+
+        <div class="card">
+            <h2>Python</h2>
+            <p>I am learning programming.</p>
+        </div>
+
+        <div class="card">
+            <h2>Git</h2>
+            <p>I can use Git and GitHub.</p>
+        </div>
+
+        <div class="card">
+            <h2>AI</h2>
+            <p>I am interested in AI.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
