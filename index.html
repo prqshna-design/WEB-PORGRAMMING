@@ -4,92 +4,257 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Programming Projects</title>
+    <title>My Web Programming Portfolio</title>
+
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f4f9;
+        /* General styling */
+        * {
             margin: 0;
-            padding: 30px;
-            text-align: center;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        h1 {
-            color: #333;
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f3ff;
+            color: #252344;
+            line-height: 1.6;
         }
 
-        .week {
-            background: white;
-            padding: 20px;
-            margin: 20px auto;
-            max-width: 600px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px #ddd;
-        }
-
-        h2 {
-            color: #5b55a5;
-        }
-
-        a {
-            display: inline-block;
-            margin: 8px;
-            padding: 10px 16px;
-            background: #6558c9;
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #6c63d9, #a18aff);
             color: white;
-            text-decoration: none;
-            border-radius: 6px;
+            text-align: center;
+            padding: 65px 20px;
         }
 
-        a:hover {
-            background: #453a9b;
+        header h1 {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #f0edff;
+        }
+
+        .header-tag {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1100px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .intro h2 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #38316e;
+        }
+
+        .intro p {
+            color: #77738d;
+        }
+
+        /* Week cards */
+        .weeks {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .week-card {
+            background: white;
+            padding: 28px;
+            border-radius: 18px;
+            border: 1px solid #e9e5fa;
+            box-shadow: 0 5px 20px rgba(70, 56, 130, 0.08);
+            transition: transform 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .week-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(70, 56, 130, 0.15);
+        }
+
+        .week-card h3 {
+            font-size: 1.35rem;
+            color: #5145b5;
+            margin-bottom: 5px;
+        }
+
+        .week-card .description {
+            color: #88839c;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Task buttons */
+        .tasks {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 10px;
+        }
+
+        .tasks a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: #5748bd;
+            background: #f1efff;
+            border: 1px solid #e5e0ff;
+            padding: 10px 4px;
+            border-radius: 9px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            transition: all 0.25s ease;
+        }
+
+        .tasks a:hover {
+            background: #6558d3;
+            color: white;
+            border-color: #6558d3;
+            transform: scale(1.04);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 25px 15px;
+            margin-top: 45px;
+            background: #eae7fa;
+            color: #77718f;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile responsive design */
+        @media (max-width: 700px) {
+            header {
+                padding: 45px 15px;
+            }
+
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .weeks {
+                grid-template-columns: 1fr;
+            }
+
+            main {
+                margin: 30px auto;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .tasks {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
+
 <body>
 
-    <h1>My Web Programming Projects</h1>
-    <p>Welcome to my HTML assignments.</p>
+    <header>
+        <h1>Web Programming</h1>
+        <p>My HTML Projects & Assignments</p>
+        <span class="header-tag">Week 2 & Week 3</span>
+    </header>
 
-    <div class="week">
-        <h2>Week 2 - Monday</h2>
-        <a href="./WEB%20week2%20(mon)/task1.html">Task 1</a>
-        <a href="./WEB%20week2%20(mon)/task2.html">Task 2</a>
-        <a href="./WEB%20week2%20(mon)/task3.html">Task 3</a>
-        <a href="./WEB%20week2%20(mon)/task4.html">Task 4</a>
-    </div>
+    <main>
+        <section class="intro">
+            <h2>My Learning Portfolio</h2>
+            <p>Explore my web programming assignments and projects.</p>
+        </section>
 
-    <div class="week">
-        <h2>Week 2 - Friday</h2>
-        <a href="./WEB%20week2%20(fri)/task1.html">Task 1</a>
-        <a href="./WEB%20week2%20(fri)/task2.html">Task 2</a>
-        <a href="./WEB%20week2%20(fri)/task3.html">Task 3</a>
-        <a href="./WEB%20week2%20(fri)/task4.html">Task 4</a>
-    </div>
+        <section class="weeks">
 
-    <div class="week">
-        <h2>Week 3 - Monday</h2>
-        <a href="./WEB%20week3%20(mon)/task1.html">Task 1</a>
-        <a href="./WEB%20week3%20(mon)/task2.html">Task 2</a>
-        <a href="./WEB%20week3%20(mon)/task3.html">Task 3</a>
-        <a href="./WEB%20week3%20(mon)/task4.html">Task 4</a>
-        <a href="./WEB%20week3%20(mon)/task5.html">Task 5</a>
-        <a href="./WEB%20week3%20(mon)/task6.html">Task 6</a>
-        <a href="./WEB%20week3%20(mon)/task7.html">Task 7</a>
-        <a href="./WEB%20week3%20(mon)/task8.html">Task 8</a>
-    </div>
+            <!-- Week 2 Monday -->
+            <div class="week-card">
+                <h3>Week 2 · Monday</h3>
+                <p class="description">HTML assignments · 8 tasks</p>
+                <div class="tasks">
+                    <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
+                    <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
+                    <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
+                    <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
+                    <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
+                    <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
+                    <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
+                    <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
+                </div>
+            </div>
 
-    <div class="week">
-        <h2>Week 3 - Friday</h2>
-        <a href="./WEB%20week3%20(fri)/task1.html">Task 1</a>
-        <a href="./WEB%20week3%20(fri)/task2.html">Task 2</a>
-        <a href="./WEB%20week3%20(fri)/task3.html">Task 3</a>
-        <a href="./WEB%20week3%20(fri)/task4.html">Task 4</a>
-        <a href="./WEB%20week3%20(fri)/task5.html">Task 5</a>
-        <a href="./WEB%20week3%20(fri)/task6.html">Task 6</a>
-        <a href="./WEB%20week3%20(fri)/task7.html">Task 7</a>
-        <a href="./WEB%20week3%20(fri)/task8.html">Task 8</a>
-    </div>
+            <!-- Week 2 Friday -->
+            <div class="week-card">
+                <h3>Week 2 · Friday</h3>
+                <p class="description">HTML assignments · 8 tasks</p>
+                <div class="tasks">
+                    <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
+                    <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
+                    <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
+                    <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
+                    <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
+                    <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
+                    <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
+                    <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
+                </div>
+            </div>
+
+            <!-- Week 3 Monday -->
+            <div class="week-card">
+                <h3>Week 3 · Monday</h3>
+                <p class="description">HTML assignments · 8 tasks</p>
+                <div class="tasks">
+                    <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
+                    <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
+                    <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
+                    <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
+                    <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
+                    <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
+                    <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
+                    <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
+                </div>
+            </div>
+
+            <!-- Week 3 Friday -->
+            <div class="week-card">
+                <h3>Week 3 · Friday</h3>
+                <p class="description">HTML assignments · 7 tasks</p>
+                <div class="tasks">
+                    <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
+                    <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
+                    <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
+                    <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
+                    <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
+                    <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
+                    <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <p>Web Programming Portfolio · HTML & CSS</p>
+    </footer>
 
 </body>
 </html>
