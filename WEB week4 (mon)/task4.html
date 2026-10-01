@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: system-ui;
+      padding: 24px;
+      text-align: center;
+      background: #f1f5f9;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 30px auto;
+      padding: 24px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px #0002;
+    }
+
+    input {
+      width: 90%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .student {
+      padding: 12px;
+      margin: 8px 0;
+      background: #e2e8f0;
+      border-radius: 6px;
+      text-align: left;
+      list-style: none;
+    }
+
+    mark {
+      background: yellow;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Student Search</h2>
+
+    <input id="search" type="text" placeholder="Search students...">
+
+    <ul id="students">
+      <li class="student">Prashna</li>
+      <li class="student">Rahul</li>
+      <li class="student">Sarah</li>
+      <li class="student">John</li>
+      <li class="student">Priya</li>
+      <li class="student">David</li>
+    </ul>
+  </div>
+
+  <script>
+    // 1. Select the search box
+    const search = document.querySelector('#search');
+
+    // 2. Listen for input
+    search.addEventListener('input', function(e) {
+      // 3. Get search text
+      const term = e.target.value.toLowerCase();
+
+      // 4. Select all student rows
+      const students = document.querySelectorAll('.student');
+
+      // 5. Check each student
+      students.forEach(function(student) {
+        const name = student.textContent.toLowerCase();
+
+        if (name.includes(term)) {
+          student.style.display = '';
+
+          // Bonus: highlight matching text
+          if (term !== '') {
+            const originalName = student.textContent;
+            const index = originalName.toLowerCase().indexOf(term);
+            const before = originalName.slice(0, index);
+            const match = originalName.slice(index, index + term.length);
+            const after = originalName.slice(index + term.length);
+
+            student.innerHTML =
+              before + '<mark>' + match + '</mark>' + after;
+          } else {
+            student.textContent = student.textContent;
+          }
+        } else {
+          student.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>

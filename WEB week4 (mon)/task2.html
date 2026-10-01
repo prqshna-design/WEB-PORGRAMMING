@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: system-ui;
+      padding: 24px;
+      text-align: center;
+      background: #f1f5f9;
+    }
+
+    .card {
+      max-width: 300px;
+      margin: 40px auto;
+      padding: 24px;
+      background: white;
+      color: black;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px #0002;
+      transition: 0.3s;
+    }
+
+    .card.dark {
+      background: #1e293b;
+      color: white;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #2563eb;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card" id="card">
+    <h2>My Profile</h2>
+    <p>Name: Prashna</p>
+    <p>Department: Computer Science</p>
+    <button id="toggle">Dark Mode</button>
+  </div>
+
+  <script>
+    // 1. Select the card and button
+    const card = document.querySelector('#card');
+    const toggle = document.querySelector('#toggle');
+
+    // 2. Add click event
+    toggle.addEventListener('click', function() {
+      // 3. Toggle dark class
+      card.classList.toggle('dark');
+
+      // 4. Update button text
+      if (card.classList.contains('dark')) {
+        toggle.textContent = 'Light Mode';
+      } else {
+        toggle.textContent = 'Dark Mode';
+      }
+    });
+  </script>
+
+</body>
+</html>
