@@ -7,195 +7,429 @@
 <title>Prashna Rai | Web Programming Portfolio</title>
 
 <style>
+/* ===== GENERAL ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --purple: #7255d9;
+    --deep-purple: #4c369c;
+    --lavender: #f2edff;
+    --light-purple: #e9e1ff;
+    --white: #ffffff;
+    --text: #302852;
+    --muted: #827b9b;
+    --border: #e9e2fa;
 }
 
 body {
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: #f5f3ff;
-    color: #252344;
+    background: #f8f6ff;
+    color: var(--text);
     line-height: 1.6;
 }
 
-/* Header */
-header {
-    background: linear-gradient(135deg, #6c63d9, #a18aff);
-    color: white;
-    text-align: center;
-    padding: 55px 20px;
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-header h1 {
-    font-size: 2.6rem;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: #f0edff;
-}
-
-.header-tag {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 8px 20px;
-    border: 1px solid rgba(255,255,255,0.6);
-    border-radius: 30px;
-    font-size: 0.9rem;
-}
-
-/* Navigation */
+/* ===== NAVIGATION ===== */
 nav {
-    background: white;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 3px 12px #46388215;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 7%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 3px 18px rgba(65,45,125,0.05);
 }
 
-nav a {
-    display: inline-block;
-    margin: 5px 12px;
+.logo {
+    color: var(--deep-purple);
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.nav-links a {
     text-decoration: none;
-    color: #5748bd;
+    color: #655b80;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 13px;
+    border-radius: 20px;
+    transition: 0.25s;
+}
+
+.nav-links a:hover {
+    background: var(--lavender);
+    color: var(--deep-purple);
+}
+
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding: 85px 20px 75px;
+    background:
+        radial-gradient(circle at 15% 20%, #ffffff 0, transparent 25%),
+        radial-gradient(circle at 90% 80%, #d9c9ff 0, transparent 30%),
+        linear-gradient(135deg, #eee8ff, #dcd0ff 55%, #f8f5ff);
+}
+
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    border: 1px solid rgba(114,85,217,0.12);
+    pointer-events: none;
+}
+
+.hero::before {
+    width: 290px;
+    height: 290px;
+    top: -155px;
+    right: 8%;
+}
+
+.hero::after {
+    width: 210px;
+    height: 210px;
+    bottom: -125px;
+    left: 5%;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 850px;
+    margin: auto;
+}
+
+.hero-label {
+    display: inline-block;
+    background: rgba(255,255,255,0.75);
+    border: 1px solid #d8ccfa;
+    color: var(--deep-purple);
+    padding: 7px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 1.15;
+    color: #3f2d82;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+}
+
+.hero h1 span {
+    color: var(--purple);
+}
+
+.hero-description {
+    color: #6e638e;
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 28px;
+}
+
+.profile-info {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.profile-info span {
+    background: rgba(255,255,255,0.85);
+    border: 1px solid #ded3fb;
+    border-radius: 30px;
+    padding: 8px 16px;
+    font-size: 0.88rem;
+    color: #55438d;
     font-weight: 600;
 }
 
-nav a:hover {
-    color: #a18aff;
+.hero-button {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--purple);
+    color: white;
+    padding: 13px 28px;
+    border-radius: 30px;
+    font-weight: 700;
+    box-shadow: 0 7px 18px rgba(91,63,183,0.25);
+    transition: 0.3s;
 }
 
-/* Main */
+.hero-button:hover {
+    background: var(--deep-purple);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(91,63,183,0.32);
+}
+
+/* ===== MAIN ===== */
 main {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 1200px;
+    width: 92%;
+    margin: 0 auto;
+    padding: 65px 0;
 }
 
-.intro {
+.section-heading {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 }
 
-.intro h2 {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-    color: #38316e;
+.section-heading .eyebrow {
+    color: var(--purple);
+    font-size: 0.8rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
-.intro p {
-    color: #77738d;
+.section-heading h2 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    color: #3f3277;
+    margin: 5px 0 8px;
 }
 
-/* Cards */
+.section-heading p {
+    color: var(--muted);
+    font-size: 0.98rem;
+}
+
+/* ===== STATISTICS ===== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin: 0 auto 65px;
+}
+
+.stat-card {
+    text-align: center;
+    background: white;
+    padding: 23px 12px;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    box-shadow: 0 6px 22px rgba(71,50,139,0.06);
+}
+
+.stat-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--purple);
+}
+
+.stat-label {
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+/* ===== WEEK CARDS ===== */
 .weeks {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 25px;
 }
 
-.week-card, .assignment {
+.week-card {
     background: white;
-    padding: 28px;
-    border-radius: 18px;
-    border: 1px solid #e9e5fa;
-    box-shadow: 0 5px 20px rgba(70,56,130,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 27px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow: 0 7px 25px rgba(71,50,139,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+    scroll-margin-top: 90px;
 }
 
 .week-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 28px rgba(70,56,130,0.15);
+    box-shadow: 0 13px 30px rgba(71,50,139,0.12);
 }
 
-.week-card h3, .assignment h3 {
-    font-size: 1.35rem;
-    color: #5145b5;
+.week-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
     margin-bottom: 5px;
 }
 
-.description {
-    color: #88839c;
-    font-size: 0.9rem;
-    margin-bottom: 20px;
+.week-card h3 {
+    font-size: 1.35rem;
+    color: #5140a2;
 }
 
-/* Task links */
+.week-number {
+    background: var(--lavender);
+    color: var(--purple);
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 20px;
+}
+
+.week-description {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 22px;
+}
+
+.day-heading {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #63528e;
+    margin: 17px 0 9px;
+}
+
 .tasks {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 10px;
+    gap: 9px;
 }
 
-.tasks a, .action-btn {
+.tasks a {
     display: block;
     text-align: center;
     text-decoration: none;
-    color: #5748bd;
-    background: #f1efff;
-    border: 1px solid #e5e0ff;
-    padding: 10px 5px;
+    color: #5d4ab0;
+    background: #f5f1ff;
+    border: 1px solid #e9e1ff;
+    padding: 10px 3px;
     border-radius: 9px;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.25s ease;
+    font-size: 0.83rem;
+    font-weight: 650;
+    transition: 0.25s;
 }
 
-.tasks a:hover, .action-btn:hover {
-    background: #6558d3;
+.tasks a:hover {
     color: white;
-    border-color: #6558d3;
+    background: var(--purple);
+    border-color: var(--purple);
+    transform: translateY(-2px);
 }
 
-/* Week 4 section */
-.section-title {
-    text-align: center;
-    color: #5145b5;
-    font-size: 2rem;
-    margin: 55px 0 25px;
+/* ===== WEEK 4 ===== */
+.week4-section {
+    margin-top: 75px;
+    scroll-margin-top: 90px;
 }
 
-.week4-tasks {
+.week4-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 25px;
+    gap: 23px;
 }
 
 .assignment {
+    background: white;
+    padding: 25px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    box-shadow: 0 7px 25px rgba(71,50,139,0.07);
     min-width: 0;
+    transition: box-shadow 0.3s, transform 0.3s;
 }
 
-.assignment p {
-    margin: 12px 0;
+.assignment:hover {
+    box-shadow: 0 12px 28px rgba(71,50,139,0.11);
+    transform: translateY(-3px);
+}
+
+.task-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 6px;
+}
+
+.task-icon {
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--lavender);
+    color: var(--purple);
+    font-weight: 800;
+}
+
+.task-heading h3 {
+    color: #5140a2;
+    font-size: 1.13rem;
+}
+
+.level {
+    display: inline-block;
+    color: #7255d9;
+    background: #f3efff;
+    border-radius: 20px;
+    padding: 4px 11px;
+    font-size: 0.73rem;
+    font-weight: 700;
+    margin: 7px 0 15px;
+}
+
+.assignment-description {
+    color: var(--muted);
+    font-size: 0.88rem;
+    margin-bottom: 17px;
 }
 
 .assignment button {
     border: none;
-    border-radius: 8px;
-    padding: 11px 20px;
-    background: #6558d3;
+    border-radius: 9px;
+    padding: 10px 17px;
+    background: var(--purple);
     color: white;
-    font-size: 15px;
+    font-size: 0.88rem;
+    font-weight: 650;
     cursor: pointer;
+    transition: 0.25s;
 }
 
 .assignment button:hover {
-    opacity: 0.85;
+    background: var(--deep-purple);
+    transform: translateY(-1px);
 }
 
 /* Task 1 */
 #clicker {
-    padding: 14px 32px;
-    font-size: 18px;
+    padding: 13px 30px;
+    font-size: 16px;
     border: none;
-    background: #1a56db;
+    background: #6554d6;
     color: white;
     border-radius: 10px;
     cursor: pointer;
@@ -203,38 +437,81 @@ main {
 }
 
 #clicker.done {
-    background: #16a34a !important;
+    background: #16a34a;
+}
+
+.counter-demo {
+    text-align: center;
+    padding: 12px;
+    background: #faf8ff;
+    border: 1px solid #eee8fc;
+    border-radius: 12px;
+}
+
+#count {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #5e49b8;
+    margin: 9px 0;
+}
+
+#message {
+    color: #77708c;
+    font-size: 0.9rem;
+    min-height: 25px;
 }
 
 /* Task 2 */
 .profile-card {
     padding: 20px;
-    background: #f8f7ff;
-    color: #252344;
-    border: 1px solid #e5e0ff;
-    border-radius: 12px;
+    background: #faf8ff;
+    color: #302852;
+    border: 1px solid #e7dfff;
+    border-radius: 13px;
     transition: 0.3s;
 }
 
 .profile-card.dark {
-    background: #1e293b;
-    color: white;
-    border-color: #475569;
+    background: #211b39;
+    color: #f6f2ff;
+    border-color: #57458e;
+}
+
+.profile-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+}
+
+.profile-card p {
+    font-size: 0.87rem;
+    margin: 5px 0;
 }
 
 /* Task 3 */
+.todo-form {
+    display: flex;
+    gap: 8px;
+}
+
 .todo-input {
-    width: 70%;
-    min-width: 100px;
-    padding: 10px;
-    border: 1px solid #c9c3df;
-    border-radius: 8px;
-    font-size: 14px;
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    border: 1px solid #dcd2f4;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 0.88rem;
+    outline: none;
+}
+
+.todo-input:focus, .search-input:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 3px #7255d91c;
 }
 
 .todo-list {
     list-style: none;
-    margin-top: 15px;
+    margin-top: 12px;
 }
 
 .todo-list li {
@@ -242,83 +519,173 @@ main {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    padding: 10px;
+    padding: 10px 12px;
     margin: 8px 0;
-    background: #f1efff;
-    border-radius: 8px;
+    background: #f6f2ff;
+    border-radius: 9px;
+    font-size: 0.9rem;
     overflow-wrap: anywhere;
 }
 
 .todo-list .delete {
     flex-shrink: 0;
     padding: 5px 10px;
-    background: #dc2626;
+    background: #e35b80;
+    border-radius: 7px;
 }
 
 /* Task 4 */
 .search-input {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #c9c3df;
-    border-radius: 8px;
-    font-size: 15px;
-    margin: 10px 0;
+    padding: 11px 13px;
+    border: 1px solid #dcd2f4;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 10px;
 }
 
 .student-list {
     list-style: none;
-    margin-top: 10px;
 }
 
 .student {
-    padding: 10px;
+    padding: 9px 12px;
     margin: 7px 0;
-    background: #f1efff;
+    background: #f6f2ff;
+    border: 1px solid #eee8fa;
     border-radius: 8px;
-}
-
-.student mark {
-    background: #fde68a;
-    color: #252344;
-    font-weight: bold;
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 25px 15px;
-    margin-top: 55px;
-    background: #eae7fa;
-    color: #77718f;
     font-size: 0.9rem;
 }
 
-/* Responsive */
-@media (max-width: 700px) {
-    header {
-        padding: 40px 15px;
+.student mark {
+    background: #e4d5ff;
+    color: #382477;
+    font-weight: 800;
+    border-radius: 3px;
+}
+
+/* ===== PROJECT ===== */
+.project-section {
+    margin-top: 75px;
+    scroll-margin-top: 90px;
+}
+
+.project-card {
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 25px;
+    box-shadow: 0 7px 25px rgba(71,50,139,0.07);
+}
+
+.project-symbol {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 15px;
+    background: var(--lavender);
+    color: var(--purple);
+    font-size: 1.5rem;
+    border-radius: 16px;
+}
+
+.project-card h3 {
+    color: #5140a2;
+    font-size: 1.3rem;
+    margin-bottom: 7px;
+}
+
+.project-card p {
+    color: var(--muted);
+    margin-bottom: 20px;
+}
+
+.project-link {
+    display: inline-block;
+    text-decoration: none;
+    background: var(--purple);
+    color: white;
+    padding: 11px 25px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: 0.25s;
+}
+
+.project-link:hover {
+    background: var(--deep-purple);
+    transform: translateY(-2px);
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 30px;
+    background: #eee9fb;
+    border-top: 1px solid #e4dcf6;
+    color: #77708e;
+    font-size: 0.87rem;
+}
+
+footer strong {
+    color: #5c48a9;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 750px) {
+    nav {
+        flex-direction: column;
+        gap: 7px;
+        padding: 12px;
     }
 
-    header h1 {
-        font-size: 2rem;
+    .nav-links {
+        justify-content: center;
     }
 
-    .weeks, .week4-tasks {
+    .weeks, .week4-grid {
         grid-template-columns: 1fr;
     }
 
-    main {
-        margin: 30px auto;
+    .hero {
+        padding: 65px 18px;
     }
 
-    nav a {
-        margin: 5px 7px;
+    main {
+        padding-top: 40px;
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 430px) {
     .tasks {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stats {
+        gap: 8px;
+    }
+
+    .stat-card {
+        padding: 16px 5px;
+    }
+
+    .stat-number {
+        font-size: 1.55rem;
+    }
+
+    .stat-label {
+        font-size: 0.75rem;
+    }
+
+    .week-card, .assignment {
+        padding: 20px;
     }
 }
 </style>
@@ -326,195 +693,276 @@ footer {
 
 <body>
 
-<!-- HEADER -->
-<header id="home">
-    <h1>Web Programming</h1>
-    <p>My HTML, CSS & JavaScript Projects</p>
-    <span class="header-tag">
-        Prashna Rai | Student ID: YOUR_STUDENT_ID
-    </span>
-</header>
-
 <!-- NAVIGATION -->
 <nav>
-    <a href="#home">Home</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#week2">Week 2</a>
-    <a href="#week3">Week 3</a>
-    <a href="#week4">Week 4</a>
-    <a href="#project">Project</a>
+    <a class="logo" href="#home">PR. Portfolio</a>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#week2">Week 2</a>
+        <a href="#week3">Week 3</a>
+        <a href="#week4">Week 4</a>
+        <a href="#project">Project</a>
+    </div>
 </nav>
+
+<!-- HERO -->
+<header class="hero" id="home">
+    <div class="hero-content">
+        <span class="hero-label">MY ACADEMIC PORTFOLIO</span>
+        <h1>Hello, I'm <span>Prashna Rai</span></h1>
+        <p class="hero-description">
+            Welcome to my web programming portfolio.
+            A collection of my assignments, learning
+            experiences and projects.
+        </p>
+
+        <div class="profile-info">
+            <span>Computer Science</span>
+            <span>Gachon University</span>
+            <span>Student ID: 202539489</span>
+        </div>
+
+        <br>
+        <a href="#portfolio" class="hero-button">
+            Explore My Portfolio ↓
+        </a>
+    </div>
+</header>
 
 <main>
 
 <!-- INTRODUCTION -->
-<section class="intro" id="portfolio">
+<section class="section-heading" id="portfolio">
+    <span class="eyebrow">MY WORK</span>
     <h2>My Learning Portfolio</h2>
-    <p>
-        Welcome to my web programming portfolio.
-        Explore my weekly assignments and projects.
-    </p>
+    <p>Explore my web programming assignments and projects.</p>
 </section>
 
-<!-- WEEK 2 AND WEEK 3 -->
+<!-- STATISTICS -->
+<section class="stats">
+    <div class="stat-card">
+        <span class="stat-number">4</span>
+        <span class="stat-label">Weeks</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">35</span>
+        <span class="stat-label">Assignments</span>
+    </div>
+    <div class="stat-card">
+        <span class="stat-number">1</span>
+        <span class="stat-label">Project</span>
+    </div>
+</section>
+
+<!-- WEEKS 2 AND 3 -->
+<section class="section-heading">
+    <span class="eyebrow">ASSIGNMENTS</span>
+    <h2>Weekly Assignments</h2>
+    <p>My HTML and CSS exercises from Weeks 2 and 3.</p>
+</section>
+
 <section class="weeks">
 
-    <!-- WEEK 2 -->
-    <div class="week-card" id="week2">
-        <h3>Week 2</h3>
-        <p class="description">HTML assignments · Monday & Friday</p>
-
-        <h4>Monday</h4>
-        <div class="tasks">
-            <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
-            <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
-            <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
-            <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
-            <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
-            <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
-            <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
-            <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
-        </div>
-
-        <h4 style="margin-top:20px">Friday</h4>
-        <div class="tasks">
-            <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
-            <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
-            <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
-            <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
-            <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
-            <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
-            <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
-            <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
-        </div>
+<!-- WEEK 2 MONDAY -->
+<div class="week-card" id="week2">
+    <div class="week-top">
+        <h3>Week 2 · Monday</h3>
+        <span class="week-number">WEEK 02</span>
     </div>
-
-    <!-- WEEK 3 -->
-    <div class="week-card" id="week3">
-        <h3>Week 3</h3>
-        <p class="description">HTML assignments · Monday & Friday</p>
-
-        <h4>Monday</h4>
-        <div class="tasks">
-            <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
-            <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
-            <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
-            <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
-            <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
-            <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
-            <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
-            <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
-        </div>
-
-        <h4 style="margin-top:20px">Friday</h4>
-        <div class="tasks">
-            <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
-            <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
-            <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
-            <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
-            <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
-            <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
-            <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
-        </div>
+    <p class="week-description">HTML assignments · 8 tasks</p>
+    <div class="tasks">
+        <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
+        <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
+        <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
+        <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
+        <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
+        <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
+        <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
+        <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
     </div>
+</div>
+
+<!-- WEEK 2 FRIDAY -->
+<div class="week-card">
+    <div class="week-top">
+        <h3>Week 2 · Friday</h3>
+        <span class="week-number">WEEK 02</span>
+    </div>
+    <p class="week-description">HTML assignments · 8 tasks</p>
+    <div class="tasks">
+        <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
+        <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
+        <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
+        <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
+        <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
+        <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
+        <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
+        <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
+    </div>
+</div>
+
+<!-- WEEK 3 MONDAY -->
+<div class="week-card" id="week3">
+    <div class="week-top">
+        <h3>Week 3 · Monday</h3>
+        <span class="week-number">WEEK 03</span>
+    </div>
+    <p class="week-description">HTML assignments · 8 tasks</p>
+    <div class="tasks">
+        <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
+        <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
+        <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
+        <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
+        <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
+        <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
+        <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
+        <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
+    </div>
+</div>
+
+<!-- WEEK 3 FRIDAY -->
+<div class="week-card">
+    <div class="week-top">
+        <h3>Week 3 · Friday</h3>
+        <span class="week-number">WEEK 03</span>
+    </div>
+    <p class="week-description">HTML assignments · 7 tasks</p>
+    <div class="tasks">
+        <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
+        <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
+        <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
+        <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
+        <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
+        <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
+        <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
+    </div>
+</div>
 
 </section>
 
 <!-- WEEK 4 -->
-<h2 class="section-title" id="week4">Week 4 · JavaScript</h2>
-<p style="text-align:center;color:#77738d;margin-bottom:25px">
-    Interactive JavaScript assignments
-</p>
+<section class="week4-section" id="week4">
+    <div class="section-heading">
+        <span class="eyebrow">JAVASCRIPT</span>
+        <h2>Week 4 · Interactive Tasks</h2>
+        <p>DOM manipulation, events and interactive web applications.</p>
+    </div>
 
-<section class="week4-tasks">
+    <div class="week4-grid">
 
-    <!-- TASK 1 -->
-    <div class="assignment">
-        <h3>Task 1: Click Counter</h3>
-        <p class="description">Beginner · Click event</p>
-
-        <div style="text-align:center;padding:15px 0">
-            <button id="clicker">Click me!</button>
-            <p id="count" style="font-size:32px;font-weight:bold;margin:15px 0">0</p>
-            <p id="message" style="color:#77738d">
-                Keep clicking...
+        <!-- TASK 1 -->
+        <div class="assignment">
+            <div class="task-heading">
+                <span class="task-icon">01</span>
+                <h3>Click Counter</h3>
+            </div>
+            <span class="level">BEGINNER</span>
+            <p class="assignment-description">
+                Count clicks and celebrate when you reach five.
             </p>
-        </div>
-    </div>
 
-    <!-- TASK 2 -->
-    <div class="assignment">
-        <h3>Task 2: Dark Mode Toggle</h3>
-        <p class="description">Beginner · Class toggle</p>
-
-        <div class="profile-card" id="profileCard">
-            <h3 style="margin-bottom:10px">My Profile</h3>
-            <p>Name: Prashna</p>
-            <p>Department: Computer Science</p>
-            <br>
-            <button id="toggle">Dark Mode</button>
-        </div>
-    </div>
-
-    <!-- TASK 3 -->
-    <div class="assignment">
-        <h3>Task 3: To-Do List</h3>
-        <p class="description">Beginner · DOM manipulation</p>
-
-        <div>
-            <input class="todo-input" id="taskInput"
-                   type="text" placeholder="Enter a task">
-            <button id="addBtn">Add</button>
+            <div class="counter-demo">
+                <button id="clicker">Click me!</button>
+                <p id="count">0</p>
+                <p id="message">Keep clicking...</p>
+            </div>
         </div>
 
-        <ul class="todo-list" id="taskList"></ul>
+        <!-- TASK 2 -->
+        <div class="assignment">
+            <div class="task-heading">
+                <span class="task-icon">02</span>
+                <h3>Dark Mode Toggle</h3>
+            </div>
+            <span class="level">BEGINNER</span>
+            <p class="assignment-description">
+                Switch a profile card between light and dark mode.
+            </p>
+
+            <div class="profile-card" id="profileCard">
+                <h4>My Profile</h4>
+                <p>Name: Prashna</p>
+                <p>Department: Computer Science</p>
+                <br>
+                <button id="toggle">Dark Mode</button>
+            </div>
+        </div>
+
+        <!-- TASK 3 -->
+        <div class="assignment">
+            <div class="task-heading">
+                <span class="task-icon">03</span>
+                <h3>To-Do List</h3>
+            </div>
+            <span class="level">BEGINNER</span>
+            <p class="assignment-description">
+                Add tasks using Enter or Add, and delete them when finished.
+            </p>
+
+            <div class="todo-form">
+                <input class="todo-input" id="taskInput"
+                       type="text" placeholder="Enter a task">
+                <button id="addBtn">Add</button>
+            </div>
+            <ul class="todo-list" id="taskList"></ul>
+        </div>
+
+        <!-- TASK 4 -->
+        <div class="assignment">
+            <div class="task-heading">
+                <span class="task-icon">04</span>
+                <h3>Live Search Filter</h3>
+            </div>
+            <span class="level">ADVANCED</span>
+            <p class="assignment-description">
+                Search student names in real time as you type.
+            </p>
+
+            <input class="search-input" id="search"
+                   type="text" placeholder="Search students...">
+            <ul class="student-list" id="students">
+                <li class="student">Prashna</li>
+                <li class="student">Rahul</li>
+                <li class="student">Sarah</li>
+                <li class="student">John</li>
+                <li class="student">Priya</li>
+                <li class="student">David</li>
+            </ul>
+        </div>
+
     </div>
-
-    <!-- TASK 4 -->
-    <div class="assignment">
-        <h3>Task 4: Live Search Filter</h3>
-        <p class="description">Advanced · Input event</p>
-
-        <input class="search-input" id="search"
-               type="text" placeholder="Search students...">
-
-        <ul class="student-list" id="students">
-            <li class="student">Prashna</li>
-            <li class="student">Rahul</li>
-            <li class="student">Sarah</li>
-            <li class="student">John</li>
-            <li class="student">Priya</li>
-            <li class="student">David</li>
-        </ul>
-    </div>
-
 </section>
 
 <!-- PROJECT -->
-<h2 class="section-title" id="project">My Project</h2>
+<section class="project-section" id="project">
+    <div class="section-heading">
+        <span class="eyebrow">MY WORK</span>
+        <h2>My Project</h2>
+        <p>Explore my web programming project.</p>
+    </div>
 
-<section class="week-card" style="text-align:center">
-    <h3>Web Programming Project</h3>
-    <p class="description">
-        My web programming project
-    </p>
-    <a class="action-btn" href="./Project/index.html">
-        View Project
-    </a>
+    <div class="project-card">
+        <div class="project-symbol">✦</div>
+        <h3>Web Programming Project</h3>
+        <p>My individual web programming project.</p>
+        <a href="./Project/index.html" class="project-link">
+            View Project →
+        </a>
+    </div>
 </section>
 
 </main>
 
 <!-- FOOTER -->
 <footer>
-    <p>Web Programming Portfolio · HTML, CSS & JavaScript</p>
-    <p>Prashna Rai · Gachon University</p>
+    <p><strong>Prashna Rai</strong> · Gachon University</p>
+    <p>Web Programming Portfolio · 2026</p>
 </footer>
 
 <!-- JAVASCRIPT -->
 <script>
 // TASK 1: CLICK COUNTER
-
 const button = document.querySelector('#clicker');
 const countText = document.querySelector('#count');
 const message = document.querySelector('#message');
@@ -535,7 +983,6 @@ button.addEventListener('click', function() {
 
 
 // TASK 2: DARK MODE TOGGLE
-
 const card = document.querySelector('#profileCard');
 const toggle = document.querySelector('#toggle');
 
@@ -551,7 +998,6 @@ toggle.addEventListener('click', function() {
 
 
 // TASK 3: TO-DO LIST
-
 const input = document.querySelector('#taskInput');
 const addBtn = document.querySelector('#addBtn');
 const list = document.querySelector('#taskList');
@@ -584,6 +1030,7 @@ input.addEventListener('keydown', function(e) {
     }
 });
 
+// Event delegation
 list.addEventListener('click', function(e) {
     if (e.target.classList.contains('delete')) {
         e.target.parentElement.remove();
@@ -592,12 +1039,13 @@ list.addEventListener('click', function(e) {
 
 
 // TASK 4: LIVE SEARCH FILTER
-
 const search = document.querySelector('#search');
 const students = document.querySelectorAll('.student');
 
-// Save original names for highlighting and repeated searches.
-const originalNames = Array.from(students, student => student.textContent);
+const originalNames = Array.from(
+    students,
+    student => student.textContent
+);
 
 search.addEventListener('input', function(e) {
     const term = e.target.value.toLowerCase();
@@ -617,15 +1065,14 @@ search.addEventListener('input', function(e) {
                 );
                 const after = name.slice(matchIndex + term.length);
 
-                // Highlight the matching text.
-                student.replaceChildren(
-                    document.createTextNode(before)
-                );
-
                 const mark = document.createElement('mark');
                 mark.textContent = match;
-                student.appendChild(mark);
-                student.appendChild(document.createTextNode(after));
+
+                student.replaceChildren(
+                    document.createTextNode(before),
+                    mark,
+                    document.createTextNode(after)
+                );
             } else {
                 student.textContent = name;
             }
