@@ -2,259 +2,639 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Programming Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prashna Rai | Web Programming Portfolio</title>
 
-    <style>
-        /* General styling */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f5f3ff;
-            color: #252344;
-            line-height: 1.6;
-        }
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f5f3ff;
+    color: #252344;
+    line-height: 1.6;
+}
 
-        /* Header */
-        header {
-            background: linear-gradient(135deg, #6c63d9, #a18aff);
-            color: white;
-            text-align: center;
-            padding: 65px 20px;
-        }
+/* Header */
+header {
+    background: linear-gradient(135deg, #6c63d9, #a18aff);
+    color: white;
+    text-align: center;
+    padding: 55px 20px;
+}
 
-        header h1 {
-            font-size: 2.6rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
+header h1 {
+    font-size: 2.6rem;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
 
-        header p {
-            font-size: 1.1rem;
-            color: #f0edff;
-        }
+header p {
+    font-size: 1.1rem;
+    color: #f0edff;
+}
 
-        .header-tag {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 8px 20px;
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 30px;
-            font-size: 0.9rem;
-        }
+.header-tag {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 30px;
+    font-size: 0.9rem;
+}
 
-        /* Main content */
-        main {
-            max-width: 1100px;
-            margin: 45px auto;
-            padding: 0 20px;
-        }
+/* Navigation */
+nav {
+    background: white;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 3px 12px #46388215;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
 
-        .intro {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+nav a {
+    display: inline-block;
+    margin: 5px 12px;
+    text-decoration: none;
+    color: #5748bd;
+    font-weight: 600;
+}
 
-        .intro h2 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            color: #38316e;
-        }
+nav a:hover {
+    color: #a18aff;
+}
 
-        .intro p {
-            color: #77738d;
-        }
+/* Main */
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
 
-        /* Week cards */
-        .weeks {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 25px;
-        }
+.intro {
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-        .week-card {
-            background: white;
-            padding: 28px;
-            border-radius: 18px;
-            border: 1px solid #e9e5fa;
-            box-shadow: 0 5px 20px rgba(70, 56, 130, 0.08);
-            transition: transform 0.3s ease,
-                        box-shadow 0.3s ease;
-        }
+.intro h2 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    color: #38316e;
+}
 
-        .week-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(70, 56, 130, 0.15);
-        }
+.intro p {
+    color: #77738d;
+}
 
-        .week-card h3 {
-            font-size: 1.35rem;
-            color: #5145b5;
-            margin-bottom: 5px;
-        }
+/* Cards */
+.weeks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
 
-        .week-card .description {
-            color: #88839c;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-        }
+.week-card, .assignment {
+    background: white;
+    padding: 28px;
+    border-radius: 18px;
+    border: 1px solid #e9e5fa;
+    box-shadow: 0 5px 20px rgba(70,56,130,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-        /* Task buttons */
-        .tasks {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 10px;
-        }
+.week-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(70,56,130,0.15);
+}
 
-        .tasks a {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: #5748bd;
-            background: #f1efff;
-            border: 1px solid #e5e0ff;
-            padding: 10px 4px;
-            border-radius: 9px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: all 0.25s ease;
-        }
+.week-card h3, .assignment h3 {
+    font-size: 1.35rem;
+    color: #5145b5;
+    margin-bottom: 5px;
+}
 
-        .tasks a:hover {
-            background: #6558d3;
-            color: white;
-            border-color: #6558d3;
-            transform: scale(1.04);
-        }
+.description {
+    color: #88839c;
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
 
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 25px 15px;
-            margin-top: 45px;
-            background: #eae7fa;
-            color: #77718f;
-            font-size: 0.9rem;
-        }
+/* Task links */
+.tasks {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+}
 
-        /* Mobile responsive design */
-        @media (max-width: 700px) {
-            header {
-                padding: 45px 15px;
-            }
+.tasks a, .action-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    color: #5748bd;
+    background: #f1efff;
+    border: 1px solid #e5e0ff;
+    padding: 10px 5px;
+    border-radius: 9px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
 
-            header h1 {
-                font-size: 2rem;
-            }
+.tasks a:hover, .action-btn:hover {
+    background: #6558d3;
+    color: white;
+    border-color: #6558d3;
+}
 
-            .weeks {
-                grid-template-columns: 1fr;
-            }
+/* Week 4 section */
+.section-title {
+    text-align: center;
+    color: #5145b5;
+    font-size: 2rem;
+    margin: 55px 0 25px;
+}
 
-            main {
-                margin: 30px auto;
-            }
-        }
+.week4-tasks {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+}
 
-        @media (max-width: 380px) {
-            .tasks {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-    </style>
+.assignment {
+    min-width: 0;
+}
+
+.assignment p {
+    margin: 12px 0;
+}
+
+.assignment button {
+    border: none;
+    border-radius: 8px;
+    padding: 11px 20px;
+    background: #6558d3;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.assignment button:hover {
+    opacity: 0.85;
+}
+
+/* Task 1 */
+#clicker {
+    padding: 14px 32px;
+    font-size: 18px;
+    border: none;
+    background: #1a56db;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#clicker.done {
+    background: #16a34a !important;
+}
+
+/* Task 2 */
+.profile-card {
+    padding: 20px;
+    background: #f8f7ff;
+    color: #252344;
+    border: 1px solid #e5e0ff;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.profile-card.dark {
+    background: #1e293b;
+    color: white;
+    border-color: #475569;
+}
+
+/* Task 3 */
+.todo-input {
+    width: 70%;
+    min-width: 100px;
+    padding: 10px;
+    border: 1px solid #c9c3df;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.todo-list {
+    list-style: none;
+    margin-top: 15px;
+}
+
+.todo-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    margin: 8px 0;
+    background: #f1efff;
+    border-radius: 8px;
+    overflow-wrap: anywhere;
+}
+
+.todo-list .delete {
+    flex-shrink: 0;
+    padding: 5px 10px;
+    background: #dc2626;
+}
+
+/* Task 4 */
+.search-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #c9c3df;
+    border-radius: 8px;
+    font-size: 15px;
+    margin: 10px 0;
+}
+
+.student-list {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.student {
+    padding: 10px;
+    margin: 7px 0;
+    background: #f1efff;
+    border-radius: 8px;
+}
+
+.student mark {
+    background: #fde68a;
+    color: #252344;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 25px 15px;
+    margin-top: 55px;
+    background: #eae7fa;
+    color: #77718f;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+    header {
+        padding: 40px 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .weeks, .week4-tasks {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        margin: 30px auto;
+    }
+
+    nav a {
+        margin: 5px 7px;
+    }
+}
+
+@media (max-width: 380px) {
+    .tasks {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <header>
-        <h1>Web Programming</h1>
-        <p>My HTML Projects & Assignments</p>
-        <span class="header-tag">Week 2 & Week 3</span>
-    </header>
+<!-- HEADER -->
+<header id="home">
+    <h1>Web Programming</h1>
+    <p>My HTML, CSS & JavaScript Projects</p>
+    <span class="header-tag">
+        Prashna Rai | Student ID: YOUR_STUDENT_ID
+    </span>
+</header>
 
-    <main>
-        <section class="intro">
-            <h2>My Learning Portfolio</h2>
-            <p>Explore my web programming assignments and projects.</p>
-        </section>
+<!-- NAVIGATION -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#week2">Week 2</a>
+    <a href="#week3">Week 3</a>
+    <a href="#week4">Week 4</a>
+    <a href="#project">Project</a>
+</nav>
 
-        <section class="weeks">
+<main>
 
-            <!-- Week 2 Monday -->
-            <div class="week-card">
-                <h3>Week 2 · Monday</h3>
-                <p class="description">HTML assignments · 8 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
-                    <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
-                    <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
-                    <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
-                    <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
-                    <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
-                    <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
-                    <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
-                </div>
-            </div>
+<!-- INTRODUCTION -->
+<section class="intro" id="portfolio">
+    <h2>My Learning Portfolio</h2>
+    <p>
+        Welcome to my web programming portfolio.
+        Explore my weekly assignments and projects.
+    </p>
+</section>
 
-            <!-- Week 2 Friday -->
-            <div class="week-card">
-                <h3>Week 2 · Friday</h3>
-                <p class="description">HTML assignments · 8 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
-                    <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
-                    <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
-                    <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
-                    <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
-                    <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
-                    <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
-                    <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
-                </div>
-            </div>
+<!-- WEEK 2 AND WEEK 3 -->
+<section class="weeks">
 
-            <!-- Week 3 Monday -->
-            <div class="week-card">
-                <h3>Week 3 · Monday</h3>
-                <p class="description">HTML assignments · 8 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
-                    <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
-                    <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
-                    <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
-                    <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
-                    <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
-                    <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
-                    <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
-                </div>
-            </div>
+    <!-- WEEK 2 -->
+    <div class="week-card" id="week2">
+        <h3>Week 2</h3>
+        <p class="description">HTML assignments · Monday & Friday</p>
 
-            <!-- Week 3 Friday -->
-            <div class="week-card">
-                <h3>Week 3 · Friday</h3>
-                <p class="description">HTML assignments · 7 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
-                    <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
-                    <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
-                    <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
-                    <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
-                    <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
-                    <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
-                </div>
-            </div>
+        <h4>Monday</h4>
+        <div class="tasks">
+            <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
+            <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
+            <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
+            <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
+            <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
+            <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
+            <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
+            <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
+        </div>
 
-        </section>
-    </main>
+        <h4 style="margin-top:20px">Friday</h4>
+        <div class="tasks">
+            <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
+            <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
+            <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
+            <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
+            <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
+            <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
+            <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
+            <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
+        </div>
+    </div>
 
-    <footer>
-        <p>Web Programming Portfolio · HTML & CSS</p>
-    </footer>
+    <!-- WEEK 3 -->
+    <div class="week-card" id="week3">
+        <h3>Week 3</h3>
+        <p class="description">HTML assignments · Monday & Friday</p>
+
+        <h4>Monday</h4>
+        <div class="tasks">
+            <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
+            <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
+            <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
+            <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
+            <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
+            <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
+            <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
+            <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
+        </div>
+
+        <h4 style="margin-top:20px">Friday</h4>
+        <div class="tasks">
+            <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
+            <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
+            <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
+            <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
+            <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
+            <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
+            <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
+        </div>
+    </div>
+
+</section>
+
+<!-- WEEK 4 -->
+<h2 class="section-title" id="week4">Week 4 · JavaScript</h2>
+<p style="text-align:center;color:#77738d;margin-bottom:25px">
+    Interactive JavaScript assignments
+</p>
+
+<section class="week4-tasks">
+
+    <!-- TASK 1 -->
+    <div class="assignment">
+        <h3>Task 1: Click Counter</h3>
+        <p class="description">Beginner · Click event</p>
+
+        <div style="text-align:center;padding:15px 0">
+            <button id="clicker">Click me!</button>
+            <p id="count" style="font-size:32px;font-weight:bold;margin:15px 0">0</p>
+            <p id="message" style="color:#77738d">
+                Keep clicking...
+            </p>
+        </div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="assignment">
+        <h3>Task 2: Dark Mode Toggle</h3>
+        <p class="description">Beginner · Class toggle</p>
+
+        <div class="profile-card" id="profileCard">
+            <h3 style="margin-bottom:10px">My Profile</h3>
+            <p>Name: Prashna</p>
+            <p>Department: Computer Science</p>
+            <br>
+            <button id="toggle">Dark Mode</button>
+        </div>
+    </div>
+
+    <!-- TASK 3 -->
+    <div class="assignment">
+        <h3>Task 3: To-Do List</h3>
+        <p class="description">Beginner · DOM manipulation</p>
+
+        <div>
+            <input class="todo-input" id="taskInput"
+                   type="text" placeholder="Enter a task">
+            <button id="addBtn">Add</button>
+        </div>
+
+        <ul class="todo-list" id="taskList"></ul>
+    </div>
+
+    <!-- TASK 4 -->
+    <div class="assignment">
+        <h3>Task 4: Live Search Filter</h3>
+        <p class="description">Advanced · Input event</p>
+
+        <input class="search-input" id="search"
+               type="text" placeholder="Search students...">
+
+        <ul class="student-list" id="students">
+            <li class="student">Prashna</li>
+            <li class="student">Rahul</li>
+            <li class="student">Sarah</li>
+            <li class="student">John</li>
+            <li class="student">Priya</li>
+            <li class="student">David</li>
+        </ul>
+    </div>
+
+</section>
+
+<!-- PROJECT -->
+<h2 class="section-title" id="project">My Project</h2>
+
+<section class="week-card" style="text-align:center">
+    <h3>Web Programming Project</h3>
+    <p class="description">
+        My web programming project
+    </p>
+    <a class="action-btn" href="./Project/index.html">
+        View Project
+    </a>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+    <p>Web Programming Portfolio · HTML, CSS & JavaScript</p>
+    <p>Prashna Rai · Gachon University</p>
+</footer>
+
+<!-- JAVASCRIPT -->
+<script>
+// TASK 1: CLICK COUNTER
+
+const button = document.querySelector('#clicker');
+const countText = document.querySelector('#count');
+const message = document.querySelector('#message');
+
+let count = 0;
+
+button.addEventListener('click', function() {
+    if (count >= 5) return;
+
+    count++;
+    countText.textContent = count;
+
+    if (count >= 5) {
+        button.classList.add('done');
+        message.textContent = 'Congratulations! You did it!';
+    }
+});
+
+
+// TASK 2: DARK MODE TOGGLE
+
+const card = document.querySelector('#profileCard');
+const toggle = document.querySelector('#toggle');
+
+toggle.addEventListener('click', function() {
+    card.classList.toggle('dark');
+
+    if (card.classList.contains('dark')) {
+        toggle.textContent = 'Light Mode';
+    } else {
+        toggle.textContent = 'Dark Mode';
+    }
+});
+
+
+// TASK 3: TO-DO LIST
+
+const input = document.querySelector('#taskInput');
+const addBtn = document.querySelector('#addBtn');
+const list = document.querySelector('#taskList');
+
+function addTask() {
+    const task = input.value.trim();
+
+    if (task === '') return;
+
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    span.textContent = task;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = '✕';
+    deleteBtn.classList.add('delete');
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    list.appendChild(li);
+
+    input.value = '';
+}
+
+addBtn.addEventListener('click', addTask);
+
+input.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') {
+        addTask();
+    }
+});
+
+list.addEventListener('click', function(e) {
+    if (e.target.classList.contains('delete')) {
+        e.target.parentElement.remove();
+    }
+});
+
+
+// TASK 4: LIVE SEARCH FILTER
+
+const search = document.querySelector('#search');
+const students = document.querySelectorAll('.student');
+
+// Save original names for highlighting and repeated searches.
+const originalNames = Array.from(students, student => student.textContent);
+
+search.addEventListener('input', function(e) {
+    const term = e.target.value.toLowerCase();
+
+    students.forEach(function(student, index) {
+        const name = originalNames[index];
+        const lowerName = name.toLowerCase();
+        const matchIndex = lowerName.indexOf(term);
+
+        if (matchIndex !== -1) {
+            student.style.display = '';
+
+            if (term !== '') {
+                const before = name.slice(0, matchIndex);
+                const match = name.slice(
+                    matchIndex, matchIndex + term.length
+                );
+                const after = name.slice(matchIndex + term.length);
+
+                // Highlight the matching text.
+                student.replaceChildren(
+                    document.createTextNode(before)
+                );
+
+                const mark = document.createElement('mark');
+                mark.textContent = match;
+                student.appendChild(mark);
+                student.appendChild(document.createTextNode(after));
+            } else {
+                student.textContent = name;
+            }
+        } else {
+            student.style.display = 'none';
+        }
+    });
+});
+</script>
 
 </body>
 </html>
