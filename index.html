@@ -16,7 +16,6 @@
 
         html {
             scroll-behavior: smooth;
-            scroll-padding-top: 90px;
         }
 
         body {
@@ -24,6 +23,10 @@
             background: #f5f3ff;
             color: #252344;
             line-height: 1.6;
+        }
+
+        [hidden] {
+            display: none !important;
         }
 
         /* HEADER */
@@ -148,6 +151,7 @@
             margin: 17px 0 8px;
         }
 
+        /* TASK BUTTONS */
         .tasks {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -175,52 +179,44 @@
             transform: scale(1.04);
         }
 
-        /* WEEK 4 ASSIGNMENTS */
-        .week4-section {
-            margin-top: 55px;
+        /* WEEK 4 TASK PAGE */
+        .task-page {
+            max-width: 850px;
+            margin: 0 auto;
+            min-height: 300px;
         }
 
-        .section-heading {
-            text-align: center;
-            margin-bottom: 27px;
+        .back-button {
+            display: inline-block;
+            border: 1px solid #e5e0ff;
+            background: white;
+            color: #5748bd;
+            padding: 10px 18px;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 22px;
+            transition: 0.25s;
         }
 
-        .section-heading h2 {
-            font-size: 1.8rem;
-            color: #38316e;
-            margin-bottom: 5px;
-        }
-
-        .section-heading p {
-            color: #77738d;
-            font-size: 0.92rem;
-        }
-
-        .week4-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 22px;
+        .back-button:hover {
+            background: #eee9ff;
+            transform: translateX(-3px);
         }
 
         .assignment {
             background: white;
-            padding: 25px;
+            padding: 28px;
             border: 1px solid #e9e5fa;
             border-radius: 18px;
             box-shadow: 0 5px 20px rgba(70,56,130,0.08);
-            min-width: 0;
-            scroll-margin-top: 85px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .assignment:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(70,56,130,0.12);
+            scroll-margin-top: 90px;
         }
 
         .assignment h3 {
             color: #5145b5;
-            font-size: 1.15rem;
+            font-size: 1.3rem;
             margin-bottom: 5px;
         }
 
@@ -236,9 +232,9 @@
         }
 
         .assignment-description {
-            color: #88839c;
-            font-size: 0.88rem;
-            margin-bottom: 16px;
+            color: #77738d;
+            font-size: 0.92rem;
+            margin-bottom: 18px;
         }
 
         .assignment button {
@@ -261,7 +257,7 @@
         /* TASK 1: CLICK COUNTER */
         .counter-demo {
             text-align: center;
-            padding: 12px;
+            padding: 25px 12px;
             background: #faf9ff;
             border: 1px solid #eee8fc;
             border-radius: 12px;
@@ -297,7 +293,7 @@
 
         /* TASK 2: DARK MODE */
         .profile-card {
-            padding: 20px;
+            padding: 22px;
             background: #faf8ff;
             color: #302852;
             border: 1px solid #e7dfff;
@@ -317,7 +313,7 @@
         }
 
         .profile-card p {
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             margin: 5px 0;
         }
 
@@ -334,7 +330,7 @@
             border: 1px solid #dcd2f4;
             border-radius: 9px;
             font-family: inherit;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
             outline: none;
         }
 
@@ -429,13 +425,11 @@
                 font-size: 2rem;
             }
 
-            .weeks,
-            .week4-grid {
+            .weeks {
                 grid-template-columns: 1fr;
             }
 
             main {
-                margin: 0 auto;
                 padding: 30px 15px 45px;
             }
 
@@ -470,201 +464,203 @@
 
     <!-- NAVIGATION -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#week2">Week 2</a>
-        <a href="#week3">Week 3</a>
-        <a href="#week4">Week 4</a>
+        <a href="#home" id="homeLink">Home</a>
+        <a href="#portfolio" id="portfolioLink">Portfolio</a>
+        <a href="#week2" data-week="week2">Week 2</a>
+        <a href="#week3" data-week="week3">Week 3</a>
+        <a href="#week4" data-week="week4">Week 4</a>
     </nav>
 
     <main>
 
-        <!-- INTRODUCTION -->
-        <section class="intro" id="portfolio">
-            <h2>My Learning Portfolio</h2>
-            <p>
-                Welcome to my web programming portfolio.
-                Explore my weekly assignments and projects.
-            </p>
-        </section>
+        <!-- MAIN PORTFOLIO -->
+        <div id="portfolioPage">
 
-        <!-- WEEK 2, WEEK 3 AND WEEK 4 CARDS -->
-        <section class="weeks">
-
-            <!-- WEEK 2 -->
-            <div class="week-card" id="week2">
-                <h3>Week 2</h3>
-                <p class="description">
-                    HTML assignments · Monday & Friday
+            <!-- INTRODUCTION -->
+            <section class="intro" id="portfolio">
+                <h2>My Learning Portfolio</h2>
+                <p>
+                    Welcome to my web programming portfolio.
+                    Explore my weekly assignments and projects.
                 </p>
+            </section>
 
-                <h4 class="day-heading">Monday</h4>
-                <div class="tasks">
-                    <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
-                    <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
-                    <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
-                    <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
-                    <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
-                    <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
-                    <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
-                    <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
-                </div>
+            <!-- WEEK CARDS -->
+            <section class="weeks">
 
-                <h4 class="day-heading">Friday</h4>
-                <div class="tasks">
-                    <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
-                    <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
-                    <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
-                    <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
-                    <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
-                    <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
-                    <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
-                    <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
-                </div>
-            </div>
-
-            <!-- WEEK 3 -->
-            <div class="week-card" id="week3">
-                <h3>Week 3</h3>
-                <p class="description">
-                    HTML assignments · Monday & Friday
-                </p>
-
-                <h4 class="day-heading">Monday</h4>
-                <div class="tasks">
-                    <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
-                    <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
-                    <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
-                    <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
-                    <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
-                    <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
-                    <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
-                    <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
-                </div>
-
-                <h4 class="day-heading">Friday</h4>
-                <div class="tasks">
-                    <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
-                    <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
-                    <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
-                    <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
-                    <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
-                    <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
-                    <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
-                </div>
-            </div>
-
-            <!-- WEEK 4 -->
-            <div class="week-card" id="week4">
-                <h3>Week 4</h3>
-                <p class="description">
-                    JavaScript assignments · Monday
-                </p>
-
-                <h4 class="day-heading">Monday</h4>
-                <div class="tasks">
-                    <a href="#task1">Task 01</a>
-                    <a href="#task2">Task 02</a>
-                    <a href="#task3">Task 03</a>
-                    <a href="#task4">Task 04</a>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- WEEK 4 INTERACTIVE TASKS -->
-        <section class="week4-section">
-            <div class="section-heading">
-                <h2>Week 4 · JavaScript</h2>
-                <p>Interactive JavaScript assignments</p>
-            </div>
-
-            <div class="week4-grid">
-
-                <!-- TASK 1 -->
-                <div class="assignment" id="task1">
-                    <h3>Task 1: Click Counter</h3>
-                    <span class="level">Beginner · Click events</span>
-                    <p class="assignment-description">
-                        Click the button five times to receive a
-                        congratulations message.
+                <!-- WEEK 2 -->
+                <div class="week-card" id="week2">
+                    <h3>Week 2</h3>
+                    <p class="description">
+                        HTML assignments · Monday & Friday
                     </p>
 
-                    <div class="counter-demo">
-                        <button id="clicker">Click me!</button>
-                        <p id="count">0</p>
-                        <p id="message">Keep clicking...</p>
+                    <h4 class="day-heading">Monday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
+                        <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
+                        <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
+                        <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
+                        <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
+                        <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
+                        <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
+                        <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
+                    </div>
+
+                    <h4 class="day-heading">Friday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
+                        <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
+                        <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
+                        <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
+                        <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
+                        <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
+                        <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
+                        <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
                     </div>
                 </div>
 
-                <!-- TASK 2 -->
-                <div class="assignment" id="task2">
-                    <h3>Task 2: Dark Mode Toggle</h3>
-                    <span class="level">Beginner · Class toggle</span>
-                    <p class="assignment-description">
-                        Switch the profile card between light
-                        and dark mode.
+                <!-- WEEK 3 -->
+                <div class="week-card" id="week3">
+                    <h3>Week 3</h3>
+                    <p class="description">
+                        HTML assignments · Monday & Friday
                     </p>
 
-                    <div class="profile-card" id="profileCard">
-                        <h4>My Profile</h4>
-                        <p>Name: Prashna</p>
-                        <p>Department: Computer Science</p>
-                        <br>
-                        <button id="toggle">Dark Mode</button>
+                    <h4 class="day-heading">Monday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
+                        <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
+                        <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
+                        <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
+                        <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
+                        <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
+                        <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
+                        <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
+                    </div>
+
+                    <h4 class="day-heading">Friday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
+                        <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
+                        <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
+                        <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
+                        <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
+                        <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
+                        <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
                     </div>
                 </div>
 
-                <!-- TASK 3 -->
-                <div class="assignment" id="task3">
-                    <h3>Task 3: To-Do List</h3>
-                    <span class="level">Beginner · DOM manipulation</span>
-                    <p class="assignment-description">
-                        Add tasks using Enter or the Add button.
-                        Remove them using the delete button.
+                <!-- WEEK 4 -->
+                <div class="week-card" id="week4">
+                    <h3>Week 4</h3>
+                    <p class="description">
+                        JavaScript assignments · Monday
                     </p>
 
-                    <div class="todo-form">
-                        <input
-                            class="todo-input"
-                            id="taskInput"
-                            type="text"
-                            placeholder="Enter a task"
-                            aria-label="Enter a task"
-                        >
-                        <button id="addBtn">Add</button>
+                    <h4 class="day-heading">Monday</h4>
+                    <div class="tasks">
+                        <a href="#task1" data-task="task1">Task 01</a>
+                        <a href="#task2" data-task="task2">Task 02</a>
+                        <a href="#task3" data-task="task3">Task 03</a>
+                        <a href="#task4" data-task="task4">Task 04</a>
                     </div>
-
-                    <ul class="todo-list" id="taskList"></ul>
                 </div>
 
-                <!-- TASK 4 -->
-                <div class="assignment" id="task4">
-                    <h3>Task 4: Live Search Filter</h3>
-                    <span class="level">Advanced · Input events</span>
-                    <p class="assignment-description">
-                        Search student names in real time as you type.
-                    </p>
+            </section>
+        </div>
 
+        <!-- WEEK 4 TASK PAGE -->
+        <section class="task-page" id="taskPage" hidden>
+
+            <button class="back-button" id="backBtn">
+                ← Back to Portfolio
+            </button>
+
+            <!-- TASK 1 -->
+            <div class="assignment" id="task1" hidden>
+                <h3>Task 1: Click Counter</h3>
+                <span class="level">Beginner · Click events</span>
+                <p class="assignment-description">
+                    Click the button five times to receive a
+                    congratulations message.
+                </p>
+
+                <div class="counter-demo">
+                    <button id="clicker">Click me!</button>
+                    <p id="count">0</p>
+                    <p id="message">Keep clicking...</p>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="assignment" id="task2" hidden>
+                <h3>Task 2: Dark Mode Toggle</h3>
+                <span class="level">Beginner · Class toggle</span>
+                <p class="assignment-description">
+                    Switch the profile card between light
+                    and dark mode.
+                </p>
+
+                <div class="profile-card" id="profileCard">
+                    <h4>My Profile</h4>
+                    <p>Name: Prashna</p>
+                    <p>Student ID: 202539489</p>
+                    <p>Department: Computer Science</p>
+                    <br>
+                    <button id="toggle">Dark Mode</button>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="assignment" id="task3" hidden>
+                <h3>Task 3: To-Do List</h3>
+                <span class="level">Beginner · DOM manipulation</span>
+                <p class="assignment-description">
+                    Add tasks using Enter or the Add button.
+                    Remove tasks using the delete button.
+                </p>
+
+                <div class="todo-form">
                     <input
-                        class="search-input"
-                        id="search"
+                        class="todo-input"
+                        id="taskInput"
                         type="text"
-                        placeholder="Search students..."
-                        aria-label="Search students"
+                        placeholder="Enter a task"
+                        aria-label="Enter a task"
                     >
-
-                    <ul class="student-list" id="students">
-                        <li class="student">Prashna</li>
-                        <li class="student">Rahul</li>
-                        <li class="student">Sarah</li>
-                        <li class="student">John</li>
-                        <li class="student">Priya</li>
-                        <li class="student">David</li>
-                    </ul>
+                    <button id="addBtn">Add</button>
                 </div>
 
+                <ul class="todo-list" id="taskList"></ul>
             </div>
+
+            <!-- TASK 4 -->
+            <div class="assignment" id="task4" hidden>
+                <h3>Task 4: Live Search Filter</h3>
+                <span class="level">Advanced · Input events</span>
+                <p class="assignment-description">
+                    Search student names in real time as you type.
+                </p>
+
+                <input
+                    class="search-input"
+                    id="search"
+                    type="text"
+                    placeholder="Search students..."
+                    aria-label="Search students"
+                >
+
+                <ul class="student-list" id="students">
+                    <li class="student">Prashna</li>
+                    <li class="student">Rahul</li>
+                    <li class="student">Sarah</li>
+                    <li class="student">John</li>
+                    <li class="student">Priya</li>
+                    <li class="student">David</li>
+                </ul>
+            </div>
+
         </section>
 
     </main>
@@ -677,6 +673,64 @@
 
     <!-- JAVASCRIPT -->
     <script>
+
+        // WEEK 4: TASK NAVIGATION
+
+        const portfolioPage = document.querySelector('#portfolioPage');
+        const taskPage = document.querySelector('#taskPage');
+        const backBtn = document.querySelector('#backBtn');
+        const taskLinks = document.querySelectorAll(
+            '#week4 [data-task]'
+        );
+        const assignments = document.querySelectorAll(
+            '#taskPage .assignment'
+        );
+
+        function showTask(taskId) {
+            portfolioPage.hidden = true;
+            taskPage.hidden = false;
+
+            assignments.forEach(function(task) {
+                task.hidden = task.id !== taskId;
+            });
+
+            history.replaceState(null, '', '#' + taskId);
+            window.scrollTo(0, 0);
+        }
+
+        function showPortfolio() {
+            taskPage.hidden = true;
+            portfolioPage.hidden = false;
+
+            assignments.forEach(function(task) {
+                task.hidden = true;
+            });
+
+            history.replaceState(
+                null,
+                '',
+                window.location.pathname + window.location.search
+            );
+
+            window.scrollTo(0, 0);
+        }
+
+        taskLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showTask(this.dataset.task);
+            });
+        });
+
+        backBtn.addEventListener('click', showPortfolio);
+
+        // Open a task directly if its URL hash is present.
+        const initialTask = window.location.hash.slice(1);
+
+        if (/^task[1-4]$/.test(initialTask)) {
+            showTask(initialTask);
+        }
+
 
         // TASK 1: CLICK COUNTER
 
@@ -742,6 +796,7 @@
             list.appendChild(li);
 
             input.value = '';
+            input.focus();
         }
 
         addBtn.addEventListener('click', addTask);
