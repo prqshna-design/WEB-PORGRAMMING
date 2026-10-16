@@ -4,14 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Web Programming Portfolio</title>
+    <title>Prashna Rai | Web Programming Portfolio</title>
 
     <style>
-        /* General styling */
+        /* GENERAL */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -21,44 +25,79 @@
             line-height: 1.6;
         }
 
-        /* Header */
+        [hidden] {
+            display: none !important;
+        }
+
+        /* HEADER */
         header {
             background: linear-gradient(135deg, #6c63d9, #a18aff);
             color: white;
             text-align: center;
-            padding: 65px 20px;
+            padding: 55px 20px;
         }
 
         header h1 {
             font-size: 2.6rem;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             letter-spacing: 1px;
         }
 
         header p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #f0edff;
         }
 
         .header-tag {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 18px;
             padding: 8px 20px;
             border: 1px solid rgba(255,255,255,0.6);
             border-radius: 30px;
             font-size: 0.9rem;
         }
 
-        /* Main content */
-        main {
-            max-width: 1100px;
-            margin: 45px auto;
-            padding: 0 20px;
+        /* NAVIGATION */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px;
+            background: rgba(255,255,255,0.97);
+            border-bottom: 1px solid #e9e5fa;
+            box-shadow: 0 3px 12px rgba(70,56,130,0.06);
         }
 
+        nav a {
+            text-decoration: none;
+            color: #5748bd;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            background: #eee9ff;
+            color: #44318e;
+        }
+
+        /* MAIN */
+        main {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 38px 20px 55px;
+        }
+
+        /* INTRODUCTION */
         .intro {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 38px;
         }
 
         .intro h2 {
@@ -71,7 +110,7 @@
             color: #77738d;
         }
 
-        /* Week cards */
+        /* WEEK CARDS */
         .weeks {
             display: grid;
             grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -83,14 +122,15 @@
             padding: 28px;
             border-radius: 18px;
             border: 1px solid #e9e5fa;
-            box-shadow: 0 5px 20px rgba(70, 56, 130, 0.08);
+            box-shadow: 0 5px 20px rgba(70,56,130,0.08);
             transition: transform 0.3s ease,
                         box-shadow 0.3s ease;
+            min-width: 0;
         }
 
         .week-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 28px rgba(70, 56, 130, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 28px rgba(70,56,130,0.15);
         }
 
         .week-card h3 {
@@ -99,13 +139,19 @@
             margin-bottom: 5px;
         }
 
-        .week-card .description {
+        .description {
             color: #88839c;
             font-size: 0.9rem;
-            margin-bottom: 20px;
+            margin-bottom: 19px;
         }
 
-        /* Task buttons */
+        .day-heading {
+            color: #38316e;
+            font-size: 0.95rem;
+            margin: 17px 0 8px;
+        }
+
+        /* TASK BUTTONS */
         .tasks {
             display: grid;
             grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -133,17 +179,243 @@
             transform: scale(1.04);
         }
 
-        /* Footer */
+        /* WEEK 4 TASK PAGE */
+        .task-page {
+            max-width: 850px;
+            margin: 0 auto;
+            min-height: 300px;
+        }
+
+        .back-button {
+            display: inline-block;
+            border: 1px solid #e5e0ff;
+            background: white;
+            color: #5748bd;
+            padding: 10px 18px;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-bottom: 22px;
+            transition: 0.25s;
+        }
+
+        .back-button:hover {
+            background: #eee9ff;
+            transform: translateX(-3px);
+        }
+
+        .assignment {
+            background: white;
+            padding: 28px;
+            border: 1px solid #e9e5fa;
+            border-radius: 18px;
+            box-shadow: 0 5px 20px rgba(70,56,130,0.08);
+            scroll-margin-top: 90px;
+        }
+
+        .assignment h3 {
+            color: #5145b5;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .level {
+            display: inline-block;
+            background: #f1efff;
+            color: #6558c4;
+            padding: 4px 11px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin: 7px 0 12px;
+        }
+
+        .assignment-description {
+            color: #77738d;
+            font-size: 0.92rem;
+            margin-bottom: 18px;
+        }
+
+        .assignment button {
+            border: none;
+            background: #6558d3;
+            color: white;
+            padding: 10px 17px;
+            border-radius: 8px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.25s;
+        }
+
+        .assignment button:hover {
+            background: #4c3ca9;
+            transform: translateY(-1px);
+        }
+
+        /* TASK 1: CLICK COUNTER */
+        .counter-demo {
+            text-align: center;
+            padding: 25px 12px;
+            background: #faf9ff;
+            border: 1px solid #eee8fc;
+            border-radius: 12px;
+        }
+
+        #clicker {
+            padding: 13px 30px;
+            font-size: 16px;
+            border: none;
+            background: #1a56db;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        #clicker.done {
+            background: #16a34a;
+        }
+
+        #count {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #5145b5;
+            margin: 8px 0;
+        }
+
+        #message {
+            color: #77738d;
+            font-size: 0.9rem;
+            min-height: 25px;
+        }
+
+        /* TASK 2: DARK MODE */
+        .profile-card {
+            padding: 22px;
+            background: #faf8ff;
+            color: #302852;
+            border: 1px solid #e7dfff;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .profile-card.dark {
+            background: #211b39;
+            color: #f6f2ff;
+            border-color: #57458e;
+        }
+
+        .profile-card h4 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .profile-card p {
+            font-size: 0.9rem;
+            margin: 5px 0;
+        }
+
+        /* TASK 3: TO-DO LIST */
+        .todo-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .todo-input {
+            flex: 1;
+            min-width: 0;
+            padding: 10px 12px;
+            border: 1px solid #dcd2f4;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .todo-input:focus,
+        .search-input:focus {
+            border-color: #7255d9;
+            box-shadow: 0 0 0 3px #7255d91c;
+        }
+
+        .todo-list {
+            list-style: none;
+            margin-top: 12px;
+        }
+
+        .todo-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            margin: 8px 0;
+            background: #f6f2ff;
+            border-radius: 9px;
+            font-size: 0.9rem;
+            overflow-wrap: anywhere;
+        }
+
+        .todo-list .delete {
+            flex-shrink: 0;
+            padding: 5px 10px;
+            background: #e35b80;
+            border-radius: 7px;
+        }
+
+        .todo-list .delete:hover {
+            background: #c73861;
+        }
+
+        /* TASK 4: LIVE SEARCH */
+        .search-input {
+            width: 100%;
+            padding: 11px 13px;
+            border: 1px solid #dcd2f4;
+            border-radius: 9px;
+            font-family: inherit;
+            font-size: 0.9rem;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        .student-list {
+            list-style: none;
+        }
+
+        .student {
+            padding: 9px 12px;
+            margin: 7px 0;
+            background: #f6f2ff;
+            border: 1px solid #eee8fa;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .student mark {
+            background: #e4d5ff;
+            color: #382477;
+            font-weight: 800;
+            border-radius: 3px;
+        }
+
+        /* FOOTER */
         footer {
             text-align: center;
             padding: 25px 15px;
-            margin-top: 45px;
+            margin-top: 10px;
             background: #eae7fa;
             color: #77718f;
             font-size: 0.9rem;
         }
 
-        /* Mobile responsive design */
+        footer strong {
+            color: #5145b5;
+        }
+
+        /* RESPONSIVE */
         @media (max-width: 700px) {
             header {
                 padding: 45px 15px;
@@ -158,7 +430,16 @@
             }
 
             main {
-                margin: 30px auto;
+                padding: 30px 15px 45px;
+            }
+
+            nav {
+                gap: 3px;
+            }
+
+            nav a {
+                padding: 7px 9px;
+                font-size: 0.82rem;
             }
         }
 
@@ -172,89 +453,417 @@
 
 <body>
 
-    <header>
+    <!-- HEADER -->
+    <header id="home">
         <h1>Web Programming</h1>
-        <p>My HTML Projects & Assignments</p>
-        <span class="header-tag">Week 2 & Week 3</span>
+        <p>My HTML, CSS & JavaScript Projects</p>
+        <span class="header-tag">
+            Prashna Rai | Student ID: 202539489
+        </span>
     </header>
 
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#home" id="homeLink">Home</a>
+        <a href="#portfolio" id="portfolioLink">Portfolio</a>
+        <a href="#week2" data-week="week2">Week 2</a>
+        <a href="#week3" data-week="week3">Week 3</a>
+        <a href="#week4" data-week="week4">Week 4</a>
+    </nav>
+
     <main>
-        <section class="intro">
-            <h2>My Learning Portfolio</h2>
-            <p>Explore my web programming assignments and projects.</p>
+
+        <!-- MAIN PORTFOLIO -->
+        <div id="portfolioPage">
+
+            <!-- INTRODUCTION -->
+            <section class="intro" id="portfolio">
+                <h2>My Learning Portfolio</h2>
+                <p>
+                    Welcome to my web programming portfolio.
+                    Explore my weekly assignments and projects.
+                </p>
+            </section>
+
+            <!-- WEEK CARDS -->
+            <section class="weeks">
+
+                <!-- WEEK 2 -->
+                <div class="week-card" id="week2">
+                    <h3>Week 2</h3>
+                    <p class="description">
+                        HTML assignments · Monday & Friday
+                    </p>
+
+                    <h4 class="day-heading">Monday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
+                        <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
+                        <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
+                        <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
+                        <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
+                        <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
+                        <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
+                        <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
+                    </div>
+
+                    <h4 class="day-heading">Friday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
+                        <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
+                        <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
+                        <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
+                        <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
+                        <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
+                        <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
+                        <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
+                    </div>
+                </div>
+
+                <!-- WEEK 3 -->
+                <div class="week-card" id="week3">
+                    <h3>Week 3</h3>
+                    <p class="description">
+                        HTML assignments · Monday & Friday
+                    </p>
+
+                    <h4 class="day-heading">Monday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
+                        <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
+                        <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
+                        <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
+                        <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
+                        <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
+                        <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
+                        <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
+                    </div>
+
+                    <h4 class="day-heading">Friday</h4>
+                    <div class="tasks">
+                        <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
+                        <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
+                        <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
+                        <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
+                        <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
+                        <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
+                        <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
+                    </div>
+                </div>
+
+                <!-- WEEK 4 -->
+                <div class="week-card" id="week4">
+                    <h3>Week 4</h3>
+                    <p class="description">
+                        JavaScript assignments · Monday
+                    </p>
+
+                    <h4 class="day-heading">Monday</h4>
+                    <div class="tasks">
+                        <a href="#task1" data-task="task1">Task 01</a>
+                        <a href="#task2" data-task="task2">Task 02</a>
+                        <a href="#task3" data-task="task3">Task 03</a>
+                        <a href="#task4" data-task="task4">Task 04</a>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+
+        <!-- WEEK 4 TASK PAGE -->
+        <section class="task-page" id="taskPage" hidden>
+
+            <button class="back-button" id="backBtn">
+                ← Back to Portfolio
+            </button>
+
+            <!-- TASK 1 -->
+            <div class="assignment" id="task1" hidden>
+                <h3>Task 1: Click Counter</h3>
+                <span class="level">Beginner · Click events</span>
+                <p class="assignment-description">
+                    Click the button five times to receive a
+                    congratulations message.
+                </p>
+
+                <div class="counter-demo">
+                    <button id="clicker">Click me!</button>
+                    <p id="count">0</p>
+                    <p id="message">Keep clicking...</p>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="assignment" id="task2" hidden>
+                <h3>Task 2: Dark Mode Toggle</h3>
+                <span class="level">Beginner · Class toggle</span>
+                <p class="assignment-description">
+                    Switch the profile card between light
+                    and dark mode.
+                </p>
+
+                <div class="profile-card" id="profileCard">
+                    <h4>My Profile</h4>
+                    <p>Name: Prashna</p>
+                    <p>Student ID: 202539489</p>
+                    <p>Department: Computer Science</p>
+                    <br>
+                    <button id="toggle">Dark Mode</button>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="assignment" id="task3" hidden>
+                <h3>Task 3: To-Do List</h3>
+                <span class="level">Beginner · DOM manipulation</span>
+                <p class="assignment-description">
+                    Add tasks using Enter or the Add button.
+                    Remove tasks using the delete button.
+                </p>
+
+                <div class="todo-form">
+                    <input
+                        class="todo-input"
+                        id="taskInput"
+                        type="text"
+                        placeholder="Enter a task"
+                        aria-label="Enter a task"
+                    >
+                    <button id="addBtn">Add</button>
+                </div>
+
+                <ul class="todo-list" id="taskList"></ul>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="assignment" id="task4" hidden>
+                <h3>Task 4: Live Search Filter</h3>
+                <span class="level">Advanced · Input events</span>
+                <p class="assignment-description">
+                    Search student names in real time as you type.
+                </p>
+
+                <input
+                    class="search-input"
+                    id="search"
+                    type="text"
+                    placeholder="Search students..."
+                    aria-label="Search students"
+                >
+
+                <ul class="student-list" id="students">
+                    <li class="student">Prashna</li>
+                    <li class="student">Rahul</li>
+                    <li class="student">Sarah</li>
+                    <li class="student">John</li>
+                    <li class="student">Priya</li>
+                    <li class="student">David</li>
+                </ul>
+            </div>
+
         </section>
 
-        <section class="weeks">
-
-            <!-- Week 2 Monday -->
-            <div class="week-card">
-                <h3>Week 2 · Monday</h3>
-                <p class="description">HTML assignments · 8 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
-                    <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
-                    <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
-                    <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
-                    <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
-                    <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
-                    <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
-                    <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
-                </div>
-            </div>
-
-            <!-- Week 2 Friday -->
-            <div class="week-card">
-                <h3>Week 2 · Friday</h3>
-                <p class="description">HTML assignments · 8 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
-                    <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
-                    <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
-                    <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
-                    <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
-                    <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
-                    <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
-                    <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
-                </div>
-            </div>
-
-            <!-- Week 3 Monday -->
-            <div class="week-card">
-                <h3>Week 3 · Monday</h3>
-                <p class="description">HTML assignments · 8 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
-                    <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
-                    <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
-                    <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
-                    <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
-                    <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
-                    <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
-                    <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
-                </div>
-            </div>
-
-            <!-- Week 3 Friday -->
-            <div class="week-card">
-                <h3>Week 3 · Friday</h3>
-                <p class="description">HTML assignments · 7 tasks</p>
-                <div class="tasks">
-                    <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
-                    <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
-                    <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
-                    <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
-                    <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
-                    <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
-                    <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
-                </div>
-            </div>
-
-        </section>
     </main>
 
+    <!-- FOOTER -->
     <footer>
-        <p>Web Programming Portfolio · HTML & CSS</p>
+        <p><strong>Prashna Rai</strong> · Gachon University</p>
+        <p>Web Programming Portfolio · 2026</p>
     </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // WEEK 4: TASK NAVIGATION
+
+        const portfolioPage = document.querySelector('#portfolioPage');
+        const taskPage = document.querySelector('#taskPage');
+        const backBtn = document.querySelector('#backBtn');
+        const taskLinks = document.querySelectorAll(
+            '#week4 [data-task]'
+        );
+        const assignments = document.querySelectorAll(
+            '#taskPage .assignment'
+        );
+
+        function showTask(taskId) {
+            portfolioPage.hidden = true;
+            taskPage.hidden = false;
+
+            assignments.forEach(function(task) {
+                task.hidden = task.id !== taskId;
+            });
+
+            history.replaceState(null, '', '#' + taskId);
+            window.scrollTo(0, 0);
+        }
+
+        function showPortfolio() {
+            taskPage.hidden = true;
+            portfolioPage.hidden = false;
+
+            assignments.forEach(function(task) {
+                task.hidden = true;
+            });
+
+            history.replaceState(
+                null,
+                '',
+                window.location.pathname + window.location.search
+            );
+
+            window.scrollTo(0, 0);
+        }
+
+        taskLinks.forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                showTask(this.dataset.task);
+            });
+        });
+
+        backBtn.addEventListener('click', showPortfolio);
+
+        // Open a task directly if its URL hash is present.
+        const initialTask = window.location.hash.slice(1);
+
+        if (/^task[1-4]$/.test(initialTask)) {
+            showTask(initialTask);
+        }
+
+
+        // TASK 1: CLICK COUNTER
+
+        const button = document.querySelector('#clicker');
+        const countText = document.querySelector('#count');
+        const message = document.querySelector('#message');
+
+        let count = 0;
+
+        button.addEventListener('click', function() {
+            if (count >= 5) return;
+
+            count++;
+            countText.textContent = count;
+
+            if (count >= 5) {
+                button.classList.add('done');
+                message.textContent =
+                    'Congratulations! You did it!';
+            }
+        });
+
+
+        // TASK 2: DARK MODE TOGGLE
+
+        const card = document.querySelector('#profileCard');
+        const toggle = document.querySelector('#toggle');
+
+        toggle.addEventListener('click', function() {
+            card.classList.toggle('dark');
+
+            if (card.classList.contains('dark')) {
+                toggle.textContent = 'Light Mode';
+            } else {
+                toggle.textContent = 'Dark Mode';
+            }
+        });
+
+
+        // TASK 3: TO-DO LIST
+
+        const input = document.querySelector('#taskInput');
+        const addBtn = document.querySelector('#addBtn');
+        const list = document.querySelector('#taskList');
+
+        function addTask() {
+            const task = input.value.trim();
+
+            if (task === '') return;
+
+            const li = document.createElement('li');
+            const span = document.createElement('span');
+
+            span.textContent = task;
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.textContent = '✕';
+            deleteBtn.classList.add('delete');
+            deleteBtn.setAttribute('aria-label', 'Delete task');
+
+            li.appendChild(span);
+            li.appendChild(deleteBtn);
+            list.appendChild(li);
+
+            input.value = '';
+            input.focus();
+        }
+
+        addBtn.addEventListener('click', addTask);
+
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                addTask();
+            }
+        });
+
+        // Event delegation for deleting tasks
+        list.addEventListener('click', function(e) {
+            if (e.target.classList.contains('delete')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+
+        // TASK 4: LIVE SEARCH FILTER
+
+        const search = document.querySelector('#search');
+        const students = document.querySelectorAll('.student');
+
+        const originalNames = Array.from(
+            students,
+            student => student.textContent
+        );
+
+        search.addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+
+            students.forEach(function(student, index) {
+                const name = originalNames[index];
+                const lowerName = name.toLowerCase();
+                const matchIndex = lowerName.indexOf(term);
+
+                if (matchIndex !== -1) {
+                    student.style.display = '';
+
+                    if (term !== '') {
+                        const before = name.slice(0, matchIndex);
+                        const match = name.slice(
+                            matchIndex,
+                            matchIndex + term.length
+                        );
+                        const after = name.slice(
+                            matchIndex + term.length
+                        );
+
+                        const mark = document.createElement('mark');
+                        mark.textContent = match;
+
+                        student.replaceChildren(
+                            document.createTextNode(before),
+                            mark,
+                            document.createTextNode(after)
+                        );
+                    } else {
+                        student.textContent = name;
+                    }
+                } else {
+                    student.style.display = 'none';
+                }
+            });
+        });
+
+    </script>
 
 </body>
 </html>
