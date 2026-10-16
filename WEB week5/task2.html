@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Learning Hub</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f5ff;
+            color: #30264a;
+            padding: 30px 16px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: white;
+            border: 1px solid #e8e0ff;
+            border-radius: 24px;
+            padding: 35px 24px;
+            text-align: center;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 25px rgba(91, 33, 182, 0.07);
+        }
+
+        .header-icon {
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            color: #6d28d9;
+            font-size: clamp(26px, 5vw, 36px);
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #817694;
+            font-size: 14px;
+        }
+
+        .intro-tag {
+            display: inline-block;
+            margin-bottom: 12px;
+            padding: 5px 13px;
+            border-radius: 20px;
+            background: #f0eaff;
+            color: #6d28d9;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e9e2f5;
+            border-radius: 18px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 18px rgba(58, 35, 94, 0.04);
+        }
+
+        .section-heading {
+            display: flex;
+            align-items: flex-start;
+            gap: 13px;
+            margin-bottom: 12px;
+        }
+
+        .number {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 38px;
+            height: 38px;
+            background: #ede9fe;
+            color: #6d28d9;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 19px;
+            color: #44305f;
+            padding-top: 4px;
+            line-height: 1.4;
+        }
+
+        .description {
+            color: #817694;
+            font-size: 14px;
+            margin-bottom: 17px;
+        }
+
+        input {
+            width: 100%;
+            max-width: 320px;
+            padding: 12px 14px;
+            margin: 0 6px 10px 0;
+            border: 1px solid #ded5ef;
+            border-radius: 10px;
+            font-size: 14px;
+            outline: none;
+            background: #fcfbff;
+            color: #30264a;
+        }
+
+        input:focus {
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px #ede9fe;
+        }
+
+        button {
+            background: #7c3aed;
+            color: white;
+            border: none;
+            padding: 11px 17px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 5px 8px 0;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #6d28d9;
+            transform: translateY(-1px);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .green-btn {
+            background: #059669;
+        }
+
+        .green-btn:hover {
+            background: #047857;
+        }
+
+        .red-btn {
+            background: #e11d48;
+        }
+
+        .red-btn:hover {
+            background: #be123c;
+        }
+
+        .output-box {
+            background: #faf8ff;
+            border: 1px solid #e9e2f5;
+            border-left: 4px solid #a78bfa;
+            border-radius: 8px;
+            padding: 14px;
+            margin-top: 10px;
+            color: #55466d;
+            font-size: 13px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+            min-height: 45px;
+        }
+
+        #targetText {
+            padding: 12px;
+            background: #faf8ff;
+            border-radius: 8px;
+            color: #817694;
+            font-size: 14px;
+            margin-bottom: 14px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 18px 0 5px;
+            color: #9589a9;
+            font-size: 13px;
+        }
+
+        @media (max-width: 500px) {
+            body {
+                padding: 18px 12px;
+            }
+
+            .card {
+                padding: 19px;
+            }
+
+            header {
+                padding: 28px 17px;
+            }
+
+            .section-heading {
+                gap: 10px;
+            }
+
+            h2 {
+                font-size: 17px;
+            }
+
+            input {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+
+        <header>
+            <div class="header-icon">💜</div>
+            <span class="intro-tag">LEARN BY DOING</span>
+            <h1>JavaScript Learning Hub</h1>
+            <p>Explore the basics of JavaScript through simple interactive examples.</p>
+        </header>
+
+        <!-- Section 1: Variables -->
+        <section class="card">
+            <div class="section-heading">
+                <span class="number">01</span>
+                <h2>Variables & Output</h2>
+            </div>
+
+            <p class="description">
+                Learn how let, const, console.log(), and alert() work.
+            </p>
+
+            <button onclick="runVariablesDemo()">
+                ▶ Run Example
+            </button>
+
+            <div id="varOutput" class="output-box">
+                Your result will appear here.
+            </div>
+        </section>
+
+        <!-- Section 2: DOM -->
+        <section class="card">
+            <div class="section-heading">
+                <span class="number">02</span>
+                <h2>DOM Manipulation</h2>
+            </div>
+
+            <p class="description">
+                Use JavaScript to change the text and style of a webpage element.
+            </p>
+
+            <p id="targetText">
+                This is the original text. Click the button to change it!
+            </p>
+
+            <button onclick="changeDomElement()">
+                Change Appearance
+            </button>
+        </section>
+
+        <!-- Section 3: Conditions -->
+        <section class="card">
+            <div class="section-heading">
+                <span class="number">03</span>
+                <h2>Grade Calculator</h2>
+            </div>
+
+            <p class="description">
+                Enter a score from 0 to 100 to find your grade using if and else.
+            </p>
+
+            <input
+                type="number"
+                id="scoreInput"
+                placeholder="Enter your score"
+                min="0"
+                max="100"
+            >
+
+            <button onclick="evaluateScore()">
+                Calculate Grade
+            </button>
+
+            <div id="gradeResult" class="output-box">
+                Your grade will appear here.
+            </div>
+        </section>
+
+        <!-- Section 4: Arrays and Loops -->
+        <section class="card">
+            <div class="section-heading">
+                <span class="number">04</span>
+                <h2>Arrays & Loops</h2>
+            </div>
+
+            <p class="description">
+                Display a list of web development technologies using a for...of loop.
+            </p>
+
+            <button onclick="runLoopDemo()">
+                Show Technologies
+            </button>
+
+            <div id="loopOutput" class="output-box">
+                Click the button to see the list.
+            </div>
+        </section>
+
+        <!-- Section 5: localStorage -->
+        <section class="card">
+            <div class="section-heading">
+                <span class="number">05</span>
+                <h2>Save Your Notes</h2>
+            </div>
+
+            <p class="description">
+                Save text in your browser, retrieve it later, or delete it.
+            </p>
+
+            <input
+                type="text"
+                id="storageInput"
+                placeholder="Write a note here..."
+            >
+
+            <div>
+                <button onclick="saveData()">Save Note</button>
+                <button class="green-btn" onclick="loadData()">Load Note</button>
+                <button class="red-btn" onclick="clearData()">Delete Note</button>
+            </div>
+
+            <div id="storageOutput" class="output-box">
+                Your saved note status will appear here.
+            </div>
+        </section>
+
+        <footer>
+            Made with 💜 | JavaScript Fundamentals
+        </footer>
+
+    </main>
+
+    <script>
+        // 1. Variables and Output
+        function runVariablesDemo() {
+            let studentName = "JavaScript Student";
+            const course = "Web Programming";
+
+            console.log("Student Name: " + studentName);
+            console.log("Course: " + course);
+
+            document.getElementById("varOutput").textContent =
+                "Variables created successfully!\n" +
+                "Student Name: " + studentName + "\n" +
+                "Course: " + course +
+                "\nOpen the browser console (F12) to see the messages.";
+
+            alert("Hello! Your JavaScript example is working.");
+        }
+
+        // 2. DOM Manipulation
+        function changeDomElement() {
+            const element = document.getElementById("targetText");
+
+            element.textContent =
+                "Success! JavaScript changed this text and its appearance.";
+
+            element.style.color = "#6d28d9";
+            element.style.fontWeight = "bold";
+            element.style.background = "#ede9fe";
+        }
+
+        // 3. Conditions and Grade Calculation
+        function evaluateScore() {
+            const input = document.getElementById("scoreInput");
+            const result = document.getElementById("gradeResult");
+
+            if (input.value.trim() === "") {
+                result.textContent = "Please enter a score first.";
+                return;
+            }
+
+            const score = Number(input.value);
+
+            if (!Number.isFinite(score) || score < 0 || score > 100) {
+                result.textContent =
+                    "Invalid score. Enter a number from 0 to 100.";
+            } else if (score >= 90) {
+                result.textContent =
+                    "Score: " + score + " | Grade: A - Excellent!";
+            } else if (score >= 80) {
+                result.textContent =
+                    "Score: " + score + " | Grade: B - Great job!";
+            } else if (score >= 70) {
+                result.textContent =
+                    "Score: " + score + " | Grade: C - Good effort!";
+            } else if (score >= 60) {
+                result.textContent =
+                    "Score: " + score + " | Grade: D - Keep practicing!";
+            } else {
+                result.textContent =
+                    "Score: " + score + " | Grade: F - Keep trying!";
+            }
+        }
+
+        // 4. Arrays and Loops
+        function runLoopDemo() {
+            const technologies = [
+                "HTML - Webpage Structure",
+                "CSS - Webpage Design",
+                "JavaScript - Interactivity",
+                "GitHub Pages - Website Publishing"
+            ];
+
+            let output = "Web Development Technologies:\n\n";
+
+            for (const technology of technologies) {
+                output += "• " + technology + "\n";
+            }
+
+            document.getElementById("loopOutput").textContent = output;
+        }
+
+        // 5. localStorage
+        function saveData() {
+            const input = document.getElementById("storageInput");
+            const output = document.getElementById("storageOutput");
+            const note = input.value.trim();
+
+            if (note === "") {
+                output.textContent = "Please enter a note before saving.";
+                return;
+            }
+
+            try {
+                localStorage.setItem("learningHubNote", note);
+                output.textContent = "Note saved successfully:\n" + note;
+            } catch (error) {
+                output.textContent =
+                    "Unable to save the note in this browser.";
+            }
+        }
+
+        function loadData() {
+            const output = document.getElementById("storageOutput");
+
+            try {
+                const savedNote = localStorage.getItem("learningHubNote");
+
+                if (savedNote !== null) {
+                    document.getElementById("storageInput").value = savedNote;
+                    output.textContent = "Your saved note:\n" + savedNote;
+                } else {
+                    output.textContent = "No saved note was found.";
+                }
+            } catch (error) {
+                output.textContent =
+                    "Unable to access saved data in this browser.";
+            }
+        }
+
+        function clearData() {
+            const output = document.getElementById("storageOutput");
+
+            try {
+                localStorage.removeItem("learningHubNote");
+                document.getElementById("storageInput").value = "";
+                output.textContent = "Your saved note has been deleted.";
+            } catch (error) {
+                output.textContent =
+                    "Unable to delete the saved note.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,267 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Smart Counter</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #ede9fe, #fdf2f8);
+            color: #312e4b;
+        }
+
+        .counter-card {
+            width: 100%;
+            max-width: 420px;
+            padding: 35px 25px;
+            background: white;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 15px 45px rgba(91, 33, 182, 0.15);
+        }
+
+        .icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 22px;
+            background: #ede9fe;
+            font-size: 35px;
+        }
+
+        h1 {
+            font-size: 27px;
+            margin-bottom: 8px;
+            color: #5b21b6;
+        }
+
+        .subtitle {
+            color: #85809a;
+            font-size: 14px;
+            margin-bottom: 28px;
+        }
+
+        .counter-display {
+            background: linear-gradient(135deg, #7c3aed, #a855f7);
+            border-radius: 20px;
+            padding: 28px 15px;
+            color: white;
+            margin-bottom: 22px;
+        }
+
+        .counter-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.85;
+        }
+
+        #count {
+            display: block;
+            font-size: 65px;
+            font-weight: 700;
+            margin: 10px 0;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+        }
+
+        #statusMessage {
+            display: inline-block;
+            padding: 8px 14px;
+            margin-bottom: 24px;
+            border-radius: 20px;
+            background: #f3e8ff;
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        button {
+            border: none;
+            border-radius: 13px;
+            padding: 15px 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(0.97);
+        }
+
+        .add-btn {
+            background: #7c3aed;
+            color: white;
+        }
+
+        .subtract-btn {
+            background: #ede9fe;
+            color: #6d28d9;
+        }
+
+        .reset-btn {
+            grid-column: span 2;
+            background: #fff1f2;
+            color: #e11d48;
+        }
+
+        .limits {
+            margin-top: 23px;
+            color: #928ca5;
+            font-size: 12px;
+        }
+
+        @media (max-width: 400px) {
+            .counter-card {
+                padding: 28px 18px;
+            }
+
+            #count {
+                font-size: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="counter-card">
+
+        <div class="icon">🔢</div>
+
+        <h1>Smart Counter</h1>
+        <p class="subtitle">Keep track of every number.</p>
+
+        <div class="counter-display">
+            <div class="counter-label">Current Count</div>
+            <span id="count">0</span>
+        </div>
+
+        <p id="statusMessage">Status: Normal Range</p>
+
+        <div class="button-group">
+            <button class="add-btn" onclick="change(1)">
+                ＋ Add
+            </button>
+
+            <button class="subtract-btn" onclick="change(-1)">
+                − Subtract
+            </button>
+
+            <button class="reset-btn" onclick="resetCounter()">
+                ↻ Reset Counter
+            </button>
+        </div>
+
+        <p class="limits">Minimum: -20 &nbsp; | &nbsp; Maximum: 20</p>
+
+    </main>
+
+    <script>
+        const MAX_LIMIT = 20;
+        const MIN_LIMIT = -20;
+
+        let count = 0;
+
+        // Restore the previous count when the page opens
+        window.onload = function () {
+            const savedCount = localStorage.getItem("app_count");
+
+            if (savedCount !== null) {
+                const parsedCount = Number(savedCount);
+
+                if (
+                    Number.isInteger(parsedCount) &&
+                    parsedCount >= MIN_LIMIT &&
+                    parsedCount <= MAX_LIMIT
+                ) {
+                    count = parsedCount;
+                }
+            }
+
+            updateDisplay();
+        };
+
+        // Add or subtract one
+        function change(amount) {
+            if (count + amount > MAX_LIMIT) {
+                alert("Maximum limit of 20 reached!");
+                return;
+            }
+
+            if (count + amount < MIN_LIMIT) {
+                alert("Minimum limit of -20 reached!");
+                return;
+            }
+
+            count += amount;
+
+            localStorage.setItem("app_count", count);
+
+            updateDisplay();
+        }
+
+        // Return the counter to zero
+        function resetCounter() {
+            count = 0;
+
+            localStorage.setItem("app_count", count);
+
+            updateDisplay();
+        }
+
+        // Update the number and its status
+        function updateDisplay() {
+            const countEl = document.getElementById("count");
+            const statusEl = document.getElementById("statusMessage");
+
+            countEl.textContent = count;
+
+            if (count > 10) {
+                statusEl.textContent = "Status: High Range";
+                statusEl.style.background = "#dcfce7";
+                statusEl.style.color = "#15803d";
+
+            } else if (count < 0) {
+                statusEl.textContent = "Status: Negative Range";
+                statusEl.style.background = "#fee2e2";
+                statusEl.style.color = "#dc2626";
+
+            } else {
+                statusEl.textContent = "Status: Normal Range";
+                statusEl.style.background = "#f3e8ff";
+                statusEl.style.color = "#6d28d9";
+            }
+        }
+    </script>
+
+</body>
+</html>
