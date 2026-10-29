@@ -2,1913 +2,1228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prashna Rai | Web Programming Portfolio</title>
-
-    <style>
-        /* GENERAL */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f5f3ff;
-            color: #252344;
-            line-height: 1.6;
-        }
-
-        [hidden] {
-            display: none !important;
-        }
-
-        /* HEADER */
-        header {
-            background: linear-gradient(135deg, #6c63d9, #a18aff);
-            color: white;
-            text-align: center;
-            padding: 55px 20px;
-        }
-
-        header h1 {
-            font-size: 2.6rem;
-            margin-bottom: 8px;
-            letter-spacing: 1px;
-        }
-
-        header p {
-            font-size: 1.05rem;
-            color: #f0edff;
-        }
-
-        .header-tag {
-            display: inline-block;
-            margin-top: 18px;
-            padding: 8px 20px;
-            border: 1px solid rgba(255,255,255,0.6);
-            border-radius: 30px;
-            font-size: 0.9rem;
-        }
-
-        /* NAVIGATION */
-        nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            padding: 12px;
-            background: rgba(255,255,255,0.97);
-            border-bottom: 1px solid #e9e5fa;
-            box-shadow: 0 3px 12px rgba(70,56,130,0.06);
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #5748bd;
-            padding: 7px 13px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: 0.25s;
-        }
-
-        nav a:hover {
-            background: #eee9ff;
-            color: #44318e;
-        }
-
-        /* MAIN */
-        main {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 38px 20px 55px;
-        }
-
-        /* INTRODUCTION */
-        .intro {
-            text-align: center;
-            margin-bottom: 38px;
-        }
-
-        .intro h2 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
-            color: #38316e;
-        }
-
-        .intro p {
-            color: #77738d;
-        }
-
-        /* WEEK CARDS */
-        .weeks {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 25px;
-        }
-
-        .week-card {
-            background: white;
-            padding: 28px;
-            border-radius: 18px;
-            border: 1px solid #e9e5fa;
-            box-shadow: 0 5px 20px rgba(70,56,130,0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            min-width: 0;
-        }
-
-        .week-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 28px rgba(70,56,130,0.15);
-        }
-
-        .week-card h3 {
-            font-size: 1.35rem;
-            color: #5145b5;
-            margin-bottom: 5px;
-        }
-
-        .description {
-            color: #88839c;
-            font-size: 0.9rem;
-            margin-bottom: 19px;
-        }
-
-        .day-heading {
-            color: #38316e;
-            font-size: 0.95rem;
-            margin: 17px 0 8px;
-        }
-
-        /* TASK BUTTONS */
-        .tasks {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 10px;
-        }
-
-        .tasks a {
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            color: #5748bd;
-            background: #f1efff;
-            border: 1px solid #e5e0ff;
-            padding: 10px 4px;
-            border-radius: 9px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            transition: all 0.25s ease;
-        }
-
-        .tasks a:hover {
-            background: #6558d3;
-            color: white;
-            border-color: #6558d3;
-            transform: scale(1.04);
-        }
-
-        /* SHARED TASK PAGE */
-        .task-page {
-            max-width: 850px;
-            margin: 0 auto;
-            min-height: 300px;
-        }
-
-        .back-button {
-            display: inline-block;
-            border: 1px solid #e5e0ff;
-            background: white;
-            color: #5748bd;
-            padding: 10px 18px;
-            border-radius: 9px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-bottom: 22px;
-            transition: 0.25s;
-        }
-
-        .back-button:hover {
-            background: #eee9ff;
-            transform: translateX(-3px);
-        }
-
-        .assignment {
-            background: white;
-            padding: 28px;
-            border: 1px solid #e9e5fa;
-            border-radius: 18px;
-            box-shadow: 0 5px 20px rgba(70,56,130,0.08);
-            scroll-margin-top: 90px;
-        }
-
-        .assignment h3 {
-            color: #5145b5;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-        }
-
-        .level {
-            display: inline-block;
-            background: #f1efff;
-            color: #6558c4;
-            padding: 4px 11px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin: 7px 0 12px;
-        }
-
-        .assignment-description {
-            color: #77738d;
-            font-size: 0.92rem;
-            margin-bottom: 18px;
-        }
-
-        .assignment button {
-            border: none;
-            background: #6558d3;
-            color: white;
-            padding: 10px 17px;
-            border-radius: 8px;
-            font-size: 0.88rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.25s, transform 0.25s;
-        }
-
-        .assignment button:hover {
-            background: #4c3ca9;
-            transform: translateY(-1px);
-        }
-
-        .assignment input,
-        .assignment textarea,
-        .assignment select {
-            font-family: inherit;
-        }
-
-        .assignment input:focus,
-        .assignment textarea:focus,
-        .assignment select:focus {
-            outline: 2px solid #a18aff;
-            outline-offset: 2px;
-        }
-
-        /* WEEK 4 TASK 1: CLICK COUNTER */
-        .counter-demo {
-            text-align: center;
-            padding: 25px 12px;
-            background: #faf9ff;
-            border: 1px solid #eee8fc;
-            border-radius: 12px;
-        }
-
-        #clicker {
-            padding: 13px 30px;
-            font-size: 16px;
-            border: none;
-            background: #1a56db;
-            color: white;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        #clicker.done {
-            background: #16a34a;
-        }
-
-        #count {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #5145b5;
-            margin: 8px 0;
-        }
-
-        #message {
-            color: #77738d;
-            font-size: 0.9rem;
-            min-height: 25px;
-        }
-
-        /* WEEK 4 TASK 2: DARK MODE */
-        .profile-card {
-            padding: 22px;
-            background: #faf8ff;
-            color: #302852;
-            border: 1px solid #e7dfff;
-            border-radius: 12px;
-            transition: 0.3s;
-        }
-
-        .profile-card.dark {
-            background: #211b39;
-            color: #f6f2ff;
-            border-color: #57458e;
-        }
-
-        .profile-card h4 {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .profile-card p {
-            font-size: 0.9rem;
-            margin: 5px 0;
-        }
-
-        /* WEEK 4 TASK 3: TO-DO LIST */
-        .todo-form {
-            display: flex;
-            gap: 8px;
-        }
-
-        .todo-input {
-            flex: 1;
-            min-width: 0;
-            padding: 10px 12px;
-            border: 1px solid #dcd2f4;
-            border-radius: 9px;
-            font-size: 0.9rem;
-            outline: none;
-        }
-
-        .todo-input:focus,
-        .search-input:focus {
-            border-color: #7255d9;
-            box-shadow: 0 0 0 3px #7255d91c;
-        }
-
-        .todo-list {
-            list-style: none;
-            margin-top: 12px;
-        }
-
-        .todo-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 12px;
-            margin: 8px 0;
-            background: #f6f2ff;
-            border-radius: 9px;
-            font-size: 0.9rem;
-            overflow-wrap: anywhere;
-        }
-
-        .todo-list .delete {
-            flex-shrink: 0;
-            padding: 5px 10px;
-            background: #e35b80;
-            border-radius: 7px;
-        }
-
-        .todo-list .delete:hover {
-            background: #c73861;
-        }
-
-        /* WEEK 4 TASK 4: LIVE SEARCH */
-        .search-input {
-            width: 100%;
-            padding: 11px 13px;
-            border: 1px solid #dcd2f4;
-            border-radius: 9px;
-            font-size: 0.9rem;
-            outline: none;
-            margin-bottom: 10px;
-        }
-
-        .student-list {
-            list-style: none;
-        }
-
-        .student {
-            padding: 9px 12px;
-            margin: 7px 0;
-            background: #f6f2ff;
-            border: 1px solid #eee8fa;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .student mark {
-            background: #e4d5ff;
-            color: #382477;
-            font-weight: 800;
-            border-radius: 3px;
-        }
-
-        /* WEEK 5: SHARED STYLES */
-        .w5-panel {
-            background: #faf9ff;
-            border: 1px solid #eee8fc;
-            border-radius: 14px;
-            padding: 22px;
-            margin-top: 15px;
-        }
-
-        .w5-label {
-            display: block;
-            font-weight: 600;
-            color: #5145b5;
-            margin: 12px 0 5px;
-        }
-
-        .w5-input,
-        .w5-textarea,
-        .w5-select {
-            width: 100%;
-            padding: 11px 12px;
-            border: 1px solid #dcd2f4;
-            border-radius: 9px;
-            background: white;
-            color: #252344;
-            font-size: 0.95rem;
-        }
-
-        .w5-textarea {
-            resize: vertical;
-            min-height: 90px;
-        }
-
-        .w5-output {
-            background: #f1efff;
-            color: #44318e;
-            padding: 12px;
-            border-radius: 9px;
-            margin-top: 12px;
-            overflow-wrap: anywhere;
-        }
-
-        .w5-button-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-            margin-top: 12px;
-        }
-
-        .w5-secondary {
-            background: #e9e4ff !important;
-            color: #5145b5 !important;
-        }
-
-        .w5-secondary:hover {
-            background: #dcd3ff !important;
-        }
-
-        .w5-counter-value {
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: #6558d3;
-            line-height: 1.3;
-            margin: 12px 0;
-        }
-
-        .w5-counter-status {
-            text-align: center;
-            color: #77738d;
-            min-height: 26px;
-        }
-
-        .w5-counter-buttons {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .w5-counter-buttons button {
-            min-width: 90px;
-            font-size: 1rem;
-        }
-
-        .w5-section-title {
-            color: #5145b5;
-            margin: 20px 0 8px;
-            font-size: 1.05rem;
-        }
-
-        .w5-code {
-            white-space: pre-wrap;
-            overflow-wrap: anywhere;
-            background: #211b39;
-            color: #f3efff;
-            padding: 14px;
-            border-radius: 9px;
-            margin: 10px 0;
-            font-family: Consolas, monospace;
-            font-size: 0.88rem;
-        }
-
-        .w5-note-list {
-            list-style: none;
-            margin-top: 12px;
-        }
-
-        .w5-note-list li {
-            background: #f6f2ff;
-            border: 1px solid #eee8fa;
-            border-radius: 9px;
-            padding: 11px;
-            margin-top: 8px;
-            overflow-wrap: anywhere;
-        }
-
-        /* WEEK 6: JOKE CORNER */
-        .joke-header {
-            text-align: center;
-            padding: 15px 5px 22px;
-        }
-
-        .joke-header h4 {
-            font-size: 1.7rem;
-            color: #5145b5;
-            margin-bottom: 5px;
-        }
-
-        .joke-header p {
-            color: #77738d;
-            font-size: 0.92rem;
-        }
-
-        .joke-box {
-            background: #faf9ff;
-            border: 1px solid #e9e5fa;
-            border-radius: 14px;
-            padding: 22px;
-            margin-bottom: 20px;
-        }
-
-        .joke-display {
-            background: white;
-            border: 1px solid #eee8fc;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 15px 0;
-        }
-
-        .joke-display h5 {
-            color: #5145b5;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-
-        .joke-display p {
-            overflow-wrap: anywhere;
-        }
-
-        .joke-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .joke-actions button {
-            flex: 1;
-            min-width: 140px;
-        }
-
-        .joke-loading {
-            text-align: center;
-            padding: 15px;
-            color: #6558d3;
-        }
-
-        .joke-spinner {
-            width: 25px;
-            height: 25px;
-            border: 3px solid #e5e0ff;
-            border-top-color: #6558d3;
-            border-radius: 50%;
-            margin: 0 auto 8px;
-            animation: joke-spin 0.8s linear infinite;
-        }
-
-        @keyframes joke-spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        .joke-error {
-            color: #b4234d;
-            background: #fff0f4;
-            border: 1px solid #ffd5e0;
-            padding: 11px;
-            border-radius: 9px;
-            margin-top: 12px;
-        }
-
-        .joke-favourite-item {
-            background: white;
-            border: 1px solid #eee8fc;
-            border-radius: 10px;
-            padding: 13px;
-            margin-top: 10px;
-        }
-
-        .joke-favourite-item p {
-            margin: 5px 0;
-            overflow-wrap: anywhere;
-        }
-
-        .joke-favourite-item button {
-            margin-top: 8px;
-            background: #e35b80;
-        }
-
-        .joke-favourite-item button:hover {
-            background: #c73861;
-        }
-
-        .joke-empty {
-            color: #77738d;
-            font-size: 0.9rem;
-            padding: 10px 0;
-        }
-
-        /* FOOTER */
-        footer {
-            text-align: center;
-            padding: 25px 15px;
-            margin-top: 10px;
-            background: #eae7fa;
-            color: #77718f;
-            font-size: 0.9rem;
-        }
-
-        footer strong {
-            color: #5145b5;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 700px) {
-            header {
-                padding: 45px 15px;
-            }
-
-            header h1 {
-                font-size: 2rem;
-            }
-
-            .weeks {
-                grid-template-columns: 1fr;
-            }
-
-            main {
-                padding: 30px 15px 45px;
-            }
-
-            nav {
-                gap: 3px;
-            }
-
-            nav a {
-                padding: 7px 9px;
-                font-size: 0.82rem;
-            }
-
-            .assignment {
-                padding: 20px;
-            }
-
-            .w5-panel {
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .tasks {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .todo-form {
-                flex-direction: column;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prashna Rai's Web Programming Portfolio, featuring weekly assignments and projects.">
+  <title>Prashna Rai | Web Programming Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #faf7ff;
+      --card: #ffffff;
+      --border: #e7dcf7;
+      --text: #302344;
+      --muted: #655575;
+      --purple: #7040b0;
+      --purple-dark: #4b267d;
+      --purple-light: #f3ebff;
+      --green-light: #e8faf0;
+      --green: #126b42;
+      --shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(at 0% 0%, #eee2ff 0, transparent 40%),
+        radial-gradient(at 100% 0%, #fbe7fa 0, transparent 38%),
+        var(--bg);
+      min-height: 100vh;
+      padding: 30px 18px 60px;
+      line-height: 1.6;
+    }
+
+    button, input {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #7040b0;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 12px;
+      z-index: 2000;
+      padding: 12px 16px;
+      background: #ffffff;
+      color: #4b267d;
+      border: 2px solid #4b267d;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* HERO */
+
+    .hero {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 42px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      height: 5px;
+      position: absolute;
+      inset: 0 0 auto;
+      background: linear-gradient(90deg, #7040b0, #d8a8ed, #f1c5e8);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-light);
+      color: #126b42;
+      border: 1px solid #b8ebcf;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 17px;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #168653;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+      color: #4b267d;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 24px;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background: #7040b0;
+    }
+
+    .btn-primary:hover {
+      background: #4b267d;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: #ffffff;
+      border-color: var(--border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--purple-light);
+      border-color: #b99bdf;
+    }
+
+    /* SEARCH AND FILTERS */
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 28px 0;
+    }
+
+    .search-wrapper {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+      max-width: 450px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #655575;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 12px 15px 12px 42px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+
+    .search-input::placeholder {
+      color: #655575;
+      opacity: 1;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .filter-btn {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: #ffffff;
+      color: #655575;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover {
+      background: var(--purple-light);
+    }
+
+    .filter-btn.active {
+      background: #7040b0;
+      color: #ffffff;
+      border-color: #7040b0;
+    }
+
+    /* SECTION HEADINGS */
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 30px 0 15px;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .section-count {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 6px;
+      padding: 2px 9px;
+      border-radius: 999px;
+      background: #eadffc;
+      color: #4b267d;
+      font-size: 0.75rem;
+    }
+
+    /* PROJECT CARDS */
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+      gap: 18px;
+      margin-bottom: 35px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 23px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 0;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px #50317f17;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 13px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 4px 9px;
+      border-radius: 7px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .tag-project {
+      background: #fff0d6;
+      color: #70400b;
+      border: 1px solid #f0d39b;
+    }
+
+    .tag-exercise {
+      background: #f0e8ff;
+      color: #4b267d;
+      border: 1px solid #ddc9fa;
+    }
+
+    .tag-api {
+      background: #e3f7fb;
+      color: #07576a;
+      border: 1px solid #b6e8f1;
+    }
+
+    .card-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      font-size: 0.87rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .card-path {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.7rem;
+      color: #655575;
+      background: #faf7ff;
+      border: 1px dashed #d6c5ea;
+      border-radius: 8px;
+      padding: 8px;
+      margin-bottom: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .card-actions .btn {
+      flex: 1;
+      padding: 9px 8px;
+      font-size: 0.79rem;
+      min-width: 0;
+    }
+
+    .empty-state {
+      display: none;
+      background: #ffffff;
+      border: 1px dashed var(--border);
+      border-radius: var(--radius);
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .empty-state h3 {
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    /* PREVIEW MODAL */
+
+    .preview-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: #211631ef;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.2s;
+    }
+
+    .preview-modal.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .preview-window {
+      width: 100%;
+      max-width: 1000px;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #ffffff;
+      border-radius: 18px;
+      box-shadow: 0 25px 70px #160d2b55;
+    }
+
+    .preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      background: #faf7ff;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .preview-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .preview-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .close-btn {
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.6rem;
+      padding: 0 7px;
+    }
+
+    .close-btn:hover {
+      background: #eadffc;
+    }
+
+    .preview-frame {
+      width: 100%;
+      flex: 1;
+      border: 0;
+      background: #ffffff;
+    }
+
+    .preview-help {
+      display: none;
+      padding: 12px;
+      color: #4b3c5c;
+      font-size: 0.82rem;
+      background: #fff8e7;
+    }
+
+    /* TOAST AND FOOTER */
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1100;
+      max-width: calc(100vw - 40px);
+      padding: 12px 17px;
+      border-radius: 10px;
+      background: #302344;
+      color: #ffffff;
+      box-shadow: var(--shadow);
+      font-size: 0.84rem;
+      opacity: 0;
+      transform: translateY(15px);
+      pointer-events: none;
+      transition: opacity 0.25s, transform 0.25s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      margin-top: 38px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    footer a {
+      color: #4b267d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 16px 12px 40px;
+      }
+
+      .hero {
+        padding: 30px 22px;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      .search-wrapper {
+        max-width: none;
+      }
+
+      .filter-pills {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: 3px 0 6px;
+      }
+
+      .filter-btn {
+        flex-shrink: 0;
+      }
+
+      .preview-window {
+        height: 90vh;
+      }
+
+      .preview-header {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+
+      .project-card:hover,
+      .btn-primary:hover {
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
-    <!-- HEADER -->
-    <header id="home">
-        <h1>Web Programming</h1>
-        <p>My HTML, CSS &amp; JavaScript Projects</p>
-        <span class="header-tag">
-            Prashna Rai | Student ID: 202539489
-        </span>
-    </header>
+<div class="container">
 
-    <!-- NAVIGATION -->
-    <nav>
-        <a href="#home" id="homeLink">Home</a>
-        <a href="#portfolio" id="portfolioLink">Portfolio</a>
-        <a href="#week2" data-week="week2">Week 2</a>
-        <a href="#week3" data-week="week3">Week 3</a>
-        <a href="#week4" data-week="week4">Week 4</a>
-        <a href="#week5" data-week="week5">Week 5</a>
-        <a href="#week6" data-week="week6">Week 6</a>
-    </nav>
+  <header class="hero">
+    <div class="status-badge">
+      <span class="status-dot" aria-hidden="true"></span>
+      Web Programming Portfolio
+    </div>
 
-    <main>
+    <h1>Prashna Rai</h1>
 
-        <!-- MAIN PORTFOLIO -->
-        <div id="portfolioPage">
+    <p class="hero-description">
+      Welcome to my web programming portfolio! This website brings together
+      my weekly assignments, JavaScript practice, interactive projects,
+      and learning progress using HTML, CSS, and JavaScript.
+    </p>
 
-            <!-- INTRODUCTION -->
-            <section class="intro" id="portfolio">
-                <h2>My Learning Portfolio</h2>
-                <p>
-                    Welcome to my web programming portfolio.
-                    Explore my weekly assignments and projects.
-                </p>
-            </section>
+    <div class="hero-actions">
+      <a
+        href="https://prqshna-design.github.io/WEB-PORGRAMMING/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn btn-primary">
+        Visit Live Site
+      </a>
 
-            <!-- WEEK CARDS -->
-            <section class="weeks">
+      <button class="btn btn-secondary" id="btnCopyLive" type="button">
+        Copy Portfolio URL
+      </button>
 
-                <!-- WEEK 2 -->
-                <div class="week-card" id="week2">
-                    <h3>Week 2</h3>
-                    <p class="description">
-                        HTML assignments · Monday &amp; Friday
-                    </p>
+      <button class="btn btn-secondary" id="btnCopyGit" type="button">
+        Copy Repository URL
+      </button>
+    </div>
+  </header>
 
-                    <h4 class="day-heading">Monday</h4>
-                    <div class="tasks">
-                        <a href="./WEB%20week2%20(mon)/task1.html">Task 01</a>
-                        <a href="./WEB%20week2%20(mon)/task2.html">Task 02</a>
-                        <a href="./WEB%20week2%20(mon)/task3.html">Task 03</a>
-                        <a href="./WEB%20week2%20(mon)/task4.html">Task 04</a>
-                        <a href="./WEB%20week2%20(mon)/task5.html">Task 05</a>
-                        <a href="./WEB%20week2%20(mon)/task6.html">Task 06</a>
-                        <a href="./WEB%20week2%20(mon)/task7.html">Task 07</a>
-                        <a href="./WEB%20week2%20(mon)/task8.html">Task 08</a>
-                    </div>
+  <main id="main-content">
 
-                    <h4 class="day-heading">Friday</h4>
-                    <div class="tasks">
-                        <a href="./WEB%20week2%20(fri)/task1.html">Task 01</a>
-                        <a href="./WEB%20week2%20(fri)/task2.html">Task 02</a>
-                        <a href="./WEB%20week2%20(fri)/task3.html">Task 03</a>
-                        <a href="./WEB%20week2%20(fri)/task4.html">Task 04</a>
-                        <a href="./WEB%20week2%20(fri)/task5.html">Task 05</a>
-                        <a href="./WEB%20week2%20(fri)/task6.html">Task 06</a>
-                        <a href="./WEB%20week2%20(fri)/task7.html">Task 07</a>
-                        <a href="./WEB%20week2%20(fri)/task8.html">Task 08</a>
-                    </div>
-                </div>
+    <section class="toolbar" aria-label="Search and filter assignments">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5"
+             aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
 
-                <!-- WEEK 3 -->
-                <div class="week-card" id="week3">
-                    <h3>Week 3</h3>
-                    <p class="description">
-                        HTML assignments · Monday &amp; Friday
-                    </p>
+        <input
+          id="searchInput"
+          class="search-input"
+          type="search"
+          placeholder="Search weeks, assignments, or topics..."
+          aria-label="Search portfolio items">
+      </div>
 
-                    <h4 class="day-heading">Monday</h4>
-                    <div class="tasks">
-                        <a href="./WEB%20week3%20(mon)/task1.html">Task 01</a>
-                        <a href="./WEB%20week3%20(mon)/task2.html">Task 02</a>
-                        <a href="./WEB%20week3%20(mon)/task3.html">Task 03</a>
-                        <a href="./WEB%20week3%20(mon)/task4.html">Task 04</a>
-                        <a href="./WEB%20week3%20(mon)/task5.html">Task 05</a>
-                        <a href="./WEB%20week3%20(mon)/task6.html">Task 06</a>
-                        <a href="./WEB%20week3%20(mon)/task7.html">Task 07</a>
-                        <a href="./WEB%20week3%20(mon)/task8.html">Task 08</a>
-                    </div>
+      <div class="filter-pills" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all"
+                aria-pressed="true" type="button">All Items</button>
+        <button class="filter-btn" data-filter="project"
+                aria-pressed="false" type="button">Featured Projects</button>
+        <button class="filter-btn" data-filter="exercise"
+                aria-pressed="false" type="button">Weekly Exercises</button>
+      </div>
+    </section>
 
-                    <h4 class="day-heading">Friday</h4>
-                    <div class="tasks">
-                        <a href="./WEB%20week3%20(fri)/task1.html">Task 01</a>
-                        <a href="./WEB%20week3%20(fri)/task2.html">Task 02</a>
-                        <a href="./WEB%20week3%20(fri)/task3.html">Task 03</a>
-                        <a href="./WEB%20week3%20(fri)/task4.html">Task 04</a>
-                        <a href="./WEB%20week3%20(fri)/task5.html">Task 05</a>
-                        <a href="./WEB%20week3%20(fri)/task6.html">Task 06</a>
-                        <a href="./WEB%20week3%20(fri)/task7.html">Task 07</a>
-                    </div>
-                </div>
+    <!-- FEATURED PROJECTS -->
 
-                <!-- WEEK 4 -->
-                <div class="week-card" id="week4">
-                    <h3>Week 4</h3>
-                    <p class="description">
-                        JavaScript assignments · Monday
-                    </p>
+    <section id="featuredSection" aria-labelledby="featuredHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="featuredHeading">
+          Featured Projects
+          <span class="section-count" id="featuredCount">3</span>
+        </h2>
+      </div>
 
-                    <h4 class="day-heading">Monday</h4>
-                    <div class="tasks">
-                        <a href="#task1" data-task="task1">Task 01</a>
-                        <a href="#task2" data-task="task2">Task 02</a>
-                        <a href="#task3" data-task="task3">Task 03</a>
-                        <a href="#task4" data-task="task4">Task 04</a>
-                    </div>
-                </div>
+      <div class="projects-grid" id="featuredGrid">
 
-                <!-- WEEK 5 -->
-                <div class="week-card" id="week5">
-                    <h3>Week 5</h3>
-                    <p class="description">
-                        JavaScript practice · Counter &amp; learning hub
-                    </p>
+        <article class="project-card" data-category="project"
+          data-keywords="week 4 javascript counter button click dark mode">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-project">JavaScript</span>
+            </div>
+            <h3 class="card-title">JavaScript Interactive Tasks</h3>
+            <p class="card-desc">
+              Practice interactive webpage features, event listeners,
+              button clicks, and dynamic content updates.
+            </p>
+            <div class="card-path">WEB week4 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 4 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
 
-                    <h4 class="day-heading">JavaScript Projects</h4>
-                    <div class="tasks">
-                        <a href="#smartCounterTask" data-task="smartCounterTask">
-                            Task 01
-                        </a>
-                        <a href="#learningHubTask" data-task="learningHubTask">
-                            Task 02
-                        </a>
-                    </div>
-                    <p class="description" style="margin-top: 12px; margin-bottom: 0;">
-                        Smart Counter · JavaScript Learning Hub
-                    </p>
-                </div>
+        <article class="project-card" data-category="project"
+          data-keywords="week 5 smart counter learning hub javascript">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-project">Mini Projects</span>
+            </div>
+            <h3 class="card-title">Smart Counter &amp; Learning Hub</h3>
+            <p class="card-desc">
+              Explore my JavaScript practice, interactive counter,
+              and learning activities.
+            </p>
+            <div class="card-path">WEB week5</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 5 Projects"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
 
-                <!-- WEEK 6 -->
-                <div class="week-card" id="week6">
-                    <h3>Week 6</h3>
-                    <p class="description">
-                        JavaScript API project
-                    </p>
+        <article class="project-card" data-category="project"
+          data-keywords="week 6 random joke generator api fetch localstorage favourites">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-api">API Project</span>
+            </div>
+            <h3 class="card-title">Random Joke Corner</h3>
+            <p class="card-desc">
+              A JavaScript project that retrieves jokes from an API
+              and practices working with asynchronous data.
+            </p>
+            <div class="card-path">WEB week6 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Random Joke Corner"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
 
-                    <h4 class="day-heading">Joke Corner</h4>
-                    <div class="tasks">
-                        <a href="#jokeTask" data-task="jokeTask">Task 01</a>
-                    </div>
-                    <p class="description" style="margin-top: 12px; margin-bottom: 0;">
-                        Fetch random jokes and save your favourites.
-                    </p>
-                </div>
+      </div>
+    </section>
 
-            </section>
-        </div>
+    <!-- WEEKLY EXERCISES -->
 
-        <!-- TASK DISPLAY PAGE -->
-        <section class="task-page" id="taskPage" hidden>
+    <section id="exercisesSection" aria-labelledby="exercisesHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="exercisesHeading">
+          Weekly Web Programming Exercises
+          <span class="section-count" id="exercisesCount">12</span>
+        </h2>
+      </div>
 
-            <button class="back-button" id="backBtn" type="button">
-                ← Back to Portfolio
-            </button>
+      <div class="projects-grid" id="exercisesGrid">
 
-            <!-- WEEK 4 TASK 1 -->
-            <div class="assignment" id="task1" hidden>
-                <h3>Task 1: Click Counter</h3>
-                <span class="level">Beginner · Click events</span>
-                <p class="assignment-description">
-                    Click the button five times to receive a
-                    congratulations message.
-                </p>
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 2 monday html basics markup">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 02 · Monday</span></div>
+            <h3 class="card-title">Week 2 Monday</h3>
+            <p class="card-desc">HTML practice and foundational webpage exercises.</p>
+            <div class="card-path">WEB week2 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 2 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
 
-                <div class="counter-demo">
-                    <button id="clicker" type="button">Click me!</button>
-                    <p id="count">0</p>
-                    <p id="message">Keep clicking...</p>
-                </div>
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 2 friday html css styles">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 02 · Friday</span></div>
+            <h3 class="card-title">Week 2 Friday</h3>
+            <p class="card-desc">More HTML and CSS exercises from Friday's class.</p>
+            <div class="card-path">WEB week2 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 2 Friday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 3 monday html css forms">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 03 · Monday</span></div>
+            <h3 class="card-title">Week 3 Monday</h3>
+            <p class="card-desc">HTML practice and webpage layout exercises.</p>
+            <div class="card-path">WEB week3 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 3 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 3 friday css grid flexbox layout">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 03 · Friday</span></div>
+            <h3 class="card-title">Week 3 Friday</h3>
+            <p class="card-desc">More practice with webpage structure and styling.</p>
+            <div class="card-path">WEB week3 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 3 Friday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 4 monday javascript dom events functions">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 04</span></div>
+            <h3 class="card-title">Week 4 · JavaScript</h3>
+            <p class="card-desc">JavaScript practice, DOM interactions, and event handling.</p>
+            <div class="card-path">WEB week4 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 4 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 5 smart counter learning hub javascript">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 05</span></div>
+            <h3 class="card-title">Week 5 · JavaScript Practice</h3>
+            <p class="card-desc">Interactive JavaScript exercises and mini projects.</p>
+            <div class="card-path">WEB week5</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 5 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 6 monday joke generator api fetch localstorage">
+          <div>
+            <div class="card-top"><span class="tag tag-api">Week 06 · Monday</span></div>
+            <h3 class="card-title">Week 6 Monday · Joke Corner</h3>
+            <p class="card-desc">Fetch data from an API and practice JavaScript with real responses.</p>
+            <div class="card-path">WEB week6 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 6 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 6 friday api weather cryptocurrency country github dog">
+          <div>
+            <div class="card-top"><span class="tag tag-api">Week 06 · Friday</span></div>
+            <h3 class="card-title">Week 6 Friday · API Projects</h3>
+            <p class="card-desc">API exercises involving weather, cryptocurrency, country data, GitHub, and more.</p>
+            <div class="card-path">WEB week6 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 6 Friday API Projects"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 7 accessibility lighthouse contrast keyboard aria">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 07</span></div>
+            <h3 class="card-title">Week 7 · Web Accessibility</h3>
+            <p class="card-desc">Accessibility practice and improvements for more usable web pages.</p>
+            <div class="card-path">WEB week7</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 7 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 8 monday html forms validation">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 08 · Monday</span></div>
+            <h3 class="card-title">Week 8 Monday · Forms</h3>
+            <p class="card-desc">Form structure, inputs, and form-related web programming exercises.</p>
+            <div class="card-path">WEB week8 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 8 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 8 friday forms validation accessibility">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 08 · Friday</span></div>
+            <h3 class="card-title">Week 8 Friday · Form Practice</h3>
+            <p class="card-desc">Continue practicing forms and related web programming skills.</p>
+            <div class="card-path">WEB week8 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 8 Friday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <!-- WEEK 9 ACCESSIBILITY REPORT -->
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 9 web accessibility lighthouse audit before after">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-exercise">Week 09</span>
             </div>
 
-            <!-- WEEK 4 TASK 2 -->
-            <div class="assignment" id="task2" hidden>
-                <h3>Task 2: Dark Mode Toggle</h3>
-                <span class="level">Beginner · Class toggle</span>
-                <p class="assignment-description">
-                    Switch the profile card between light and dark mode.
-                </p>
-
-                <div class="profile-card" id="profileCard">
-                    <h4>My Profile</h4>
-                    <p>Name: Prashna</p>
-                    <p>Student ID: 202539489</p>
-                    <p>Department: Computer Science</p>
-                    <br>
-                    <button id="toggle" type="button">Dark Mode</button>
-                </div>
-            </div>
-
-            <!-- WEEK 4 TASK 3 -->
-            <div class="assignment" id="task3" hidden>
-                <h3>Task 3: To-Do List</h3>
-                <span class="level">Beginner · DOM manipulation</span>
-                <p class="assignment-description">
-                    Add tasks using Enter or the Add button.
-                    Remove tasks using the delete button.
-                </p>
-
-                <div class="todo-form">
-                    <input
-                        class="todo-input"
-                        id="taskInput"
-                        type="text"
-                        placeholder="Enter a task"
-                        aria-label="Enter a task"
-                    >
-                    <button id="addBtn" type="button">Add</button>
-                </div>
-
-                <ul class="todo-list" id="taskList"></ul>
-            </div>
-
-            <!-- WEEK 4 TASK 4 -->
-            <div class="assignment" id="task4" hidden>
-                <h3>Task 4: Live Search Filter</h3>
-                <span class="level">Advanced · Input events</span>
-                <p class="assignment-description">
-                    Search student names in real time as you type.
-                </p>
-
-                <input
-                    class="search-input"
-                    id="search"
-                    type="text"
-                    placeholder="Search students..."
-                    aria-label="Search students"
-                >
-
-                <ul class="student-list" id="students">
-                    <li class="student">Prashna</li>
-                    <li class="student">Rahul</li>
-                    <li class="student">Sarah</li>
-                    <li class="student">John</li>
-                    <li class="student">Priya</li>
-                    <li class="student">David</li>
-                </ul>
-            </div>
-
-            <!-- WEEK 5 TASK 1: MY SMART COUNTER -->
-            <div class="assignment" id="smartCounterTask" hidden>
-                <h3>Task 1: My Smart Counter</h3>
-                <span class="level">Week 5 · JavaScript &amp; localStorage</span>
-                <p class="assignment-description">
-                    Increase or decrease the counter between -20 and 20.
-                    Your count is saved in the browser, so it stays after
-                    refreshing the page.
-                </p>
-
-                <div class="w5-panel">
-                    <h4 style="text-align:center; color:#5145b5;">
-                        My Smart Counter
-                    </h4>
-
-                    <p class="w5-counter-value" id="smartCount">0</p>
-                    <p class="w5-counter-status" id="smartStatusMessage">
-                        Your counter is ready!
-                    </p>
-
-                    <div class="w5-counter-buttons">
-                        <button id="smartDecrease" type="button">− Decrease</button>
-                        <button id="smartReset" class="w5-secondary" type="button">
-                            Reset
-                        </button>
-                        <button id="smartIncrease" type="button">+ Increase</button>
-                    </div>
-
-                    <p style="text-align:center; color:#77738d; font-size:0.85rem; margin-top:15px;">
-                        Minimum: -20 · Maximum: 20
-                    </p>
-                </div>
-            </div>
-
-            <!-- WEEK 5 TASK 2: JAVASCRIPT LEARNING HUB -->
-            <div class="assignment" id="learningHubTask" hidden>
-                <h3>Task 2: JavaScript Learning Hub</h3>
-                <span class="level">Week 5 · JavaScript practice</span>
-                <p class="assignment-description">
-                    Explore variables, DOM manipulation, a grade calculator,
-                    arrays and loops, and a notes feature that saves notes
-                    in your browser.
-                </p>
-
-                <!-- SECTION 1: VARIABLES AND OUTPUT -->
-                <div class="w5-panel">
-                    <h4 class="w5-section-title">1. Variables and Output</h4>
-                    <p>
-                        Enter your name and favourite programming language.
-                        JavaScript will use variables to display your message.
-                    </p>
-
-                    <label class="w5-label" for="hubName">Your name</label>
-                    <input
-                        class="w5-input"
-                        id="hubName"
-                        type="text"
-                        placeholder="Enter your name"
-                    >
-
-                    <label class="w5-label" for="hubLanguage">
-                        Favourite programming language
-                    </label>
-                    <select class="w5-select" id="hubLanguage">
-                        <option value="JavaScript">JavaScript</option>
-                        <option value="Python">Python</option>
-                        <option value="Java">Java</option>
-                        <option value="C">C</option>
-                        <option value="HTML and CSS">HTML and CSS</option>
-                    </select>
-
-                    <div class="w5-button-row">
-                        <button id="hubShowMessage" type="button">
-                            Show Message
-                        </button>
-                    </div>
-
-                    <p class="w5-output" id="hubMessage" aria-live="polite">
-                        Your message will appear here.
-                    </p>
-                </div>
-
-                <!-- SECTION 2: DOM MANIPULATION -->
-                <div class="w5-panel">
-                    <h4 class="w5-section-title">2. DOM Manipulation</h4>
-                    <p>
-                        Click the button to change the text and appearance
-                        of the message below.
-                    </p>
-
-                    <p
-                        id="hubDomText"
-                        class="w5-output"
-                        style="transition:0.2s;"
-                    >
-                        Hello! This text can be changed using JavaScript.
-                    </p>
-
-                    <div class="w5-button-row">
-                        <button id="hubChangeDom" type="button">
-                            Change Text
-                        </button>
-                        <button
-                            id="hubResetDom"
-                            class="w5-secondary"
-                            type="button"
-                        >
-                            Reset Text
-                        </button>
-                    </div>
-                </div>
-
-                <!-- SECTION 3: GRADE CALCULATOR -->
-                <div class="w5-panel">
-                    <h4 class="w5-section-title">3. Grade Calculator</h4>
-                    <p>
-                        Enter a score from 0 to 100 to calculate your grade.
-                    </p>
-
-                    <label class="w5-label" for="hubScore">Your score</label>
-                    <input
-                        class="w5-input"
-                        id="hubScore"
-                        type="number"
-                        min="0"
-                        max="100"
-                        placeholder="Enter a score (0–100)"
-                    >
-
-                    <div class="w5-button-row">
-                        <button id="hubCalculateGrade" type="button">
-                            Calculate Grade
-                        </button>
-                    </div>
-
-                    <p class="w5-output" id="hubGradeResult" aria-live="polite">
-                        Your grade will appear here.
-                    </p>
-                </div>
-
-                <!-- SECTION 4: ARRAYS AND LOOPS -->
-                <div class="w5-panel">
-                    <h4 class="w5-section-title">4. Arrays and Loops</h4>
-                    <p>
-                        An array stores multiple values. A loop can go through
-                        each value and display it.
-                    </p>
-
-                    <div class="w5-code" id="hubArrayCode">const subjects = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "Python"
-];
-
-subjects.forEach(function(subject) {
-  console.log(subject);
-});</div>
-
-                    <div class="w5-button-row">
-                        <button id="hubShowSubjects" type="button">
-                            Display Subjects
-                        </button>
-                    </div>
-
-                    <ul class="w5-note-list" id="hubSubjectsOutput">
-                        <li>Click the button to display the subjects.</li>
-                    </ul>
-                </div>
-
-                <!-- SECTION 5: SAVED NOTES -->
-                <div class="w5-panel">
-                    <h4 class="w5-section-title">5. Save Your Notes</h4>
-                    <p>
-                        Write a note and save it. Your notes are stored in
-                        localStorage and remain available in the same browser.
-                    </p>
-
-                    <label class="w5-label" for="hubNoteInput">
-                        Your note
-                    </label>
-                    <textarea
-                        class="w5-textarea"
-                        id="hubNoteInput"
-                        placeholder="Write something you learned..."
-                    ></textarea>
-
-                    <div class="w5-button-row">
-                        <button id="hubSaveNote" type="button">Save Note</button>
-                        <button
-                            id="hubClearNotes"
-                            class="w5-secondary"
-                            type="button"
-                        >
-                            Clear All Notes
-                        </button>
-                    </div>
-
-                    <p class="w5-output" id="hubNoteStatus" aria-live="polite">
-                        Your saved notes will appear below.
-                    </p>
-
-                    <ul class="w5-note-list" id="hubNotesList"></ul>
-                </div>
-            </div>
-
-            <!-- WEEK 6 TASK: JOKE CORNER -->
-            <div class="assignment" id="jokeTask" hidden>
-                <div class="joke-header">
-                    <h4>Joke Corner</h4>
-                    <p>Need a laugh? Discover a random joke!</p>
-                </div>
-
-                <div class="joke-box">
-                    <h4 style="color:#5145b5;">Random Joke Generator</h4>
-                    <p class="assignment-description" style="margin-top:5px; margin-bottom:12px;">
-                        Get a joke from an online API and save your favourites
-                        to read again later.
-                    </p>
-
-                    <div class="joke-actions">
-                        <button id="jokeLoadBtn" type="button">
-                            Tell Me a Joke
-                        </button>
-                        <button
-                            id="jokeSaveBtn"
-                            class="w5-secondary"
-                            type="button"
-                            disabled
-                        >
-                            ♡ Save Favourite
-                        </button>
-                    </div>
-
-                    <div
-                        class="joke-loading"
-                        id="jokeLoading"
-                        role="status"
-                        hidden
-                    >
-                        <div class="joke-spinner"></div>
-                        Getting a joke for you...
-                    </div>
-
-                    <p
-                        class="joke-error"
-                        id="jokeErrorMsg"
-                        role="alert"
-                        hidden
-                    ></p>
-
-                    <div class="joke-display" id="jokeDisplay" hidden>
-                        <h5>SETUP</h5>
-                        <p id="jokeSetup"></p>
-
-                        <h5 style="margin-top:15px;">PUNCHLINE</h5>
-                        <p id="jokePunch"></p>
-                    </div>
-                </div>
-
-                <div class="joke-box">
-                    <h4 style="color:#5145b5;">
-                        My Favourite Jokes
-                        (<span id="jokeFavCount">0</span>)
-                    </h4>
-
-                    <p class="assignment-description" style="margin-top:5px;">
-                        Your favourite jokes are saved in localStorage.
-                    </p>
-
-                    <div id="jokeFavouritesList">
-                        <p class="joke-empty">
-                            You haven't saved any favourite jokes yet.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer>
-        <p><strong>Prashna Rai</strong> · Gachon University</p>
-        <p>Web Programming Portfolio · 2026</p>
-    </footer>
-
-    <!-- JAVASCRIPT -->
-    <script>
-        // ==========================================
-        // SHARED TASK NAVIGATION
-        // ==========================================
-
-        const portfolioPage = document.querySelector('#portfolioPage');
-        const taskPage = document.querySelector('#taskPage');
-        const backBtn = document.querySelector('#backBtn');
-
-        const taskLinks = document.querySelectorAll(
-            '#week4 [data-task], #week5 [data-task], #week6 [data-task]'
-        );
-
-        const assignments = document.querySelectorAll(
-            '#taskPage .assignment'
-        );
-
-        function showTask(taskId) {
-            const selectedTask = document.getElementById(taskId);
-
-            if (!selectedTask || !selectedTask.classList.contains('assignment')) {
-                return;
-            }
-
-            portfolioPage.hidden = true;
-            taskPage.hidden = false;
-
-            assignments.forEach(function(task) {
-                task.hidden = task.id !== taskId;
-            });
-
-            history.replaceState(null, '', '#' + taskId);
-            window.scrollTo(0, 0);
-        }
-
-        function showPortfolio() {
-            taskPage.hidden = true;
-            portfolioPage.hidden = false;
-
-            assignments.forEach(function(task) {
-                task.hidden = true;
-            });
-
-            history.replaceState(
-                null,
-                '',
-                window.location.pathname + window.location.search
-            );
-
-            window.scrollTo(0, 0);
-        }
-
-        taskLinks.forEach(function(link) {
-            link.addEventListener('click', function(event) {
-                event.preventDefault();
-                showTask(this.dataset.task);
-            });
-        });
-
-        backBtn.addEventListener('click', showPortfolio);
-
-        // Open a task directly when its URL hash is present.
-        const initialTask = window.location.hash.slice(1);
-        const validTaskIds = [
-            'task1',
-            'task2',
-            'task3',
-            'task4',
-            'smartCounterTask',
-            'learningHubTask',
-            'jokeTask'
-        ];
-
-        if (validTaskIds.includes(initialTask)) {
-            showTask(initialTask);
-        }
-
-
-        // ==========================================
-        // WEEK 4 TASK 1: CLICK COUNTER
-        // ==========================================
-
-        const button = document.querySelector('#clicker');
-        const countText = document.querySelector('#count');
-        const message = document.querySelector('#message');
-
-        let count = 0;
-
-        button.addEventListener('click', function() {
-            if (count >= 5) return;
-
-            count++;
-            countText.textContent = count;
-
-            if (count >= 5) {
-                button.classList.add('done');
-                message.textContent = 'Congratulations! You did it!';
-            }
-        });
-
-
-        // ==========================================
-        // WEEK 4 TASK 2: DARK MODE TOGGLE
-        // ==========================================
-
-        const card = document.querySelector('#profileCard');
-        const toggle = document.querySelector('#toggle');
-
-        toggle.addEventListener('click', function() {
-            card.classList.toggle('dark');
-
-            if (card.classList.contains('dark')) {
-                toggle.textContent = 'Light Mode';
-            } else {
-                toggle.textContent = 'Dark Mode';
-            }
-        });
-
-
-        // ==========================================
-        // WEEK 4 TASK 3: TO-DO LIST
-        // ==========================================
-
-        const input = document.querySelector('#taskInput');
-        const addBtn = document.querySelector('#addBtn');
-        const list = document.querySelector('#taskList');
-
-        function addTask() {
-            const task = input.value.trim();
-
-            if (task === '') return;
-
-            const li = document.createElement('li');
-            const span = document.createElement('span');
-
-            span.textContent = task;
-
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = '✕';
-            deleteBtn.classList.add('delete');
-            deleteBtn.setAttribute('aria-label', 'Delete task');
-            deleteBtn.type = 'button';
-
-            li.appendChild(span);
-            li.appendChild(deleteBtn);
-            list.appendChild(li);
-
-            input.value = '';
-            input.focus();
-        }
-
-        addBtn.addEventListener('click', addTask);
-
-        input.addEventListener('keydown', function(event) {
-            if (event.key === 'Enter') {
-                addTask();
-            }
-        });
-
-        list.addEventListener('click', function(event) {
-            if (event.target.classList.contains('delete')) {
-                event.target.parentElement.remove();
-            }
-        });
-
-
-        // ==========================================
-        // WEEK 4 TASK 4: LIVE SEARCH FILTER
-        // ==========================================
-
-        const search = document.querySelector('#search');
-        const students = document.querySelectorAll('.student');
-
-        const originalNames = Array.from(
-            students,
-            student => student.textContent
-        );
-
-        search.addEventListener('input', function(event) {
-            const term = event.target.value.toLowerCase();
-
-            students.forEach(function(student, index) {
-                const name = originalNames[index];
-                const lowerName = name.toLowerCase();
-                const matchIndex = lowerName.indexOf(term);
-
-                if (matchIndex !== -1) {
-                    student.style.display = '';
-
-                    if (term !== '') {
-                        const before = name.slice(0, matchIndex);
-                        const match = name.slice(
-                            matchIndex,
-                            matchIndex + term.length
-                        );
-                        const after = name.slice(matchIndex + term.length);
-
-                        const mark = document.createElement('mark');
-                        mark.textContent = match;
-
-                        student.replaceChildren(
-                            document.createTextNode(before),
-                            mark,
-                            document.createTextNode(after)
-                        );
-                    } else {
-                        student.textContent = name;
-                    }
-                } else {
-                    student.style.display = 'none';
-                }
-            });
-        });
-
-
-        // ==========================================
-        // WEEK 5 TASK 1: MY SMART COUNTER
-        // ==========================================
-
-        const smartCountText = document.querySelector('#smartCount');
-        const smartStatusMessage = document.querySelector('#smartStatusMessage');
-        const smartDecrease = document.querySelector('#smartDecrease');
-        const smartIncrease = document.querySelector('#smartIncrease');
-        const smartReset = document.querySelector('#smartReset');
-
-        const SMART_MIN = -20;
-        const SMART_MAX = 20;
-        const SMART_STORAGE_KEY = 'app_count';
-
-        let smartCount = 0;
-
-        // Load the saved counter value from localStorage.
-        try {
-            const savedCount = localStorage.getItem(SMART_STORAGE_KEY);
-
-            if (savedCount !== null && savedCount.trim() !== '') {
-                const parsedCount = Number(savedCount);
-
-                if (
-                    Number.isInteger(parsedCount) &&
-                    parsedCount >= SMART_MIN &&
-                    parsedCount <= SMART_MAX
-                ) {
-                    smartCount = parsedCount;
-                }
-            }
-        } catch (error) {
-            console.warn('Could not load the saved counter.', error);
-        }
-
-        function updateSmartCounter() {
-            smartCountText.textContent = smartCount;
-
-            if (smartCount === SMART_MAX) {
-                smartStatusMessage.textContent =
-                    'Maximum reached! You cannot increase it further.';
-            } else if (smartCount === SMART_MIN) {
-                smartStatusMessage.textContent =
-                    'Minimum reached! You cannot decrease it further.';
-            } else if (smartCount > 0) {
-                smartStatusMessage.textContent =
-                    'Your count is positive. Keep going!';
-            } else if (smartCount < 0) {
-                smartStatusMessage.textContent =
-                    'Your count is negative. You can increase it again!';
-            } else {
-                smartStatusMessage.textContent =
-                    'Your counter is at zero. Start counting!';
-            }
-
-            smartDecrease.disabled = smartCount <= SMART_MIN;
-            smartIncrease.disabled = smartCount >= SMART_MAX;
-
-            try {
-                localStorage.setItem(SMART_STORAGE_KEY, String(smartCount));
-            } catch (error) {
-                console.warn('Could not save the counter.', error);
-            }
-        }
-
-        smartDecrease.addEventListener('click', function() {
-            if (smartCount > SMART_MIN) {
-                smartCount--;
-                updateSmartCounter();
-            }
-        });
-
-        smartIncrease.addEventListener('click', function() {
-            if (smartCount < SMART_MAX) {
-                smartCount++;
-                updateSmartCounter();
-            }
-        });
-
-        smartReset.addEventListener('click', function() {
-            smartCount = 0;
-            updateSmartCounter();
-        });
-
-        updateSmartCounter();
-
-
-        // ==========================================
-        // WEEK 5 TASK 2: JAVASCRIPT LEARNING HUB
-        // ==========================================
-
-        // SECTION 1: VARIABLES AND OUTPUT
-
-        const hubName = document.querySelector('#hubName');
-        const hubLanguage = document.querySelector('#hubLanguage');
-        const hubShowMessage = document.querySelector('#hubShowMessage');
-        const hubMessage = document.querySelector('#hubMessage');
-
-        hubShowMessage.addEventListener('click', function() {
-            const name = hubName.value.trim() || 'Student';
-            const language = hubLanguage.value;
-
-            hubMessage.textContent =
-                'Hello, ' + name + '! Your favourite programming language is ' +
-                language + '. Keep learning and practising!';
-        });
-
-
-        // SECTION 2: DOM MANIPULATION
-
-        const hubDomText = document.querySelector('#hubDomText');
-        const hubChangeDom = document.querySelector('#hubChangeDom');
-        const hubResetDom = document.querySelector('#hubResetDom');
-
-        const originalDomText =
-            'Hello! This text can be changed using JavaScript.';
-
-        hubChangeDom.addEventListener('click', function() {
-            hubDomText.textContent =
-                'Great job! You changed this text with JavaScript.';
-            hubDomText.style.background = '#e7f9ee';
-            hubDomText.style.color = '#17683a';
-        });
-
-        hubResetDom.addEventListener('click', function() {
-            hubDomText.textContent = originalDomText;
-            hubDomText.style.background = '';
-            hubDomText.style.color = '';
-        });
-
-
-        // SECTION 3: GRADE CALCULATOR
-
-        const hubScore = document.querySelector('#hubScore');
-        const hubCalculateGrade =
-            document.querySelector('#hubCalculateGrade');
-        const hubGradeResult = document.querySelector('#hubGradeResult');
-
-        hubCalculateGrade.addEventListener('click', function() {
-            const rawScore = hubScore.value;
-
-            if (rawScore.trim() === '') {
-                hubGradeResult.textContent = 'Please enter your score.';
-                return;
-            }
-
-            const score = Number(rawScore);
-
-            if (!Number.isFinite(score) || score < 0 || score > 100) {
-                hubGradeResult.textContent =
-                    'Please enter a valid score between 0 and 100.';
-                return;
-            }
-
-            let grade;
-
-            if (score >= 90) {
-                grade = 'A';
-            } else if (score >= 80) {
-                grade = 'B';
-            } else if (score >= 70) {
-                grade = 'C';
-            } else if (score >= 60) {
-                grade = 'D';
-            } else {
-                grade = 'F';
-            }
-
-            hubGradeResult.textContent =
-                'Your score is ' + score + '/100. Your grade is ' + grade + '.';
-        });
-
-
-        // SECTION 4: ARRAYS AND LOOPS
-
-        const hubShowSubjects = document.querySelector('#hubShowSubjects');
-        const hubSubjectsOutput =
-            document.querySelector('#hubSubjectsOutput');
-
-        const subjects = [
-            'HTML',
-            'CSS',
-            'JavaScript',
-            'Python'
-        ];
-
-        hubShowSubjects.addEventListener('click', function() {
-            hubSubjectsOutput.replaceChildren();
-
-            subjects.forEach(function(subject, index) {
-                const li = document.createElement('li');
-                li.textContent = (index + 1) + '. ' + subject;
-                hubSubjectsOutput.appendChild(li);
-            });
-        });
-
-
-        // SECTION 5: SAVE NOTES USING localStorage
-
-        const hubNoteInput = document.querySelector('#hubNoteInput');
-        const hubSaveNote = document.querySelector('#hubSaveNote');
-        const hubClearNotes = document.querySelector('#hubClearNotes');
-        const hubNoteStatus = document.querySelector('#hubNoteStatus');
-        const hubNotesList = document.querySelector('#hubNotesList');
-
-        const HUB_NOTES_KEY = 'learningHubNotes';
-
-        function getHubNotes() {
-            try {
-                const savedNotes = localStorage.getItem(HUB_NOTES_KEY);
-                const notes = savedNotes ? JSON.parse(savedNotes) : [];
-                return Array.isArray(notes) ? notes : [];
-            } catch (error) {
-                console.warn('Could not read saved notes.', error);
-                return [];
-            }
-        }
-
-        function renderHubNotes() {
-            const notes = getHubNotes();
-            hubNotesList.replaceChildren();
-
-            if (notes.length === 0) {
-                const emptyItem = document.createElement('li');
-                emptyItem.textContent = 'No notes saved yet.';
-                hubNotesList.appendChild(emptyItem);
-                return;
-            }
-
-            notes.forEach(function(note, index) {
-                const li = document.createElement('li');
-                li.textContent = (index + 1) + '. ' + note;
-                hubNotesList.appendChild(li);
-            });
-        }
-
-        hubSaveNote.addEventListener('click', function() {
-            const note = hubNoteInput.value.trim();
-
-            if (note === '') {
-                hubNoteStatus.textContent = 'Please write a note before saving.';
-                return;
-            }
-
-            const notes = getHubNotes();
-            notes.push(note);
-
-            try {
-                localStorage.setItem(HUB_NOTES_KEY, JSON.stringify(notes));
-                hubNoteInput.value = '';
-                hubNoteStatus.textContent = 'Your note has been saved!';
-                renderHubNotes();
-            } catch (error) {
-                hubNoteStatus.textContent =
-                    'Your note could not be saved in this browser.';
-                console.warn('Could not save note.', error);
-            }
-        });
-
-        hubClearNotes.addEventListener('click', function() {
-            try {
-                localStorage.removeItem(HUB_NOTES_KEY);
-                hubNoteStatus.textContent = 'All saved notes have been cleared.';
-                renderHubNotes();
-            } catch (error) {
-                hubNoteStatus.textContent =
-                    'The notes could not be cleared.';
-            }
-        });
-
-        renderHubNotes();
-
-
-        // ==========================================
-        // WEEK 6 TASK: JOKE CORNER
-        // ==========================================
-
-        const jokeLoadBtn = document.querySelector('#jokeLoadBtn');
-        const jokeSaveBtn = document.querySelector('#jokeSaveBtn');
-        const jokeLoading = document.querySelector('#jokeLoading');
-        const jokeErrorMsg = document.querySelector('#jokeErrorMsg');
-        const jokeDisplay = document.querySelector('#jokeDisplay');
-        const jokeSetup = document.querySelector('#jokeSetup');
-        const jokePunch = document.querySelector('#jokePunch');
-        const jokeFavouritesList =
-            document.querySelector('#jokeFavouritesList');
-        const jokeFavCount = document.querySelector('#jokeFavCount');
-
-        const JOKE_STORAGE_KEY = 'favouriteJokes';
-
-        let currentJoke = null;
-
-        function getFavouriteJokes() {
-            try {
-                const saved = localStorage.getItem(JOKE_STORAGE_KEY);
-
-                if (!saved) return [];
-
-                const jokes = JSON.parse(saved);
-                return Array.isArray(jokes) ? jokes : [];
-            } catch (error) {
-                console.warn('Could not read favourite jokes.', error);
-                return [];
-            }
-        }
-
-        function saveFavouriteJokes(jokes) {
-            try {
-                localStorage.setItem(
-                    JOKE_STORAGE_KEY,
-                    JSON.stringify(jokes)
-                );
-                return true;
-            } catch (error) {
-                console.warn('Could not save favourite jokes.', error);
-                return false;
-            }
-        }
-
-        function renderFavouriteJokes() {
-            const favourites = getFavouriteJokes();
-
-            jokeFavCount.textContent = favourites.length;
-            jokeFavouritesList.replaceChildren();
-
-            if (favourites.length === 0) {
-                const emptyMessage = document.createElement('p');
-                emptyMessage.className = 'joke-empty';
-                emptyMessage.textContent =
-                    "You haven't saved any favourite jokes yet.";
-                jokeFavouritesList.appendChild(emptyMessage);
-                return;
-            }
-
-            favourites.forEach(function(joke, index) {
-                const item = document.createElement('div');
-                item.className = 'joke-favourite-item';
-
-                const number = document.createElement('strong');
-                number.textContent = 'Favourite ' + (index + 1);
-
-                const setupText = document.createElement('p');
-                setupText.textContent = joke.setup;
-
-                const punchText = document.createElement('p');
-                punchText.textContent = joke.punchline;
-
-                const removeBtn = document.createElement('button');
-                removeBtn.type = 'button';
-                removeBtn.textContent = 'Remove Favourite';
-
-                removeBtn.addEventListener('click', function() {
-                    const latestFavourites = getFavouriteJokes();
-                    latestFavourites.splice(index, 1);
-
-                    if (saveFavouriteJokes(latestFavourites)) {
-                        renderFavouriteJokes();
-                    } else {
-                        jokeErrorMsg.textContent =
-                            'Could not update your saved favourites.';
-                        jokeErrorMsg.hidden = false;
-                    }
-                });
-
-                item.appendChild(number);
-                item.appendChild(setupText);
-                item.appendChild(punchText);
-                item.appendChild(removeBtn);
-
-                jokeFavouritesList.appendChild(item);
-            });
-        }
-
-        async function loadRandomJoke() {
-            jokeLoading.hidden = false;
-            jokeErrorMsg.hidden = true;
-            jokeDisplay.hidden = true;
-            jokeSaveBtn.disabled = true;
-            jokeLoadBtn.disabled = true;
-
-            try {
-                const response = await fetch(
-                    'https://official-joke-api.appspot.com/random_joke'
-                );
-
-                if (!response.ok) {
-                    throw new Error('The joke service is unavailable.');
-                }
-
-                const joke = await response.json();
-
-                if (!joke || !joke.setup || !joke.punchline) {
-                    throw new Error('The API returned an invalid joke.');
-                }
-
-                currentJoke = {
-                    id: joke.id ?? null,
-                    setup: joke.setup,
-                    punchline: joke.punchline
-                };
-
-                jokeSetup.textContent = currentJoke.setup;
-                jokePunch.textContent = currentJoke.punchline;
-
-                jokeDisplay.hidden = false;
-                jokeSaveBtn.disabled = false;
-            } catch (error) {
-                currentJoke = null;
-                jokeErrorMsg.textContent =
-                    'Sorry, we could not load a joke. Please check your internet connection and try again.';
-                jokeErrorMsg.hidden = false;
-            } finally {
-                jokeLoading.hidden = true;
-                jokeLoadBtn.disabled = false;
-            }
-        }
-
-        jokeLoadBtn.addEventListener('click', loadRandomJoke);
-
-        jokeSaveBtn.addEventListener('click', function() {
-            if (!currentJoke) return;
-
-            const favourites = getFavouriteJokes();
-
-            const alreadySaved = favourites.some(function(joke) {
-                return joke.setup === currentJoke.setup &&
-                       joke.punchline === currentJoke.punchline;
-            });
-
-            if (alreadySaved) {
-                jokeErrorMsg.textContent =
-                    'This joke is already in your favourites.';
-                jokeErrorMsg.hidden = false;
-                return;
-            }
-
-            favourites.push(currentJoke);
-
-            if (saveFavouriteJokes(favourites)) {
-                jokeErrorMsg.hidden = true;
-                renderFavouriteJokes();
-                jokeSaveBtn.textContent = '✓ Saved!';
-                jokeSaveBtn.disabled = true;
-            } else {
-                jokeErrorMsg.textContent =
-                    'Could not save this joke. Please try again.';
-                jokeErrorMsg.hidden = false;
-            }
-        });
-
-        renderFavouriteJokes();
-
-    </script>
+            <h3 class="card-title">Week 9 · Web Accessibility</h3>
+
+            <p class="card-desc">
+              Tested my portfolio using Google Lighthouse, compared
+              before-and-after accessibility results, and documented
+              three accessibility improvements.
+            </p>
+
+            <div class="card-path">WEB week9/accessibility.html</div>
+          </div>
+
+          <div class="card-actions">
+            <a class="btn btn-secondary"
+              href="WEB%20week9/accessibility.html">
+              View Report
+            </a>
+
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open Files
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+      <h3>No matching assignments found</h3>
+      <p>Try another search term or select “All Items”.</p>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Made with 💜 by Prashna Rai</p>
+    <p>
+      Web Programming Portfolio ·
+      <a href="https://github.com/prqshna-design/WEB-PORGRAMMING"
+         target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+    </p>
+  </footer>
+
+</div>
+
+<!-- QUICK VIEW MODAL -->
+<div class="preview-modal" id="previewModal"
+     role="dialog" aria-modal="true"
+     aria-labelledby="previewModalTitle" aria-hidden="true">
+  <div class="preview-window">
+    <div class="preview-header">
+      <span class="preview-title" id="previewModalTitle">Assignment Preview</span>
+      <div class="preview-header-actions">
+        <a id="previewExternalLink" href="#"
+           class="btn btn-secondary" target="_blank"
+           rel="noopener noreferrer">Open in GitHub</a>
+        <button class="close-btn" id="closeModalBtn"
+                type="button" aria-label="Close preview">&times;</button>
+      </div>
+    </div>
+    <p class="preview-help" id="previewHelp">
+      GitHub folder previews may not load inside this window.
+      Use “Open in GitHub” to browse the files and open the assignment.
+    </p>
+    <iframe class="preview-frame" id="previewIframe"
+            title="Assignment preview" src="about:blank"></iframe>
+  </div>
+</div>
+
+<div class="toast" id="toastNotification" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  "use strict";
+
+  const searchInput = document.getElementById("searchInput");
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const cards = document.querySelectorAll(".project-card");
+
+  const featuredSection = document.getElementById("featuredSection");
+  const exercisesSection = document.getElementById("exercisesSection");
+  const featuredGrid = document.getElementById("featuredGrid");
+  const exercisesGrid = document.getElementById("exercisesGrid");
+
+  const featuredCount = document.getElementById("featuredCount");
+  const exercisesCount = document.getElementById("exercisesCount");
+  const emptyState = document.getElementById("emptyState");
+
+  let currentFilter = "all";
+
+  function applyFilters() {
+    const query = searchInput.value.toLowerCase().trim();
+
+    let visibleTotal = 0;
+    let visibleFeatured = 0;
+    let visibleExercises = 0;
+
+    cards.forEach(function (card) {
+      const title = card.querySelector(".card-title").textContent.toLowerCase();
+      const description = card.querySelector(".card-desc").textContent.toLowerCase();
+      const keywords = (card.dataset.keywords || "").toLowerCase();
+      const path = card.querySelector(".card-path").textContent.toLowerCase();
+      const category = card.dataset.category;
+
+      const matchesText =
+        !query ||
+        title.includes(query) ||
+        description.includes(query) ||
+        keywords.includes(query) ||
+        path.includes(query);
+
+      const matchesFilter =
+        currentFilter === "all" || category === currentFilter;
+
+      const visible = matchesText && matchesFilter;
+
+      card.style.display = visible ? "flex" : "none";
+
+      if (visible) {
+        visibleTotal++;
+        if (category === "project") visibleFeatured++;
+        if (category === "exercise") visibleExercises++;
+      }
+    });
+
+    featuredCount.textContent = visibleFeatured;
+    exercisesCount.textContent = visibleExercises;
+
+    featuredSection.style.display = visibleFeatured ? "block" : "none";
+    featuredGrid.style.display = visibleFeatured ? "grid" : "none";
+
+    exercisesSection.style.display = visibleExercises ? "block" : "none";
+    exercisesGrid.style.display = visibleExercises ? "grid" : "none";
+
+    emptyState.style.display = visibleTotal === 0 ? "block" : "none";
+  }
+
+  searchInput.addEventListener("input", applyFilters);
+
+  filterButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+      filterButtons.forEach(function (item) {
+        item.classList.remove("active");
+        item.setAttribute("aria-pressed", "false");
+      });
+
+      button.classList.add("active");
+      button.setAttribute("aria-pressed", "true");
+      currentFilter = button.dataset.filter;
+
+      applyFilters();
+    });
+  });
+
+  // Quick View modal
+  const modal = document.getElementById("previewModal");
+  const iframe = document.getElementById("previewIframe");
+  const modalTitle = document.getElementById("previewModalTitle");
+  const externalLink = document.getElementById("previewExternalLink");
+  const closeButton = document.getElementById("closeModalBtn");
+  const previewHelp = document.getElementById("previewHelp");
+
+  let previousFocus = null;
+
+  function openPreview(title, url) {
+    previousFocus = document.activeElement;
+    modalTitle.textContent = title;
+    externalLink.href = url;
+
+    iframe.src = "about:blank";
+    iframe.style.display = "none";
+    previewHelp.style.display = "block";
+
+    modal.classList.add("active");
+    modal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    closeButton.focus();
+  }
+
+  function closePreview() {
+    modal.classList.remove("active");
+    modal.setAttribute("aria-hidden", "true");
+    iframe.src = "about:blank";
+    document.body.style.overflow = "";
+
+    if (previousFocus) previousFocus.focus();
+  }
+
+  document.querySelectorAll(".quick-preview-btn").forEach(function (button) {
+    button.addEventListener("click", function () {
+      openPreview(button.dataset.title, button.dataset.url);
+    });
+  });
+
+  closeButton.addEventListener("click", closePreview);
+
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) closePreview();
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && modal.classList.contains("active")) {
+      closePreview();
+    }
+  });
+
+  // Copy buttons
+  const toast = document.getElementById("toastNotification");
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    window.clearTimeout(showToast.timer);
+    showToast.timer = window.setTimeout(function () {
+      toast.classList.remove("show");
+    }, 2500);
+  }
+
+  async function copyText(value, successMessage) {
+    try {
+      if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(value);
+      } else {
+        const temporaryInput = document.createElement("textarea");
+        temporaryInput.value = value;
+        temporaryInput.style.position = "fixed";
+        temporaryInput.style.opacity = "0";
+        document.body.appendChild(temporaryInput);
+        temporaryInput.select();
+
+        const copied = document.execCommand("copy");
+        temporaryInput.remove();
+
+        if (!copied) throw new Error("Copy failed");
+      }
+
+      showToast(successMessage);
+    } catch (error) {
+      showToast("Copy failed. You can copy the URL from the address bar.");
+    }
+  }
+
+  document.getElementById("btnCopyLive").addEventListener("click", function () {
+    copyText(
+      "https://prqshna-design.github.io/WEB-PORGRAMMING/",
+      "Portfolio URL copied!"
+    );
+  });
+
+  document.getElementById("btnCopyGit").addEventListener("click", function () {
+    copyText(
+      "https://github.com/prqshna-design/WEB-PORGRAMMING",
+      "Repository URL copied!"
+    );
+  });
+
+  applyFilters();
+})();
+</script>
 
 </body>
 </html>
