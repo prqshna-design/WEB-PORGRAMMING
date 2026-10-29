@@ -1,29 +1,29 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prashna Rai's Web Programming Portfolio, featuring weekly assignments and projects.">
+  <meta name="description" content="Prashna Rai's web programming portfolio, featuring weekly HTML, CSS, JavaScript, and accessibility exercises.">
   <title>Prashna Rai | Web Programming Portfolio</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #faf7ff;
+      --bg: #f8f7ff;
       --card: #ffffff;
-      --border: #e7dcf7;
-      --text: #302344;
-      --muted: #655575;
-      --purple: #7040b0;
-      --purple-dark: #4b267d;
-      --purple-light: #f3ebff;
-      --green-light: #e8faf0;
-      --green: #126b42;
-      --shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
+      --text: #21183b;
+      --muted: #6e6684;
+      --border: #e6e0f5;
+      --purple: #7651d6;
+      --purple-dark: #5735b0;
+      --purple-light: #f0eaff;
+      --pink: #ffe8f3;
+      --green: #e6f8ef;
+      --shadow: 0 5px 20px rgba(70, 43, 120, 0.07);
       --radius: 18px;
     }
 
@@ -38,18 +38,18 @@
     }
 
     body {
-      font-family: "Plus Jakarta Sans", Arial, sans-serif;
-      color: var(--text);
+      font-family: "Plus Jakarta Sans", sans-serif;
       background:
-        radial-gradient(at 0% 0%, #eee2ff 0, transparent 40%),
-        radial-gradient(at 100% 0%, #fbe7fa 0, transparent 38%),
+        radial-gradient(circle at top left, #eee8ff 0, transparent 35%),
+        radial-gradient(circle at top right, #ffeaf5 0, transparent 30%),
         var(--bg);
-      min-height: 100vh;
-      padding: 30px 18px 60px;
+      color: var(--text);
       line-height: 1.6;
+      min-height: 100vh;
+      padding: 28px 18px 50px;
     }
 
-    button, input {
+    button, input, a {
       font: inherit;
     }
 
@@ -57,24 +57,22 @@
       color: inherit;
     }
 
-    button:focus-visible,
     a:focus-visible,
+    button:focus-visible,
     input:focus-visible {
-      outline: 3px solid #7040b0;
+      outline: 3px solid #8b5cf6;
       outline-offset: 4px;
     }
 
     .skip-link {
       position: absolute;
-      top: -100px;
       left: 12px;
-      z-index: 2000;
-      padding: 12px 16px;
+      top: -100px;
       background: #ffffff;
-      color: #4b267d;
-      border: 2px solid #4b267d;
-      border-radius: 8px;
-      font-weight: 700;
+      color: var(--purple-dark);
+      padding: 12px 16px;
+      border-radius: 10px;
+      z-index: 2000;
     }
 
     .skip-link:focus {
@@ -86,55 +84,59 @@
       margin: 0 auto;
     }
 
-    /* HERO */
-
     .hero {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 26px;
-      padding: 42px;
-      margin-bottom: 28px;
-      box-shadow: var(--shadow);
       position: relative;
       overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 46px 42px;
+      margin-bottom: 30px;
+      box-shadow: var(--shadow);
     }
 
     .hero::before {
       content: "";
-      height: 5px;
       position: absolute;
-      inset: 0 0 auto;
-      background: linear-gradient(90deg, #7040b0, #d8a8ed, #f1c5e8);
+      height: 5px;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(90deg, #7651d6, #b38af5, #f3a9d0);
     }
 
     .status-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: var(--green-light);
-      color: #126b42;
-      border: 1px solid #b8ebcf;
-      border-radius: 999px;
+      background: var(--green);
+      color: #176343;
+      border: 1px solid #bcebd0;
       padding: 6px 12px;
-      font-size: 0.78rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
       font-weight: 700;
-      margin-bottom: 17px;
+      margin-bottom: 18px;
     }
 
     .status-dot {
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #168653;
+      background: #21a36b;
     }
 
-    .hero h1 {
+    .hero-title {
       font-size: clamp(2rem, 5vw, 3.2rem);
-      font-weight: 800;
       line-height: 1.2;
+      font-weight: 800;
       letter-spacing: -1.5px;
       margin-bottom: 12px;
-      color: #4b267d;
+      color: var(--text);
+    }
+
+    .hero-title span {
+      color: var(--purple);
     }
 
     .hero-description {
@@ -156,52 +158,50 @@
       justify-content: center;
       gap: 7px;
       border: 1px solid transparent;
-      border-radius: 10px;
-      padding: 10px 15px;
+      border-radius: 11px;
+      padding: 10px 16px;
       text-decoration: none;
+      cursor: pointer;
       font-size: 0.86rem;
       font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.2s ease, transform 0.2s ease;
+      transition: background 0.2s, transform 0.2s, border-color 0.2s;
     }
 
-    .btn-primary {
-      color: #ffffff;
-      background: #7040b0;
-    }
-
-    .btn-primary:hover {
-      background: #4b267d;
+    .btn:hover {
       transform: translateY(-2px);
     }
 
+    .btn-primary {
+      background: var(--purple);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--purple-dark);
+    }
+
     .btn-secondary {
-      color: var(--text);
       background: #ffffff;
       border-color: var(--border);
+      color: var(--text);
     }
 
     .btn-secondary:hover {
       background: var(--purple-light);
-      border-color: #b99bdf;
+      border-color: #c9b5f6;
     }
-
-    /* SEARCH AND FILTERS */
 
     .toolbar {
       display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-      margin: 28px 0;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
     .search-wrapper {
       position: relative;
       flex: 1;
-      min-width: 220px;
-      max-width: 450px;
+      max-width: 470px;
     }
 
     .search-icon {
@@ -209,23 +209,22 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #655575;
+      color: var(--muted);
       pointer-events: none;
     }
 
     .search-input {
       width: 100%;
-      padding: 12px 15px 12px 42px;
-      background: #ffffff;
+      padding: 13px 14px 13px 43px;
       border: 1px solid var(--border);
       border-radius: 12px;
+      background: #ffffff;
       color: var(--text);
       box-shadow: var(--shadow);
     }
 
     .search-input::placeholder {
-      color: #655575;
-      opacity: 1;
+      color: #777087;
     }
 
     .filter-pills {
@@ -235,15 +234,14 @@
     }
 
     .filter-btn {
-      padding: 8px 14px;
+      padding: 9px 15px;
+      background: #ffffff;
+      color: var(--muted);
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: #ffffff;
-      color: #655575;
-      font-size: 0.82rem;
-      font-weight: 700;
       cursor: pointer;
-      white-space: nowrap;
+      font-size: 0.83rem;
+      font-weight: 700;
     }
 
     .filter-btn:hover {
@@ -251,37 +249,34 @@
     }
 
     .filter-btn.active {
-      background: #7040b0;
+      background: var(--purple);
       color: #ffffff;
-      border-color: #7040b0;
+      border-color: var(--purple);
     }
-
-    /* SECTION HEADINGS */
 
     .section-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin: 30px 0 15px;
+      gap: 12px;
+      margin: 25px 0 16px;
     }
 
     .section-title {
-      font-size: 1.25rem;
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
       font-weight: 800;
     }
 
     .section-count {
       display: inline-block;
-      vertical-align: middle;
-      margin-left: 6px;
+      margin-left: 7px;
       padding: 2px 9px;
+      background: var(--purple-light);
+      color: var(--purple-dark);
       border-radius: 999px;
-      background: #eadffc;
-      color: #4b267d;
-      font-size: 0.75rem;
+      font-size: 0.78rem;
+      vertical-align: middle;
     }
-
-    /* PROJECT CARDS */
 
     .projects-grid {
       display: grid;
@@ -291,56 +286,46 @@
     }
 
     .project-card {
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       padding: 23px;
       box-shadow: var(--shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-width: 0;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .project-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 25px #50317f17;
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(70, 43, 120, 0.12);
     }
 
     .card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
       margin-bottom: 13px;
     }
 
     .tag {
       display: inline-block;
-      padding: 4px 9px;
+      padding: 5px 10px;
       border-radius: 7px;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 800;
-      text-transform: uppercase;
       letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
 
     .tag-project {
-      background: #fff0d6;
-      color: #70400b;
-      border: 1px solid #f0d39b;
+      color: #7042a3;
+      background: var(--pink);
     }
 
     .tag-exercise {
-      background: #f0e8ff;
-      color: #4b267d;
-      border: 1px solid #ddc9fa;
-    }
-
-    .tag-api {
-      background: #e3f7fb;
-      color: #07576a;
-      border: 1px solid #b6e8f1;
+      color: #49329a;
+      background: var(--purple-light);
     }
 
     .card-title {
@@ -350,22 +335,20 @@
     }
 
     .card-desc {
-      font-size: 0.87rem;
       color: var(--muted);
-      margin-bottom: 18px;
-      flex-grow: 1;
+      font-size: 0.88rem;
+      margin-bottom: 15px;
     }
 
     .card-path {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 0.7rem;
-      color: #655575;
-      background: #faf7ff;
-      border: 1px dashed #d6c5ea;
+      background: #faf9ff;
+      border: 1px dashed #d9cfee;
       border-radius: 8px;
-      padding: 8px;
-      margin-bottom: 15px;
+      padding: 7px 9px;
+      color: #665b7e;
+      font-size: 0.75rem;
       overflow-wrap: anywhere;
+      margin-bottom: 14px;
     }
 
     .card-actions {
@@ -375,21 +358,20 @@
     }
 
     .card-actions .btn {
-      flex: 1;
-      padding: 9px 8px;
-      font-size: 0.79rem;
-      min-width: 0;
+      flex: 1 1 100px;
+      padding: 9px 10px;
+      font-size: 0.8rem;
     }
 
     .empty-state {
       display: none;
+      padding: 35px 20px;
+      text-align: center;
       background: #ffffff;
       border: 1px dashed var(--border);
       border-radius: var(--radius);
-      padding: 40px 20px;
-      text-align: center;
-      color: var(--muted);
       margin-bottom: 30px;
+      color: var(--muted);
     }
 
     .empty-state h3 {
@@ -397,53 +379,62 @@
       margin-bottom: 6px;
     }
 
-    /* PREVIEW MODAL */
+    footer {
+      margin-top: 38px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.84rem;
+    }
+
+    footer a {
+      color: var(--purple-dark);
+      font-weight: 700;
+    }
+
+    /* Quick View popup */
 
     .preview-modal {
       position: fixed;
       inset: 0;
       z-index: 1000;
-      display: flex;
+      display: none;
       align-items: center;
       justify-content: center;
-      padding: 16px;
-      background: #211631ef;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.2s;
+      padding: 15px;
+      background: rgba(28, 18, 48, 0.72);
     }
 
     .preview-modal.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+      display: flex;
     }
 
     .preview-window {
-      width: 100%;
-      max-width: 1000px;
-      height: 85vh;
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      width: 100%;
+      max-width: 1050px;
+      height: 88vh;
       background: #ffffff;
       border-radius: 18px;
-      box-shadow: 0 25px 70px #160d2b55;
+      overflow: hidden;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
     }
 
     .preview-header {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 12px;
+      flex-wrap: wrap;
       padding: 12px 16px;
-      background: #faf7ff;
       border-bottom: 1px solid var(--border);
+      background: #faf9ff;
     }
 
     .preview-title {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       font-weight: 800;
     }
 
@@ -453,20 +444,6 @@
       gap: 8px;
     }
 
-    .close-btn {
-      border: 0;
-      border-radius: 8px;
-      background: transparent;
-      color: var(--text);
-      cursor: pointer;
-      font-size: 1.6rem;
-      padding: 0 7px;
-    }
-
-    .close-btn:hover {
-      background: #eadffc;
-    }
-
     .preview-frame {
       width: 100%;
       flex: 1;
@@ -474,32 +451,35 @@
       background: #ffffff;
     }
 
-    .preview-help {
-      display: none;
-      padding: 12px;
-      color: #4b3c5c;
-      font-size: 0.82rem;
-      background: #fff8e7;
+    .close-btn {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 5px 11px;
+      background: #ffffff;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
     }
 
-    /* TOAST AND FOOTER */
+    .close-btn:hover {
+      background: var(--pink);
+    }
 
     .toast {
       position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1100;
-      max-width: calc(100vw - 40px);
-      padding: 12px 17px;
-      border-radius: 10px;
-      background: #302344;
+      z-index: 1200;
+      bottom: 22px;
+      right: 22px;
+      max-width: calc(100% - 44px);
+      background: #2a2041;
       color: #ffffff;
+      padding: 12px 17px;
+      border-radius: 11px;
       box-shadow: var(--shadow);
-      font-size: 0.84rem;
       opacity: 0;
       transform: translateY(15px);
       pointer-events: none;
-      transition: opacity 0.25s, transform 0.25s;
+      transition: 0.2s;
     }
 
     .toast.show {
@@ -507,58 +487,30 @@
       transform: translateY(0);
     }
 
-    footer {
-      border-top: 1px solid var(--border);
-      padding-top: 24px;
-      margin-top: 38px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 0.84rem;
+    @media (min-width: 760px) {
+      .toolbar {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
 
-    footer a {
-      color: #4b267d;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
+    @media (max-width: 520px) {
       body {
-        padding: 16px 12px 40px;
+        padding: 16px 12px 35px;
       }
 
       .hero {
-        padding: 30px 22px;
+        padding: 32px 22px;
+        border-radius: 22px;
       }
 
-      .toolbar {
-        align-items: stretch;
-      }
-
-      .search-wrapper {
-        max-width: none;
-      }
-
-      .filter-pills {
-        overflow-x: auto;
-        flex-wrap: nowrap;
-        padding: 3px 0 6px;
-      }
-
-      .filter-btn {
-        flex-shrink: 0;
+      .project-card {
+        padding: 19px;
       }
 
       .preview-window {
-        height: 90vh;
-      }
-
-      .preview-header {
-        flex-wrap: wrap;
+        height: 92vh;
       }
     }
 
@@ -570,660 +522,521 @@
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
       }
-
-      .project-card:hover,
-      .btn-primary:hover {
-        transform: none;
-      }
     }
   </style>
 </head>
 
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
-<div class="container">
+  <div class="container">
 
-  <header class="hero">
-    <div class="status-badge">
-      <span class="status-dot" aria-hidden="true"></span>
-      Web Programming Portfolio
-    </div>
-
-    <h1>Prashna Rai</h1>
-
-    <p class="hero-description">
-      Welcome to my web programming portfolio! This website brings together
-      my weekly assignments, JavaScript practice, interactive projects,
-      and learning progress using HTML, CSS, and JavaScript.
-    </p>
-
-    <div class="hero-actions">
-      <a
-        href="https://prqshna-design.github.io/WEB-PORGRAMMING/"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn btn-primary">
-        Visit Live Site
-      </a>
-
-      <button class="btn btn-secondary" id="btnCopyLive" type="button">
-        Copy Portfolio URL
-      </button>
-
-      <button class="btn btn-secondary" id="btnCopyGit" type="button">
-        Copy Repository URL
-      </button>
-    </div>
-  </header>
-
-  <main id="main-content">
-
-    <section class="toolbar" aria-label="Search and filter assignments">
-      <div class="search-wrapper">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24"
-             fill="none" stroke="currentColor" stroke-width="2.5"
-             aria-hidden="true" focusable="false">
-          <circle cx="11" cy="11" r="8"></circle>
-          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>
-
-        <input
-          id="searchInput"
-          class="search-input"
-          type="search"
-          placeholder="Search weeks, assignments, or topics..."
-          aria-label="Search portfolio items">
+    <header class="hero">
+      <div class="status-badge">
+        <span class="status-dot" aria-hidden="true"></span>
+        Portfolio &amp; Coursework
       </div>
 
-      <div class="filter-pills" role="group" aria-label="Filter projects">
-        <button class="filter-btn active" data-filter="all"
-                aria-pressed="true" type="button">All Items</button>
-        <button class="filter-btn" data-filter="project"
-                aria-pressed="false" type="button">Featured Projects</button>
-        <button class="filter-btn" data-filter="exercise"
-                aria-pressed="false" type="button">Weekly Exercises</button>
+      <h1 class="hero-title">Prashna Rai <span>✦</span></h1>
+
+      <p class="hero-description">
+        Welcome to my Web Programming Portfolio! This website showcases
+        my weekly coursework, HTML and CSS practice, JavaScript projects,
+        interactive exercises, and web accessibility improvements.
+      </p>
+
+      <div class="hero-actions">
+        <a
+          class="btn btn-primary"
+          href="https://prqshna-design.github.io/WEB-PORGRAMMING/"
+          target="_blank"
+          rel="noopener noreferrer">
+          Visit Live Portfolio ↗
+        </a>
+
+        <button class="btn btn-secondary" id="copyLiveBtn" type="button">
+          Copy Website URL
+        </button>
+
+        <a
+          class="btn btn-secondary"
+          href="https://github.com/prqshna-design/WEB-PORGRAMMING"
+          target="_blank"
+          rel="noopener noreferrer">
+          View GitHub Repository ↗
+        </a>
       </div>
-    </section>
+    </header>
 
-    <!-- FEATURED PROJECTS -->
+    <main id="main-content">
 
-    <section id="featuredSection" aria-labelledby="featuredHeading">
-      <div class="section-header">
-        <h2 class="section-title" id="featuredHeading">
-          Featured Projects
-          <span class="section-count" id="featuredCount">3</span>
-        </h2>
-      </div>
+      <section class="toolbar" aria-label="Search and filter projects">
+        <div class="search-wrapper">
+          <span class="search-icon" aria-hidden="true">⌕</span>
+          <label for="searchInput" class="skip-link">Search portfolio projects</label>
+          <input
+            id="searchInput"
+            class="search-input"
+            type="search"
+            placeholder="Search projects, weeks, HTML, CSS..."
+            autocomplete="off">
+        </div>
 
-      <div class="projects-grid" id="featuredGrid">
+        <div class="filter-pills" aria-label="Project category filters">
+          <button class="filter-btn active" type="button" data-filter="all" aria-pressed="true">All Items</button>
+          <button class="filter-btn" type="button" data-filter="project" aria-pressed="false">Featured Projects</button>
+          <button class="filter-btn" type="button" data-filter="exercise" aria-pressed="false">Weekly Exercises</button>
+        </div>
+      </section>
 
-        <article class="project-card" data-category="project"
-          data-keywords="week 4 javascript counter button click dark mode">
-          <div>
-            <div class="card-top">
-              <span class="tag tag-project">JavaScript</span>
-            </div>
-            <h3 class="card-title">JavaScript Interactive Tasks</h3>
-            <p class="card-desc">
-              Practice interactive webpage features, event listeners,
-              button clicks, and dynamic content updates.
-            </p>
-            <div class="card-path">WEB week4 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 4 Assignments"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
+      <section aria-labelledby="projectsHeading" id="projectsSection">
+        <div class="section-header" id="projectsHeader">
+          <h2 class="section-title" id="projectsHeading">
+            Featured Projects
+            <span class="section-count" id="projectsCount">2</span>
+          </h2>
+        </div>
 
-        <article class="project-card" data-category="project"
-          data-keywords="week 5 smart counter learning hub javascript">
-          <div>
-            <div class="card-top">
-              <span class="tag tag-project">Mini Projects</span>
-            </div>
-            <h3 class="card-title">Smart Counter &amp; Learning Hub</h3>
-            <p class="card-desc">
-              Explore my JavaScript practice, interactive counter,
-              and learning activities.
-            </p>
-            <div class="card-path">WEB week5</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 5 Projects"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
+        <div class="projects-grid" id="featuredGrid">
 
-        <article class="project-card" data-category="project"
-          data-keywords="week 6 random joke generator api fetch localstorage favourites">
-          <div>
-            <div class="card-top">
-              <span class="tag tag-api">API Project</span>
-            </div>
-            <h3 class="card-title">Random Joke Corner</h3>
-            <p class="card-desc">
-              A JavaScript project that retrieves jokes from an API
-              and practices working with asynchronous data.
-            </p>
-            <div class="card-path">WEB week6 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Random Joke Corner"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
+          <article class="project-card"
+            data-category="project"
+            data-keywords="javascript game number guessing cookie interactive">
 
-      </div>
-    </section>
-
-    <!-- WEEKLY EXERCISES -->
-
-    <section id="exercisesSection" aria-labelledby="exercisesHeading">
-      <div class="section-header">
-        <h2 class="section-title" id="exercisesHeading">
-          Weekly Web Programming Exercises
-          <span class="section-count" id="exercisesCount">12</span>
-        </h2>
-      </div>
-
-      <div class="projects-grid" id="exercisesGrid">
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 2 monday html basics markup">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 02 · Monday</span></div>
-            <h3 class="card-title">Week 2 Monday</h3>
-            <p class="card-desc">HTML practice and foundational webpage exercises.</p>
-            <div class="card-path">WEB week2 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 2 Monday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 2 friday html css styles">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 02 · Friday</span></div>
-            <h3 class="card-title">Week 2 Friday</h3>
-            <p class="card-desc">More HTML and CSS exercises from Friday's class.</p>
-            <div class="card-path">WEB week2 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 2 Friday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 3 monday html css forms">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 03 · Monday</span></div>
-            <h3 class="card-title">Week 3 Monday</h3>
-            <p class="card-desc">HTML practice and webpage layout exercises.</p>
-            <div class="card-path">WEB week3 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 3 Monday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 3 friday css grid flexbox layout">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 03 · Friday</span></div>
-            <h3 class="card-title">Week 3 Friday</h3>
-            <p class="card-desc">More practice with webpage structure and styling.</p>
-            <div class="card-path">WEB week3 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 3 Friday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 4 monday javascript dom events functions">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 04</span></div>
-            <h3 class="card-title">Week 4 · JavaScript</h3>
-            <p class="card-desc">JavaScript practice, DOM interactions, and event handling.</p>
-            <div class="card-path">WEB week4 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 4 Assignments"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 5 smart counter learning hub javascript">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 05</span></div>
-            <h3 class="card-title">Week 5 · JavaScript Practice</h3>
-            <p class="card-desc">Interactive JavaScript exercises and mini projects.</p>
-            <div class="card-path">WEB week5</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 5 Assignments"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 6 monday joke generator api fetch localstorage">
-          <div>
-            <div class="card-top"><span class="tag tag-api">Week 06 · Monday</span></div>
-            <h3 class="card-title">Week 6 Monday · Joke Corner</h3>
-            <p class="card-desc">Fetch data from an API and practice JavaScript with real responses.</p>
-            <div class="card-path">WEB week6 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 6 Monday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 6 friday api weather cryptocurrency country github dog">
-          <div>
-            <div class="card-top"><span class="tag tag-api">Week 06 · Friday</span></div>
-            <h3 class="card-title">Week 6 Friday · API Projects</h3>
-            <p class="card-desc">API exercises involving weather, cryptocurrency, country data, GitHub, and more.</p>
-            <div class="card-path">WEB week6 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 6 Friday API Projects"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 7 accessibility lighthouse contrast keyboard aria">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 07</span></div>
-            <h3 class="card-title">Week 7 · Web Accessibility</h3>
-            <p class="card-desc">Accessibility practice and improvements for more usable web pages.</p>
-            <div class="card-path">WEB week7</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 7 Assignments"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 8 monday html forms validation">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 08 · Monday</span></div>
-            <h3 class="card-title">Week 8 Monday · Forms</h3>
-            <p class="card-desc">Form structure, inputs, and form-related web programming exercises.</p>
-            <div class="card-path">WEB week8 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 8 Monday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 8 friday forms validation accessibility">
-          <div>
-            <div class="card-top"><span class="tag tag-exercise">Week 08 · Friday</span></div>
-            <h3 class="card-title">Week 8 Friday · Form Practice</h3>
-            <p class="card-desc">Continue practicing forms and related web programming skills.</p>
-            <div class="card-path">WEB week8 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <button class="btn btn-secondary quick-preview-btn"
-              data-title="Week 8 Friday"
-              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29"
-              type="button">Quick View</button>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29"
-              target="_blank" rel="noopener noreferrer">Open Full</a>
-          </div>
-        </article>
-
-        <!-- WEEK 9 ACCESSIBILITY REPORT -->
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 9 web accessibility lighthouse audit before after">
-          <div>
-            <div class="card-top">
-              <span class="tag tag-exercise">Week 09</span>
+            <div>
+              <div class="card-top"><span class="tag tag-project">Mini Game</span></div>
+              <h3 class="card-title">Find the Cookie</h3>
+              <p class="card-desc">
+                An interactive number-guessing game built using JavaScript,
+                conditions, event handling, and DOM manipulation.
+              </p>
+              <div class="card-path">my projects/number game.html</div>
             </div>
 
-            <h3 class="card-title">Week 9 · Web Accessibility</h3>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button"
+                data-title="Find the Cookie" data-url="my%20projects/number%20game.html">
+                Quick View
+              </button>
+              <a class="btn btn-primary" href="my%20projects/number%20game.html"
+                target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
 
-            <p class="card-desc">
-              Tested my portfolio using Google Lighthouse, compared
-              before-and-after accessibility results, and documented
-              three accessibility improvements.
-            </p>
+          <article class="project-card"
+            data-category="project"
+            data-keywords="website design html css responsive creative">
 
-            <div class="card-path">WEB week9/accessibility.html</div>
-          </div>
+            <div>
+              <div class="card-top"><span class="tag tag-project">Web Design</span></div>
+              <h3 class="card-title">My Website Project</h3>
+              <p class="card-desc">
+                A website project demonstrating HTML structure, CSS styling,
+                page layout, and responsive design.
+              </p>
+              <div class="card-path">my projects/my website.html</div>
+            </div>
 
-          <div class="card-actions">
-            <a class="btn btn-secondary"
-              href="WEB%20week9/accessibility.html">
-              View Report
-            </a>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button"
+                data-title="My Website Project" data-url="my%20projects/my%20website.html">
+                Quick View
+              </button>
+              <a class="btn btn-primary" href="my%20projects/my%20website.html"
+                target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
 
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9"
-              target="_blank"
-              rel="noopener noreferrer">
-              Open Files
-            </a>
-          </div>
-        </article>
+        </div>
+      </section>
 
-      </div>
-    </section>
+      <section aria-labelledby="exercisesHeading" id="exercisesSection">
+        <div class="section-header" id="exercisesHeader">
+          <h2 class="section-title" id="exercisesHeading">
+            Weekly Web Programming Exercises
+            <span class="section-count" id="exercisesCount">12</span>
+          </h2>
+        </div>
 
-    <div class="empty-state" id="emptyState" role="status" aria-live="polite">
-      <h3>No matching assignments found</h3>
-      <p>Try another search term or select “All Items”.</p>
-    </div>
+        <div class="projects-grid" id="exercisesGrid">
 
-  </main>
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 2 monday html basics tags structure">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 02</span></div>
+              <h3 class="card-title">Week 2 Monday</h3>
+              <p class="card-desc">Practice with HTML document structure, text, headings, links, and basic elements.</p>
+              <div class="card-path">week2(mon)/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 2 Monday" data-url="week2(mon)/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week2(mon)/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
 
-  <footer>
-    <p>Made with 💜 by Prashna Rai</p>
-    <p>
-      Web Programming Portfolio ·
-      <a href="https://github.com/prqshna-design/WEB-PORGRAMMING"
-         target="_blank" rel="noopener noreferrer">GitHub Repository</a>
-    </p>
-  </footer>
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 2 friday css styles selectors colors">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 02</span></div>
+              <h3 class="card-title">Week 2 Friday</h3>
+              <p class="card-desc">Practice with CSS styling, selectors, colors, spacing, and the box model.</p>
+              <div class="card-path">week2 fri/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 2 Friday" data-url="week2%20fri/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week2%20fri/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
 
-</div>
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 3 monday forms lists tables html">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 03</span></div>
+              <h3 class="card-title">Week 3 Monday</h3>
+              <p class="card-desc">HTML forms, input fields, lists, tables, and semantic page structure.</p>
+              <div class="card-path">week3(mon)/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 3 Monday" data-url="week3(mon)/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week3(mon)/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
 
-<!-- QUICK VIEW MODAL -->
-<div class="preview-modal" id="previewModal"
-     role="dialog" aria-modal="true"
-     aria-labelledby="previewModalTitle" aria-hidden="true">
-  <div class="preview-window">
-    <div class="preview-header">
-      <span class="preview-title" id="previewModalTitle">Assignment Preview</span>
-      <div class="preview-header-actions">
-        <a id="previewExternalLink" href="#"
-           class="btn btn-secondary" target="_blank"
-           rel="noopener noreferrer">Open in GitHub</a>
-        <button class="close-btn" id="closeModalBtn"
-                type="button" aria-label="Close preview">&times;</button>
-      </div>
-    </div>
-    <p class="preview-help" id="previewHelp">
-      GitHub folder previews may not load inside this window.
-      Use “Open in GitHub” to browse the files and open the assignment.
-    </p>
-    <iframe class="preview-frame" id="previewIframe"
-            title="Assignment preview" src="about:blank"></iframe>
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 3 friday flexbox grid responsive layout">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 03</span></div>
+              <h3 class="card-title">Week 3 Friday</h3>
+              <p class="card-desc">CSS layouts, Flexbox, Grid, responsive cards, and spacing.</p>
+              <div class="card-path">week3(fri)/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 3 Friday" data-url="week3(fri)/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week3(fri)/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 4 javascript dom events counter dark mode">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 04</span></div>
+              <h3 class="card-title">Week 4 - JavaScript</h3>
+              <p class="card-desc">JavaScript fundamentals, functions, events, DOM updates, and interactive controls.</p>
+              <div class="card-path">week4(mon).html/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 4 - JavaScript" data-url="week4(mon).html/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week4(mon).html/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 5 javascript input conditions loops arrays localstorage">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 05</span></div>
+              <h3 class="card-title">Week 5 - JavaScript Basics</h3>
+              <p class="card-desc">Practice with user input, conditions, loops, arrays, DOM updates, and localStorage.</p>
+              <div class="card-path">week5/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 5 - JavaScript Basics" data-url="week5/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week5/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 6 monday api fetch random joke favourites">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 06</span></div>
+              <h3 class="card-title">Week 6 Monday - Joke Generator</h3>
+              <p class="card-desc">Fetch random jokes from an API and save favourite jokes in the browser.</p>
+              <div class="card-path">week6(mon)/task1.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 6 Monday - Joke Generator" data-url="week6(mon)/task1.html">Quick View</button>
+              <a class="btn btn-primary" href="week6(mon)/task1.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 6 friday api weather cryptocurrency data explorer">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 06</span></div>
+              <h3 class="card-title">Week 6 Friday - API Projects</h3>
+              <p class="card-desc">Explore API-based projects involving data, weather, and cryptocurrency.</p>
+              <div class="card-path">week6(fri)/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 6 Friday - API Projects" data-url="week6(fri)/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week6(fri)/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 7 book search open library api">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 07</span></div>
+              <h3 class="card-title">Week 7 - Book Search</h3>
+              <p class="card-desc">Search for books and explore information retrieved from the Open Library API.</p>
+              <div class="card-path">week 7/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 7 - Book Search" data-url="week%207/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week%207/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 8 monday contact form student registration">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 08</span></div>
+              <h3 class="card-title">Week 8 Monday - Forms</h3>
+              <p class="card-desc">Practice with contact forms, registration forms, labels, and user input.</p>
+              <div class="card-path">week8(mon)/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 8 Monday - Forms" data-url="week8(mon)/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week8(mon)/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 8 friday registration form validation">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 08</span></div>
+              <h3 class="card-title">Week 8 Friday - Registration</h3>
+              <p class="card-desc">Registration form practice, form validation, and improved input feedback.</p>
+              <div class="card-path">week8(fri)/index.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button" data-title="Week 8 Friday - Registration" data-url="week8(fri)/index.html">Quick View</button>
+              <a class="btn btn-primary" href="week8(fri)/index.html" target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+          <article class="project-card" data-category="exercise"
+            data-keywords="week 9 accessibility lighthouse audit contrast keyboard screen reader">
+            <div>
+              <div class="card-top"><span class="tag tag-exercise">Week 09</span></div>
+              <h3 class="card-title">Week 9 - Accessibility Audit</h3>
+              <p class="card-desc">
+                My Lighthouse accessibility audit, before-and-after screenshots,
+                and documented improvements to make a webpage more accessible.
+              </p>
+              <div class="card-path">WEB week9/accessibility.html</div>
+            </div>
+            <div class="card-actions">
+              <button class="btn btn-secondary quick-preview-btn" type="button"
+                data-title="Week 9 - Accessibility Audit"
+                data-url="WEB%20week9/accessibility.html">
+                Quick View
+              </button>
+              <a class="btn btn-primary"
+                href="WEB%20week9/accessibility.html"
+                target="_blank" rel="noopener noreferrer">Open Full ↗</a>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section class="empty-state" id="emptyState" aria-live="polite">
+        <h3>No matching projects found</h3>
+        <p>Try another keyword, such as HTML, CSS, JavaScript, or Week 9.</p>
+      </section>
+
+    </main>
+
+    <footer>
+      <p>Built with HTML, CSS, and JavaScript.</p>
+      <p>
+        <a href="https://github.com/prqshna-design/WEB-PORGRAMMING"
+           target="_blank" rel="noopener noreferrer">View my GitHub repository</a>
+      </p>
+    </footer>
   </div>
-</div>
 
-<div class="toast" id="toastNotification" role="status" aria-live="polite"></div>
+  <!-- Quick View modal -->
+  <div class="preview-modal" id="previewModal"
+       role="dialog" aria-modal="true" aria-labelledby="previewTitle"
+       aria-hidden="true">
+    <div class="preview-window">
+      <div class="preview-header">
+        <h2 class="preview-title" id="previewTitle">Project Preview</h2>
 
-<script>
-(function () {
-  "use strict";
+        <div class="preview-header-actions">
+          <a class="btn btn-secondary" id="previewExternalLink"
+             href="#" target="_blank" rel="noopener noreferrer">Open Tab ↗</a>
+          <button class="close-btn" id="closeModalBtn"
+                  type="button" aria-label="Close project preview">&times;</button>
+        </div>
+      </div>
 
-  const searchInput = document.getElementById("searchInput");
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
+      <iframe class="preview-frame" id="previewIframe"
+              title="Selected project preview"
+              src="about:blank"></iframe>
+    </div>
+  </div>
 
-  const featuredSection = document.getElementById("featuredSection");
-  const exercisesSection = document.getElementById("exercisesSection");
-  const featuredGrid = document.getElementById("featuredGrid");
-  const exercisesGrid = document.getElementById("exercisesGrid");
+  <div class="toast" id="toastNotification" role="status" aria-live="polite">
+    Link copied!
+  </div>
 
-  const featuredCount = document.getElementById("featuredCount");
-  const exercisesCount = document.getElementById("exercisesCount");
-  const emptyState = document.getElementById("emptyState");
+  <script>
+    (() => {
+      "use strict";
 
-  let currentFilter = "all";
+      const searchInput = document.getElementById("searchInput");
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const cards = document.querySelectorAll(".project-card");
+      const featuredGrid = document.getElementById("featuredGrid");
+      const exercisesGrid = document.getElementById("exercisesGrid");
+      const projectsHeader = document.getElementById("projectsHeader");
+      const exercisesHeader = document.getElementById("exercisesHeader");
+      const projectsCount = document.getElementById("projectsCount");
+      const exercisesCount = document.getElementById("exercisesCount");
+      const emptyState = document.getElementById("emptyState");
 
-  function applyFilters() {
-    const query = searchInput.value.toLowerCase().trim();
+      let currentFilter = "all";
 
-    let visibleTotal = 0;
-    let visibleFeatured = 0;
-    let visibleExercises = 0;
+      function applyFilter() {
+        const query = searchInput.value.toLowerCase().trim();
+        let totalVisible = 0;
+        let projectVisible = 0;
+        let exerciseVisible = 0;
 
-    cards.forEach(function (card) {
-      const title = card.querySelector(".card-title").textContent.toLowerCase();
-      const description = card.querySelector(".card-desc").textContent.toLowerCase();
-      const keywords = (card.dataset.keywords || "").toLowerCase();
-      const path = card.querySelector(".card-path").textContent.toLowerCase();
-      const category = card.dataset.category;
+        cards.forEach((card) => {
+          const title = card.querySelector(".card-title").textContent.toLowerCase();
+          const description = card.querySelector(".card-desc").textContent.toLowerCase();
+          const keywords = (card.dataset.keywords || "").toLowerCase();
+          const category = card.dataset.category;
 
-      const matchesText =
-        !query ||
-        title.includes(query) ||
-        description.includes(query) ||
-        keywords.includes(query) ||
-        path.includes(query);
+          const matchesText =
+            !query ||
+            title.includes(query) ||
+            description.includes(query) ||
+            keywords.includes(query);
 
-      const matchesFilter =
-        currentFilter === "all" || category === currentFilter;
+          const matchesFilter =
+            currentFilter === "all" || category === currentFilter;
 
-      const visible = matchesText && matchesFilter;
+          const visible = matchesText && matchesFilter;
+          card.style.display = visible ? "flex" : "none";
 
-      card.style.display = visible ? "flex" : "none";
+          if (visible) {
+            totalVisible++;
 
-      if (visible) {
-        visibleTotal++;
-        if (category === "project") visibleFeatured++;
-        if (category === "exercise") visibleExercises++;
+            if (category === "project") projectVisible++;
+            if (category === "exercise") exerciseVisible++;
+          }
+        });
+
+        projectsCount.textContent = projectVisible;
+        exercisesCount.textContent = exerciseVisible;
+
+        projectsHeader.style.display = projectVisible ? "flex" : "none";
+        featuredGrid.style.display = projectVisible ? "grid" : "none";
+
+        exercisesHeader.style.display = exerciseVisible ? "flex" : "none";
+        exercisesGrid.style.display = exerciseVisible ? "grid" : "none";
+
+        emptyState.style.display = totalVisible ? "none" : "block";
       }
-    });
 
-    featuredCount.textContent = visibleFeatured;
-    exercisesCount.textContent = visibleExercises;
+      searchInput.addEventListener("input", applyFilter);
 
-    featuredSection.style.display = visibleFeatured ? "block" : "none";
-    featuredGrid.style.display = visibleFeatured ? "grid" : "none";
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          currentFilter = button.dataset.filter;
 
-    exercisesSection.style.display = visibleExercises ? "block" : "none";
-    exercisesGrid.style.display = visibleExercises ? "grid" : "none";
+          filterButtons.forEach((item) => {
+            const selected = item === button;
+            item.classList.toggle("active", selected);
+            item.setAttribute("aria-pressed", String(selected));
+          });
 
-    emptyState.style.display = visibleTotal === 0 ? "block" : "none";
-  }
-
-  searchInput.addEventListener("input", applyFilters);
-
-  filterButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      filterButtons.forEach(function (item) {
-        item.classList.remove("active");
-        item.setAttribute("aria-pressed", "false");
+          applyFilter();
+        });
       });
 
-      button.classList.add("active");
-      button.setAttribute("aria-pressed", "true");
-      currentFilter = button.dataset.filter;
+      // Quick View modal
+      const modal = document.getElementById("previewModal");
+      const iframe = document.getElementById("previewIframe");
+      const modalTitle = document.getElementById("previewTitle");
+      const externalLink = document.getElementById("previewExternalLink");
+      const closeButton = document.getElementById("closeModalBtn");
+      let previousFocus = null;
 
-      applyFilters();
-    });
-  });
-
-  // Quick View modal
-  const modal = document.getElementById("previewModal");
-  const iframe = document.getElementById("previewIframe");
-  const modalTitle = document.getElementById("previewModalTitle");
-  const externalLink = document.getElementById("previewExternalLink");
-  const closeButton = document.getElementById("closeModalBtn");
-  const previewHelp = document.getElementById("previewHelp");
-
-  let previousFocus = null;
-
-  function openPreview(title, url) {
-    previousFocus = document.activeElement;
-    modalTitle.textContent = title;
-    externalLink.href = url;
-
-    iframe.src = "about:blank";
-    iframe.style.display = "none";
-    previewHelp.style.display = "block";
-
-    modal.classList.add("active");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-    closeButton.focus();
-  }
-
-  function closePreview() {
-    modal.classList.remove("active");
-    modal.setAttribute("aria-hidden", "true");
-    iframe.src = "about:blank";
-    document.body.style.overflow = "";
-
-    if (previousFocus) previousFocus.focus();
-  }
-
-  document.querySelectorAll(".quick-preview-btn").forEach(function (button) {
-    button.addEventListener("click", function () {
-      openPreview(button.dataset.title, button.dataset.url);
-    });
-  });
-
-  closeButton.addEventListener("click", closePreview);
-
-  modal.addEventListener("click", function (event) {
-    if (event.target === modal) closePreview();
-  });
-
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && modal.classList.contains("active")) {
-      closePreview();
-    }
-  });
-
-  // Copy buttons
-  const toast = document.getElementById("toastNotification");
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add("show");
-
-    window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(function () {
-      toast.classList.remove("show");
-    }, 2500);
-  }
-
-  async function copyText(value, successMessage) {
-    try {
-      if (navigator.clipboard && window.isSecureContext) {
-        await navigator.clipboard.writeText(value);
-      } else {
-        const temporaryInput = document.createElement("textarea");
-        temporaryInput.value = value;
-        temporaryInput.style.position = "fixed";
-        temporaryInput.style.opacity = "0";
-        document.body.appendChild(temporaryInput);
-        temporaryInput.select();
-
-        const copied = document.execCommand("copy");
-        temporaryInput.remove();
-
-        if (!copied) throw new Error("Copy failed");
+      function openModal(title, url, button) {
+        previousFocus = button;
+        modalTitle.textContent = title;
+        iframe.src = url;
+        externalLink.href = url;
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
       }
 
-      showToast(successMessage);
-    } catch (error) {
-      showToast("Copy failed. You can copy the URL from the address bar.");
-    }
-  }
+      function closeModal() {
+        modal.classList.remove("active");
+        modal.setAttribute("aria-hidden", "true");
+        iframe.src = "about:blank";
+        document.body.style.overflow = "";
 
-  document.getElementById("btnCopyLive").addEventListener("click", function () {
-    copyText(
-      "https://prqshna-design.github.io/WEB-PORGRAMMING/",
-      "Portfolio URL copied!"
-    );
-  });
+        if (previousFocus) previousFocus.focus();
+      }
 
-  document.getElementById("btnCopyGit").addEventListener("click", function () {
-    copyText(
-      "https://github.com/prqshna-design/WEB-PORGRAMMING",
-      "Repository URL copied!"
-    );
-  });
+      document.querySelectorAll(".quick-preview-btn").forEach((button) => {
+        button.addEventListener("click", () => {
+          openModal(
+            button.dataset.title,
+            button.dataset.url,
+            button
+          );
+        });
+      });
 
-  applyFilters();
-})();
-</script>
+      closeButton.addEventListener("click", closeModal);
 
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && modal.classList.contains("active")) {
+          closeModal();
+        }
+      });
+
+      // Copy links and display a small notification
+      const toast = document.getElementById("toastNotification");
+      let toastTimer;
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+
+        toastTimer = setTimeout(() => {
+          toast.classList.remove("show");
+        }, 2500);
+      }
+
+      document.getElementById("copyLiveBtn").addEventListener("click", async () => {
+        const url = "https://prqshna-design.github.io/WEB-PORGRAMMING/";
+
+        try {
+          await navigator.clipboard.writeText(url);
+          showToast("Portfolio URL copied!");
+        } catch (error) {
+          showToast("Copy unavailable. Copy the URL from your browser.");
+        }
+      });
+
+      applyFilter();
+    })();
+  </script>
 </body>
 </html>
+```
