@@ -17,13 +17,12 @@
       --card: #ffffff;
       --border: #e7dcf7;
       --text: #302344;
-      --muted: #776b88;
-      --purple: #8050c8;
-      --purple-dark: #6037a1;
+      --muted: #655575;
+      --purple: #7040b0;
+      --purple-dark: #4b267d;
       --purple-light: #f3ebff;
-      --pink: #e8bce9;
       --green-light: #e8faf0;
-      --green: #168653;
+      --green: #126b42;
       --shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
       --radius: 18px;
     }
@@ -39,7 +38,7 @@
     }
 
     body {
-      font-family: 'Plus Jakarta Sans', Arial, sans-serif;
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
       color: var(--text);
       background:
         radial-gradient(at 0% 0%, #eee2ff 0, transparent 40%),
@@ -56,6 +55,30 @@
 
     a {
       color: inherit;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #7040b0;
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 12px;
+      z-index: 2000;
+      padding: 12px 16px;
+      background: #ffffff;
+      color: #4b267d;
+      border: 2px solid #4b267d;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .skip-link:focus {
+      top: 12px;
     }
 
     .container {
@@ -81,7 +104,7 @@
       height: 5px;
       position: absolute;
       inset: 0 0 auto;
-      background: linear-gradient(90deg, #8050c8, #d8a8ed, #f1c5e8);
+      background: linear-gradient(90deg, #7040b0, #d8a8ed, #f1c5e8);
     }
 
     .status-badge {
@@ -102,7 +125,7 @@
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background: #20a464;
+      background: #168653;
     }
 
     .hero h1 {
@@ -111,11 +134,7 @@
       line-height: 1.2;
       letter-spacing: -1.5px;
       margin-bottom: 12px;
-      background: linear-gradient(120deg, #302344, #8050c8);
-      color: var(--purple);
-      background-clip: text;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: #4b267d;
     }
 
     .hero-description {
@@ -143,37 +162,28 @@
       font-size: 0.86rem;
       font-weight: 700;
       cursor: pointer;
-      transition: 0.2s ease;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
     .btn-primary {
-      color: white;
-      background: var(--purple);
-      box-shadow: 0 4px 10px #8050c82b;
+      color: #ffffff;
+      background: #7040b0;
     }
 
     .btn-primary:hover {
-      background: var(--purple-dark);
+      background: #4b267d;
       transform: translateY(-2px);
     }
 
     .btn-secondary {
       color: var(--text);
-      background: white;
+      background: #ffffff;
       border-color: var(--border);
     }
 
     .btn-secondary:hover {
       background: var(--purple-light);
-      border-color: #cdb5ef;
-    }
-
-    .btn:focus-visible,
-    .filter-btn:focus-visible,
-    .search-input:focus-visible,
-    .close-btn:focus-visible {
-      outline: 3px solid #a78bfa;
-      outline-offset: 3px;
+      border-color: #b99bdf;
     }
 
     /* SEARCH AND FILTERS */
@@ -199,23 +209,23 @@
       left: 14px;
       top: 50%;
       transform: translateY(-50%);
-      color: #9585aa;
+      color: #655575;
       pointer-events: none;
     }
 
     .search-input {
       width: 100%;
       padding: 12px 15px 12px 42px;
-      background: white;
+      background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 12px;
       color: var(--text);
       box-shadow: var(--shadow);
     }
 
-    .search-input:focus {
-      border-color: var(--purple);
-      outline: 2px solid #8050c82b;
+    .search-input::placeholder {
+      color: #655575;
+      opacity: 1;
     }
 
     .filter-pills {
@@ -228,8 +238,8 @@
       padding: 8px 14px;
       border: 1px solid var(--border);
       border-radius: 999px;
-      background: white;
-      color: var(--muted);
+      background: #ffffff;
+      color: #655575;
       font-size: 0.82rem;
       font-weight: 700;
       cursor: pointer;
@@ -241,9 +251,9 @@
     }
 
     .filter-btn.active {
-      background: var(--purple);
-      color: white;
-      border-color: var(--purple);
+      background: #7040b0;
+      color: #ffffff;
+      border-color: #7040b0;
     }
 
     /* SECTION HEADINGS */
@@ -267,7 +277,7 @@
       padding: 2px 9px;
       border-radius: 999px;
       background: #eadffc;
-      color: var(--purple-dark);
+      color: #4b267d;
       font-size: 0.75rem;
     }
 
@@ -317,19 +327,19 @@
 
     .tag-project {
       background: #fff0d6;
-      color: #8b5413;
-      border: 1px solid #f7dfaa;
+      color: #70400b;
+      border: 1px solid #f0d39b;
     }
 
     .tag-exercise {
       background: #f0e8ff;
-      color: #6336a1;
+      color: #4b267d;
       border: 1px solid #ddc9fa;
     }
 
     .tag-api {
       background: #e3f7fb;
-      color: #12677a;
+      color: #07576a;
       border: 1px solid #b6e8f1;
     }
 
@@ -347,11 +357,11 @@
     }
 
     .card-path {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: "JetBrains Mono", monospace;
       font-size: 0.7rem;
-      color: #847494;
+      color: #655575;
       background: #faf7ff;
-      border: 1px dashed #e4d7f3;
+      border: 1px dashed #d6c5ea;
       border-radius: 8px;
       padding: 8px;
       margin-bottom: 15px;
@@ -372,7 +382,7 @@
 
     .empty-state {
       display: none;
-      background: white;
+      background: #ffffff;
       border: 1px dashed var(--border);
       border-radius: var(--radius);
       padding: 40px 20px;
@@ -396,8 +406,7 @@
       align-items: center;
       justify-content: center;
       padding: 16px;
-      background: #211631aa;
-      backdrop-filter: blur(5px);
+      background: #211631eF;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -417,7 +426,7 @@
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      background: white;
+      background: #ffffff;
       border-radius: 18px;
       box-shadow: 0 25px 70px #160d2b55;
     }
@@ -461,13 +470,13 @@
       width: 100%;
       flex: 1;
       border: 0;
-      background: white;
+      background: #ffffff;
     }
 
     .preview-help {
       display: none;
       padding: 12px;
-      color: var(--muted);
+      color: #4b3c5c;
       font-size: 0.82rem;
       background: #fff8e7;
     }
@@ -483,13 +492,13 @@
       padding: 12px 17px;
       border-radius: 10px;
       background: #302344;
-      color: white;
+      color: #ffffff;
       box-shadow: var(--shadow);
       font-size: 0.84rem;
       opacity: 0;
       transform: translateY(15px);
       pointer-events: none;
-      transition: 0.25s;
+      transition: opacity 0.25s, transform 0.25s;
     }
 
     .toast.show {
@@ -507,7 +516,7 @@
     }
 
     footer a {
-      color: var(--purple-dark);
+      color: #4b267d;
       font-weight: 700;
       text-decoration: none;
     }
@@ -546,19 +555,32 @@
       .preview-window {
         height: 90vh;
       }
+
+      .preview-header {
+        flex-wrap: wrap;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         scroll-behavior: auto !important;
         transition-duration: 0.01ms !important;
         animation-duration: 0.01ms !important;
+      }
+
+      .project-card:hover,
+      .btn-primary:hover {
+        transform: none;
       }
     }
   </style>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <div class="container">
 
   <header class="hero">
@@ -581,7 +603,7 @@
         target="_blank"
         rel="noopener noreferrer"
         class="btn btn-primary">
-        ↗ Visit Live Site
+        Visit Live Site
       </a>
 
       <button class="btn btn-secondary" id="btnCopyLive" type="button">
@@ -594,315 +616,352 @@
     </div>
   </header>
 
-  <section class="toolbar" aria-label="Search and filter assignments">
-    <div class="search-wrapper">
-      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24"
-           fill="none" stroke="currentColor" stroke-width="2.5"
-           aria-hidden="true">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
+  <main id="main-content">
 
-      <input
-        id="searchInput"
-        class="search-input"
-        type="search"
-        placeholder="Search weeks, assignments, or topics..."
-        aria-label="Search portfolio items">
-    </div>
+    <section class="toolbar" aria-label="Search and filter assignments">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2.5"
+             aria-hidden="true" focusable="false">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
 
-    <div class="filter-pills" aria-label="Filter projects">
-      <button class="filter-btn active" data-filter="all" type="button">All Items</button>
-      <button class="filter-btn" data-filter="project" type="button">Featured Projects</button>
-      <button class="filter-btn" data-filter="exercise" type="button">Weekly Exercises</button>
-    </div>
-  </section>
+        <input
+          id="searchInput"
+          class="search-input"
+          type="search"
+          placeholder="Search weeks, assignments, or topics..."
+          aria-label="Search portfolio items">
+      </div>
 
-  <!-- FEATURED PROJECTS -->
+      <div class="filter-pills" role="group" aria-label="Filter projects">
+        <button class="filter-btn active" data-filter="all"
+                aria-pressed="true" type="button">All Items</button>
+        <button class="filter-btn" data-filter="project"
+                aria-pressed="false" type="button">Featured Projects</button>
+        <button class="filter-btn" data-filter="exercise"
+                aria-pressed="false" type="button">Weekly Exercises</button>
+      </div>
+    </section>
 
-  <section id="featuredSection">
-    <div class="section-header">
-      <h2 class="section-title">
-        Featured Projects
-        <span class="section-count" id="featuredCount">3</span>
-      </h2>
-    </div>
+    <!-- FEATURED PROJECTS -->
 
-    <div class="projects-grid" id="featuredGrid">
+    <section id="featuredSection" aria-labelledby="featuredHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="featuredHeading">
+          Featured Projects
+          <span class="section-count" id="featuredCount">3</span>
+        </h2>
+      </div>
 
-      <article class="project-card"
-        data-category="project"
-        data-keywords="week 4 javascript counter button click dark mode">
-        <div>
-          <div class="card-top">
-            <span class="tag tag-project">JavaScript</span>
+      <div class="projects-grid" id="featuredGrid">
+
+        <article class="project-card" data-category="project"
+          data-keywords="week 4 javascript counter button click dark mode">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-project">JavaScript</span>
+            </div>
+            <h3 class="card-title">JavaScript Interactive Tasks</h3>
+            <p class="card-desc">
+              Practice interactive webpage features, event listeners,
+              button clicks, and dynamic content updates.
+            </p>
+            <div class="card-path">WEB week4 (mon)</div>
           </div>
-          <h3 class="card-title">JavaScript Interactive Tasks</h3>
-          <p class="card-desc">
-            Practice interactive webpage features, event listeners,
-            button clicks, and dynamic content updates.
-          </p>
-          <div class="card-path">WEB week4 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn"
-            data-title="Week 4 Assignments"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20(mon)"
-            type="button">Quick View</button>
-          <a class="btn btn-primary"
-            href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20(mon)"
-            target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="project"
-        data-keywords="week 5 smart counter learning hub javascript">
-        <div>
-          <div class="card-top">
-            <span class="tag tag-project">Mini Projects</span>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 4 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
           </div>
-          <h3 class="card-title">Smart Counter &amp; Learning Hub</h3>
-          <p class="card-desc">
-            Explore my JavaScript practice, interactive counter,
-            and learning activities.
-          </p>
-          <div class="card-path">WEB week5</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn"
-            data-title="Week 5 Projects"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-            type="button">Quick View</button>
-          <a class="btn btn-primary"
-            href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-            target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
+        </article>
 
-      <article class="project-card"
-        data-category="project"
-        data-keywords="week 6 random joke generator api fetch localstorage favourites">
-        <div>
-          <div class="card-top">
-            <span class="tag tag-api">API Project</span>
+        <article class="project-card" data-category="project"
+          data-keywords="week 5 smart counter learning hub javascript">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-project">Mini Projects</span>
+            </div>
+            <h3 class="card-title">Smart Counter &amp; Learning Hub</h3>
+            <p class="card-desc">
+              Explore my JavaScript practice, interactive counter,
+              and learning activities.
+            </p>
+            <div class="card-path">WEB week5</div>
           </div>
-          <h3 class="card-title">Random Joke Corner</h3>
-          <p class="card-desc">
-            A JavaScript project that retrieves jokes from an API
-            and practices working with asynchronous data.
-          </p>
-          <div class="card-path">WEB week6 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn"
-            data-title="Random Joke Corner"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20(mon)"
-            type="button">Quick View</button>
-          <a class="btn btn-primary"
-            href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20(mon)"
-            target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 5 Projects"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
 
+        <article class="project-card" data-category="project"
+          data-keywords="week 6 random joke generator api fetch localstorage favourites">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-api">API Project</span>
+            </div>
+            <h3 class="card-title">Random Joke Corner</h3>
+            <p class="card-desc">
+              A JavaScript project that retrieves jokes from an API
+              and practices working with asynchronous data.
+            </p>
+            <div class="card-path">WEB week6 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Random Joke Corner"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- WEEKLY EXERCISES -->
+
+    <section id="exercisesSection" aria-labelledby="exercisesHeading">
+      <div class="section-header">
+        <h2 class="section-title" id="exercisesHeading">
+          Weekly Web Programming Exercises
+          <span class="section-count" id="exercisesCount">11</span>
+        </h2>
+      </div>
+
+      <div class="projects-grid" id="exercisesGrid">
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 2 monday html basics markup">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 02 · Monday</span></div>
+            <h3 class="card-title">Week 2 Monday</h3>
+            <p class="card-desc">HTML practice and foundational webpage exercises.</p>
+            <div class="card-path">WEB week2 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 2 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 2 friday html css styles">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 02 · Friday</span></div>
+            <h3 class="card-title">Week 2 Friday</h3>
+            <p class="card-desc">More HTML and CSS exercises from Friday's class.</p>
+            <div class="card-path">WEB week2 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 2 Friday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 3 monday html css forms">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 03 · Monday</span></div>
+            <h3 class="card-title">Week 3 Monday</h3>
+            <p class="card-desc">HTML practice and webpage layout exercises.</p>
+            <div class="card-path">WEB week3 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 3 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 3 friday css grid flexbox layout">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 03 · Friday</span></div>
+            <h3 class="card-title">Week 3 Friday</h3>
+            <p class="card-desc">More practice with webpage structure and styling.</p>
+            <div class="card-path">WEB week3 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 3 Friday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 4 monday javascript dom events functions">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 04</span></div>
+            <h3 class="card-title">Week 4 · JavaScript</h3>
+            <p class="card-desc">JavaScript practice, DOM interactions, and event handling.</p>
+            <div class="card-path">WEB week4 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 4 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 5 smart counter learning hub javascript">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 05</span></div>
+            <h3 class="card-title">Week 5 · JavaScript Practice</h3>
+            <p class="card-desc">Interactive JavaScript exercises and mini projects.</p>
+            <div class="card-path">WEB week5</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 5 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 6 monday joke generator api fetch localstorage">
+          <div>
+            <div class="card-top"><span class="tag tag-api">Week 06 · Monday</span></div>
+            <h3 class="card-title">Week 6 Monday · Joke Corner</h3>
+            <p class="card-desc">Fetch data from an API and practice JavaScript with real responses.</p>
+            <div class="card-path">WEB week6 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 6 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 6 friday api weather cryptocurrency country github dog">
+          <div>
+            <div class="card-top"><span class="tag tag-api">Week 06 · Friday</span></div>
+            <h3 class="card-title">Week 6 Friday · API Projects</h3>
+            <p class="card-desc">API exercises involving weather, cryptocurrency, country data, GitHub, and more.</p>
+            <div class="card-path">WEB week6 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 6 Friday API Projects"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 7 accessibility lighthouse contrast keyboard aria">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 07</span></div>
+            <h3 class="card-title">Week 7 · Web Accessibility</h3>
+            <p class="card-desc">Accessibility practice and improvements for more usable web pages.</p>
+            <div class="card-path">WEB week7</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 7 Assignments"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 8 monday html forms validation">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 08 · Monday</span></div>
+            <h3 class="card-title">Week 8 Monday · Forms</h3>
+            <p class="card-desc">Form structure, inputs, and form-related web programming exercises.</p>
+            <div class="card-path">WEB week8 (mon)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 8 Monday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 8 friday forms validation accessibility">
+          <div>
+            <div class="card-top"><span class="tag tag-exercise">Week 08 · Friday</span></div>
+            <h3 class="card-title">Week 8 Friday · Form Practice</h3>
+            <p class="card-desc">Continue practicing forms and related web programming skills.</p>
+            <div class="card-path">WEB week8 (fri)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-secondary quick-preview-btn"
+              data-title="Week 8 Friday"
+              data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29"
+              type="button">Quick View</button>
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29"
+              target="_blank" rel="noopener noreferrer">Open Full</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <div class="empty-state" id="emptyState" role="status" aria-live="polite">
+      <h3>No matching assignments found</h3>
+      <p>Try another search term or select “All Items”.</p>
     </div>
-  </section>
 
-  <!-- WEEKLY EXERCISES -->
-
-  <section id="exercisesSection">
-    <div class="section-header">
-      <h2 class="section-title">
-        Weekly Web Programming Exercises
-        <span class="section-count" id="exercisesCount">11</span>
-      </h2>
-    </div>
-
-    <div class="projects-grid" id="exercisesGrid">
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 2 monday html basics markup">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 02 · Monday</span></div>
-          <h3 class="card-title">Week 2 Monday</h3>
-          <p class="card-desc">HTML practice and foundational webpage exercises.</p>
-          <div class="card-path">WEB week2 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 2 Monday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 2 friday html css styles">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 02 · Friday</span></div>
-          <h3 class="card-title">Week 2 Friday</h3>
-          <p class="card-desc">More HTML and CSS exercises from Friday's class.</p>
-          <div class="card-path">WEB week2 (fri)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 2 Friday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 3 monday html css forms">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 03 · Monday</span></div>
-          <h3 class="card-title">Week 3 Monday</h3>
-          <p class="card-desc">HTML practice and webpage layout exercises.</p>
-          <div class="card-path">WEB week3 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 3 Monday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 3 friday css grid flexbox layout">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 03 · Friday</span></div>
-          <h3 class="card-title">Week 3 Friday</h3>
-          <p class="card-desc">More practice with webpage structure and styling.</p>
-          <div class="card-path">WEB week3 (fri)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 3 Friday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 4 monday javascript dom events functions">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 04</span></div>
-          <h3 class="card-title">Week 4 · JavaScript</h3>
-          <p class="card-desc">JavaScript practice, DOM interactions, and event handling.</p>
-          <div class="card-path">WEB week4 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 4 Assignments"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 5 smart counter learning hub javascript">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 05</span></div>
-          <h3 class="card-title">Week 5 · JavaScript Practice</h3>
-          <p class="card-desc">Interactive JavaScript exercises and mini projects.</p>
-          <div class="card-path">WEB week5</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 5 Assignments"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 6 monday joke generator api fetch localstorage">
-        <div>
-          <div class="card-top"><span class="tag tag-api">Week 06 · Monday</span></div>
-          <h3 class="card-title">Week 6 Monday · Joke Corner</h3>
-          <p class="card-desc">Fetch data from an API and practice JavaScript with real responses.</p>
-          <div class="card-path">WEB week6 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 6 Monday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 6 friday api weather cryptocurrency country github dog">
-        <div>
-          <div class="card-top"><span class="tag tag-api">Week 06 · Friday</span></div>
-          <h3 class="card-title">Week 6 Friday · API Projects</h3>
-          <p class="card-desc">API exercises involving weather, cryptocurrency, country data, GitHub, and more.</p>
-          <div class="card-path">WEB week6 (fri)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 6 Friday API Projects"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 7 accessibility lighthouse contrast keyboard aria">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 07</span></div>
-          <h3 class="card-title">Week 7 · Web Accessibility</h3>
-          <p class="card-desc">Accessibility practice and improvements for more usable web pages.</p>
-          <div class="card-path">WEB week7</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 7 Assignments"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 8 monday html forms validation">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 08 · Monday</span></div>
-          <h3 class="card-title">Week 8 Monday · Forms</h3>
-          <p class="card-desc">Form structure, inputs, and form-related web programming exercises.</p>
-          <div class="card-path">WEB week8 (mon)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 8 Monday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-      <article class="project-card"
-        data-category="exercise"
-        data-keywords="week 8 friday forms validation accessibility">
-        <div>
-          <div class="card-top"><span class="tag tag-exercise">Week 08 · Friday</span></div>
-          <h3 class="card-title">Week 8 Friday · Form Practice</h3>
-          <p class="card-desc">Continue practicing forms and related web programming skills.</p>
-          <div class="card-path">WEB week8 (fri)</div>
-        </div>
-        <div class="card-actions">
-          <button class="btn btn-secondary quick-preview-btn" data-title="Week 8 Friday"
-            data-url="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29" type="button">Quick View</button>
-          <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29" target="_blank" rel="noopener noreferrer">Open Full</a>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <div class="empty-state" id="emptyState" role="status" aria-live="polite">
-    <h3>No matching assignments found</h3>
-    <p>Try another search term or select “All Items”.</p>
-  </div>
+  </main>
 
   <footer>
     <p>Made with 💜 by Prashna Rai</p>
@@ -925,14 +984,14 @@
       <div class="preview-header-actions">
         <a id="previewExternalLink" href="#"
            class="btn btn-secondary" target="_blank"
-           rel="noopener noreferrer">Open in GitHub ↗</a>
+           rel="noopener noreferrer">Open in GitHub</a>
         <button class="close-btn" id="closeModalBtn"
                 type="button" aria-label="Close preview">&times;</button>
       </div>
     </div>
     <p class="preview-help" id="previewHelp">
-      GitHub folder previews may not load inside this window. Use “Open in GitHub”
-      to browse the files and open the assignment you need.
+      GitHub folder previews may not load inside this window.
+      Use “Open in GitHub” to browse the files and open the assignment.
     </p>
     <iframe class="preview-frame" id="previewIframe"
             title="Assignment preview" src="about:blank"></iframe>
@@ -971,7 +1030,7 @@
       const title = card.querySelector(".card-title").textContent.toLowerCase();
       const description = card.querySelector(".card-desc").textContent.toLowerCase();
       const keywords = (card.dataset.keywords || "").toLowerCase();
-      const path = (card.querySelector(".card-path")?.textContent || "").toLowerCase();
+      const path = card.querySelector(".card-path").textContent.toLowerCase();
       const category = card.dataset.category;
 
       const matchesText =
@@ -990,7 +1049,6 @@
 
       if (visible) {
         visibleTotal++;
-
         if (category === "project") visibleFeatured++;
         if (category === "exercise") visibleExercises++;
       }
@@ -1023,14 +1081,9 @@
 
       applyFilters();
     });
-
-    button.setAttribute(
-      "aria-pressed",
-      button.classList.contains("active") ? "true" : "false"
-    );
   });
 
-  // Quick View
+  // Quick View modal
   const modal = document.getElementById("previewModal");
   const iframe = document.getElementById("previewIframe");
   const modalTitle = document.getElementById("previewModalTitle");
@@ -1045,8 +1098,6 @@
     modalTitle.textContent = title;
     externalLink.href = url;
 
-    // GitHub folder pages generally cannot be embedded in an iframe.
-    // Keep the modal useful and direct users to the actual repository page.
     iframe.src = "about:blank";
     iframe.style.display = "none";
     previewHelp.style.display = "block";
