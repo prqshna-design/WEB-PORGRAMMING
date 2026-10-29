@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 05 | Labels & Accessibility</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 32px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #352653;
+      background: linear-gradient(135deg, #f8f4ff, #eee5ff);
+      min-height: 100vh;
+    }
+
+    main {
+      background: #fff;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(104, 65, 160, 0.12);
+      border: 1px solid #e9ddff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0e7ff;
+      color: #7041b5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #7541c8;
+      margin-top: 0;
+      font-size: 1.7rem;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    .intro {
+      color: #766889;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    code {
+      background: #f2eaff;
+      color: #7041b5;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    .box {
+      border: 1px solid #e2d5f7;
+      background: #fdfbff;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .box:focus-within {
+      border-color: #a17ae4;
+      box-shadow: 0 0 0 3px rgba(155, 112, 232, 0.12);
+    }
+
+    .method-title {
+      color: #7041b5;
+      font-weight: 750;
+      margin: 0 0 8px;
+    }
+
+    label {
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .text-label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 11px 12px;
+      border: 2px solid #e2d5f7;
+      border-radius: 9px;
+      font: inherit;
+      color: #352653;
+      background: #fff;
+    }
+
+    input[type="text"]:focus {
+      outline: 3px solid #eadfff;
+      border-color: #8653d6;
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: #897b9d;
+      margin-bottom: 0;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    input[type="checkbox"] {
+      width: 19px;
+      height: 19px;
+      flex-shrink: 0;
+      accent-color: #8653d6;
+      cursor: pointer;
+      margin: 2px 0 0;
+    }
+
+    .checkbox-label {
+      line-height: 1.6;
+    }
+
+    .status {
+      background: #f2eaff;
+      color: #7041b5;
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 16px;
+      font-size: 0.9rem;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 12px;
+      color: #7541c8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #9383a9;
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      main {
+        padding: 22px 18px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <span class="tag">WEEK 8 · TASK 5</span>
+
+    <h1>Labels & Accessibility</h1>
+
+    <p class="intro">
+      Accessibility (a11y) makes websites easier for everyone to use.
+      HTML labels help users understand form controls, support screen
+      readers, and make the associated control easier to select.
+    </p>
+
+    <!-- Method 1: Explicit linking with for and id -->
+    <section class="box">
+      <p class="method-title">Method 1: Explicit Linking</p>
+
+      <label class="text-label" for="explicit-input">
+        Your name
+        <code>for="explicit-input"</code>
+      </label>
+
+      <input
+        type="text"
+        id="explicit-input"
+        placeholder="Click the label or type your name"
+        autocomplete="name"
+        aria-describedby="explicit-hint"
+      >
+
+      <p class="hint" id="explicit-hint">
+        The label's for attribute matches the input's id.
+        Clicking the label focuses the text field.
+      </p>
+    </section>
+
+    <!-- Method 2: Implicit wrapping -->
+    <section class="box">
+      <p class="method-title">Method 2: Implicit Wrapping</p>
+
+      <p class="hint">
+        The checkbox is placed inside its label, so a separate
+        for attribute is not required.
+      </p>
+
+      <div class="input-row">
+        <label class="checkbox-label" for="newsletter">
+          <input type="checkbox" id="newsletter">
+          I would like to receive website updates and announcements.
+        </label>
+      </div>
+
+      <div class="status" id="checkbox-status" aria-live="polite">
+        Status: You have not subscribed.
+      </div>
+    </section>
+
+    <a class="back" href="index.html">← Back to Index</a>
+  </main>
+
+  <footer>
+    Created by Prashna Rai | Week 8 - Task 5
+  </footer>
+
+  <script>
+    const newsletter = document.getElementById("newsletter");
+    const status = document.getElementById("checkbox-status");
+
+    newsletter.addEventListener("change", function () {
+      if (newsletter.checked) {
+        status.textContent = "Status: You have subscribed!";
+      } else {
+        status.textContent = "Status: You have not subscribed.";
+      }
+    });
+  </script>
+</body>
+</html>

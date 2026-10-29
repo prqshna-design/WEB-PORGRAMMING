@@ -1,0 +1,326 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 03 | HTML5 Input Types</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 32px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #352653;
+      background: linear-gradient(135deg, #f8f4ff, #eee5ff);
+      min-height: 100vh;
+    }
+
+    main {
+      background: #ffffff;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(104, 65, 160, 0.12);
+      border: 1px solid #e9ddff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0e7ff;
+      color: #7041b5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #7541c8;
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    .intro {
+      color: #766889;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 650;
+      font-size: 0.9rem;
+      margin-bottom: 7px;
+      color: #493568;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 13px;
+      border: 2px solid #e2d5f7;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      color: #352653;
+      background: #fdfbff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #9b70e8;
+      box-shadow: 0 0 0 3px rgba(155, 112, 232, 0.15);
+    }
+
+    input[type="color"] {
+      height: 48px;
+      padding: 4px;
+      cursor: pointer;
+      background: white;
+    }
+
+    .hint {
+      font-size: 0.82rem;
+      color: #897b9d;
+      margin: 6px 0 0;
+      line-height: 1.5;
+    }
+
+    .color-preview {
+      margin-top: 10px;
+      height: 65px;
+      border-radius: 12px;
+      border: 1px solid #e2d5f7;
+      background: #7541c8;
+      transition: background-color 0.2s;
+    }
+
+    .preview-label {
+      font-size: 0.8rem;
+      color: #766889;
+      margin-top: 6px;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 10px;
+      padding: 12px;
+      background: #8653d6;
+      color: white;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .button:hover {
+      background: #7041b5;
+      transform: translateY(-1px);
+    }
+
+    .result {
+      display: none;
+      margin-top: 18px;
+      padding: 14px;
+      background: #f4edff;
+      border: 1px solid #e2d2ff;
+      border-radius: 12px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .result strong {
+      color: #7041b5;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 24px;
+      color: #7541c8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #9383a9;
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      main {
+        padding: 22px 18px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <span class="tag">WEEK 8 · TASK 4</span>
+
+    <h1>HTML5 Input Types</h1>
+
+    <p class="intro">
+      Different HTML5 input types make forms easier to use.
+      They can provide built-in validation, native pickers,
+      and optimized mobile keyboards.
+    </p>
+
+    <form id="inputForm">
+      <div class="field">
+        <label for="t-text">Text Input</label>
+        <input
+          type="text"
+          id="t-text"
+          placeholder="Enter your name"
+          autocomplete="name"
+          required
+        >
+        <p class="hint">type="text" — accepts standard text.</p>
+      </div>
+
+      <div class="field">
+        <label for="t-email">Email Input</label>
+        <input
+          type="email"
+          id="t-email"
+          placeholder="student@gachon.ac.kr"
+          autocomplete="email"
+          required
+        >
+        <p class="hint">
+          type="email" — provides email-format validation and
+          an email-friendly keyboard on mobile.
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="t-pwd">Password Input</label>
+        <input
+          type="password"
+          id="t-pwd"
+          placeholder="Enter a password"
+          required
+          minlength="4"
+        >
+        <p class="hint">
+          type="password" — masks the characters as you type.
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="t-date">Date Input</label>
+        <input type="date" id="t-date" required>
+        <p class="hint">
+          type="date" — opens the browser's native date picker.
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="t-color">Choose Your Favorite Color</label>
+        <input type="color" id="t-color" value="#8653d6">
+
+        <div class="color-preview" id="colorPreview"></div>
+        <p class="preview-label" id="colorLabel">
+          Selected color: #8653D6
+        </p>
+
+        <p class="hint">
+          type="color" — opens the system color picker.
+        </p>
+      </div>
+
+      <button class="button" type="submit">Show My Input Details</button>
+    </form>
+
+    <div class="result" id="result" aria-live="polite"></div>
+
+    <a class="back" href="index.html">← Back to Index</a>
+  </main>
+
+  <footer>
+    Created by Prashna Rai | Week 8 - Task 4
+  </footer>
+
+  <script>
+    const colorInput = document.getElementById("t-color");
+    const colorPreview = document.getElementById("colorPreview");
+    const colorLabel = document.getElementById("colorLabel");
+    const form = document.getElementById("inputForm");
+    const result = document.getElementById("result");
+
+    // Update the color preview whenever a new color is selected.
+    colorInput.addEventListener("input", function () {
+      const selectedColor = colorInput.value;
+
+      colorPreview.style.backgroundColor = selectedColor;
+      colorLabel.textContent = "Selected color: " +
+        selectedColor.toUpperCase();
+    });
+
+    // Display the entered information after form validation.
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("t-text").value.trim();
+      const email = document.getElementById("t-email").value.trim();
+      const password = document.getElementById("t-pwd").value;
+      const date = document.getElementById("t-date").value;
+      const color = colorInput.value;
+
+      result.style.display = "block";
+      result.innerHTML = `
+        <strong>Form submitted successfully!</strong><br>
+        <strong>Name:</strong> ${escapeHTML(name)}<br>
+        <strong>Email:</strong> ${escapeHTML(email)}<br>
+        <strong>Password:</strong> •••••••• (hidden)<br>
+        <strong>Date:</strong> ${escapeHTML(date)}<br>
+        <strong>Favorite Color:</strong> ${escapeHTML(color.toUpperCase())}
+      `;
+    });
+
+    // Prevent user-entered text from being interpreted as HTML.
+    function escapeHTML(value) {
+      return value.replace(/[&<>"']/g, function (character) {
+        const entities = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        };
+
+        return entities[character];
+      });
+    }
+  </script>
+</body>
+</html>

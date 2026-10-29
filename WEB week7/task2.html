@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Week 7 Task 2 | Book Explorer</title>
+
+  <style>
+    :root {
+      --bg: #f6f3ff;
+      --white: #ffffff;
+      --purple: #7654c8;
+      --dark-purple: #583b9c;
+      --text: #29233b;
+      --muted: #777187;
+      --border: #e5dcf7;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar a {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 40px 20px 25px;
+    }
+
+    .hero h1 {
+      color: var(--purple);
+      font-size: 2.5rem;
+      margin-bottom: 5px;
+    }
+
+    .hero p {
+      color: var(--muted);
+    }
+
+    main {
+      width: 92%;
+      max-width: 1100px;
+      margin: 0 auto;
+      flex: 1;
+    }
+
+    .panel {
+      background: var(--white);
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px #7654c812;
+    }
+
+    .panel-header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .panel-header h2 {
+      font-size: 1.7rem;
+      margin-bottom: 5px;
+    }
+
+    .panel-header p {
+      color: var(--muted);
+    }
+
+    .search-form {
+      display: flex;
+      gap: 10px;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    .search-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .search-form input:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px #7654c822;
+    }
+
+    .search-form button {
+      padding: 13px 20px;
+      background: var(--purple);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .search-form button:hover {
+      background: var(--dark-purple);
+    }
+
+    .search-form button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .hint {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 15px 0 30px;
+    }
+
+    .results-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-header h2 {
+      font-size: 1.3rem;
+    }
+
+    #resultsMeta {
+      color: var(--muted);
+      font-size: 0.85rem;
+      text-align: right;
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .book {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px #7654c81c;
+    }
+
+    .book-cover {
+      height: 235px;
+      background: #eee8fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      color: var(--purple);
+      text-align: center;
+      padding: 12px;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .book-content {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .book-title {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .book-authors {
+      font-size: 0.88rem;
+      color: var(--purple);
+      margin-bottom: 12px;
+      overflow-wrap: anywhere;
+    }
+
+    .book-meta {
+      border-top: 1px solid var(--border);
+      padding-top: 10px;
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .status {
+      text-align: center;
+      padding: 45px 15px;
+      color: var(--muted);
+    }
+
+    .status .icon {
+      display: block;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid #7654c833;
+      border-top-color: var(--purple);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      background: white;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 520px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .panel {
+        padding: 20px 15px;
+      }
+
+      .search-form {
+        flex-direction: column;
+      }
+
+      .search-form button {
+        width: 100%;
+      }
+
+      .results-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .book-cover {
+        height: 180px;
+      }
+
+      .results-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      #resultsMeta {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar">
+    <a href="../index.html">My Web Portfolio</a>
+    <a href="index.html">Week 7</a>
+  </nav>
+
+  <header class="hero">
+    <h1>Book Explorer</h1>
+    <p>Find books, authors, and publication information.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+
+      <div class="panel-header">
+        <h2>📚 Discover Your Next Read</h2>
+        <p>Search the Open Library collection by book title.</p>
+      </div>
+
+      <form class="search-form" id="searchForm">
+        <input
+          type="search"
+          id="query"
+          placeholder="Try The Hobbit, Dune, or 1984..."
+          aria-label="Enter a book title"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" id="searchButton">
+          Find Books
+        </button>
+      </form>
+
+      <p class="hint">
+        Enter a title and explore the matching books.
+      </p>
+
+      <div class="results-header">
+        <h2>Bookshelf</h2>
+        <span id="resultsMeta" aria-live="polite"></span>
+      </div>
+
+      <div id="results" aria-live="polite" aria-busy="false">
+        <div class="status">
+          <span class="icon">🔎</span>
+          <p>Your search results will appear here.</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    Created by Prashna Rai | Week 7 - Task 2
+  </footer>
+
+  <script>
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("query");
+    const button = document.getElementById("searchButton");
+    const results = document.getElementById("results");
+    const resultsMeta = document.getElementById("resultsMeta");
+
+    let activeSearch = null;
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+      searchBooks();
+    });
+
+    async function searchBooks() {
+      const title = input.value.trim();
+
+      if (!title) {
+        showStatus("⚠️", "Please enter a book title.");
+        resultsMeta.textContent = "";
+        input.focus();
+        return;
+      }
+
+      // Cancel the previous search if it is still running.
+      if (activeSearch) {
+        activeSearch.abort();
+      }
+
+      const controller = new AbortController();
+      activeSearch = controller;
+
+      button.disabled = true;
+      button.textContent = "Searching...";
+      resultsMeta.textContent = "Searching...";
+      results.setAttribute("aria-busy", "true");
+
+      showLoading(title);
+
+      try {
+        const apiURL =
+          "https://openlibrary.org/search.json?title=" +
+          encodeURIComponent(title) +
+          "&limit=10";
+
+        const response = await fetch(apiURL, {
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error("Book data could not be loaded.");
+        }
+
+        const data = await response.json();
+        const books = data.docs || [];
+
+        if (books.length === 0) {
+          resultsMeta.textContent = "0 books found";
+          showStatus(
+            "📚",
+            `No books found for "${title}". Try another title.`
+          );
+          return;
+        }
+
+        resultsMeta.textContent =
+          `Showing ${books.length} of ${data.numFound.toLocaleString()} books`;
+
+        const grid = document.createElement("div");
+        grid.className = "results-grid";
+
+        books.forEach(function(book) {
+          const card = document.createElement("article");
+          card.className = "book";
+
+          // Book cover
+          const cover = document.createElement("div");
+          cover.className = "book-cover";
+
+          if (book.cover_i) {
+            const image = document.createElement("img");
+            image.src =
+              `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+            image.alt = `Cover of ${book.title || "book"}`;
+            image.loading = "lazy";
+
+            image.addEventListener("error", function() {
+              cover.replaceChildren();
+              cover.textContent = "📘 Cover unavailable";
+            }, { once: true });
+
+            cover.appendChild(image);
+          } else {
+            cover.textContent = "📘 Cover unavailable";
+          }
+
+          // Book information
+          const content = document.createElement("div");
+          content.className = "book-content";
+
+          const heading = document.createElement("h3");
+          heading.className = "book-title";
+          heading.textContent = book.title || "Untitled";
+
+          const author = document.createElement("p");
+          author.className = "book-authors";
+
+          const authors = book.author_name || [];
+
+          if (authors.length > 0) {
+            const shownAuthors = authors.slice(0, 3);
+            const remaining = authors.length - shownAuthors.length;
+
+            author.textContent =
+              "By " + shownAuthors.join(", ") +
+              (remaining > 0 ? ` and ${remaining} more` : "");
+          } else {
+            author.textContent = "Author not listed";
+          }
+
+          // Publication year and edition count
+          const meta = document.createElement("div");
+          meta.className = "book-meta";
+
+          const year = document.createElement("span");
+          year.textContent =
+            book.first_publish_year
+              ? `Year: ${book.first_publish_year}`
+              : "Year: N/A";
+
+          const edition = document.createElement("span");
+          edition.textContent =
+            book.edition_count
+              ? `${book.edition_count} editions`
+              : "";
+
+          meta.append(year, edition);
+          content.append(heading, author, meta);
+          card.append(cover, content);
+          grid.appendChild(card);
+        });
+
+        results.replaceChildren(grid);
+
+      } catch (error) {
+        if (error.name === "AbortError") {
+          return;
+        }
+
+        console.error(error);
+        resultsMeta.textContent = "";
+        showStatus(
+          "⚠️",
+          "Unable to retrieve books. Please check your connection and try again."
+        );
+
+      } finally {
+        // Only the latest search should update the button.
+        if (activeSearch === controller) {
+          activeSearch = null;
+          button.disabled = false;
+          button.textContent = "Find Books";
+          results.setAttribute("aria-busy", "false");
+        }
+      }
+    }
+
+    function showStatus(emoji, message) {
+      const box = document.createElement("div");
+      box.className = "status";
+
+      const icon = document.createElement("span");
+      icon.className = "icon";
+      icon.textContent = emoji;
+
+      const paragraph = document.createElement("p");
+      paragraph.textContent = message;
+
+      box.append(icon, paragraph);
+      results.replaceChildren(box);
+    }
+
+    function showLoading(title) {
+      const box = document.createElement("div");
+      box.className = "status";
+
+      const spinner = document.createElement("div");
+      spinner.className = "spinner";
+
+      const paragraph = document.createElement("p");
+      paragraph.textContent = `Searching for "${title}"...`;
+
+      box.append(spinner, paragraph);
+      results.replaceChildren(box);
+    }
+  </script>
+
+</body>
+</html>

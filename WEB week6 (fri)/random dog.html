@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Dog | Prashna Rai</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f6ff;
+      --card: rgba(255, 255, 255, 0.92);
+      --border: #e8defb;
+      --purple: #8b5cf6;
+      --violet: #a78bfa;
+      --pink: #ec4899;
+      --text: #30234b;
+      --muted: #827493;
+      --soft: #f2ecff;
+      --error: #be185d;
+      --display: 'Bricolage Grotesque', sans-serif;
+      --body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 3rem 1rem 1.5rem;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.45;
+      animation: float 14s infinite alternate ease-in-out;
+    }
+
+    .blob-one {
+      width: 420px;
+      height: 420px;
+      background: #d8b4fe;
+      top: -12%;
+      left: 5%;
+    }
+
+    .blob-two {
+      width: 450px;
+      height: 450px;
+      background: #fbcfe8;
+      bottom: -15%;
+      right: 0;
+      animation-delay: -5s;
+    }
+
+    .blob-three {
+      width: 300px;
+      height: 300px;
+      background: #c4b5fd;
+      top: 40%;
+      left: 55%;
+      opacity: 0.3;
+    }
+
+    @keyframes float {
+      from { transform: translate(0, 0); }
+      to { transform: translate(30px, 25px); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 720px;
+      padding: 2.5rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: 0 22px 60px rgba(107, 70, 193, 0.1);
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--purple), var(--pink), var(--violet));
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.9rem;
+      color: #7c3aed;
+      background: var(--soft);
+      border: 1px solid #e4d8ff;
+      border-radius: 30px;
+      padding: 0.5rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 7vw, 3.7rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      background: linear-gradient(135deg, #6d28d9, #c026d3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+    }
+
+    .intro {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      max-width: 540px;
+      margin-bottom: 1.75rem;
+    }
+
+    .control-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #65527f;
+      margin-bottom: 0.65rem;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    select {
+      flex: 1 1 220px;
+      min-width: 0;
+      padding: 0.95rem 1rem;
+      border: 1px solid #e1d5f7;
+      border-radius: 13px;
+      background: #fcfaff;
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    select:focus-visible,
+    button:focus-visible {
+      outline: 3px solid #c4b5fd;
+      outline-offset: 3px;
+    }
+
+    select:focus {
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+    }
+
+    button {
+      border: none;
+      border-radius: 13px;
+      padding: 0.95rem 1.35rem;
+      background: linear-gradient(135deg, #8b5cf6, #a855f7);
+      color: white;
+      font-family: var(--body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(139, 92, 246, 0.25);
+    }
+
+    button:disabled {
+      opacity: 0.6;
+      cursor: wait;
+    }
+
+    .status {
+      min-height: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .status.error {
+      color: var(--error);
+    }
+
+    .dog-frame {
+      position: relative;
+      min-height: 220px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #f5efff, #fff0f7);
+      border: 1px solid #e9defb;
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .dog-frame img {
+      display: block;
+      width: 100%;
+      max-height: 480px;
+      object-fit: contain;
+      border-radius: 14px;
+    }
+
+    .dog-frame img[hidden] {
+      display: none;
+    }
+
+    .placeholder {
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .placeholder .emoji {
+      font-size: 3.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .placeholder h2 {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      color: #6d28d9;
+      margin-bottom: 0.5rem;
+    }
+
+    .placeholder p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding-top: 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .footer strong {
+      color: #7c3aed;
+    }
+
+    @media (max-width: 560px) {
+      body {
+        padding: 1.5rem 0.8rem;
+      }
+
+      .container {
+        padding: 1.5rem;
+        border-radius: 21px;
+      }
+
+      .controls {
+        flex-direction: column;
+      }
+
+      select,
+      button {
+        width: 100%;
+      }
+
+      .dog-frame {
+        min-height: 180px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background" aria-hidden="true">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
+  </div>
+
+  <main class="container">
+    <div class="eyebrow">🐾 Powered by Dog CEO API</div>
+
+    <h1>Random Dog</h1>
+
+    <p class="intro">
+      Need a little happiness? Discover an adorable dog with every click.
+      Choose a breed or let the API surprise you!
+    </p>
+
+    <label class="control-label" for="breed">Choose a dog breed</label>
+
+    <div class="controls">
+      <select id="breed" aria-label="Choose a dog breed">
+        <option value="">🐶 Any breed</option>
+      </select>
+
+      <button id="dog-btn" type="button">✨ Get a Dog</button>
+    </div>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <div class="dog-frame">
+      <div id="placeholder" class="placeholder">
+        <div class="emoji">🐕</div>
+        <h2>Your furry friend awaits!</h2>
+        <p>Click “Get a Dog” to meet your next adorable companion.</p>
+      </div>
+
+      <img id="dog-img" alt="" hidden>
+    </div>
+  </main>
+
+  <footer class="footer">
+    Created by <strong>Prashna Rai</strong> | Week 6 - Friday Task 6
+  </footer>
+
+  <script>
+    const btn = document.getElementById("dog-btn");
+    const img = document.getElementById("dog-img");
+    const statusEl = document.getElementById("status");
+    const breedSelect = document.getElementById("breed");
+    const placeholder = document.getElementById("placeholder");
+
+    let requestId = 0;
+    let controller = null;
+
+    function setStatus(message, isError = false) {
+      statusEl.textContent = message;
+      statusEl.classList.toggle("error", isError);
+    }
+
+    async function getJSON(url, signal) {
+      const response = await fetch(url, { signal });
+
+      if (!response.ok) {
+        throw new Error(`Request failed (${response.status}).`);
+      }
+
+      const data = await response.json();
+
+      if (data.status !== "success") {
+        throw new Error("The dog API could not return a result.");
+      }
+
+      return data;
+    }
+
+    async function loadBreeds() {
+      try {
+        const data = await getJSON(
+          "https://dog.ceo/api/breeds/list/all"
+        );
+
+        const options = [];
+
+        for (const [breed, subBreeds] of Object.entries(data.message)) {
+          if (subBreeds.length === 0) {
+            options.push(new Option(
+              breed.charAt(0).toUpperCase() + breed.slice(1),
+              breed
+            ));
+          } else {
+            subBreeds.forEach(subBreed => {
+              const label = `${subBreed} ${breed}`;
+              options.push(new Option(
+                label.replace(/\b\w/g, char => char.toUpperCase()),
+                `${breed}/${subBreed}`
+              ));
+            });
+          }
+        }
+
+        options.sort((a, b) => a.text.localeCompare(b.text));
+        breedSelect.append(...options);
+      } catch (error) {
+        // Random dog images can still work if the breed list fails.
+        console.error("Could not load dog breeds:", error);
+      }
+    }
+
+    function loadImage(url, signal) {
+      return new Promise((resolve, reject) => {
+        const image = new Image();
+
+        function cleanup() {
+          signal.removeEventListener("abort", onAbort);
+          image.onload = null;
+          image.onerror = null;
+        }
+
+        function onAbort() {
+          cleanup();
+          image.src = "";
+          reject(new DOMException("Request aborted", "AbortError"));
+        }
+
+        image.onload = () => {
+          cleanup();
+          resolve(url);
+        };
+
+        image.onerror = () => {
+          cleanup();
+          reject(new Error("The dog image could not be loaded."));
+        };
+
+        signal.addEventListener("abort", onAbort, { once: true });
+        image.src = url;
+
+        if (image.complete && image.naturalWidth > 0) {
+          cleanup();
+          resolve(url);
+        }
+      });
+    }
+
+    async function getDog() {
+      if (controller) controller.abort();
+
+      controller = new AbortController();
+      const thisRequest = ++requestId;
+      const signal = controller.signal;
+      const breed = breedSelect.value;
+
+      btn.disabled = true;
+      btn.textContent = "Finding a dog...";
+      setStatus("Fetching your furry friend…");
+
+      try {
+        const url = breed
+          ? `https://dog.ceo/api/breed/${breed}/images/random`
+          : "https://dog.ceo/api/breeds/image/random";
+
+        const data = await getJSON(url, signal);
+        const imageUrl = data.message;
+
+        await loadImage(imageUrl, signal);
+
+        if (thisRequest !== requestId) return;
+
+        img.src = imageUrl;
+        img.alt = breed
+          ? `A random ${breed.replace("/", " ")} dog`
+          : "A random dog";
+
+        img.hidden = false;
+        placeholder.hidden = true;
+        setStatus("A new furry friend just arrived! 🐾");
+      } catch (error) {
+        if (error.name === "AbortError") return;
+        if (thisRequest !== requestId) return;
+
+        setStatus(
+          `Oops! ${error.message} Please try again.`,
+          true
+        );
+      } finally {
+        if (thisRequest === requestId) {
+          btn.disabled = false;
+          btn.textContent = "✨ Get a Dog";
+        }
+      }
+    }
+
+    btn.addEventListener("click", getDog);
+
+    loadBreeds();
+    getDog();
+  </script>
+</body>
+</html>

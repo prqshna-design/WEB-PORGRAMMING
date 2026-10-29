@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 01 | Why Forms?</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 32px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #352653;
+      background: linear-gradient(135deg, #f8f4ff, #eee5ff);
+      min-height: 100vh;
+    }
+
+    main {
+      background: #fff;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(104, 65, 160, 0.12);
+      border: 1px solid #e9ddff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0e7ff;
+      color: #7041b5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #7541c8;
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    .intro {
+      color: #766889;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .card {
+      background: #f5efff;
+      border-left: 4px solid #8653d6;
+      padding: 16px;
+      margin: 22px 0;
+      border-radius: 0 12px 12px 0;
+    }
+
+    .card strong {
+      color: #7041b5;
+    }
+
+    .card p {
+      margin: 8px 0 0;
+      line-height: 1.7;
+      font-size: 0.92rem;
+    }
+
+    .section-title {
+      color: #7041b5;
+      font-size: 1.1rem;
+      margin-top: 26px;
+      margin-bottom: 8px;
+    }
+
+    .demo-box {
+      background: #fdfbff;
+      border: 1px solid #e2d5f7;
+      border-radius: 14px;
+      padding: 18px;
+      margin-top: 14px;
+    }
+
+    label {
+      display: block;
+      font-weight: 650;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+      color: #493568;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e2d5f7;
+      border-radius: 10px;
+      font: inherit;
+      color: #352653;
+      background: #fff;
+      margin: 6px 0 14px;
+    }
+
+    input[type="text"]:focus {
+      outline: none;
+      border-color: #9b70e8;
+      box-shadow: 0 0 0 3px rgba(155, 112, 232, 0.15);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 18px;
+      background: #8653d6;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    button:hover {
+      background: #7041b5;
+      transform: translateY(-1px);
+    }
+
+    .hint {
+      color: #897b9d;
+      font-size: 0.82rem;
+      line-height: 1.6;
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .uses {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .use-item {
+      padding: 12px;
+      background: #f8f4ff;
+      border: 1px solid #eee3ff;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      color: #61458a;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 24px;
+      color: #7541c8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #9383a9;
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      main {
+        padding: 22px 18px;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+      }
+
+      .uses {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <span class="tag">WEEK 8 · TASK 8</span>
+
+    <h1>Topic 01: Why Forms?</h1>
+
+    <p class="intro">
+      HTML forms are an important connection between users and web
+      applications. They collect information and submit it to a server
+      or allow scripts to process it in the browser.
+    </p>
+
+    <div class="card">
+      <strong>Core Purpose of Forms</strong>
+      <p>
+        Forms are used for login and registration, data submission,
+        search queries, filtering options, and surveys.
+      </p>
+    </div>
+
+    <h2 class="section-title">Common Uses of Forms</h2>
+
+    <div class="uses">
+      <div class="use-item">🔐 Login & Registration</div>
+      <div class="use-item">🔎 Search Information</div>
+      <div class="use-item">📝 Submit Data</div>
+      <div class="use-item">📊 Surveys & Feedback</div>
+    </div>
+
+    <h2 class="section-title">Interactive Demo: Google Search</h2>
+
+    <div class="demo-box">
+      <form
+        action="https://www.google.com/search"
+        method="get"
+        target="_blank"
+      >
+        <label for="q">What would you like to search for?</label>
+
+        <input
+          type="text"
+          id="q"
+          name="q"
+          placeholder="Try searching HTML forms..."
+          required
+        >
+
+        <button type="submit">Search Google ↗</button>
+
+        <p class="hint">
+          Enter a search term and click the button. Google will open
+          in a new tab with your search results.
+        </p>
+      </form>
+    </div>
+
+    <div class="card">
+      <strong>How does it work?</strong>
+      <p>
+        The <code>action</code> attribute specifies the destination.
+        The <code>method="get"</code> attribute submits the search
+        term as a URL query parameter. The input's
+        <code>name="q"</code> tells Google which parameter contains
+        the search query.
+      </p>
+    </div>
+
+    <a class="back" href="index.html">← Back to Index</a>
+  </main>
+
+  <footer>
+    Created by Prashna Rai | Week 8 - Task 8
+  </footer>
+</body>
+</html>

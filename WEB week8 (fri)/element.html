@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 02 | The Form Element</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 32px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #352653;
+      background: linear-gradient(135deg, #f8f4ff, #eee5ff);
+      min-height: 100vh;
+    }
+
+    main {
+      background: #fff;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(104, 65, 160, 0.12);
+      border: 1px solid #e9ddff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0e7ff;
+      color: #7041b5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #7541c8;
+      margin-top: 0;
+      font-size: 1.7rem;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    .intro {
+      color: #766889;
+      font-size: 0.95rem;
+    }
+
+    code {
+      background: #f2eaff;
+      color: #7041b5;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+
+    pre {
+      background: #302344;
+      color: #e9d8ff;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      border: 1px solid #4c3767;
+    }
+
+    pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+
+    .section-title {
+      color: #7041b5;
+      font-size: 1.05rem;
+      margin-top: 26px;
+      margin-bottom: 12px;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 650;
+      font-size: 0.9rem;
+      margin-bottom: 7px;
+      color: #493568;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 2px solid #e2d5f7;
+      border-radius: 10px;
+      font: inherit;
+      color: #352653;
+      background: #fdfbff;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #9b70e8;
+      box-shadow: 0 0 0 3px rgba(155, 112, 232, 0.15);
+    }
+
+    .button {
+      width: 100%;
+      padding: 12px;
+      background: #8653d6;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #7041b5;
+    }
+
+    .post-button {
+      background: #b18ae8;
+      color: #2e1c48;
+    }
+
+    .post-button:hover {
+      background: #a078dc;
+    }
+
+    .info {
+      background: #f5efff;
+      border: 1px solid #e2d2ff;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 18px;
+      font-size: 0.9rem;
+      color: #61458a;
+      line-height: 1.7;
+    }
+
+    .result {
+      display: none;
+      background: #fbf8ff;
+      border: 1px solid #e2d2ff;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 16px;
+      overflow-wrap: anywhere;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 24px;
+      color: #7541c8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #9383a9;
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      main {
+        padding: 22px 18px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <span class="tag">WEEK 8 · TASK 6</span>
+
+    <h1>Topic 02: The &lt;form&gt; Element</h1>
+
+    <p class="intro">
+      The <code>&lt;form&gt;</code> element groups form controls
+      and defines how their data is submitted. Two important
+      attributes are <code>action</code> and <code>method</code>.
+    </p>
+
+    <pre><code>&lt;!-- action: destination URL | method: GET or POST --&gt;
+&lt;form action="/submit" method="POST"&gt;
+  &lt;input name="username"&gt;
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+    <h2 class="section-title">Method 1: GET Request</h2>
+
+    <p class="intro">
+      GET appends submitted form values to the URL as query
+      parameters. Try submitting a username and observe the address bar.
+    </p>
+
+    <form action="task6.html" method="GET">
+      <div class="field">
+        <label for="user">Username</label>
+        <input
+          type="text"
+          id="user"
+          name="username"
+          placeholder="e.g. gachon_student"
+          required
+        >
+      </div>
+
+      <button class="button" type="submit">
+        Submit with GET
+      </button>
+    </form>
+
+    <div class="info">
+      <strong>GET:</strong> Form data appears in the URL, so it is
+      useful for searches and filters. Do not submit passwords or
+      other sensitive information through GET.
+    </div>
+
+    <h2 class="section-title">Method 2: POST Request</h2>
+
+    <p class="intro">
+      POST sends form data in the request body rather than appending
+      it to the URL. This demo shows the idea without sending data
+      to a server.
+    </p>
+
+    <form id="postForm" method="POST">
+      <div class="field">
+        <label for="post-user">Username</label>
+        <input
+          type="text"
+          id="post-user"
+          name="username"
+          placeholder="Enter a username"
+          required
+        >
+      </div>
+
+      <button class="button post-button" type="submit">
+        Demonstrate POST
+      </button>
+    </form>
+
+    <div class="result" id="post-result" aria-live="polite"></div>
+
+    <div class="info">
+      <strong>POST:</strong> Commonly used to submit or create data.
+      A real POST request requires a server endpoint to process it.
+      POST alone does not encrypt data; use HTTPS for secure transmission.
+    </div>
+
+    <a class="back" href="index.html">← Back to Index</a>
+  </main>
+
+  <footer>
+    Created by Prashna Rai | Week 8 - Task 6
+  </footer>
+
+  <script>
+    const postForm = document.getElementById("postForm");
+    const postResult = document.getElementById("post-result");
+
+    postForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const username = document.getElementById("post-user").value.trim();
+
+      postResult.style.display = "block";
+      postResult.innerHTML =
+        "<strong>POST demonstration complete!</strong><br>" +
+        "Username: " + escapeHTML(username) + "<br>" +
+        "The form was not sent to a server. This page only demonstrates " +
+        "the form submission behavior.";
+    });
+
+    function escapeHTML(value) {
+      return value.replace(/[&<>"']/g, function (character) {
+        const entities = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        };
+
+        return entities[character];
+      });
+    }
+  </script>
+</body>
+</html>

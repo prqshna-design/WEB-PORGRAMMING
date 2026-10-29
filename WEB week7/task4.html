@@ -1,0 +1,636 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Week 7 Task 4 | Book Explorer</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #f8f5ff;
+      --white: #ffffff;
+      --primary: #8b5cf6;
+      --primary-dark: #7042d8;
+      --text: #29213d;
+      --muted: #766d88;
+      --border: #e6ddf5;
+      --error: #dc3545;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.6;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 7%;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    nav .back {
+      background: #eee7ff;
+      color: var(--primary-dark);
+      padding: 8px 16px;
+      border-radius: 8px;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 20px 25px;
+    }
+
+    header h1 {
+      font-size: 40px;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--muted);
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .panel {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      box-shadow: 0 8px 25px #5d3e8c14;
+    }
+
+    .panel-heading {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .panel-heading h2 {
+      font-size: 25px;
+      margin-bottom: 5px;
+    }
+
+    .panel-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .search-wrapper {
+      max-width: 650px;
+      margin: 0 auto 30px;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 12px;
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 0;
+      padding: 14px 16px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      font: inherit;
+      outline: none;
+      transition: 0.2s;
+    }
+
+    .search-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px #8b5cf626;
+    }
+
+    .search-button {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 10px;
+      background: var(--primary);
+      color: white;
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .search-button:hover:not(:disabled) {
+      background: var(--primary-dark);
+    }
+
+    .search-button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .hint {
+      min-height: 24px;
+      margin-top: 8px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hint.error {
+      color: var(--error);
+    }
+
+    .results-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .results-heading h2 {
+      font-size: 21px;
+    }
+
+    .results-meta {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .results-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    .book {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      transition: 0.2s;
+    }
+
+    .book:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px #8b5cf622;
+      border-color: var(--primary);
+    }
+
+    .book-cover {
+      height: 240px;
+      background: #f0eaff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .book-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .placeholder-cover {
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .placeholder-cover span {
+      display: block;
+      font-size: 40px;
+    }
+
+    .book-content {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .book-title {
+      font-size: 16px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+      overflow-wrap: anywhere;
+    }
+
+    .book-authors {
+      color: var(--primary-dark);
+      font-size: 13px;
+      margin-bottom: 15px;
+      overflow-wrap: anywhere;
+    }
+
+    .book-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: auto;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .status-panel {
+      padding: 45px 15px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .status-panel .icon {
+      display: block;
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .status-panel.error-state {
+      color: var(--error);
+    }
+
+    .status-panel.error-state p {
+      color: var(--muted);
+    }
+
+    .spinner {
+      width: 36px;
+      height: 36px;
+      border: 4px solid #e9ddff;
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin: 0 auto 15px;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    footer {
+      margin-top: 35px;
+      padding: 20px;
+      text-align: center;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 30px;
+      }
+
+      .panel {
+        padding: 20px;
+      }
+
+      .search-form {
+        flex-direction: column;
+      }
+
+      .search-button {
+        width: 100%;
+      }
+
+      .results-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="../index.html">Web Programming / Week 7 / Task 4</a>
+    <a class="back" href="index.html">Back</a>
+  </nav>
+
+  <header>
+    <h1>Book Explorer</h1>
+    <p>Search for books and discover your next favorite read.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="panel-heading">
+        <h2>📚 Book Search</h2>
+        <p>Find books by title using the Open Library Search API.</p>
+      </div>
+
+      <div class="search-wrapper">
+        <form class="search-form" id="searchForm">
+          <input
+            class="search-input"
+            id="query"
+            type="search"
+            placeholder="Try The Hobbit, Dune, or 1984..."
+            aria-label="Book title"
+            autocomplete="off"
+          >
+
+          <button class="search-button" id="searchButton" type="submit">
+            Search
+          </button>
+        </form>
+
+        <p class="hint" id="hint" aria-live="polite">
+          Search for your favorite books!
+        </p>
+      </div>
+
+      <div class="results-heading">
+        <h2>Search Results</h2>
+        <span class="results-meta" id="resultsMeta"></span>
+      </div>
+
+      <div id="results" aria-live="polite" aria-busy="false">
+        <div class="status-panel">
+          <span class="icon">🔍</span>
+          <p>Enter a book title to get started.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Created by Prashna Rai | Week 7 - Task 4</footer>
+
+  <script>
+    const searchForm = document.getElementById('searchForm');
+    const queryInput = document.getElementById('query');
+    const searchButton = document.getElementById('searchButton');
+    const hint = document.getElementById('hint');
+    const results = document.getElementById('results');
+    const resultsMeta = document.getElementById('resultsMeta');
+
+    let activeController = null;
+
+    searchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      searchBooks();
+    });
+
+    async function searchBooks() {
+      const query = queryInput.value.trim();
+
+      // Cancel any previous request.
+      if (activeController) {
+        activeController.abort();
+        activeController = null;
+      }
+
+      searchButton.disabled = false;
+      searchButton.textContent = 'Search';
+      results.setAttribute('aria-busy', 'false');
+
+      // Handle empty input.
+      if (!query) {
+        resultsMeta.textContent = '';
+        setHint('Please enter a book title.', true);
+
+        showStatus(
+          '✏️',
+          'Enter a book title to get started.'
+        );
+
+        queryInput.focus();
+        return;
+      }
+
+      const controller = new AbortController();
+      activeController = controller;
+
+      // Loading state.
+      searchButton.disabled = true;
+      searchButton.textContent = 'Searching...';
+      results.setAttribute('aria-busy', 'true');
+      resultsMeta.textContent = 'Searching Open Library...';
+      setHint('Please wait while we find your books.');
+
+      showLoading(query);
+
+      try {
+        const url =
+          'https://openlibrary.org/search.json?title=' +
+          encodeURIComponent(query) +
+          '&limit=10';
+
+        const response = await fetch(url, {
+          signal: controller.signal
+        });
+
+        if (!response.ok) {
+          throw new Error(`Request failed: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        // Ignore results if a newer search has started.
+        if (activeController !== controller) return;
+
+        const books = data.docs || [];
+
+        // Empty results state.
+        if (books.length === 0) {
+          resultsMeta.textContent = '0 results';
+          setHint('No matches found. Try another title.');
+
+          showStatus(
+            '📖',
+            'No books found for that title. Try another search.'
+          );
+
+          return;
+        }
+
+        resultsMeta.textContent =
+          `Showing ${books.length} of ${(data.numFound || 0).toLocaleString()} results`;
+
+        setHint(`Found ${books.length} matching books.`);
+        displayBooks(books);
+
+      } catch (error) {
+        if (error.name === 'AbortError') return;
+        if (activeController !== controller) return;
+
+        console.error(error);
+
+        resultsMeta.textContent = '';
+        setHint('Something went wrong. Please try again.', true);
+
+        showStatus(
+          '⚠️',
+          'Could not load books. Check your internet connection and try again.',
+          'error-state'
+        );
+
+      } finally {
+        // Only the latest request may reset the interface.
+        if (activeController === controller) {
+          activeController = null;
+          searchButton.disabled = false;
+          searchButton.textContent = 'Search';
+          results.setAttribute('aria-busy', 'false');
+        }
+      }
+    }
+
+    function displayBooks(books) {
+      const grid = document.createElement('div');
+      grid.className = 'results-grid';
+
+      books.forEach((book) => {
+        const card = document.createElement('article');
+        card.className = 'book';
+
+        const cover = document.createElement('div');
+        cover.className = 'book-cover';
+
+        if (book.cover_i) {
+          const image = document.createElement('img');
+
+          image.src =
+            `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`;
+
+          image.alt = `${book.title || 'Book'} cover`;
+          image.loading = 'lazy';
+
+          image.addEventListener('error', () => {
+            const placeholder = createPlaceholder();
+            cover.replaceChildren(placeholder);
+          }, { once: true });
+
+          cover.appendChild(image);
+        } else {
+          cover.appendChild(createPlaceholder());
+        }
+
+        const content = document.createElement('div');
+        content.className = 'book-content';
+
+        const title = document.createElement('h3');
+        title.className = 'book-title';
+        title.textContent = book.title || 'Untitled';
+
+        const authors = document.createElement('p');
+        authors.className = 'book-authors';
+
+        const authorNames = (book.author_name || ['Not listed'])
+          .slice(0, 3)
+          .join(', ');
+
+        const extraAuthors = book.author_name &&
+          book.author_name.length > 3
+          ? ` (+${book.author_name.length - 3} more)`
+          : '';
+
+        authors.textContent =
+          `Author(s): ${authorNames}${extraAuthors}`;
+
+        const metadata = document.createElement('div');
+        metadata.className = 'book-meta';
+
+        const year = document.createElement('span');
+        year.textContent = book.first_publish_year
+          ? `Year: ${book.first_publish_year}`
+          : 'Year: N/A';
+
+        const editions = document.createElement('span');
+        editions.textContent = book.edition_count
+          ? `${book.edition_count} editions`
+          : '';
+
+        metadata.append(year, editions);
+        content.append(title, authors, metadata);
+        card.append(cover, content);
+        grid.appendChild(card);
+      });
+
+      results.replaceChildren(grid);
+    }
+
+    function createPlaceholder() {
+      const placeholder = document.createElement('div');
+      placeholder.className = 'placeholder-cover';
+
+      const icon = document.createElement('span');
+      icon.textContent = '📘';
+
+      const message = document.createElement('p');
+      message.textContent = 'No cover available';
+
+      placeholder.append(icon, message);
+      return placeholder;
+    }
+
+    function showLoading(query) {
+      const panel = document.createElement('div');
+      panel.className = 'status-panel';
+
+      const spinner = document.createElement('div');
+      spinner.className = 'spinner';
+      spinner.setAttribute('role', 'status');
+      spinner.setAttribute('aria-label', 'Loading results');
+
+      const message = document.createElement('p');
+      message.textContent = `Searching for "${query}"...`;
+
+      panel.append(spinner, message);
+      results.replaceChildren(panel);
+    }
+
+    function showStatus(iconText, messageText, extraClass = '') {
+      const panel = document.createElement('div');
+      panel.className = `status-panel ${extraClass}`.trim();
+
+      const icon = document.createElement('span');
+      icon.className = 'icon';
+      icon.textContent = iconText;
+
+      const message = document.createElement('p');
+      message.textContent = messageText;
+
+      panel.append(icon, message);
+      results.replaceChildren(panel);
+    }
+
+    function setHint(message, isError = false) {
+      hint.textContent = message;
+      hint.classList.toggle('error', isError);
+    }
+  </script>
+</body>
+</html>

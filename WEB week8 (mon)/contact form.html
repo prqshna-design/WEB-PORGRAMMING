@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact form for Prashna Rai's personal website.">
+  <title>Contact Me | Prashna Rai</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-page: #faf8ff;
+      --bg-surface: #ffffff;
+      --bg-fieldset: #fdfbff;
+      --text-main: #30234a;
+      --text-muted: #796b91;
+      --text-legend: #7040c8;
+      --border-subtle: #e5dcfa;
+      --border-input: #d8cbed;
+      --primary: #8b5cf6;
+      --primary-hover: #7040c8;
+      --primary-glow: rgba(139, 92, 246, 0.18);
+      --color-valid: #16865b;
+      --bg-valid: #f0fdf6;
+      --color-invalid: #d94669;
+      --bg-invalid: #fff1f4;
+      --font-heading: 'Bricolage Grotesque', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      padding: 3rem 1.25rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background:
+        radial-gradient(circle at 10% 15%, #f0e7ff 0, transparent 38%),
+        radial-gradient(circle at 90% 85%, #e9e4ff 0, transparent 38%),
+        var(--bg-page);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      line-height: 1.6;
+    }
+
+    .contact-card {
+      width: 100%;
+      max-width: 650px;
+      padding: 2.75rem 2.5rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 24px;
+      box-shadow: 0 15px 40px rgba(94, 62, 145, 0.09);
+    }
+
+    .form-header {
+      margin-bottom: 2rem;
+    }
+
+    .greeting-pill {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: #f0e7ff;
+      color: var(--text-legend);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .form-header h1 {
+      margin-bottom: 0.75rem;
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 2.7rem);
+      line-height: 1.2;
+      letter-spacing: -0.035em;
+    }
+
+    .form-header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    fieldset {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: var(--bg-fieldset);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      transition: border-color 0.2s ease;
+    }
+
+    fieldset:focus-within {
+      border-color: var(--primary);
+    }
+
+    legend {
+      padding: 0 0.5rem;
+      color: var(--text-legend);
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group:last-child {
+      margin-bottom: 0.25rem;
+    }
+
+    label {
+      color: var(--text-main);
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .req-star {
+      color: var(--color-invalid);
+    }
+
+    .helper-text {
+      margin-top: 0.1rem;
+      color: var(--text-muted);
+      font-size: 0.77rem;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--border-input);
+      border-radius: 11px;
+      outline: none;
+      background: #ffffff;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease,
+                  background-color 0.2s ease;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: #a398b5;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+      line-height: 1.6;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px var(--primary-glow);
+    }
+
+    input:not(:placeholder-shown):valid,
+    textarea:not(:placeholder-shown):valid {
+      border-color: var(--color-valid);
+      background-color: var(--bg-valid);
+    }
+
+    input:not(:placeholder-shown):invalid,
+    textarea:not(:placeholder-shown):invalid {
+      border-color: var(--color-invalid);
+      background-color: var(--bg-invalid);
+    }
+
+    .btn-submit {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 13px;
+      background: linear-gradient(135deg, #9b72f6, #7c4de0);
+      box-shadow: 0 5px 15px rgba(139, 92, 246, 0.25);
+      color: #ffffff;
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(139, 92, 246, 0.32);
+    }
+
+    .btn-submit:active {
+      transform: translateY(0);
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .btn-submit:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    .footer {
+      margin-top: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 0.85rem;
+      }
+
+      .contact-card {
+        padding: 1.75rem 1.1rem;
+        border-radius: 18px;
+      }
+
+      fieldset {
+        padding: 1.15rem 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="contact-card">
+
+    <header class="form-header">
+      <span class="greeting-pill">✦ Let's Connect</span>
+      <h1>Say Hello or Start a Project</h1>
+      <p>
+        Have a question, an interesting idea, or want to work together?
+        Fill in the form below. I'd love to hear from you!
+      </p>
+    </header>
+
+    <form action="#" method="POST" autocomplete="on">
+
+      <fieldset>
+        <legend>About You</legend>
+
+        <div class="form-group">
+          <label for="fullName">
+            Your Name <span class="req-star">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            placeholder="e.g. Maya Lin"
+            required
+            minlength="2"
+            maxlength="50"
+            autocomplete="name"
+          >
+
+          <span class="helper-text">
+            Enter a name between 2 and 50 characters.
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="userEmail">
+            Email Address <span class="req-star">*</span>
+          </label>
+
+          <input
+            type="email"
+            id="userEmail"
+            name="userEmail"
+            placeholder="maya@example.com"
+            required
+            pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+            autocomplete="email"
+          >
+
+          <span class="helper-text">
+            Enter a valid email address.
+          </span>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Your Message</legend>
+
+        <div class="form-group">
+          <label for="subject">
+            Subject Line <span class="req-star">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="What would you like to discuss?"
+            required
+            minlength="4"
+            maxlength="100"
+          >
+
+          <span class="helper-text">
+            Briefly describe the purpose of your message.
+          </span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">
+            Message <span class="req-star">*</span>
+          </label>
+
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            required
+            minlength="20"
+            maxlength="1500"
+          ></textarea>
+
+          <span class="helper-text">
+            Your message must contain at least 20 characters.
+          </span>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="btn-submit">
+        <span>Send Message</span>
+        <span class="btn-arrow" aria-hidden="true">→</span>
+      </button>
+
+    </form>
+
+    <footer class="footer">
+      Created by Prashna Rai | Week 8
+    </footer>
+
+  </main>
+</body>
+</html>

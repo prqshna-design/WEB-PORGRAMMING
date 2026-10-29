@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Week 8 Friday: Learn HTML forms, input types, labels, validation, and registration.">
+  <title>Week 8 Friday | Forms & Registration</title>
+
+  <style>
+    :root {
+      --bg: #f8f4ff;
+      --surface: #ffffff;
+      --border: #e7dcf8;
+      --text: #352653;
+      --muted: #817293;
+      --accent: #8653d6;
+      --accent-dark: #7041b5;
+      --soft: #f0e7ff;
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #faf7ff, #eee5ff);
+      color: var(--text);
+      font: 16px/1.6 system-ui, sans-serif;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .crumbbar {
+      padding: 16px max(1.25rem, calc((100vw - 920px) / 2));
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.85);
+    }
+
+    .crumbbar a {
+      color: var(--accent-dark);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 650;
+    }
+
+    .crumbbar a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      width: min(100% - 2rem, 920px);
+      margin: 0 auto;
+      padding: 52px 0;
+    }
+
+    .hero {
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: 0 10px 35px rgba(104, 65, 160, 0.08);
+    }
+
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent-dark);
+      background: var(--soft);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 16px 0 10px;
+      color: #7541c8;
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .intro {
+      max-width: 650px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .progress-note {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 22px;
+      padding: 12px 14px;
+      background: #f7f1ff;
+      border: 1px solid #e8dcfa;
+      border-radius: 12px;
+      color: #684b91;
+      font-size: 0.88rem;
+    }
+
+    .sparkle {
+      font-size: 1.3rem;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 32px 0 14px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      color: #493568;
+      font-size: 1.25rem;
+    }
+
+    .lesson-count {
+      color: var(--muted);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    ol {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: lessons;
+    }
+
+    li {
+      counter-increment: lessons;
+      min-width: 0;
+    }
+
+    .lesson {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      height: 100%;
+      min-height: 112px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(104, 65, 160, 0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease,
+                  box-shadow 0.2s ease;
+    }
+
+    .lesson:hover {
+      transform: translateY(-3px);
+      border-color: #b99be9;
+      box-shadow: 0 10px 24px rgba(104, 65, 160, 0.12);
+    }
+
+    .lesson:focus-visible {
+      outline: 3px solid #b99be9;
+      outline-offset: 3px;
+    }
+
+    .number {
+      display: grid;
+      place-items: center;
+      flex: 0 0 44px;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      background: var(--soft);
+      color: var(--accent-dark);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .lesson-content {
+      min-width: 0;
+    }
+
+    .lesson-title {
+      display: block;
+      margin: 1px 0 5px;
+      color: #493568;
+      font-weight: 750;
+      line-height: 1.4;
+    }
+
+    .lesson-description {
+      display: block;
+      color: var(--muted);
+      font-size: 0.87rem;
+      line-height: 1.55;
+    }
+
+    .homework {
+      position: relative;
+      border-color: #cdb6f2;
+      background: linear-gradient(135deg, #fff, #f6efff);
+    }
+
+    .homework .number {
+      background: #8653d6;
+      color: white;
+    }
+
+    .homework-badge {
+      display: inline-block;
+      margin-top: 9px;
+      padding: 3px 8px;
+      border-radius: 20px;
+      background: #eadfff;
+      color: #7041b5;
+      font-size: 0.72rem;
+      font-weight: 750;
+    }
+
+    footer {
+      margin-top: 34px;
+      padding: 20px 0 0;
+      border-top: 1px solid var(--border);
+      color: #9383a9;
+      font-size: 0.82rem;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      main {
+        padding: 28px 0;
+      }
+
+      .hero {
+        padding: 23px 19px;
+      }
+
+      ol {
+        grid-template-columns: 1fr;
+        gap: 11px;
+      }
+
+      .lesson {
+        min-height: 100px;
+        padding: 16px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 3px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="crumbbar" aria-label="Breadcrumb">
+    <a href="../index.html">← Web Programming Portfolio</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <span class="eyebrow">Week 08 · Friday</span>
+
+      <h1>Forms & Registration</h1>
+
+      <p class="intro">
+        Welcome to Week 8! Explore HTML form elements, input types,
+        accessibility, and validation. Follow the lessons in order,
+        then apply what you have learned in the registration homework.
+      </p>
+
+      <div class="progress-note">
+        <span class="sparkle" aria-hidden="true">✦</span>
+        <span>8 lessons to explore · Learn, practice, and build!</span>
+      </div>
+    </header>
+
+    <div class="section-heading">
+      <h2>Your Learning Path</h2>
+      <span class="lesson-count">01–08 · Follow in order</span>
+    </div>
+
+    <ol aria-label="Week 8 Friday lessons">
+      <li>
+        <a class="lesson" href="why%20forms.html">
+          <span class="number">01</span>
+          <span class="lesson-content">
+            <span class="lesson-title">Why Forms?</span>
+            <span class="lesson-description">
+              Understand how websites collect information from users.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson" href="the%20element.html">
+          <span class="number">02</span>
+          <span class="lesson-content">
+            <span class="lesson-title">The Form Element</span>
+            <span class="lesson-description">
+              Learn about form structure, action, and submission methods.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson" href="input%20types.html">
+          <span class="number">03</span>
+          <span class="lesson-content">
+            <span class="lesson-title">Input Types</span>
+            <span class="lesson-description">
+              Choose the right input for text, email, dates, and more.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson" href="grouping%20fields.html">
+          <span class="number">04</span>
+          <span class="lesson-content">
+            <span class="lesson-title">Grouping Fields</span>
+            <span class="lesson-description">
+              Organize related form controls using fieldsets and legends.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson" href="labels_%26_accessibility.html">
+          <span class="number">05</span>
+          <span class="lesson-content">
+            <span class="lesson-title">Labels & Accessibility</span>
+            <span class="lesson-description">
+              Make form controls clear and accessible to more users.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson" href="validation%20attributes.html">
+          <span class="number">06</span>
+          <span class="lesson-content">
+            <span class="lesson-title">Validation Attributes</span>
+            <span class="lesson-description">
+              Use built-in HTML rules to check form entries.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson" href="css_validation_pseudo_classes.html">
+          <span class="number">07</span>
+          <span class="lesson-content">
+            <span class="lesson-title">CSS Validation Pseudo-Classes</span>
+            <span class="lesson-description">
+              Style controls differently according to their validation state.
+            </span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a class="lesson homework" href="homework%20registration.html">
+          <span class="number">08</span>
+          <span class="lesson-content">
+            <span class="lesson-title">Registration Homework</span>
+            <span class="lesson-description">
+              Put your form-building skills together in a complete registration form.
+            </span>
+            <span class="homework-badge">Final Practice ✦</span>
+          </span>
+        </a>
+      </li>
+    </ol>
+
+    <footer>
+      Created by Prashna Rai | Week 8 - Forms & Registration
+    </footer>
+  </main>
+</body>
+</html>

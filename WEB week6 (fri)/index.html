@@ -1,0 +1,489 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore Prashna Rai's Week 6 Friday API projects, including weather, country data, GitHub repositories, random dogs, and cryptocurrency.">
+
+  <title>Week 6 Friday | API Projects</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #faf8ff;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-hover: #f5efff;
+      --border: #e8defb;
+      --text: #30234b;
+      --muted: #827493;
+      --purple: #8b5cf6;
+      --violet: #a78bfa;
+      --pink: #ec4899;
+      --soft: #f1eaff;
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.7;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .background {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(110px);
+      opacity: 0.38;
+    }
+
+    .blob-one {
+      width: 400px;
+      height: 400px;
+      background: #d8b4fe;
+      top: -160px;
+      left: -100px;
+    }
+
+    .blob-two {
+      width: 420px;
+      height: 420px;
+      background: #fbcfe8;
+      bottom: -180px;
+      right: -100px;
+    }
+
+    .blob-three {
+      width: 300px;
+      height: 300px;
+      background: #c4b5fd;
+      top: 40%;
+      right: 20%;
+      opacity: 0.2;
+    }
+
+    .crumbbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem max(1.25rem, calc((100vw - 1000px) / 2));
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(14px);
+    }
+
+    .crumbbar a {
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .crumbbar a:hover {
+      color: var(--purple);
+    }
+
+    main {
+      width: min(100% - 2rem, 960px);
+      margin: 0 auto;
+      padding: 4rem 0 3rem;
+      flex: 1;
+    }
+
+    .hero {
+      position: relative;
+      padding: 2.75rem;
+      margin-bottom: 2rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      box-shadow: 0 18px 55px rgba(107, 70, 193, 0.08);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(
+        90deg,
+        var(--purple),
+        var(--pink),
+        var(--violet)
+      );
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #7c3aed;
+      background: var(--soft);
+      border: 1px solid #e4d8ff;
+      border-radius: 30px;
+      padding: 0.45rem 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    h1, h2 {
+      font-family: 'Bricolage Grotesque', sans-serif;
+      line-height: 1.2;
+    }
+
+    h1 {
+      margin: 1rem 0 0.8rem;
+      font-size: clamp(2.5rem, 7vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      background: linear-gradient(135deg, #6d28d9, #a855f7 55%, #db2777);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .intro {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+
+    .project-count {
+      color: #7c3aed;
+      background: #f5f0ff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.6rem 0.9rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 2.25rem 0 1rem;
+    }
+
+    .section-heading h2 {
+      font-size: 1.65rem;
+      color: var(--text);
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .project-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 205px;
+      padding: 1.5rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      text-decoration: none;
+      box-shadow: 0 8px 24px rgba(107, 70, 193, 0.04);
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      background: var(--surface-hover);
+      border-color: #c4b5fd;
+      box-shadow: 0 15px 35px rgba(107, 70, 193, 0.12);
+    }
+
+    .project-card:focus-visible,
+    .crumbbar a:focus-visible {
+      outline: 3px solid var(--purple);
+      outline-offset: 4px;
+      border-radius: 8px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .project-icon {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, #f1eaff, #fce7f3);
+      border: 1px solid #e9defb;
+      border-radius: 14px;
+      font-size: 1.4rem;
+    }
+
+    .project-type {
+      color: #7c3aed;
+      background: #f2ecff;
+      border-radius: 30px;
+      padding: 0.35rem 0.65rem;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .project-card h2 {
+      margin-bottom: 0.5rem;
+      font-size: 1.35rem;
+      transition: color 0.2s ease;
+    }
+
+    .project-card:hover h2 {
+      color: #7c3aed;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.7;
+    }
+
+    .card-link {
+      margin-top: auto;
+      padding-top: 1rem;
+      color: #7c3aed;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    .footer {
+      padding: 1.5rem 1rem;
+      border-top: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.65);
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    .footer strong {
+      color: #7c3aed;
+    }
+
+    @media (max-width: 620px) {
+      main {
+        padding-top: 2rem;
+      }
+
+      .hero {
+        padding: 1.75rem;
+      }
+
+      .project-list {
+        grid-template-columns: 1fr;
+      }
+
+      .project-card {
+        min-height: 180px;
+      }
+
+      .crumbbar {
+        padding: 0.9rem 1rem;
+      }
+
+      .section-heading h2 {
+        font-size: 1.45rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="background" aria-hidden="true">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
+  </div>
+
+  <nav class="crumbbar" aria-label="Breadcrumb">
+    <a href="../index.html">← Web Programming</a>
+    <a href="../index.html#exercisesHeader">All exercises ↗</a>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <span class="eyebrow">✦ Week 06 · Friday</span>
+
+      <h1>API Projects</h1>
+
+      <p class="intro">
+        Welcome to my API project collection! Explore country demographics,
+        live weather, cryptocurrency prices, GitHub repositories, random dog
+        images, and data from JSONPlaceholder.
+      </p>
+
+      <div class="hero-bottom">
+        <span class="project-count">6 Interactive Projects</span>
+      </div>
+    </header>
+
+    <section aria-labelledby="projects-heading">
+      <div class="section-heading">
+        <h2 id="projects-heading">Explore the projects</h2>
+        <p>Select a card to open a project.</p>
+      </div>
+
+      <div class="project-list">
+        <a class="project-card" href="jsoonplaceholder.html">
+          <div class="card-top">
+            <span class="project-icon" aria-hidden="true">🔄</span>
+            <span class="project-type">API Explorer</span>
+          </div>
+          <h2>Data Stream Explorer</h2>
+          <p>
+            Fetch and filter sample posts from JSONPlaceholder with a
+            live data dashboard.
+          </p>
+          <span class="card-link">Explore data ↗</span>
+        </a>
+
+        <a class="project-card" href="openmetoe%20weather.html">
+          <div class="card-top">
+            <span class="project-icon" aria-hidden="true">🌦️</span>
+            <span class="project-type">Open-Meteo API</span>
+          </div>
+          <h2>Weather Tracker</h2>
+          <p>
+            Check current temperatures, humidity, wind speed, and
+            weather conditions in different cities.
+          </p>
+          <span class="card-link">Check weather ↗</span>
+        </a>
+
+        <a class="project-card" href="cryptocurrency%20trackerr.html">
+          <div class="card-top">
+            <span class="project-icon" aria-hidden="true">₿</span>
+            <span class="project-type">CoinGecko API</span>
+          </div>
+          <h2>Cryptocurrency Tracker</h2>
+          <p>
+            Follow cryptocurrency prices and compare their latest
+            24-hour price changes.
+          </p>
+          <span class="card-link">View prices ↗</span>
+        </a>
+
+        <a class="project-card" href="country%20demographic.html">
+          <div class="card-top">
+            <span class="project-icon" aria-hidden="true">🌍</span>
+            <span class="project-type">Country Data API</span>
+          </div>
+          <h2>Country Demographics</h2>
+          <p>
+            Explore country information, population details, regions,
+            capitals, and currencies.
+          </p>
+          <span class="card-link">Discover countries ↗</span>
+        </a>
+
+        <a class="project-card" href="github%20repo.html">
+          <div class="card-top">
+            <span class="project-icon" aria-hidden="true">💻</span>
+            <span class="project-type">GitHub API</span>
+          </div>
+          <h2>GitHub Repositories</h2>
+          <p>
+            Search GitHub usernames and browse public repositories,
+            programming languages, and stars.
+          </p>
+          <span class="card-link">Browse repositories ↗</span>
+        </a>
+
+        <a class="project-card" href="random%20dog.html">
+          <div class="card-top">
+            <span class="project-icon" aria-hidden="true">🐶</span>
+            <span class="project-type">Dog CEO API</span>
+          </div>
+          <h2>Random Dog</h2>
+          <p>
+            Discover random dog photos and choose a breed to find
+            your next furry friend.
+          </p>
+          <span class="card-link">Meet a dog ↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Created by <strong>Prashna Rai</strong> | Week 6 - Friday
+  </footer>
+</body>
+</html>

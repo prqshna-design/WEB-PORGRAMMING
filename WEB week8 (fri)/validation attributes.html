@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Topic 04 | HTML5 Validation Attributes</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 32px 16px;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #352653;
+      background: linear-gradient(135deg, #f8f4ff, #eee5ff);
+      min-height: 100vh;
+    }
+
+    main {
+      background: #fff;
+      padding: 28px;
+      border-radius: 20px;
+      box-shadow: 0 8px 30px rgba(104, 65, 160, 0.12);
+      border: 1px solid #e9ddff;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f0e7ff;
+      color: #7041b5;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #7541c8;
+      margin-top: 0;
+      font-size: 1.7rem;
+    }
+
+    .intro {
+      color: #766889;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 650;
+      font-size: 0.9rem;
+      margin-bottom: 7px;
+      color: #493568;
+    }
+
+    .hint {
+      display: block;
+      font-weight: 400;
+      color: #897b9d;
+      font-size: 0.8rem;
+      margin-top: 4px;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 2px solid #e2d5f7;
+      border-radius: 10px;
+      font: inherit;
+      color: #352653;
+      background: #fdfbff;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #9b70e8;
+      box-shadow: 0 0 0 3px rgba(155, 112, 232, 0.15);
+    }
+
+    input:valid:not(:placeholder-shown) {
+      border-color: #9b70b5;
+    }
+
+    input:invalid:not(:placeholder-shown) {
+      border-color: #d977a8;
+    }
+
+    .button {
+      width: 100%;
+      margin-top: 8px;
+      padding: 12px;
+      background: #8653d6;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .button:hover {
+      background: #7041b5;
+    }
+
+    .info {
+      background: #f5efff;
+      border: 1px solid #e2d2ff;
+      border-radius: 12px;
+      padding: 14px;
+      margin-top: 20px;
+      color: #61458a;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    .result {
+      display: none;
+      background: #f0eaff;
+      border: 1px solid #d9c5ff;
+      border-radius: 12px;
+      padding: 15px;
+      margin-top: 18px;
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 24px;
+      color: #7541c8;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      color: #9383a9;
+      font-size: 0.8rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 12px;
+      }
+
+      main {
+        padding: 22px 18px;
+      }
+
+      h1 {
+        font-size: 1.45rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <span class="tag">WEEK 8 · TASK 7</span>
+
+    <h1>HTML5 Validation Attributes</h1>
+
+    <p class="intro">
+      HTML5 provides built-in validation attributes that help
+      prevent invalid form submissions without requiring JavaScript
+      for the validation rules themselves.
+    </p>
+
+    <form id="validationForm">
+      <!-- required and minlength -->
+      <div class="field">
+        <label for="name">
+          Name
+          <span class="hint">required · minlength="3"</span>
+        </label>
+
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          minlength="3"
+          placeholder="Enter at least 3 characters"
+        >
+      </div>
+
+      <!-- pattern: exactly 9 digits -->
+      <div class="field">
+        <label for="sid">
+          Student ID
+          <span class="hint">required · pattern="\d{9}"</span>
+        </label>
+
+        <input
+          type="text"
+          id="sid"
+          name="studentId"
+          required
+          pattern="[0-9]{9}"
+          inputmode="numeric"
+          maxlength="9"
+          placeholder="Enter your 9-digit student ID"
+          title="Student ID must contain exactly 9 digits"
+        >
+      </div>
+
+      <!-- min and max -->
+      <div class="field">
+        <label for="grade">
+          Course Score
+          <span class="hint">type="number" · min="0" · max="100"</span>
+        </label>
+
+        <input
+          type="number"
+          id="grade"
+          name="grade"
+          min="0"
+          max="100"
+          step="1"
+          placeholder="Enter a score from 0 to 100"
+          required
+        >
+      </div>
+
+      <button class="button" type="submit">
+        Test HTML5 Constraints
+      </button>
+    </form>
+
+    <div class="result" id="result" aria-live="polite"></div>
+
+    <div class="info">
+      <strong>Try these validation rules:</strong>
+      <ul>
+        <li>Name must contain at least 3 characters.</li>
+        <li>Student ID must contain exactly 9 digits.</li>
+        <li>Course score must be between 0 and 100.</li>
+      </ul>
+      Your browser checks these constraints when you submit.
+    </div>
+
+    <a class="back" href="index.html">← Back to Index</a>
+  </main>
+
+  <footer>
+    Created by Prashna Rai | Week 8 - Task 7
+  </footer>
+
+  <script>
+    const form = document.getElementById("validationForm");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const studentId = document.getElementById("sid").value;
+      const grade = document.getElementById("grade").value;
+
+      result.style.display = "block";
+      result.innerHTML =
+        "<strong>Validation successful!</strong><br>" +
+        "Name: " + escapeHTML(name) + "<br>" +
+        "Student ID: " + escapeHTML(studentId) + "<br>" +
+        "Course Score: " + escapeHTML(grade);
+    });
+
+    function escapeHTML(value) {
+      return value.replace(/[&<>"']/g, function (character) {
+        const entities = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#39;"
+        };
+
+        return entities[character];
+      });
+    }
+  </script>
+</body>
+</html>
