@@ -1,10 +1,14 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prashna Rai's Web Programming Portfolio featuring weekly assignments from Weeks 2–9.">
+  <meta name="description" content="Prashna Rai's Web Programming Portfolio and weekly assignments.">
   <title>Prashna Rai | Web Programming Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -14,10 +18,9 @@
       --text: #302344;
       --muted: #655575;
       --purple: #7040b0;
-      --purple-dark: #4b267d;
-      --purple-light: #f3ebff;
-      --shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
-      --radius: 18px;
+      --dark: #4b267d;
+      --light: #f3ebff;
+      --shadow: 0 4px 15px rgba(88, 55, 135, 0.08);
     }
 
     * {
@@ -31,46 +34,26 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Plus Jakarta Sans", Arial, sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(at 0% 0%, #eee2ff, transparent 40%),
+        radial-gradient(at 100% 0%, #fbe7fa, transparent 38%),
+        var(--bg);
       min-height: 100vh;
-      padding: 25px 16px 50px;
+      padding: 30px 18px 50px;
       line-height: 1.6;
     }
 
-    a {
-      color: inherit;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
     a:focus-visible,
-    button:focus-visible,
-    input:focus-visible {
+    input:focus-visible,
+    button:focus-visible {
       outline: 3px solid var(--purple);
-      outline-offset: 4px;
-    }
-
-    .skip-link {
-      position: absolute;
-      top: -100px;
-      left: 12px;
-      padding: 12px;
-      background: white;
-      color: var(--purple-dark);
-      z-index: 100;
-    }
-
-    .skip-link:focus {
-      top: 12px;
+      outline-offset: 3px;
     }
 
     .container {
-      max-width: 1150px;
+      max-width: 1120px;
       margin: auto;
     }
 
@@ -79,235 +62,237 @@
       border: 1px solid var(--border);
       border-radius: 24px;
       padding: 40px;
-      margin-bottom: 25px;
+      margin-bottom: 28px;
       box-shadow: var(--shadow);
       border-top: 5px solid var(--purple);
     }
 
     .badge {
       display: inline-block;
-      background: var(--purple-light);
-      color: var(--purple-dark);
-      border-radius: 20px;
-      padding: 5px 12px;
+      padding: 6px 12px;
       margin-bottom: 15px;
-      font-size: 0.85rem;
-      font-weight: bold;
+      border-radius: 30px;
+      background: #e8faf0;
+      color: #126b42;
+      font-size: 0.8rem;
+      font-weight: 700;
     }
 
     h1 {
-      color: var(--purple-dark);
+      color: var(--dark);
       font-size: clamp(2rem, 5vw, 3.2rem);
-      margin-bottom: 12px;
+      line-height: 1.2;
+      margin-bottom: 14px;
     }
 
-    .hero p {
+    .intro {
       color: var(--muted);
-      max-width: 750px;
-      margin-bottom: 20px;
+      max-width: 720px;
+      margin-bottom: 22px;
     }
 
-    .btn {
+    .button {
       display: inline-block;
-      text-decoration: none;
+      padding: 10px 16px;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px 15px;
-      font-size: 0.88rem;
-      font-weight: bold;
+      background: white;
+      color: var(--dark);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
       cursor: pointer;
       transition: 0.2s;
     }
 
-    .btn-primary {
+    .button.primary {
       background: var(--purple);
-      color: white;
       border-color: var(--purple);
+      color: white;
     }
 
-    .btn-primary:hover {
-      background: var(--purple-dark);
+    .button:hover {
+      background: var(--light);
+      transform: translateY(-2px);
     }
 
-    .btn-secondary {
-      background: white;
-      color: var(--text);
+    .button.primary:hover {
+      background: var(--dark);
+      color: white;
     }
 
-    .btn-secondary:hover {
-      background: var(--purple-light);
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
+      gap: 12px;
+      margin: 28px 0;
       align-items: center;
-      gap: 15px;
-      margin: 25px 0;
     }
 
-    .search-wrapper {
+    #search {
       flex: 1;
       min-width: 220px;
-      max-width: 450px;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 12px 15px;
-      background: white;
+      padding: 13px 16px;
       border: 1px solid var(--border);
-      border-radius: 10px;
+      border-radius: 12px;
+      background: white;
       color: var(--text);
+      font: inherit;
+      box-shadow: var(--shadow);
     }
 
-    .filter-pills {
+    .filter-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .filter-btn {
-      padding: 8px 13px;
+    .filter {
+      padding: 9px 14px;
       border: 1px solid var(--border);
-      border-radius: 25px;
+      border-radius: 30px;
       background: white;
       color: var(--muted);
       cursor: pointer;
+      font: inherit;
       font-size: 0.82rem;
-      font-weight: bold;
+      font-weight: 700;
     }
 
-    .filter-btn.active {
+    .filter.active,
+    .filter:hover {
       background: var(--purple);
-      color: white;
       border-color: var(--purple);
+      color: white;
     }
 
-    .section-header {
-      margin: 30px 0 15px;
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin: 32px 0 15px;
     }
 
-    .section-title {
+    .section-heading h2 {
+      color: var(--dark);
       font-size: 1.35rem;
     }
 
-    .section-count {
-      display: inline-block;
-      background: #eadffc;
-      color: var(--purple-dark);
-      padding: 2px 9px;
+    .count {
+      padding: 3px 10px;
       border-radius: 20px;
+      background: #eadffc;
+      color: var(--dark);
       font-size: 0.8rem;
     }
 
-    .projects-grid {
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
       gap: 18px;
-      margin-bottom: 35px;
     }
 
-    .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 23px;
-      box-shadow: var(--shadow);
+    .card {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       min-width: 0;
+      padding: 23px;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      background: var(--card);
+      box-shadow: var(--shadow);
       transition: transform 0.2s;
     }
 
-    .project-card:hover {
+    .card:hover {
       transform: translateY(-3px);
+    }
+
+    .card[hidden] {
+      display: none;
     }
 
     .tag {
       display: inline-block;
       padding: 4px 9px;
-      border-radius: 7px;
-      font-size: 0.72rem;
-      font-weight: bold;
-      background: var(--purple-light);
-      color: var(--purple-dark);
       margin-bottom: 12px;
+      border-radius: 7px;
+      background: var(--light);
+      color: var(--dark);
+      font-size: 0.72rem;
+      font-weight: 800;
     }
 
-    .tag-api {
-      background: #e3f7fb;
-      color: #07576a;
-    }
-
-    .card-title {
-      font-size: 1.08rem;
+    .card h3 {
       margin-bottom: 8px;
+      font-size: 1.08rem;
     }
 
-    .card-desc {
+    .card p {
       color: var(--muted);
-      font-size: 0.9rem;
-      margin-bottom: 16px;
-      flex-grow: 1;
+      font-size: 0.88rem;
+      margin-bottom: 15px;
     }
 
-    .card-path {
-      font-family: monospace;
-      font-size: 0.75rem;
-      color: var(--muted);
-      background: #faf7ff;
-      border: 1px dashed #d6c5ea;
-      border-radius: 8px;
+    .path {
+      overflow-wrap: anywhere;
       padding: 8px;
       margin-bottom: 15px;
-      overflow-wrap: anywhere;
+      border: 1px dashed #d6c5ea;
+      border-radius: 8px;
+      background: #faf7ff;
+      color: var(--muted);
+      font-size: 0.73rem;
     }
 
-    .card-actions {
+    .actions {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
-    .card-actions .btn {
+    .actions .button {
       flex: 1;
       text-align: center;
       min-width: 100px;
-      padding: 9px 7px;
-      font-size: 0.8rem;
     }
 
-    .empty-state {
+    .empty {
       display: none;
-      background: white;
+      margin: 20px 0;
+      padding: 30px;
       border: 1px dashed var(--border);
-      border-radius: var(--radius);
-      padding: 35px;
+      border-radius: 15px;
+      background: white;
       text-align: center;
       color: var(--muted);
-      margin-bottom: 30px;
     }
 
     footer {
-      border-top: 1px solid var(--border);
+      margin-top: 40px;
       padding-top: 24px;
-      margin-top: 38px;
+      border-top: 1px solid var(--border);
       text-align: center;
       color: var(--muted);
       font-size: 0.85rem;
     }
 
     footer a {
-      color: var(--purple-dark);
-      font-weight: bold;
+      color: var(--dark);
+      font-weight: 700;
     }
 
     @media (max-width: 600px) {
       body {
-        padding: 15px 10px 35px;
+        padding: 16px 12px 35px;
       }
 
       .hero {
@@ -318,8 +303,8 @@
         align-items: stretch;
       }
 
-      .search-wrapper {
-        max-width: none;
+      .filter-buttons {
+        overflow-x: auto;
       }
     }
 
@@ -328,433 +313,312 @@
       *::before,
       *::after {
         scroll-behavior: auto !important;
-        transition-duration: 0.01ms !important;
-        animation-duration: 0.01ms !important;
-      }
-
-      .project-card:hover {
-        transform: none;
+        transition: none !important;
       }
     }
   </style>
 </head>
 
 <body>
-<a class="skip-link" href="#main-content">Skip to main content</a>
-
 <div class="container">
 
   <header class="hero">
-    <span class="badge">Web Programming Portfolio</span>
+    <span class="badge">✦ Web Programming Portfolio</span>
     <h1>Prashna Rai</h1>
-    <p>
+
+    <p class="intro">
       Welcome to my Web Programming Portfolio! This website brings together
-      my weekly assignments, JavaScript exercises, interactive projects,
-      and learning progress using HTML, CSS, and JavaScript.
+      my weekly assignments, HTML and CSS exercises, JavaScript practice,
+      API projects, forms, and accessibility homework.
     </p>
 
-    <a class="btn btn-primary"
-       href="https://prqshna-design.github.io/WEB-PORGRAMMING/"
-       target="_blank"
-       rel="noopener noreferrer">
-      Visit Live Website
-    </a>
+    <div class="hero-actions">
+      <a class="button primary"
+         href="https://github.com/prqshna-design/WEB-PORGRAMMING">
+        View GitHub Repository
+      </a>
 
-    <a class="btn btn-secondary"
-       href="https://github.com/prqshna-design/WEB-PORGRAMMING"
-       target="_blank"
-       rel="noopener noreferrer">
-      View GitHub Repository
-    </a>
+      <button class="button" id="copyPortfolio" type="button">
+        Copy Portfolio URL
+      </button>
+    </div>
   </header>
 
   <main id="main-content">
+    <div class="toolbar">
+      <input
+        id="search"
+        type="search"
+        placeholder="Search weeks, tasks, or topics..."
+        aria-label="Search homework assignments">
 
-    <section class="toolbar" aria-label="Search and filter assignments">
-      <div class="search-wrapper">
-        <input
-          id="searchInput"
-          class="search-input"
-          type="search"
-          placeholder="Search weeks or assignments..."
-          aria-label="Search portfolio assignments">
+      <div class="filter-buttons" aria-label="Filter assignments">
+        <button class="filter active" data-filter="all" aria-pressed="true">
+          All
+        </button>
+        <button class="filter" data-filter="html" aria-pressed="false">
+          HTML & CSS
+        </button>
+        <button class="filter" data-filter="project" aria-pressed="false">
+          Projects
+        </button>
       </div>
-
-      <div class="filter-pills" role="group" aria-label="Filter assignments">
-        <button class="filter-btn active" data-filter="all"
-                aria-pressed="true" type="button">All Items</button>
-        <button class="filter-btn" data-filter="project"
-                aria-pressed="false" type="button">Projects</button>
-        <button class="filter-btn" data-filter="exercise"
-                aria-pressed="false" type="button">Weekly Exercises</button>
-      </div>
-    </section>
-
-    <section aria-labelledby="projectsHeading" id="featuredSection">
-      <div class="section-header">
-        <h2 class="section-title" id="projectsHeading">
-          Featured Projects
-          <span class="section-count" id="featuredCount">3</span>
-        </h2>
-      </div>
-
-      <div class="projects-grid" id="featuredGrid">
-
-        <article class="project-card" data-category="project"
-          data-keywords="week 4 javascript counter dark mode todo search">
-          <div>
-            <span class="tag">JavaScript</span>
-            <h3 class="card-title">JavaScript Interactive Tasks</h3>
-            <p class="card-desc">
-              Practice JavaScript, DOM manipulation, event listeners,
-              counter buttons, dark mode, and interactive content.
-            </p>
-            <div class="card-path">WEB week4 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary"
-              href="./WEB%20week4%20%28mon%29/"
-              target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="project"
-          data-keywords="week 5 smart counter learning hub javascript">
-          <div>
-            <span class="tag">Mini Projects</span>
-            <h3 class="card-title">Smart Counter and Learning Hub</h3>
-            <p class="card-desc">
-              Explore JavaScript concepts, interactive counter functions,
-              grade calculator, arrays, loops, and saved notes.
-            </p>
-            <div class="card-path">WEB week5</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary"
-              href="./WEB%20week5/"
-              target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5"
-              target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="project"
-          data-keywords="week 6 joke corner api fetch localstorage">
-          <div>
-            <span class="tag tag-api">API Project</span>
-            <h3 class="card-title">Random Joke Corner</h3>
-            <p class="card-desc">
-              Retrieve jokes from an API and practice asynchronous
-              JavaScript and local storage.
-            </p>
-            <div class="card-path">WEB week6 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary"
-              href="./WEB%20week6%20%28mon%29/"
-              target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary"
-              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29"
-              target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <section aria-labelledby="exercisesHeading" id="exercisesSection">
-      <div class="section-header">
-        <h2 class="section-title" id="exercisesHeading">
-          Weekly Web Programming Exercises
-          <span class="section-count" id="exercisesCount">12</span>
-        </h2>
-      </div>
-
-      <div class="projects-grid" id="exercisesGrid">
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 2 monday html basics">
-          <div>
-            <span class="tag">Week 02 · Monday</span>
-            <h3 class="card-title">Week 2 Monday</h3>
-            <p class="card-desc">HTML basics and foundational webpage exercises.</p>
-            <div class="card-path">WEB week2 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week2%20%28mon%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 2 friday html css">
-          <div>
-            <span class="tag">Week 02 · Friday</span>
-            <h3 class="card-title">Week 2 Friday</h3>
-            <p class="card-desc">HTML and CSS practice from Friday's class.</p>
-            <div class="card-path">WEB week2 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week2%20%28fri%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 3 monday html css">
-          <div>
-            <span class="tag">Week 03 · Monday</span>
-            <h3 class="card-title">Week 3 Monday</h3>
-            <p class="card-desc">HTML structure, styling, and webpage layout exercises.</p>
-            <div class="card-path">WEB week3 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week3%20%28mon%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 3 friday html css">
-          <div>
-            <span class="tag">Week 03 · Friday</span>
-            <h3 class="card-title">Week 3 Friday</h3>
-            <p class="card-desc">More practice with webpage structure and styling.</p>
-            <div class="card-path">WEB week3 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week3%20%28fri%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 4 monday javascript dom events">
-          <div>
-            <span class="tag">Week 04</span>
-            <h3 class="card-title">Week 4 · JavaScript</h3>
-            <p class="card-desc">JavaScript fundamentals, DOM interactions, and events.</p>
-            <div class="card-path">WEB week4 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week4%20%28mon%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 5 javascript counter learning hub">
-          <div>
-            <span class="tag">Week 05</span>
-            <h3 class="card-title">Week 5 · JavaScript Practice</h3>
-            <p class="card-desc">Interactive JavaScript exercises and mini projects.</p>
-            <div class="card-path">WEB week5</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week5/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 6 monday joke api fetch">
-          <div>
-            <span class="tag tag-api">Week 06 · Monday</span>
-            <h3 class="card-title">Week 6 Monday · Joke Corner</h3>
-            <p class="card-desc">Fetch data from an API and display dynamic results.</p>
-            <div class="card-path">WEB week6 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week6%20%28mon%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 6 friday api weather country github">
-          <div>
-            <span class="tag tag-api">Week 06 · Friday</span>
-            <h3 class="card-title">Week 6 Friday · API Projects</h3>
-            <p class="card-desc">API exercises involving weather, country data, GitHub, and more.</p>
-            <div class="card-path">WEB week6 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week6%20%28fri%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 7 accessibility lighthouse contrast keyboard aria">
-          <div>
-            <span class="tag">Week 07</span>
-            <h3 class="card-title">Week 7 · Web Accessibility</h3>
-            <p class="card-desc">
-              Practice accessibility principles, semantic HTML, keyboard navigation,
-              readable contrast, and accessible labels.
-            </p>
-            <div class="card-path">WEB week7</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week7/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 8 monday forms validation html">
-          <div>
-            <span class="tag">Week 08 · Monday</span>
-            <h3 class="card-title">Week 8 Monday · Forms</h3>
-            <p class="card-desc">Form structure, input elements, and form validation exercises.</p>
-            <div class="card-path">WEB week8 (mon)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week8%20%28mon%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 8 friday forms validation accessibility">
-          <div>
-            <span class="tag">Week 08 · Friday</span>
-            <h3 class="card-title">Week 8 Friday · Form Practice</h3>
-            <p class="card-desc">Practice form controls, validation, and accessible feedback.</p>
-            <div class="card-path">WEB week8 (fri)</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week8%20%28fri%29/" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-        <article class="project-card" data-category="exercise"
-          data-keywords="week 9 accessibility lighthouse audit before after">
-          <div>
-            <span class="tag">Week 09</span>
-            <h3 class="card-title">Week 9 · Web Accessibility</h3>
-            <p class="card-desc">
-              Use Google Lighthouse to check accessibility, compare before-and-after
-              results, and document improvements to the portfolio.
-            </p>
-            <div class="card-path">WEB week9/accessibility.html</div>
-          </div>
-          <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week9/accessibility.html" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9" target="_blank" rel="noopener noreferrer">View Source</a>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <div class="empty-state" id="emptyState" role="status" aria-live="polite">
-      <h3>No matching assignments found</h3>
-      <p>Try another search term or select “All Items”.</p>
     </div>
 
+    <div class="section-heading">
+      <h2>All Weekly Assignments</h2>
+      <span class="count" id="itemCount">0 items</span>
+    </div>
+
+    <div class="grid" id="assignmentGrid">
+
+      <!-- WEEK 2 MONDAY -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 02 · Monday</span>
+          <h3>Week 2 Monday</h3>
+          <p>HTML fundamentals and webpage practice.</p>
+          <div class="path">WEB week2 (mon)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week2%20%28mon%29/task1.html">Task 1</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28mon%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 2 FRIDAY -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 02 · Friday</span>
+          <h3>Week 2 Friday</h3>
+          <p>HTML practice and webpage exercises.</p>
+          <div class="path">WEB week2 (fri)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week2%20%28fri%29/task1.html">Task 1</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week2%20%28fri%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 3 MONDAY -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 03 · Monday</span>
+          <h3>Week 3 Monday</h3>
+          <p>HTML practice and webpage layout exercises.</p>
+          <div class="path">WEB week3 (mon)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week3%20%28mon%29/task1.html">Task 1</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28mon%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 3 FRIDAY -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 03 · Friday</span>
+          <h3>Week 3 Friday</h3>
+          <p>HTML exercises from Friday's class.</p>
+          <div class="path">WEB week3 (fri)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week3%20%28fri%29/task1.html">Task 1</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week3%20%28fri%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 4 -->
+      <article class="card" data-category="project">
+        <div>
+          <span class="tag">Week 04 · JavaScript</span>
+          <h3>JavaScript Interactive Tasks</h3>
+          <p>JavaScript practice and interactive webpage exercises.</p>
+          <div class="path">WEB week4 (mon)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week4%20%28mon%29/task1.html">Task 1</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week4%20%28mon%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 5 -->
+      <article class="card" data-category="project">
+        <div>
+          <span class="tag">Week 05 · Projects</span>
+          <h3>JavaScript Practice</h3>
+          <p>Mini projects and JavaScript exercises.</p>
+          <div class="path">WEB week5</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week5/task1.html">Task 1</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week5">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 6 MONDAY -->
+      <article class="card" data-category="project">
+        <div>
+          <span class="tag">Week 06 · Monday</span>
+          <h3>Random Joke Corner</h3>
+          <p>A JavaScript project using an API to retrieve jokes.</p>
+          <div class="path">WEB week6 (mon)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week6%20%28mon%29/task1%28JOKE%29.html">Open Project</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28mon%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 6 FRIDAY -->
+      <article class="card" data-category="project">
+        <div>
+          <span class="tag">Week 06 · Friday</span>
+          <h3>API and Web Projects</h3>
+          <p>Country demographics, cryptocurrency, weather, and other projects.</p>
+          <div class="path">WEB week6 (fri)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week6%20%28fri%29/index.html">Main Page</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week6%20%28fri%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 7 -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 07</span>
+          <h3>Week 7 Assignments</h3>
+          <p>Weekly exercises and webpage practice.</p>
+          <div class="path">WEB week7</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week7/index.html">Main Page</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week7">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 8 MONDAY -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 08 · Monday</span>
+          <h3>Forms and Registration</h3>
+          <p>Contact forms and student registration exercises.</p>
+          <div class="path">WEB week8 (mon)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week8%20%28mon%29/index.html">Main Page</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28mon%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 8 FRIDAY -->
+      <article class="card" data-category="html">
+        <div>
+          <span class="tag">Week 08 · Friday</span>
+          <h3>HTML Forms and CSS</h3>
+          <p>Input types, field grouping, validation, and accessibility.</p>
+          <div class="path">WEB week8 (fri)</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week8%20%28fri%29/index.html">Main Page</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week8%20%28fri%29">All Files</a>
+        </div>
+      </article>
+
+      <!-- WEEK 9 -->
+      <article class="card" data-category="project">
+        <div>
+          <span class="tag">Week 09 · Accessibility</span>
+          <h3>Accessibility and Lighthouse</h3>
+          <p>Web accessibility homework with before-and-after Lighthouse results.</p>
+          <div class="path">WEB week9</div>
+        </div>
+        <div class="actions">
+          <a class="button primary" href="./WEB%20week9/accesibility.html">Open Homework</a>
+          <a class="button" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9">All Files</a>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="empty" id="emptyState">
+      <h3>No assignments found</h3>
+      <p>Try a different search term or filter.</p>
+    </div>
   </main>
 
   <footer>
-    <p>Made with 💜 by Prashna Rai</p>
+    <p>Web Programming Portfolio · Prashna Rai</p>
     <p>
-      Web Programming Portfolio ·
-      <a href="https://github.com/prqshna-design/WEB-PORGRAMMING"
-         target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+      <a href="https://github.com/prqshna-design/WEB-PORGRAMMING">
+        View source code on GitHub
+      </a>
     </p>
   </footer>
 
 </div>
 
 <script>
-(function () {
-  "use strict";
-
-  const searchInput = document.getElementById("searchInput");
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
-  const featuredSection = document.getElementById("featuredSection");
-  const exercisesSection = document.getElementById("exercisesSection");
-  const featuredCount = document.getElementById("featuredCount");
-  const exercisesCount = document.getElementById("exercisesCount");
+  const searchInput = document.getElementById("search");
+  const cards = [...document.querySelectorAll(".card")];
+  const filterButtons = [...document.querySelectorAll(".filter")];
+  const itemCount = document.getElementById("itemCount");
   const emptyState = document.getElementById("emptyState");
 
-  let currentFilter = "all";
+  let activeFilter = "all";
 
-  function applyFilters() {
-    const query = searchInput.value.toLowerCase().trim();
+  function filterAssignments() {
+    const query = searchInput.value.trim().toLowerCase();
+    let visible = 0;
 
-    let visibleTotal = 0;
-    let visibleFeatured = 0;
-    let visibleExercises = 0;
-
-    cards.forEach(function (card) {
-      const title = card.querySelector(".card-title").textContent.toLowerCase();
-      const description = card.querySelector(".card-desc").textContent.toLowerCase();
-      const keywords = (card.dataset.keywords || "").toLowerCase();
-      const path = card.querySelector(".card-path").textContent.toLowerCase();
-      const category = card.dataset.category;
-
-      const matchesText =
-        !query ||
-        title.includes(query) ||
-        description.includes(query) ||
-        keywords.includes(query) ||
-        path.includes(query);
-
+    cards.forEach(card => {
+      const matchesText = card.textContent.toLowerCase().includes(query);
       const matchesFilter =
-        currentFilter === "all" || category === currentFilter;
+        activeFilter === "all" ||
+        card.dataset.category === activeFilter;
 
-      const visible = matchesText && matchesFilter;
+      const show = matchesText && matchesFilter;
+      card.hidden = !show;
 
-      card.style.display = visible ? "flex" : "none";
-
-      if (visible) {
-        visibleTotal++;
-
-        if (category === "project") {
-          visibleFeatured++;
-        }
-
-        if (category === "exercise") {
-          visibleExercises++;
-        }
-      }
+      if (show) visible++;
     });
 
-    featuredCount.textContent = visibleFeatured;
-    exercisesCount.textContent = visibleExercises;
-
-    featuredSection.style.display = visibleFeatured ? "block" : "none";
-    exercisesSection.style.display = visibleExercises ? "block" : "none";
-
-    emptyState.style.display = visibleTotal === 0 ? "block" : "none";
+    itemCount.textContent = visible + (visible === 1 ? " item" : " items");
+    emptyState.style.display = visible === 0 ? "block" : "none";
   }
 
-  searchInput.addEventListener("input", applyFilters);
+  searchInput.addEventListener("input", filterAssignments);
 
-  filterButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      filterButtons.forEach(function (item) {
-        item.classList.remove("active");
-        item.setAttribute("aria-pressed", "false");
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      activeFilter = button.dataset.filter;
+
+      filterButtons.forEach(item => {
+        const selected = item === button;
+        item.classList.toggle("active", selected);
+        item.setAttribute("aria-pressed", String(selected));
       });
 
-      button.classList.add("active");
-      button.setAttribute("aria-pressed", "true");
-
-      currentFilter = button.dataset.filter;
-      applyFilters();
+      filterAssignments();
     });
   });
 
-  applyFilters();
-})();
+  document.getElementById("copyPortfolio").addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(
+        "https://prqshna-design.github.io/WEB-PORGRAMMING/"
+      );
+      document.getElementById("copyPortfolio").textContent = "URL Copied!";
+    } catch {
+      window.prompt(
+        "Copy your portfolio URL:",
+        "https://prqshna-design.github.io/WEB-PORGRAMMING/"
+      );
+    }
+  });
+
+  filterAssignments();
 </script>
 
 </body>
