@@ -370,6 +370,7 @@
 
     .card-actions {
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
     }
 
@@ -406,7 +407,7 @@
       align-items: center;
       justify-content: center;
       padding: 16px;
-      background: #211631eF;
+      background: #211631ef;
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -738,7 +739,7 @@
       <div class="section-header">
         <h2 class="section-title" id="exercisesHeading">
           Weekly Web Programming Exercises
-          <span class="section-count" id="exercisesCount">11</span>
+          <span class="section-count" id="exercisesCount">12</span>
         </h2>
       </div>
 
@@ -953,6 +954,40 @@
           </div>
         </article>
 
+        <!-- WEEK 9 ACCESSIBILITY REPORT -->
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 9 web accessibility lighthouse audit before after">
+          <div>
+            <div class="card-top">
+              <span class="tag tag-exercise">Week 09</span>
+            </div>
+
+            <h3 class="card-title">Week 9 · Web Accessibility</h3>
+
+            <p class="card-desc">
+              Tested my portfolio using Google Lighthouse, compared
+              before-and-after accessibility results, and documented
+              three accessibility improvements.
+            </p>
+
+            <div class="card-path">WEB week9/accessibility.html</div>
+          </div>
+
+          <div class="card-actions">
+            <a class="btn btn-secondary"
+              href="WEB%20week9/accessibility.html">
+              View Report
+            </a>
+
+            <a class="btn btn-primary"
+              href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9"
+              target="_blank"
+              rel="noopener noreferrer">
+              Open Files
+            </a>
+          </div>
+        </article>
+
       </div>
     </section>
 
@@ -1137,14 +1172,13 @@
 
   // Copy buttons
   const toast = document.getElementById("toastNotification");
-  let toastTimer;
 
   function showToast(message) {
     toast.textContent = message;
     toast.classList.add("show");
 
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () {
+    window.clearTimeout(showToast.timer);
+    showToast.timer = window.setTimeout(function () {
       toast.classList.remove("show");
     }, 2500);
   }
