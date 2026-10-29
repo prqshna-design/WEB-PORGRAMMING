@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Week 9 Web Accessibility Lighthouse homework">
+  <title>Week 9 | Web Accessibility</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 30px 18px;
+      font-family: Arial, sans-serif;
+      line-height: 1.7;
+      color: #302344;
+      background: #faf7ff;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 12px;
+      z-index: 10;
+      padding: 12px 16px;
+      background: #ffffff;
+      color: #4b267d;
+      border: 2px solid #4b267d;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    main {
+      max-width: 950px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      color: #4b267d;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      line-height: 1.2;
+    }
+
+    .intro {
+      color: #655575;
+    }
+
+    .card {
+      background: #ffffff;
+      padding: 24px;
+      margin: 24px 0;
+      border: 1px solid #e7dcf7;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 20px;
+    }
+
+    figure {
+      margin: 0;
+      min-width: 0;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid #d6c5ea;
+      border-radius: 10px;
+    }
+
+    figcaption {
+      margin-top: 10px;
+      font-weight: bold;
+      color: #4b267d;
+    }
+
+    li {
+      margin-bottom: 14px;
+    }
+
+    a {
+      color: #4b267d;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #7040b0;
+      outline-offset: 4px;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 10px 0 25px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      color: #655575;
+      padding: 15px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <main id="main-content">
+    <header>
+      <h1>Week 9: Web Accessibility</h1>
+      <p class="intro">
+        In this task, I used Google Lighthouse to test the accessibility
+        of my Web Programming portfolio. I recorded the initial results,
+        made accessibility improvements, and ran the audit again.
+      </p>
+    </header>
+
+    <section class="card" aria-labelledby="results-heading">
+      <h2 id="results-heading">Before and After Lighthouse Results</h2>
+      <p>These screenshots show my Lighthouse accessibility results before and after the improvements.</p>
+
+      <div class="screenshots">
+        <figure>
+          <img
+            src="before lighthouse.png"
+            alt="Screenshot showing my Lighthouse accessibility audit before improvements">
+          <figcaption>Before Accessibility Improvements</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="after lighthouse.png"
+            alt="Screenshot showing my Lighthouse accessibility audit after improvements">
+          <figcaption>After Accessibility Improvements</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="fixes-heading">
+      <h2 id="fixes-heading">Three Accessibility Fixes</h2>
+
+      <ol>
+        <li>
+          <strong>Skip link:</strong>
+          Added a skip link that allows keyboard users to jump directly
+          to the main content.
+        </li>
+
+        <li>
+          <strong>Main landmark:</strong>
+          Added a main element to identify the primary content for
+          assistive technologies.
+        </li>
+
+        <li>
+          <strong>Keyboard focus and contrast:</strong>
+          Improved visible keyboard focus indicators and adjusted
+          colors to help users see and read the content more easily.
+        </li>
+      </ol>
+    </section>
+
+    <a class="back-link" href="../index.html">
+      ← Back to My Web Programming Portfolio
+    </a>
+
+    <footer>
+      <p>Week 9 Web Programming Homework · Web Accessibility</p>
+      <p>Created by Prashna Rai</p>
+    </footer>
+  </main>
+</body>
+</html>
