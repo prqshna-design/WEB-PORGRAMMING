@@ -1,570 +1,473 @@
 
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prashna Rai | Student Registration</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              50: '#faf5ff',
-              100: '#f3e8ff',
-              300: '#d8b4fe',
-              400: '#c084fc',
-              500: '#a855f7',
-              600: '#9333ea',
-              700: '#7e22ce',
-              900: '#581c87'
-            }
-          }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student registration form with JavaScript validation.">
+    <title>JS Validation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
         }
-      }
-    }
-  </script>
-  <style>
-    * { box-sizing: border-box; }
-    body { font-family: Inter, system-ui, sans-serif; }
-    .glass {
-      background: rgba(255,255,255,.9);
-      border: 1px solid #e9d5ff;
-      box-shadow: 0 15px 45px rgba(126,34,206,.09);
-    }
-    .dark .glass {
-      background: rgba(30,20,45,.92);
-      border-color: #4c1d70;
-      box-shadow: 0 15px 45px rgba(0,0,0,.25);
-    }
-    input, select {
-      outline: none;
-    }
-    input:focus, select:focus {
-      border-color: #a855f7 !important;
-      box-shadow: 0 0 0 3px rgba(168,85,247,.15);
-    }
-    input[aria-invalid="true"], select[aria-invalid="true"] {
-      border-color: #f43f5e !important;
-    }
-    input[aria-invalid="false"], select[aria-invalid="false"] {
-      border-color: #a78bfa !important;
-    }
-    input[type="range"] { accent-color: #9333ea; }
-    .major-chip.selected {
-      background: #f3e8ff;
-      border-color: #9333ea;
-      color: #7e22ce;
-    }
-    .dark .major-chip.selected {
-      background: #3b1d52;
-      color: #e9d5ff;
-    }
-    #student-card {
-      transform-style: preserve-3d;
-      transition: transform .15s ease;
-    }
-    @media print {
-      body * { visibility: hidden; }
-      #student-card, #student-card * { visibility: visible; }
-      #student-card {
-        position: absolute;
-        top: 20px;
-        left: 0;
-        width: 100%;
-        box-shadow: none;
-      }
-    }
-  </style>
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #f4f1fa;
+            color: #29243b;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            max-width: 650px;
+            margin: auto;
+            padding: 35px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(45, 30, 80, 0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #6741a5;
+            text-align: center;
+        }
+
+        .intro {
+            text-align: center;
+            color: #686276;
+            margin-bottom: 30px;
+        }
+
+        fieldset {
+            border: 1px solid #ded6ed;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+
+        legend {
+            padding: 0 10px;
+            color: #6741a5;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #c9c2d5;
+            border-radius: 7px;
+            font-size: 15px;
+            background: white;
+            color: #29243b;
+        }
+
+        input:focus, select:focus {
+            outline: 3px solid #e2d5ff;
+            border-color: #6741a5;
+        }
+
+        .hint {
+            display: block;
+            margin-top: 5px;
+            color: #6c6678;
+            font-size: 13px;
+        }
+
+        .error-text {
+            display: block;
+            margin-top: 5px;
+            color: #b42332;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .error-text[hidden] {
+            display: none;
+        }
+
+        #feedback {
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        #feedback:empty {
+            display: none;
+        }
+
+        #feedback.error {
+            background: #fff0f0;
+            color: #a11d2c;
+        }
+
+        #feedback.success {
+            background: #e9f8ee;
+            color: #176b38;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 7px;
+            background: #6741a5;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #503184;
+        }
+
+        button[type="reset"] {
+            background: #777083;
+        }
+
+        button[type="reset"]:hover {
+            background: #575161;
+        }
+
+        button:focus-visible {
+            outline: 3px solid #d99b22;
+            outline-offset: 3px;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 25px;
+            text-align: center;
+            color: #6741a5;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 10px;
+            padding: 10px;
+            background: white;
+            color: #6741a5;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            z-index: 10;
+        }
+
+        @media (max-width: 500px) {
+            main {
+                padding: 22px;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
-<body class="min-h-screen bg-purple-50 text-slate-800 dark:bg-[#120b1c] dark:text-slate-100 transition-colors">
+<body>
 
-  <header class="max-w-4xl mx-auto px-4 py-6 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-purple-500 to-fuchsia-500 text-white grid place-items-center text-xl font-black">P</div>
-      <div>
-        <h1 class="font-extrabold tracking-tight">LAVENDER<span class="text-purple-500">NET</span></h1>
-        <p class="text-xs text-slate-500 dark:text-slate-400">Student Registration Portal</p>
-      </div>
-    </div>
-    <button id="theme-toggle" type="button" class="px-4 py-2 rounded-xl border border-purple-200 dark:border-purple-800 text-sm font-semibold hover:bg-purple-100 dark:hover:bg-purple-950">☀️ / 🌙</button>
-  </header>
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <main class="max-w-2xl mx-auto px-4 pb-12">
+<main id="main-content" tabindex="-1">
 
-    <section class="glass rounded-2xl p-4 mb-5">
-      <div class="flex justify-between items-center gap-3">
-        <div>
-          <p class="text-xs uppercase tracking-widest font-bold text-purple-600 dark:text-purple-300">Registration progress</p>
-          <p id="progress-desc" class="text-sm mt-1 text-slate-500 dark:text-slate-400">Complete the required fields to register.</p>
-        </div>
-        <strong id="progress-pct" class="text-2xl text-purple-600 dark:text-purple-300">0%</strong>
-      </div>
-      <div class="h-2 bg-purple-100 dark:bg-purple-950 rounded-full mt-3 overflow-hidden">
-        <div id="progress-bar" class="h-full bg-gradient-to-r from-purple-500 to-fuchsia-400 rounded-full transition-all" style="width:0%"></div>
-      </div>
-    </section>
+    <h1>JS Validation</h1>
 
-    <section class="glass rounded-3xl p-6 sm:p-9">
-      <div id="form-wrapper">
-        <div class="mb-7">
-          <p class="text-xs uppercase tracking-[.2em] text-purple-500 font-bold">Welcome to campus</p>
-          <h2 class="text-3xl font-black mt-2">Student Registration</h2>
-          <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Create your student profile and generate your digital ID card.</p>
-        </div>
+    <p class="intro">
+        Student Registration Form
+        <br>
+        Enter your details below and check your information before submitting.
+    </p>
 
-        <form id="register-form" novalidate class="space-y-6">
+    <form id="registrationForm" novalidate>
 
-          <fieldset class="border border-purple-200 dark:border-purple-900 rounded-2xl p-5 space-y-4">
-            <legend class="px-2 font-bold text-purple-700 dark:text-purple-300">01. Personal Information</legend>
+        <fieldset>
+            <legend>Personal Information</legend>
 
-            <div>
-              <label for="full-name" class="block text-sm font-semibold mb-1">Full name *</label>
-              <input id="full-name" name="full_name" required minlength="2" autocomplete="name" placeholder="Enter your full name" class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-              <p id="full-name-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="name"
+                    required minlength="2" maxlength="80"
+                    autocomplete="name"
+                    aria-describedby="nameError">
+                <span class="error-text" id="nameError" hidden></span>
             </div>
 
-            <div>
-              <div class="flex justify-between gap-2">
-                <label for="student-id" class="text-sm font-semibold mb-1">Student ID *</label>
-                <span id="id-count" class="text-xs text-slate-400">0/9 digits</span>
-              </div>
-              <input id="student-id" name="student_id" required pattern="[0-9]{9}" inputmode="numeric" maxlength="9" placeholder="202112345" class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-              <p id="student-id-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="studentNumber">Student ID *</label>
+                <input type="text" id="studentNumber" name="studentId"
+                    required pattern="[0-9]{9}"
+                    inputmode="numeric" maxlength="9"
+                    aria-describedby="idHint idError">
+                <span class="hint" id="idHint">
+                    Please enter your 9-digit student ID.
+                </span>
+                <span class="error-text" id="idError" hidden></span>
             </div>
 
-            <div>
-              <label for="dob" class="block text-sm font-semibold mb-1">Date of birth (optional)</label>
-              <input id="dob" name="dob" type="date" max="2010-12-31" class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-              <p id="dob-age" class="text-xs text-purple-500 mt-1"></p>
-              <p id="dob-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="emailAddress">Email Address *</label>
+                <input type="email" id="emailAddress" name="email"
+                    required maxlength="254"
+                    autocomplete="email"
+                    aria-describedby="emailError">
+                <span class="error-text" id="emailError" hidden></span>
             </div>
 
-            <div>
-              <label for="major" class="block text-sm font-semibold mb-2">Academic major *</label>
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 mb-3">
-                <button type="button" class="major-chip rounded-xl border border-purple-200 dark:border-purple-800 p-3 text-sm" data-value="Computer Engineering">💻<br>Computer Eng.</button>
-                <button type="button" class="major-chip rounded-xl border border-purple-200 dark:border-purple-800 p-3 text-sm" data-value="Computer Science">🧑‍💻<br>Computer Sci.</button>
-                <button type="button" class="major-chip rounded-xl border border-purple-200 dark:border-purple-800 p-3 text-sm" data-value="Artificial Intelligence">🧠<br>AI</button>
-                <button type="button" class="major-chip rounded-xl border border-purple-200 dark:border-purple-800 p-3 text-sm" data-value="Software Engineering">⚡<br>Software</button>
-              </div>
-              <select id="major" name="major" required class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-                <option value="">Choose your major</option>
-                <option>Computer Engineering</option>
-                <option>Computer Science</option>
-                <option>Artificial Intelligence</option>
-                <option>Software Engineering</option>
-                <option>Data Science</option>
-                <option>Other</option>
-              </select>
-              <p id="major-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="userPassword">Password *</label>
+                <input type="password" id="userPassword" name="password"
+                    required minlength="8" maxlength="64"
+                    autocomplete="new-password"
+                    aria-describedby="passwordError">
+                <span class="error-text" id="passwordError" hidden></span>
             </div>
-          </fieldset>
+        </fieldset>
 
-          <fieldset class="border border-purple-200 dark:border-purple-900 rounded-2xl p-5 space-y-4">
-            <legend class="px-2 font-bold text-purple-700 dark:text-purple-300">02. Account & Security</legend>
+        <fieldset>
+            <legend>Academic Information</legend>
 
-            <div>
-              <label for="email" class="block text-sm font-semibold mb-1">Institutional email *</label>
-              <input id="email" name="email" type="email" required autocomplete="email" placeholder="name@gachon.ac.kr" class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-              <div class="flex flex-wrap gap-2 mt-2">
-                <button type="button" class="domain-btn text-xs rounded-lg px-3 py-1.5 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300" data-domain="@gachon.ac.kr">@gachon.ac.kr</button>
-                <button type="button" class="domain-btn text-xs rounded-lg px-3 py-1.5 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300" data-domain="@snu.ac.kr">@snu.ac.kr</button>
-                <button type="button" class="domain-btn text-xs rounded-lg px-3 py-1.5 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300" data-domain="@kaist.ac.kr">@kaist.ac.kr</button>
-              </div>
-              <p id="email-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="program">Select Your Program *</label>
+                <select id="program" name="course" required
+                    aria-describedby="programError">
+                    <option value="">-- Select a program --</option>
+                    <option value="computer-engineering">Computer Engineering</option>
+                    <option value="computer-science">Computer Science</option>
+                    <option value="web-programming">Web Programming</option>
+                    <option value="software-engineering">Software Engineering</option>
+                </select>
+                <span class="error-text" id="programError" hidden></span>
             </div>
 
-            <div>
-              <div class="flex justify-between items-center gap-2">
-                <label for="password" class="text-sm font-semibold mb-1">Password *</label>
-                <button type="button" id="generate-password" class="text-xs font-semibold text-purple-600 dark:text-purple-300 hover:underline">✨ Generate password</button>
-              </div>
-              <div class="flex gap-2">
-                <input id="password" name="password" type="password" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters" class="field min-w-0 flex-1 rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-                <button id="toggle-password" type="button" class="px-3 rounded-xl border border-purple-200 dark:border-purple-800 text-sm">Show</button>
-              </div>
-              <div class="flex justify-between text-xs mt-2">
-                <span class="text-slate-500">Password strength</span>
-                <span id="strength-label" class="font-semibold text-slate-400">Not entered</span>
-              </div>
-              <div class="grid grid-cols-4 gap-1 mt-2">
-                <div class="strength h-1.5 rounded bg-purple-100 dark:bg-purple-950"></div>
-                <div class="strength h-1.5 rounded bg-purple-100 dark:bg-purple-950"></div>
-                <div class="strength h-1.5 rounded bg-purple-100 dark:bg-purple-950"></div>
-                <div class="strength h-1.5 rounded bg-purple-100 dark:bg-purple-950"></div>
-              </div>
-              <p id="password-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="gradYear">Expected Graduation Year *</label>
+                <input type="number" id="gradYear" name="graduationYear"
+                    min="2026" max="2035" required
+                    aria-describedby="yearError">
+                <span class="error-text" id="yearError" hidden></span>
             </div>
 
-            <div>
-              <label for="confirm-password" class="block text-sm font-semibold mb-1">Confirm password *</label>
-              <input id="confirm-password" name="confirm_password" type="password" required autocomplete="new-password" placeholder="Enter your password again" class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-              <p id="confirm-password-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number *</label>
+                <input type="tel" id="phoneNumber" name="phone"
+                    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    placeholder="123-456-7890"
+                    autocomplete="tel"
+                    aria-describedby="phoneHint phoneError">
+                <span class="hint" id="phoneHint">
+                    Format: 123-456-7890
+                </span>
+                <span class="error-text" id="phoneError" hidden></span>
             </div>
+        </fieldset>
 
-            <div>
-              <label for="phone" class="block text-sm font-semibold mb-1">Phone number (optional)</label>
-              <input id="phone" name="phone" type="tel" pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}" maxlength="13" placeholder="010-1234-5678" class="field w-full rounded-xl border border-purple-200 dark:border-purple-800 bg-white dark:bg-[#1b1028] px-4 py-3 text-sm">
-              <p id="phone-error" class="error text-xs text-rose-500 mt-1" aria-live="polite"></p>
-            </div>
+        <p id="feedback" role="alert" aria-live="polite"></p>
 
-            <div class="pt-2">
-              <div class="flex justify-between items-center gap-3">
-                <label for="experience" class="text-sm font-semibold">Coding experience</label>
-                <output id="experience-value" class="font-bold text-purple-600 dark:text-purple-300">0 years</output>
-              </div>
-              <input id="experience" type="range" min="0" max="10" value="0" class="w-full mt-4">
-              <div class="flex justify-between text-xs text-slate-400 mt-1">
-                <span>Beginner</span><span>Experienced</span><span>Expert</span>
-              </div>
-              <p id="experience-tier" class="text-sm text-purple-600 dark:text-purple-300 mt-3 font-semibold">🌱 Beginner Coder</p>
-            </div>
-          </fieldset>
-
-          <div class="rounded-2xl border border-purple-200 dark:border-purple-900 p-4 bg-purple-50/70 dark:bg-purple-950/30">
-            <label class="flex gap-3 items-start text-sm">
-              <input id="terms" type="checkbox" required class="mt-1 accent-purple-600">
-              <span>I agree to the <button type="button" id="open-terms" class="text-purple-600 dark:text-purple-300 underline font-semibold">Academic Code of Honor</button> and registration terms. *</span>
-            </label>
-            <p id="terms-error" class="error text-xs text-rose-500 mt-2" aria-live="polite"></p>
-          </div>
-
-          <button id="submit-button" type="submit" class="w-full rounded-2xl py-4 px-6 bg-gradient-to-r from-purple-600 to-fuchsia-500 text-white font-bold shadow-lg shadow-purple-500/20 hover:opacity-95 active:scale-[.99] transition">
-            Register & Generate Student ID ✨
-          </button>
-          <p class="text-xs text-center text-slate-400">Demo project · Your information is not sent to a server.</p>
-        </form>
-      </div>
-
-      <div id="success-screen" class="hidden text-center space-y-5">
-        <div class="text-5xl">🎉</div>
-        <h2 class="text-2xl font-black text-purple-700 dark:text-purple-300">Registration Complete!</h2>
-        <p id="success-message" class="text-sm text-slate-500 dark:text-slate-400"></p>
-
-        <div id="student-card" class="max-w-sm mx-auto text-left rounded-3xl p-6 bg-gradient-to-br from-purple-950 via-purple-900 to-fuchsia-950 text-white shadow-2xl border border-purple-300/30">
-          <div class="flex justify-between items-center border-b border-white/20 pb-4">
-            <div>
-              <p class="font-black tracking-wider text-sm">GACHON UNIVERSITY</p>
-              <p class="text-xs text-purple-200 mt-1">DIGITAL STUDENT PASS</p>
-            </div>
-            <span class="text-3xl">🎓</span>
-          </div>
-          <div class="flex gap-4 items-center py-5">
-            <div id="card-avatar" class="w-16 h-16 rounded-2xl bg-white/15 grid place-items-center text-3xl">💜</div>
-            <div class="min-w-0">
-              <h3 id="card-name" class="text-lg font-extrabold break-words"></h3>
-              <p id="card-major" class="text-sm text-purple-200"></p>
-              <p id="card-experience" class="text-xs text-purple-300 mt-1"></p>
-            </div>
-          </div>
-          <div class="border-t border-white/20 pt-4 space-y-2 text-sm">
-            <p><span class="text-purple-300">Student ID:</span> <strong id="card-id"></strong></p>
-            <p class="break-all"><span class="text-purple-300">Email:</span> <span id="card-email"></span></p>
-            <p><span class="text-purple-300">Issued:</span> <span id="card-date"></span></p>
-          </div>
-          <div class="mt-5 border-t border-white/20 pt-3 flex justify-between items-center">
-            <span class="text-xs text-purple-200">OFFICIAL DEMO PASS</span>
-            <span id="card-code" class="font-mono text-xs tracking-widest"></span>
-          </div>
+        <div class="buttons">
+            <button type="submit">Submit Form</button>
+            <button type="reset">Clear Form</button>
         </div>
 
-        <p class="text-xs text-slate-400">Move your mouse over the card to see its effect.</p>
-        <div class="flex flex-wrap justify-center gap-3">
-          <button id="print-card" type="button" class="px-5 py-3 rounded-xl border border-purple-200 dark:border-purple-800 font-semibold text-sm">🖨️ Print ID Card</button>
-          <button id="copy-data" type="button" class="px-5 py-3 rounded-xl border border-purple-200 dark:border-purple-800 font-semibold text-sm">📋 Copy Details</button>
-          <button id="register-another" type="button" class="px-5 py-3 rounded-xl bg-purple-600 text-white font-bold text-sm">Register Another</button>
-        </div>
-      </div>
-    </section>
+    </form>
 
-    <footer class="text-center text-xs text-slate-400 py-6">
-      Created by Prashna Rai | Week 8 - Task 3
-    </footer>
-  </main>
+    <a href="../../index.html" class="back-link">
+        ← Back to Homepage
+    </a>
 
-  <div id="terms-modal" class="hidden fixed inset-0 z-50 bg-black/60 p-4 items-center justify-center">
-    <div class="glass rounded-3xl p-6 max-w-md w-full">
-      <h3 class="text-xl font-bold text-purple-700 dark:text-purple-300">📜 Academic Code of Honor</h3>
-      <div class="text-sm space-y-3 mt-4 text-slate-600 dark:text-slate-300">
-        <p>1. Submit authentic work and respect academic integrity.</p>
-        <p>2. Protect your account and never share passwords.</p>
-        <p>3. Use university resources responsibly.</p>
-      </div>
-      <button id="close-terms" type="button" class="mt-5 w-full rounded-xl bg-purple-600 text-white font-bold py-3">I Understand</button>
-    </div>
-  </div>
+</main>
 
-  <script>
-    const $ = selector => document.querySelector(selector);
-    const form = $('#register-form');
-    const fields = [...form.querySelectorAll('[aria-live="polite"], .field')].filter(el => el.matches('input, select'));
-    const requiredFields = [...form.querySelectorAll('[required]')];
-    const submitButton = $('#submit-button');
+<script>
+    const registrationForm = document.getElementById("registrationForm");
 
-    $('#theme-toggle').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
+    const formFields = [
+        {
+            input: document.getElementById("fullName"),
+            error: document.getElementById("nameError")
+        },
+        {
+            input: document.getElementById("studentNumber"),
+            error: document.getElementById("idError")
+        },
+        {
+            input: document.getElementById("emailAddress"),
+            error: document.getElementById("emailError")
+        },
+        {
+            input: document.getElementById("userPassword"),
+            error: document.getElementById("passwordError")
+        },
+        {
+            input: document.getElementById("program"),
+            error: document.getElementById("programError")
+        },
+        {
+            input: document.getElementById("gradYear"),
+            error: document.getElementById("yearError")
+        },
+        {
+            input: document.getElementById("phoneNumber"),
+            error: document.getElementById("phoneError")
+        }
+    ];
 
-    function updatePasswordMatch() {
-      const password = $('#password');
-      const confirm = $('#confirm-password');
-      confirm.setCustomValidity(
-        confirm.value && confirm.value !== password.value
-          ? 'Passwords do not match.'
-          : ''
-      );
+    const feedback = document.getElementById("feedback");
+
+    // Get the appropriate error message
+    function getErrorMessage(input) {
+
+        if (input.validity.valueMissing) {
+            return "This field is required.";
+        }
+
+        if (input.validity.typeMismatch) {
+            return "Please enter a valid email address.";
+        }
+
+        if (input.validity.tooShort) {
+            return "Please enter at least " + input.minLength + " characters.";
+        }
+
+        if (input.validity.patternMismatch) {
+            return input.title || "Please follow the required format.";
+        }
+
+        if (input.validity.rangeUnderflow) {
+            return "The minimum value is " + input.min + ".";
+        }
+
+        if (input.validity.rangeOverflow) {
+            return "The maximum value is " + input.max + ".";
+        }
+
+        return "Please check your input.";
     }
 
-    function messageFor(field) {
-      if (field.validity.valueMissing) return 'This field is required.';
-      if (field.validity.tooShort) return `Enter at least ${field.minLength} characters.`;
-      if (field.validity.patternMismatch) {
-        if (field.id === 'student-id') return 'Student ID must contain exactly 9 digits.';
-        if (field.id === 'phone') return 'Use the format 010-1234-5678.';
-      }
-      if (field.validity.typeMismatch) return 'Please enter a valid email address.';
-      if (field.validity.rangeOverflow) return 'Choose a date in 2010 or earlier.';
-      if (field.validity.customError) return field.validationMessage;
-      return 'Please check this field.';
+    // Check individual fields
+    function checkField(field) {
+
+        const input = field.input;
+        const error = field.error;
+        const invalid = !input.validity.valid;
+
+        input.setAttribute("aria-invalid", String(invalid));
+
+        error.textContent = invalid ? getErrorMessage(input) : "";
+        error.hidden = !invalid;
+
+        return !invalid;
     }
 
-    function validateField(field) {
-      const error = $('#' + field.id + '-error');
-      const valid = field.checkValidity();
-      field.setAttribute('aria-invalid', String(!valid));
-      if (error) error.textContent = valid ? '' : messageFor(field);
-      return valid;
-    }
+    // Handle form submission
+    registrationForm.addEventListener("submit", function(event) {
 
-    function updateProgress() {
-      updatePasswordMatch();
-      const validCount = requiredFields.filter(field => field.checkValidity()).length;
-      const percent = Math.round(validCount / requiredFields.length * 100);
-      $('#progress-pct').textContent = percent + '%';
-      $('#progress-bar').style.width = percent + '%';
-      $('#progress-desc').textContent = percent === 100
-        ? 'All required fields are valid. You can register!'
-        : 'Complete the required fields to register.';
-      submitButton.disabled = percent !== 100;
-      submitButton.classList.toggle('opacity-50', percent !== 100);
-      submitButton.classList.toggle('cursor-not-allowed', percent !== 100);
-    }
+        event.preventDefault();
 
-    function validateAll() {
-      updatePasswordMatch();
-      fields.forEach(validateField);
-      updateProgress();
-    }
+        let isValid = true;
+        let firstInvalid = null;
 
-    fields.forEach(field => {
-      field.addEventListener('input', () => {
-        if (field.id === 'password') updateStrength();
-        validateAll();
-      });
-      field.addEventListener('change', validateAll);
+        formFields.forEach(function(field) {
+
+            const valid = checkField(field);
+
+            if (!valid) {
+                isValid = false;
+
+                if (firstInvalid === null) {
+                    firstInvalid = field.input;
+                }
+            }
+        });
+
+        if (!isValid) {
+
+            feedback.className = "error";
+            feedback.textContent =
+                "Please correct all errors before submitting.";
+
+            firstInvalid.focus();
+            return;
+        }
+
+        feedback.className = "success";
+        feedback.textContent =
+            "Success! Your registration has been submitted successfully. This is a classroom demo, so no data is sent to a server.";
+
+        console.log("Registration completed successfully.");
     });
 
-    $('#student-id').addEventListener('input', event => {
-      event.target.value = event.target.value.replace(/\D/g, '').slice(0, 9);
-      $('#id-count').textContent = event.target.value.length + '/9 digits';
+    // Validate fields when the user edits them
+    formFields.forEach(function(field) {
+
+        function validateAfterEdit() {
+
+            if (!field.input.hasAttribute("aria-invalid")) {
+                return;
+            }
+
+            checkField(field);
+
+            const allValid = formFields.every(function(item) {
+                return item.input.validity.valid;
+            });
+
+            if (allValid) {
+                feedback.textContent = "";
+                feedback.className = "";
+            }
+        }
+
+        field.input.addEventListener("input", validateAfterEdit);
+        field.input.addEventListener("change", validateAfterEdit);
     });
 
-    $('#dob').addEventListener('change', () => {
-      const value = $('#dob').value;
-      if (!value) {
-        $('#dob-age').textContent = '';
-        return;
-      }
-      const birth = new Date(value + 'T00:00:00');
-      const today = new Date();
-      let age = today.getFullYear() - birth.getFullYear();
-      if (today.getMonth() < birth.getMonth() ||
-          (today.getMonth() === birth.getMonth() && today.getDate() < birth.getDate())) age--;
-      $('#dob-age').textContent = age >= 0 ? 'Age: ' + age + ' years' : '';
+    // Clear errors when resetting the form
+    registrationForm.addEventListener("reset", function() {
+
+        setTimeout(function() {
+
+            formFields.forEach(function(field) {
+
+                field.input.removeAttribute("aria-invalid");
+                field.error.textContent = "";
+                field.error.hidden = true;
+
+            });
+
+            feedback.textContent = "";
+            feedback.className = "";
+
+        }, 0);
     });
 
-    document.querySelectorAll('.major-chip').forEach(chip => {
-      chip.addEventListener('click', () => {
-        $('#major').value = chip.dataset.value;
-        document.querySelectorAll('.major-chip').forEach(item => item.classList.remove('selected'));
-        chip.classList.add('selected');
-        validateAll();
-      });
-    });
+</script>
 
-    $('#major').addEventListener('change', () => {
-      document.querySelectorAll('.major-chip').forEach(chip => {
-        chip.classList.toggle('selected', chip.dataset.value === $('#major').value);
-      });
-    });
-
-    document.querySelectorAll('.domain-btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const email = $('#email');
-        const prefix = email.value.split('@')[0] || 'student';
-        email.value = prefix + button.dataset.domain;
-        validateAll();
-      });
-    });
-
-    function updateStrength() {
-      const password = $('#password').value;
-      let score = 0;
-      if (password.length >= 8) score++;
-      if (/[A-Z]/.test(password)) score++;
-      if (/[0-9]/.test(password)) score++;
-      if (/[^A-Za-z0-9]/.test(password)) score++;
-
-      const labels = ['Weak', 'Fair', 'Strong', 'Very strong'];
-      const colors = ['bg-rose-500', 'bg-amber-400', 'bg-violet-500', 'bg-emerald-500'];
-      $('.strength'); 
-      document.querySelectorAll('.strength').forEach((bar, index) => {
-        bar.className = 'strength h-1.5 rounded ' +
-          (password && index < score ? colors[score - 1] : 'bg-purple-100 dark:bg-purple-950');
-      });
-      $('#strength-label').textContent = password ? labels[Math.max(0, score - 1)] : 'Not entered';
-    }
-
-    $('#toggle-password').addEventListener('click', () => {
-      const input = $('#password');
-      input.type = input.type === 'password' ? 'text' : 'password';
-      $('#toggle-password').textContent = input.type === 'password' ? 'Show' : 'Hide';
-    });
-
-    $('#generate-password').addEventListener('click', () => {
-      const chars = 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@#$%&*';
-      let generated = '';
-      for (let i = 0; i < 14; i++) {
-        generated += chars[Math.floor(Math.random() * chars.length)];
-      }
-      $('#password').value = generated;
-      $('#confirm-password').value = generated;
-      $('#password').type = 'text';
-      $('#toggle-password').textContent = 'Hide';
-      updateStrength();
-      validateAll();
-    });
-
-    $('#experience').addEventListener('input', () => {
-      const years = Number($('#experience').value);
-      $('#experience-value').textContent = years + (years === 1 ? ' year' : ' years');
-      let tier = '🌱 Beginner Coder';
-      if (years >= 1 && years <= 3) tier = '🧩 Code Explorer';
-      else if (years <= 6 && years >= 4) tier = '⚡ Project Builder';
-      else if (years <= 9 && years >= 7) tier = '🚀 Advanced Developer';
-      else if (years === 10) tier = '👑 Expert Developer';
-      $('#experience-tier').textContent = tier;
-    });
-
-    const modal = $('#terms-modal');
-    $('#open-terms').addEventListener('click', () => {
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    });
-    $('#close-terms').addEventListener('click', () => {
-      modal.classList.add('hidden');
-      modal.classList.remove('flex');
-    });
-    modal.addEventListener('click', event => {
-      if (event.target === modal) {
-        modal.classList.add('hidden');
-        modal.classList.remove('flex');
-      }
-    });
-
-    form.addEventListener('submit', event => {
-      event.preventDefault();
-      validateAll();
-      const firstInvalid = fields.find(field => !field.checkValidity());
-      if (firstInvalid) {
-        validateField(firstInvalid);
-        firstInvalid.focus();
-        return;
-      }
-
-      const name = $('#full-name').value.trim();
-      const id = $('#student-id').value;
-      const major = $('#major').value;
-      const email = $('#email').value.trim();
-      const years = Number($('#experience').value);
-
-      $('#success-message').textContent = 'Welcome, ' + name + '! Your demo student pass is ready.';
-      $('#card-name').textContent = name;
-      $('#card-id').textContent = id;
-      $('#card-major').textContent = major;
-      $('#card-email').textContent = email;
-      $('#card-experience').textContent = years + (years === 1 ? ' year' : ' years') + ' of coding experience';
-      $('#card-date').textContent = new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-      $('#card-code').textContent = 'PR-' + id.slice(-4) + '-ID';
-      $('#card-avatar').textContent = major.includes('Artificial') ? '🧠' :
-        major.includes('Software') ? '⚡' :
-        major.includes('Computer') ? '💻' : '🎓';
-
-      $('#form-wrapper').classList.add('hidden');
-      $('#success-screen').classList.remove('hidden');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    $('#student-card').addEventListener('mousemove', event => {
-      const rect = event.currentTarget.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width;
-      const y = (event.clientY - rect.top) / rect.height;
-      event.currentTarget.style.transform = `perspective(700px) rotateY(${(x - .5) * 12}deg) rotateX(${(.5 - y) * 12}deg)`;
-    });
-    $('#student-card').addEventListener('mouseleave', () => {
-      $('#student-card').style.transform = 'perspective(700px) rotateY(0) rotateX(0)';
-    });
-
-    $('#print-card').addEventListener('click', () => window.print());
-
-    $('#copy-data').addEventListener('click', async () => {
-      const text = [
-        'Digital Student Pass',
-        'Name: ' + $('#card-name').textContent,
-        'Student ID: ' + $('#card-id').textContent,
-        'Major: ' + $('#card-major').textContent,
-        'Email: ' + $('#card-email').textContent,
-        'Coding experience: ' + $('#card-experience').textContent
-      ].join('\n');
-
-      try {
-        await navigator.clipboard.writeText(text);
-        $('#copy-data').textContent = '✓ Copied!';
-      } catch {
-        window.prompt('Copy your student pass details:', text);
-      }
-    });
-
-    $('#register-another').addEventListener('click', () => {
-      form.reset();
-      fields.forEach(field => {
-        field.removeAttribute('aria-invalid');
-        const error = $('#' + field.id + '-error');
-        if (error) error.textContent = '';
-      });
-      document.querySelectorAll('.major-chip').forEach(chip => chip.classList.remove('selected'));
-      $('#id-count').textContent = '0/9 digits';
-      $('#dob-age').textContent = '';
-      $('#experience-value').textContent = '0 years';
-      $('#experience-tier').textContent = '🌱 Beginner Coder';
-      $('#strength-label').textContent = 'Not entered';
-      document.querySelectorAll('.strength').forEach(bar => {
-        bar.className = 'strength h-1.5 rounded bg-purple-100 dark:bg-purple-950';
-      });
-      $('#password').type = 'password';
-      $('#toggle-password').textContent = 'Show';
-      $('#form-wrapper').classList.remove('hidden');
-      $('#success-screen').classList.add('hidden');
-      updateProgress();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    updateProgress();
-  </script>
 </body>
 </html>
