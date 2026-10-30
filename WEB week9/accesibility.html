@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <meta name="description" content="Week 9 Web Accessibility Lighthouse homework">
+
   <title>Week 9 | Web Accessibility</title>
 
   <style>
@@ -21,11 +23,12 @@
       background: #faf7ff;
     }
 
+    /* Skip Link */
     .skip-link {
       position: absolute;
       top: -100px;
       left: 12px;
-      z-index: 10;
+      z-index: 1000;
       padding: 12px 16px;
       background: #ffffff;
       color: #4b267d;
@@ -38,24 +41,38 @@
       top: 12px;
     }
 
+    /* Main Content */
     main {
       max-width: 950px;
       margin: auto;
     }
 
-    h1, h2 {
+    h1, h2, h3 {
       color: #4b267d;
+      line-height: 1.3;
     }
 
     h1 {
       font-size: clamp(2rem, 5vw, 2.8rem);
-      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+    }
+
+    p {
+      margin-bottom: 16px;
     }
 
     .intro {
-      color: #655575;
+      color: #59476b;
     }
 
+    /* Cards */
     .card {
       background: #ffffff;
       padding: 24px;
@@ -65,9 +82,13 @@
       box-shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
     }
 
+    /* Screenshot Layout */
     .screenshots {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      grid-template-columns: repeat(
+        auto-fit,
+        minmax(min(100%, 300px), 1fr)
+      );
       gap: 20px;
     }
 
@@ -90,17 +111,20 @@
       color: #4b267d;
     }
 
+    /* Lists */
     li {
       margin-bottom: 14px;
     }
 
+    /* Links */
     a {
       color: #4b267d;
+      text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
-    a:focus-visible {
-      outline: 3px solid #7040b0;
-      outline-offset: 4px;
+    a:hover {
+      color: #321456;
     }
 
     .back-link {
@@ -109,21 +133,55 @@
       font-weight: bold;
     }
 
+    /* Keyboard Focus */
+    :focus-visible {
+      outline: 3px solid #7040b0;
+      outline-offset: 4px;
+    }
+
+    /* Status Message */
+    .status {
+      padding: 12px;
+      background: #f1eaff;
+      color: #302344;
+      border-left: 4px solid #4b267d;
+      border-radius: 6px;
+    }
+
+    /* Footer */
     footer {
       text-align: center;
-      color: #655575;
+      color: #59476b;
       padding: 15px;
       font-size: 0.9rem;
+    }
+
+    /* Mobile Layout */
+    @media (max-width: 600px) {
+      body {
+        padding: 20px 14px;
+      }
+
+      .card {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip-link" href="#main-content">Skip to main content</a>
 
+  <!-- Skip Link: First element inside body -->
+  <a class="skip-link" href="#main-content">
+    Skip to main content
+  </a>
+
+  <!-- Main Content -->
   <main id="main-content">
+
     <header>
       <h1>Week 9: Web Accessibility</h1>
+
       <p class="intro">
         In this task, I used Google Lighthouse to test the accessibility
         of my Web Programming portfolio. I recorded the initial results,
@@ -131,59 +189,112 @@
       </p>
     </header>
 
+    <!-- Lighthouse Results -->
     <section class="card" aria-labelledby="results-heading">
-      <h2 id="results-heading">Before and After Lighthouse Results</h2>
-      <p>These screenshots show my Lighthouse accessibility results before and after the improvements.</p>
+
+      <h2 id="results-heading">
+        Before and After Lighthouse Results
+      </h2>
+
+      <p>
+        These screenshots show my Lighthouse accessibility results
+        before and after the improvements.
+      </p>
 
       <div class="screenshots">
+
         <figure>
           <img
             src="before lighthouse.png"
-            alt="Screenshot showing my Lighthouse accessibility audit before improvements">
-          <figcaption>Before Accessibility Improvements</figcaption>
+            alt="Lighthouse accessibility audit report showing the initial score before improvements">
+
+          <figcaption>
+            Before Accessibility Improvements
+          </figcaption>
         </figure>
 
         <figure>
           <img
             src="after lighthouse.png"
-            alt="Screenshot showing my Lighthouse accessibility audit after improvements">
-          <figcaption>After Accessibility Improvements</figcaption>
+            alt="Lighthouse accessibility audit report showing the improved score after accessibility fixes">
+
+          <figcaption>
+            After Accessibility Improvements
+          </figcaption>
         </figure>
+
       </div>
     </section>
 
+    <!-- Accessibility Fixes -->
     <section class="card" aria-labelledby="fixes-heading">
-      <h2 id="fixes-heading">Three Accessibility Fixes</h2>
+
+      <h2 id="fixes-heading">
+        Accessibility Improvements
+      </h2>
+
+      <p>
+        I made the following changes to improve the accessibility
+        of my website:
+      </p>
 
       <ol>
+
         <li>
-          <strong>Skip link:</strong>
-          Added a skip link that allows keyboard users to jump directly
-          to the main content.
+          <strong>Skip Link:</strong>
+          Added a skip link as the first element inside the body.
+          It allows keyboard users to jump directly to the main content.
         </li>
 
         <li>
-          <strong>Main landmark:</strong>
-          Added a main element to identify the primary content for
-          assistive technologies.
+          <strong>Main Landmark:</strong>
+          Used the main HTML element to identify the primary content
+          for screen readers and assistive technologies.
         </li>
 
         <li>
-          <strong>Keyboard focus and contrast:</strong>
-          Improved visible keyboard focus indicators and adjusted
-          colors to help users see and read the content more easily.
+          <strong>Keyboard Focus:</strong>
+          Added a visible 3px focus outline using :focus-visible
+          to help keyboard users identify the currently selected element.
         </li>
+
+        <li>
+          <strong>Image Alternative Text:</strong>
+          Added descriptive alt text to both Lighthouse screenshots
+          so screen readers can identify their purpose.
+        </li>
+
+        <li>
+          <strong>Color Contrast:</strong>
+          Used darker text colors against light backgrounds
+          to improve readability.
+        </li>
+
+        <li>
+          <strong>Heading Structure:</strong>
+          Organized headings using a logical h1 and h2 hierarchy.
+        </li>
+
       </ol>
+
+      <p class="status" aria-live="polite">
+        Accessibility improvements have been applied to this page.
+      </p>
+
     </section>
 
+    <!-- Back Navigation -->
     <a class="back-link" href="../index.html">
       ← Back to My Web Programming Portfolio
     </a>
 
+    <!-- Footer -->
     <footer>
       <p>Week 9 Web Programming Homework · Web Accessibility</p>
       <p>Created by Prashna Rai</p>
     </footer>
+
   </main>
+
 </body>
 </html>
