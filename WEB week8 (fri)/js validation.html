@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student registration form with JavaScript validation.">
+    <title>JS Validation</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 40px 20px;
+            background: #f4f1fa;
+            color: #29243b;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            max-width: 650px;
+            margin: auto;
+            padding: 35px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 25px rgba(45, 30, 80, 0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #6741a5;
+            text-align: center;
+        }
+
+        .intro {
+            text-align: center;
+            color: #686276;
+            margin-bottom: 30px;
+        }
+
+        fieldset {
+            border: 1px solid #ded6ed;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 22px;
+        }
+
+        legend {
+            padding: 0 10px;
+            color: #6741a5;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #c9c2d5;
+            border-radius: 7px;
+            font-size: 15px;
+            background: #fff;
+            color: #29243b;
+        }
+
+        input:focus, select:focus {
+            outline: 3px solid #e2d5ff;
+            border-color: #6741a5;
+        }
+
+        .hint {
+            display: block;
+            margin-top: 5px;
+            color: #6c6678;
+            font-size: 13px;
+        }
+
+        .error-text {
+            display: block;
+            margin-top: 5px;
+            color: #b42332;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .error-text[hidden] {
+            display: none;
+        }
+
+        #feedback {
+            margin: 15px 0;
+            padding: 12px;
+            border-radius: 7px;
+            font-weight: bold;
+        }
+
+        #feedback:empty {
+            display: none;
+        }
+
+        #feedback.error {
+            background: #fff0f0;
+            color: #a11d2c;
+        }
+
+        #feedback.success {
+            background: #e9f8ee;
+            color: #176b38;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 7px;
+            background: #6741a5;
+            color: white;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #503184;
+        }
+
+        button[type="reset"] {
+            background: #777083;
+        }
+
+        button[type="reset"]:hover {
+            background: #575161;
+        }
+
+        button:focus-visible {
+            outline: 3px solid #d99b22;
+            outline-offset: 3px;
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 25px;
+            text-align: center;
+            color: #6741a5;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+            top: 10px;
+            padding: 10px;
+            background: white;
+            color: #6741a5;
+        }
+
+        .skip-link:focus {
+            left: 10px;
+            z-index: 10;
+        }
+
+        @media (max-width: 500px) {
+            main {
+                padding: 22px;
+            }
+
+            .buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
+<main id="main-content" tabindex="-1">
+
+    <h1>JS Validation</h1>
+
+    <p class="intro">
+        Student Registration Form
+        <br>
+        Enter your details below and check your information before submitting.
+    </p>
+
+    <form id="registrationForm" novalidate>
+
+        <fieldset>
+            <legend>Personal Information</legend>
+
+            <div class="form-group">
+                <label for="fullName">Full Name *</label>
+                <input type="text" id="fullName" name="name"
+                    required minlength="2" maxlength="80"
+                    autocomplete="name"
+                    aria-describedby="nameError">
+                <span class="error-text" id="nameError" hidden></span>
+            </div>
+
+            <div class="form-group">
+                <label for="studentNumber">Student ID *</label>
+                <input type="text" id="studentNumber" name="studentId"
+                    required pattern="[0-9]{9}"
+                    inputmode="numeric" maxlength="9"
+                    aria-describedby="idHint idError">
+                <span class="hint" id="idHint">Please enter your 9-digit student ID.</span>
+                <span class="error-text" id="idError" hidden></span>
+            </div>
+
+            <div class="form-group">
+                <label for="emailAddress">Email Address *</label>
+                <input type="email" id="emailAddress" name="email"
+                    required maxlength="254" autocomplete="email"
+                    aria-describedby="emailError">
+                <span class="error-text" id="emailError" hidden></span>
+            </div>
+
+            <div class="form-group">
+                <label for="userPassword">Password *</label>
+                <input type="password" id="userPassword" name="password"
+                    required minlength="8" maxlength="64"
+                    autocomplete="new-password"
+                    aria-describedby="passwordError">
+                <span class="error-text" id="passwordError" hidden></span>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Academic Information</legend>
+
+            <div class="form-group">
+                <label for="program">Select Your Program *</label>
+                <select id="program" name="course" required
+                    aria-describedby="programError">
+                    <option value="">-- Select a program --</option>
+                    <option value="computer-engineering">Computer Engineering</option>
+                    <option value="computer-science">Computer Science</option>
+                    <option value="web-programming">Web Programming</option>
+                    <option value="software-engineering">Software Engineering</option>
+                </select>
+                <span class="error-text" id="programError" hidden></span>
+            </div>
+
+            <div class="form-group">
+                <label for="gradYear">Expected Graduation Year *</label>
+                <input type="number" id="gradYear" name="graduationYear"
+                    min="2026" max="2035" required
+                    aria-describedby="yearError">
+                <span class="error-text" id="yearError" hidden></span>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">Phone Number *</label>
+                <input type="tel" id="phoneNumber" name="phone"
+                    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                    placeholder="123-456-7890"
+                    autocomplete="tel"
+                    aria-describedby="phoneHint phoneError">
+                <span class="hint" id="phoneHint">Format: 123-456-7890</span>
+                <span class="error-text" id="phoneError" hidden></span>
+            </div>
+        </fieldset>
+
+        <p id="feedback" role="alert" aria-live="polite"></p>
+
+        <div class="buttons">
+            <button type="submit">Submit Form</button>
+            <button type="reset">Clear Form</button>
+        </div>
+
+    </form>
+
+    <a href="../../index.html" class="back-link">← Back to Homepage</a>
+
+</main>
+
+<script>
+    const registrationForm = document.getElementById("registrationForm");
+
+    const formFields = [
+        {
+            input: document.getElementById("fullName"),
+            error: document.getElementById("nameError")
+        },
+        {
+            input: document.getElementById("studentNumber"),
+            error: document.getElementById("idError")
+        },
+        {
+            input: document.getElementById("emailAddress"),
+            error: document.getElementById("emailError")
+        },
+        {
+            input: document.getElementById("userPassword"),
+            error: document.getElementById("passwordError")
+        },
+        {
+            input: document.getElementById("program"),
+            error: document.getElementById("programError")
+        },
+        {
+            input: document.getElementById("gradYear"),
+            error: document.getElementById("yearError")
+        },
+        {
+            input: document.getElementById("phoneNumber"),
+            error: document.getElementById("phoneError")
+        }
+    ];
+
+    const feedback = document.getElementById("feedback");
+
+    function getErrorMessage(input) {
+        if (input.validity.valueMissing) {
+            return "This information is required.";
+        }
+
+        if (input.validity.typeMismatch) {
+            return "Please enter a valid email address.";
+        }
+
+        if (input.validity.tooShort) {
+            return `Please enter at least ${input.minLength} characters.`;
+        }
+
+        if (input.validity.patternMismatch) {
+            return input.title || "Please follow the required format.";
+        }
+
+        if (input.validity.rangeUnderflow) {
+            return `The minimum value is ${input.min}.`;
+        }
+
+        if (input.validity.rangeOverflow) {
+            return `The maximum value is ${input.max}.`;
+        }
+
+        return "Please check your input.";
+    }
+
+    function checkField(field) {
+        const input = field.input;
+        const error = field.error;
+        const invalid = !input.validity.valid;
+
+        input.setAttribute("aria-invalid", String(invalid));
+
+        error.textContent = invalid ? getErrorMessage(input) : "";
+        error.hidden = !invalid;
+
+        return !invalid;
+    }
+
+    registrationForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        let formIsValid = true;
+        let firstInvalidField = null;
+
+        formFields.forEach(function(field) {
+            const valid = checkField(field);
+
+            if (!valid) {
+                formIsValid = false;
+
+                if (!firstInvalidField) {
+                    firstInvalidField = field.input;
+                }
+            }
+        });
+
+        if (!formIsValid) {
+            feedback.className = "error";
+            feedback.textContent = "Please correct the errors before submitting.";
+
+            firstInvalidField.focus();
+            return;
+        }
+
+        feedback.className = "success";
+        feedback.textContent =
+            "Success! Your registration information is valid. This is a demo, so no information has been sent.";
+    });
+
+    formFields.forEach(function(field) {
+        function validateWhenEdited() {
+            if (!field.input.hasAttribute("aria-invalid")) {
+                return;
+            }
+
+            checkField(field);
+
+            const allValid = formFields.every(function(item) {
+                return item.input.validity.valid;
+            });
+
+            if (allValid) {
+                feedback.textContent = "";
+                feedback.className = "";
+            }
+        }
+
+        field.input.addEventListener("input", validateWhenEdited);
+        field.input.addEventListener("change", validateWhenEdited);
+    });
+
+    registrationForm.addEventListener("reset", function() {
+        setTimeout(function() {
+            formFields.forEach(function(field) {
+                field.input.removeAttribute("aria-invalid");
+                field.error.textContent = "";
+                field.error.hidden = true;
+            });
+
+            feedback.textContent = "";
+            feedback.className = "";
+        }, 0);
+    });
+</script>
+
+</body>
+</html>
