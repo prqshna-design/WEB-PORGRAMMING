@@ -272,6 +272,85 @@ main {
   padding: 30px;
 }
 
+/* TEAM PROJECTS */
+.team-projects {
+  margin-top: 55px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(63, 37, 103, .035);
+  transition: .2s;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(63, 37, 103, .08);
+}
+
+.project-tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: var(--light);
+  color: var(--dark);
+  font-size: 10px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.project-card h3 {
+  font-size: 21px;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.project-links a {
+  display: inline-block;
+  padding: 9px 13px;
+  background: var(--purple);
+  color: white;
+  border-radius: 9px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  transition: .2s;
+}
+
+.project-links a:hover {
+  background: var(--dark);
+}
+
+.project-links a:last-child {
+  background: white;
+  color: var(--dark);
+  border: 1px solid var(--border);
+}
+
+.project-links a:last-child:hover {
+  background: var(--light);
+}
+
 .about {
   margin-top: 60px;
   background: linear-gradient(135deg, #eee5ff, white);
@@ -301,7 +380,7 @@ footer {
 footer strong { color: var(--dark); }
 
 @media (max-width: 700px) {
-  .week-grid { grid-template-columns: 1fr; }
+  .week-grid, .project-grid { grid-template-columns: 1fr; }
   .hero { padding: 55px 5% 40px; }
   main { padding: 38px 5% 55px; }
   .stats { gap: 7px; }
@@ -388,6 +467,42 @@ footer strong { color: var(--dark); }
 
   <div class="empty-message" id="empty-message" role="status">
     No matching homework found. Try another search.
+  </div>
+
+</section>
+
+<!-- TEAM PROJECTS: SEOULMATE -->
+<section id="team-projects" class="team-projects">
+
+  <div class="section-heading">
+    <h2>Team Projects ✦</h2>
+    <p>Projects created through teamwork, creativity, and collaboration.</p>
+  </div>
+
+  <div class="project-grid">
+    <article class="project-card">
+      <div class="project-content">
+        <span class="project-tag">Group Project</span>
+        <h3>SeoulMate</h3>
+        <p>
+          A travel agency project introducing shopping experiences
+          in Myeongdong, Seoul, including Daiso, Nike, and CASETiFY.
+          Discover shopping destinations and experiences in Seoul.
+        </p>
+
+        <div class="project-links">
+          <a href="./TEAM%20PROJECTS/SeoulMate/project.html"
+             target="_blank" rel="noopener noreferrer">
+            View Project ↗
+          </a>
+
+          <a href="https://seolmate-chi.vercel.app/en"
+             target="_blank" rel="noopener noreferrer">
+            Visit SeoulMate Website ↗
+          </a>
+        </div>
+      </div>
+    </article>
   </div>
 
 </section>
@@ -625,7 +740,6 @@ function createCard(item) {
     const link = document.createElement("a");
     link.className = "task-link";
 
-    // encodeURIComponent safely handles spaces, brackets and special characters.
     link.href = "./" + encodeURIComponent(item.folder) +
                 "/" + encodeURIComponent(file[1]);
 
