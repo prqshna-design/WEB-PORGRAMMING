@@ -1,23 +1,43 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Prashna Rai's Web Programming Portfolio featuring weekly assignments from Weeks 2–9.">
+  <meta name="description" content="Prashna Rai's Web Programming Portfolio featuring individual projects, weekly assignments, and collaborative team projects.">
+  <meta name="theme-color" content="#7040b0">
   <title>Prashna Rai | Web Programming Portfolio</title>
 
   <style>
     :root {
-      --bg: #faf7ff;
-      --card: #ffffff;
-      --border: #e7dcf7;
+      --bg: #faf8ff;
+      --surface: #ffffff;
+      --surface-alt: #f5f0fc;
+      --border: #e9def7;
       --text: #302344;
-      --muted: #655575;
+      --muted: #756786;
       --purple: #7040b0;
       --purple-dark: #4b267d;
-      --purple-light: #f3ebff;
-      --shadow: 0 4px 15px rgba(88, 55, 135, 0.07);
-      --radius: 18px;
+      --purple-light: #f0e7ff;
+      --pink: #e9a8d0;
+      --shadow: 0 8px 28px rgba(88, 55, 135, 0.08);
+      --shadow-hover: 0 16px 38px rgba(88, 55, 135, 0.14);
+      --radius: 20px;
+    }
+
+    [data-theme="dark"] {
+      --bg: #130e1c;
+      --surface: #20182d;
+      --surface-alt: #2b203b;
+      --border: #403052;
+      --text: #f5efff;
+      --muted: #c0b2d1;
+      --purple: #c09aef;
+      --purple-dark: #e0c9ff;
+      --purple-light: #38284e;
+      --pink: #e9a8d0;
+      --shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 16px 38px rgba(0, 0, 0, 0.35);
     }
 
     * {
@@ -28,23 +48,27 @@
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 95px;
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
       color: var(--text);
-      background: var(--bg);
+      background:
+        radial-gradient(circle at 5% 5%, rgba(207, 174, 247, 0.16), transparent 25%),
+        radial-gradient(circle at 95% 30%, rgba(233, 168, 208, 0.12), transparent 25%),
+        var(--bg);
       min-height: 100vh;
-      padding: 25px 16px 50px;
-      line-height: 1.6;
+      padding: 0 18px 45px;
+      line-height: 1.65;
+      transition: background 0.3s, color 0.3s;
     }
 
     a {
       color: inherit;
     }
 
-    button,
-    input {
+    button, input {
       font: inherit;
     }
 
@@ -58,11 +82,12 @@
     .skip-link {
       position: absolute;
       top: -100px;
-      left: 12px;
-      padding: 12px;
-      background: white;
+      left: 15px;
+      z-index: 2000;
+      padding: 12px 16px;
+      background: var(--surface);
       color: var(--purple-dark);
-      z-index: 100;
+      border-radius: 8px;
     }
 
     .skip-link:focus {
@@ -70,53 +95,185 @@
     }
 
     .container {
-      max-width: 1150px;
+      max-width: 1180px;
       margin: auto;
     }
 
-    .hero {
-      background: var(--card);
+    /* Navigation */
+
+    .top-nav {
+      position: sticky;
+      top: 10px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      margin: 15px 0 25px;
+      padding: 12px 18px;
+      background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      margin-bottom: 25px;
+      border-radius: 16px;
       box-shadow: var(--shadow);
-      border-top: 5px solid var(--purple);
+      backdrop-filter: blur(15px);
     }
 
-    .badge {
-      display: inline-block;
-      background: var(--purple-light);
+    .brand {
       color: var(--purple-dark);
-      border-radius: 20px;
-      padding: 5px 12px;
-      margin-bottom: 15px;
-      font-size: 0.85rem;
-      font-weight: bold;
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      white-space: nowrap;
     }
 
-    h1 {
-      color: var(--purple-dark);
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      margin-bottom: 12px;
+    .brand span {
+      color: var(--pink);
     }
 
-    .hero p {
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-links a {
       color: var(--muted);
-      max-width: 750px;
-      margin-bottom: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--border);
+      background: var(--surface-alt);
+      color: var(--text);
+      padding: 8px 13px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Hero */
+
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      background: linear-gradient(125deg, #43216f 0%, #7040b0 55%, #a66bd0 100%);
+      color: white;
+      border-radius: 28px;
+      padding: clamp(35px, 6vw, 75px);
+      margin-bottom: 25px;
+      box-shadow: 0 18px 45px rgba(83, 44, 132, 0.2);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 420px;
+      height: 420px;
+      right: -120px;
+      top: -200px;
+      background: rgba(255, 255, 255, 0.09);
+    }
+
+    .hero::after {
+      width: 260px;
+      height: 260px;
+      right: 18%;
+      bottom: -190px;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .hero-content {
+      max-width: 760px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      margin-bottom: 23px;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.13);
+      color: #f8eaff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 7vw, 5.2rem);
+      line-height: 1.08;
+      letter-spacing: -3px;
+      margin-bottom: 18px;
+      color: white;
+    }
+
+    .hero h1 span {
+      color: #f4c7e8;
+    }
+
+    .hero-description {
+      max-width: 680px;
+      color: #eee1fa;
+      font-size: 1.05rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 7px;
       text-decoration: none;
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 10px 15px;
-      font-size: 0.88rem;
-      font-weight: bold;
+      padding: 11px 17px;
+      font-size: 0.86rem;
+      font-weight: 800;
       cursor: pointer;
-      transition: 0.2s;
+      transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-hero {
+      background: white;
+      color: #4b267d;
+      border-color: white;
+    }
+
+    .btn-hero-outline {
+      color: white;
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.4);
     }
 
     .btn-primary {
@@ -127,16 +284,98 @@
 
     .btn-primary:hover {
       background: var(--purple-dark);
+      border-color: var(--purple-dark);
     }
 
     .btn-secondary {
-      background: white;
+      background: var(--surface);
       color: var(--text);
+      border-color: var(--border);
     }
 
     .btn-secondary:hover {
-      background: var(--purple-light);
+      background: var(--surface-alt);
     }
+
+    /* Statistics */
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin: 0 0 45px;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 19px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-number {
+      display: block;
+      color: var(--purple);
+      font-size: 1.8rem;
+      font-weight: 900;
+      line-height: 1.3;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    /* Section headings */
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 15px;
+      margin: 42px 0 19px;
+    }
+
+    .section-kicker {
+      color: var(--purple);
+      font-size: 0.73rem;
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      line-height: 1.25;
+      letter-spacing: -0.8px;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 6px;
+      max-width: 650px;
+    }
+
+    .section-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 29px;
+      height: 27px;
+      padding: 0 8px;
+      margin-left: 5px;
+      border-radius: 20px;
+      background: var(--purple-light);
+      color: var(--purple-dark);
+      font-size: 0.78rem;
+      vertical-align: middle;
+    }
+
+    /* Search and filters */
 
     .toolbar {
       display: flex;
@@ -144,39 +383,65 @@
       justify-content: space-between;
       align-items: center;
       gap: 15px;
-      margin: 25px 0;
+      padding: 17px;
+      margin: 38px 0 28px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
     }
 
     .search-wrapper {
       flex: 1;
       min-width: 220px;
-      max-width: 450px;
+      max-width: 430px;
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
     }
 
     .search-input {
       width: 100%;
-      padding: 12px 15px;
-      background: white;
+      padding: 12px 15px 12px 40px;
+      background: var(--surface-alt);
       border: 1px solid var(--border);
       border-radius: 10px;
       color: var(--text);
+      font-size: 0.88rem;
+    }
+
+    .search-input::placeholder {
+      color: var(--muted);
     }
 
     .filter-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 7px;
     }
 
     .filter-btn {
-      padding: 8px 13px;
+      padding: 9px 13px;
       border: 1px solid var(--border);
       border-radius: 25px;
-      background: white;
+      background: var(--surface);
       color: var(--muted);
       cursor: pointer;
-      font-size: 0.82rem;
-      font-weight: bold;
+      font-size: 0.78rem;
+      font-weight: 800;
+      transition: 0.2s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--purple);
+      color: var(--purple);
     }
 
     .filter-btn.active {
@@ -185,56 +450,64 @@
       border-color: var(--purple);
     }
 
-    .section-header {
-      margin: 30px 0 15px;
-    }
-
-    .section-title {
-      font-size: 1.35rem;
-    }
-
-    .section-count {
-      display: inline-block;
-      background: #eadffc;
-      color: var(--purple-dark);
-      padding: 2px 9px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-    }
+    /* Project cards */
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
       gap: 18px;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .project-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 23px;
-      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-width: 0;
-      transition: transform 0.2s;
+      padding: 23px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      opacity: 0;
+      transition: opacity 0.25s;
     }
 
     .project-card:hover {
-      transform: translateY(-3px);
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--purple);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
     }
 
     .tag {
-      display: inline-block;
-      padding: 4px 9px;
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      padding: 5px 10px;
       border-radius: 7px;
-      font-size: 0.72rem;
-      font-weight: bold;
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.3px;
       background: var(--purple-light);
       color: var(--purple-dark);
-      margin-bottom: 12px;
+      margin-bottom: 13px;
     }
 
     .tag-api {
@@ -242,26 +515,42 @@
       color: #07576a;
     }
 
+    .tag-team {
+      background: #fce7f3;
+      color: #9d2868;
+    }
+
+    .tag-performance {
+      background: #e4f5e9;
+      color: #216b3a;
+    }
+
+    .tag-accessibility {
+      background: #fff1d9;
+      color: #86550b;
+    }
+
     .card-title {
       font-size: 1.08rem;
+      line-height: 1.4;
       margin-bottom: 8px;
     }
 
     .card-desc {
       color: var(--muted);
-      font-size: 0.9rem;
+      font-size: 0.87rem;
       margin-bottom: 16px;
       flex-grow: 1;
     }
 
     .card-path {
-      font-family: monospace;
-      font-size: 0.75rem;
+      font-family: "Courier New", monospace;
+      font-size: 0.72rem;
       color: var(--muted);
-      background: #faf7ff;
-      border: 1px dashed #d6c5ea;
+      background: var(--surface-alt);
+      border: 1px dashed var(--border);
       border-radius: 8px;
-      padding: 8px;
+      padding: 8px 10px;
       margin-bottom: 15px;
       overflow-wrap: anywhere;
     }
@@ -274,52 +563,236 @@
 
     .card-actions .btn {
       flex: 1;
-      text-align: center;
       min-width: 100px;
       padding: 9px 7px;
-      font-size: 0.8rem;
+      font-size: 0.77rem;
     }
+
+    /* Team project spotlight */
+
+    .team-spotlight {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 25px;
+      align-items: center;
+      padding: 30px;
+      background: linear-gradient(120deg, var(--surface), var(--surface-alt));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+
+    .team-spotlight h3 {
+      font-size: 1.5rem;
+      margin-bottom: 9px;
+    }
+
+    .team-spotlight p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 17px;
+    }
+
+    .team-visual {
+      min-height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      background: linear-gradient(135deg, #43216f, #a66bd0);
+      border-radius: 17px;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .team-visual .big-icon {
+      font-size: 3.5rem;
+    }
+
+    .team-visual strong {
+      font-size: 1.3rem;
+    }
+
+    .team-visual span {
+      font-size: 0.8rem;
+      color: #f1e4ff;
+    }
+
+    .team-names {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 15px 0 20px;
+    }
+
+    .team-name {
+      padding: 6px 11px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--surface);
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+    }
+
+    /* Empty state */
 
     .empty-state {
       display: none;
-      background: white;
+      background: var(--surface);
       border: 1px dashed var(--border);
       border-radius: var(--radius);
-      padding: 35px;
+      padding: 40px 20px;
       text-align: center;
       color: var(--muted);
       margin-bottom: 30px;
     }
 
+    .empty-state h3 {
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    /* Footer */
+
     footer {
       border-top: 1px solid var(--border);
-      padding-top: 24px;
-      margin-top: 38px;
+      padding: 30px 10px 10px;
+      margin-top: 55px;
       text-align: center;
       color: var(--muted);
-      font-size: 0.85rem;
+      font-size: 0.84rem;
+    }
+
+    footer p {
+      margin-bottom: 5px;
     }
 
     footer a {
-      color: var(--purple-dark);
-      font-weight: bold;
+      color: var(--purple);
+      font-weight: 800;
+      text-decoration: none;
     }
 
-    @media (max-width: 600px) {
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .back-to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 900;
+      width: 45px;
+      height: 45px;
+      border: none;
+      border-radius: 50%;
+      background: var(--purple);
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: var(--shadow-hover);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: 0.25s;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .nav-links {
+        gap: 12px;
+      }
+
+      .nav-links a {
+        font-size: 0.76rem;
+      }
+
+      .team-spotlight {
+        grid-template-columns: 1fr;
+      }
+
+      .team-visual {
+        min-height: 150px;
+      }
+    }
+
+    @media (max-width: 620px) {
       body {
-        padding: 15px 10px 35px;
+        padding: 0 10px 35px;
+      }
+
+      .top-nav {
+        top: 5px;
+        padding: 11px 12px;
+      }
+
+      .nav-links {
+        display: none;
       }
 
       .hero {
-        padding: 28px 20px;
+        border-radius: 20px;
+        padding: 35px 23px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+
+      .stat-card {
+        padding: 15px;
+      }
+
+      .stat-number {
+        font-size: 1.55rem;
       }
 
       .toolbar {
         align-items: stretch;
+        padding: 13px;
       }
 
       .search-wrapper {
         max-width: none;
+      }
+
+      .filter-pills {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .filter-btn {
+        padding: 9px 6px;
+      }
+
+      .section-header {
+        align-items: start;
+      }
+
+      .team-spotlight {
+        padding: 22px;
+      }
+
+      .card-actions .btn {
+        min-width: 0;
       }
     }
 
@@ -332,7 +805,8 @@
         animation-duration: 0.01ms !important;
       }
 
-      .project-card:hover {
+      .project-card:hover,
+      .btn:hover {
         transform: none;
       }
     }
@@ -344,39 +818,145 @@
 
 <div class="container">
 
-  <header class="hero">
-    <span class="badge">Web Programming Portfolio</span>
-    <h1>Prashna Rai</h1>
-    <p>
-      Welcome to my Web Programming Portfolio! This website brings together
-      my weekly assignments, JavaScript exercises, interactive projects,
-      and learning progress using HTML, CSS, and JavaScript.
-    </p>
+  <!-- Navigation -->
+  <nav class="top-nav" aria-label="Main navigation">
+    <a class="brand" href="#">PR<span>.</span> Portfolio</a>
 
-    <a class="btn btn-primary"
-       href="https://prqshna-design.github.io/WEB-PORGRAMMING/"
-       target="_blank"
-       rel="noopener noreferrer">
-      Visit Live Website
-    </a>
+    <div class="nav-links">
+      <a href="#about">Home</a>
+      <a href="#team-projects">Team Projects</a>
+      <a href="#featuredSection">Projects</a>
+      <a href="#exercisesSection">Assignments</a>
+    </div>
 
-    <a class="btn btn-secondary"
-       href="https://github.com/prqshna-design/WEB-PORGRAMMING"
-       target="_blank"
-       rel="noopener noreferrer">
-      View GitHub Repository
-    </a>
+    <button class="theme-toggle" id="themeToggle" type="button"
+            aria-label="Switch color theme">
+      🌙 Dark Mode
+    </button>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="about">
+    <div class="hero-content">
+      <span class="hero-badge">✦ Web Programming Portfolio · 2026</span>
+
+      <h1>Hi, I'm <span>Prashna Rai.</span></h1>
+
+      <p class="hero-description">
+        Welcome to my Web Programming Portfolio. This is where I bring
+        together my coding journey, weekly assignments, creative experiments,
+        JavaScript projects, and collaborative work. Explore what I've
+        learned and what I've built along the way.
+      </p>
+
+      <div class="hero-actions">
+        <a class="btn btn-hero" href="#featuredSection">
+          Explore My Work ↓
+        </a>
+
+        <a class="btn btn-hero-outline"
+           href="https://github.com/prqshna-design/WEB-PORGRAMMING"
+           target="_blank" rel="noopener noreferrer">
+          GitHub Repository ↗
+        </a>
+      </div>
+    </div>
   </header>
 
   <main id="main-content">
 
+    <!-- Portfolio statistics -->
+    <section class="stats-grid" aria-label="Portfolio overview">
+      <div class="stat-card">
+        <span class="stat-number">09</span>
+        <span class="stat-label">Weeks of Learning</span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-number">13</span>
+        <span class="stat-label">Weekly Exercises</span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-number">03</span>
+        <span class="stat-label">Individual Projects</span>
+      </div>
+
+      <div class="stat-card">
+        <span class="stat-number">01</span>
+        <span class="stat-label">Team Project</span>
+      </div>
+    </section>
+
+    <!-- Team project spotlight -->
+    <section id="team-projects">
+      <div class="section-header">
+        <div>
+          <p class="section-kicker">Collaboration & Creativity</p>
+          <h2 class="section-title">Team Project</h2>
+          <p class="section-subtitle">
+            A collaborative project where we turned an idea into a web experience.
+          </p>
+        </div>
+      </div>
+
+      <article class="team-spotlight project-card" data-category="team"
+        data-keywords="team seoulmate travel tourism seoul guides itinerary group project sabhyata vision prashna">
+
+        <div>
+          <span class="tag tag-team">✦ Collaborative Project</span>
+
+          <h3>SeoulMate — Discover Seoul, Your Way</h3>
+
+          <p>
+            SeoulMate is a travel companion designed to connect international
+            visitors with local guides, group experiences, and smarter
+            itinerary planning. Our goal is to make exploring Seoul easier,
+            more personal, and more meaningful.
+          </p>
+
+          <div class="team-names">
+            <span class="team-name">Sabhyata Chhetri</span>
+            <span class="team-name">Vision Parajuli</span>
+            <span class="team-name">Prashna Rai</span>
+          </div>
+
+          <div class="card-actions">
+            <a class="btn btn-primary"
+               href="./TEAM%20PROJECTS/SeoulMate/project.html">
+              View Project Details ↗
+            </a>
+
+            <a class="btn btn-secondary"
+               href="https://seoulmate-chi.vercel.app/en"
+               target="_blank" rel="noopener noreferrer">
+              Visit Live Website ↗
+            </a>
+          </div>
+
+          <div class="card-path" style="margin-top:15px; margin-bottom:0;">
+            TEAM PROJECTS/SeoulMate/project.html
+          </div>
+        </div>
+
+        <div class="team-visual" aria-label="SeoulMate team project">
+          <span class="big-icon" aria-hidden="true">🏙️</span>
+          <strong>SeoulMate</strong>
+          <span>Travel · Culture · Connection</span>
+        </div>
+
+      </article>
+    </section>
+
+    <!-- Search and filters -->
     <section class="toolbar" aria-label="Search and filter assignments">
       <div class="search-wrapper">
+        <span class="search-icon" aria-hidden="true">⌕</span>
         <input
           id="searchInput"
           class="search-input"
           type="search"
-          placeholder="Search weeks or assignments..."
+          placeholder="Search projects, weeks, or topics..."
           aria-label="Search portfolio assignments">
       </div>
 
@@ -385,23 +965,32 @@
                 aria-pressed="true" type="button">All Items</button>
         <button class="filter-btn" data-filter="project"
                 aria-pressed="false" type="button">Projects</button>
+        <button class="filter-btn" data-filter="team"
+                aria-pressed="false" type="button">Team Project</button>
         <button class="filter-btn" data-filter="exercise"
                 aria-pressed="false" type="button">Weekly Exercises</button>
       </div>
     </section>
 
+    <!-- Featured individual projects -->
     <section aria-labelledby="projectsHeading" id="featuredSection">
       <div class="section-header">
-        <h2 class="section-title" id="projectsHeading">
-          Featured Projects
-          <span class="section-count" id="featuredCount">3</span>
-        </h2>
+        <div>
+          <p class="section-kicker">Selected Work</p>
+          <h2 class="section-title" id="projectsHeading">
+            Featured Individual Projects
+            <span class="section-count" id="featuredCount">3</span>
+          </h2>
+          <p class="section-subtitle">
+            Some of my main projects and interactive JavaScript work.
+          </p>
+        </div>
       </div>
 
       <div class="projects-grid" id="featuredGrid">
 
         <article class="project-card" data-category="project"
-          data-keywords="week 4 javascript counter dark mode todo search">
+          data-keywords="week 4 javascript counter dark mode todo search interactive">
           <div>
             <span class="tag">JavaScript</span>
             <h3 class="card-title">JavaScript Interactive Tasks</h3>
@@ -422,7 +1011,7 @@
         </article>
 
         <article class="project-card" data-category="project"
-          data-keywords="week 5 smart counter learning hub javascript">
+          data-keywords="week 5 smart counter learning hub javascript mini projects">
           <div>
             <span class="tag">Mini Projects</span>
             <h3 class="card-title">Smart Counter and Learning Hub</h3>
@@ -443,7 +1032,7 @@
         </article>
 
         <article class="project-card" data-category="project"
-          data-keywords="week 6 joke corner api fetch localstorage">
+          data-keywords="week 6 joke corner api fetch localstorage random joke">
           <div>
             <span class="tag tag-api">API Project</span>
             <h3 class="card-title">Random Joke Corner</h3>
@@ -466,12 +1055,19 @@
       </div>
     </section>
 
+    <!-- Weekly assignments -->
     <section aria-labelledby="exercisesHeading" id="exercisesSection">
       <div class="section-header">
-        <h2 class="section-title" id="exercisesHeading">
-          Weekly Web Programming Exercises
-          <span class="section-count" id="exercisesCount">12</span>
-        </h2>
+        <div>
+          <p class="section-kicker">Learning in Progress</p>
+          <h2 class="section-title" id="exercisesHeading">
+            Weekly Web Programming Exercises
+            <span class="section-count" id="exercisesCount">13</span>
+          </h2>
+          <p class="section-subtitle">
+            A collection of class exercises, practice tasks, and technical improvements.
+          </p>
+        </div>
       </div>
 
       <div class="projects-grid" id="exercisesGrid">
@@ -633,26 +1229,56 @@
           </div>
         </article>
 
+        <!-- Week 9 Monday: Performance Optimization -->
         <article class="project-card" data-category="exercise"
-          data-keywords="week 9 accessibility lighthouse audit before after">
+          data-keywords="week 9 monday performance optimization lighthouse image webp lazy loading compression">
           <div>
-            <span class="tag">Week 09</span>
+            <span class="tag tag-performance">Week 09 · Monday</span>
+            <h3 class="card-title">Week 9 · Performance Optimization</h3>
+            <p class="card-desc">
+              Improve website performance through image optimization,
+              efficient loading, and other performance techniques.
+              Compare Lighthouse results before and after optimization.
+            </p>
+            <div class="card-path">WEB week9 (mon)/performance.html</div>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-secondary"
+               href="./WEB%20week9%20%28mon%29/performance.html"
+               target="_blank" rel="noopener noreferrer">View Result</a>
+            <a class="btn btn-primary"
+               href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9%20%28mon%29"
+               target="_blank" rel="noopener noreferrer">View Source</a>
+          </div>
+        </article>
+
+        <!-- Week 9 Friday: Accessibility -->
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 9 friday accessibility lighthouse audit before after aria">
+          <div>
+            <span class="tag tag-accessibility">Week 09 · Friday</span>
             <h3 class="card-title">Week 9 · Web Accessibility</h3>
             <p class="card-desc">
-              Use Google Lighthouse to check accessibility, compare before-and-after
-              results, and document improvements to the portfolio.
+              Use Google Lighthouse to check accessibility, compare
+              before-and-after results, and document improvements
+              to the portfolio.
             </p>
             <div class="card-path">WEB week9/accessibility.html</div>
           </div>
           <div class="card-actions">
-            <a class="btn btn-secondary" href="./WEB%20week9/accessibility.html" target="_blank" rel="noopener noreferrer">View Result</a>
-            <a class="btn btn-primary" href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9" target="_blank" rel="noopener noreferrer">View Source</a>
+            <a class="btn btn-secondary"
+               href="./WEB%20week9/accessibility.html"
+               target="_blank" rel="noopener noreferrer">View Result</a>
+            <a class="btn btn-primary"
+               href="https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/WEB%20week9"
+               target="_blank" rel="noopener noreferrer">View Source</a>
           </div>
         </article>
 
       </div>
     </section>
 
+    <!-- Empty state -->
     <div class="empty-state" id="emptyState" role="status" aria-live="polite">
       <h3>No matching assignments found</h3>
       <p>Try another search term or select “All Items”.</p>
@@ -660,26 +1286,39 @@
 
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>Made with 💜 by Prashna Rai</p>
+    <p><strong>Prashna Rai</strong> · Web Programming Portfolio</p>
+    <p>Built with HTML, CSS, and JavaScript 💜</p>
     <p>
-      Web Programming Portfolio ·
       <a href="https://github.com/prqshna-design/WEB-PORGRAMMING"
-         target="_blank" rel="noopener noreferrer">GitHub Repository</a>
+         target="_blank" rel="noopener noreferrer">
+        View GitHub Repository ↗
+      </a>
     </p>
+    <p style="margin-top:10px;">© 2026 Prashna Rai. All rights reserved.</p>
   </footer>
 
 </div>
+
+<button class="back-to-top" id="backToTop"
+        type="button" aria-label="Back to top" title="Back to top">
+  ↑
+</button>
 
 <script>
 (function () {
   "use strict";
 
+  // Search and filter elements
   const searchInput = document.getElementById("searchInput");
   const filterButtons = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".project-card");
+  const cards = document.querySelectorAll(".project-card[data-category]");
+
   const featuredSection = document.getElementById("featuredSection");
   const exercisesSection = document.getElementById("exercisesSection");
+  const teamSection = document.getElementById("team-projects");
+
   const featuredCount = document.getElementById("featuredCount");
   const exercisesCount = document.getElementById("exercisesCount");
   const emptyState = document.getElementById("emptyState");
@@ -692,6 +1331,7 @@
     let visibleTotal = 0;
     let visibleFeatured = 0;
     let visibleExercises = 0;
+    let visibleTeam = 0;
 
     cards.forEach(function (card) {
       const title = card.querySelector(".card-title").textContent.toLowerCase();
@@ -717,13 +1357,9 @@
       if (visible) {
         visibleTotal++;
 
-        if (category === "project") {
-          visibleFeatured++;
-        }
-
-        if (category === "exercise") {
-          visibleExercises++;
-        }
+        if (category === "project") visibleFeatured++;
+        if (category === "exercise") visibleExercises++;
+        if (category === "team") visibleTeam++;
       }
     });
 
@@ -732,6 +1368,7 @@
 
     featuredSection.style.display = visibleFeatured ? "block" : "none";
     exercisesSection.style.display = visibleExercises ? "block" : "none";
+    teamSection.style.display = visibleTeam ? "block" : "none";
 
     emptyState.style.display = visibleTotal === 0 ? "block" : "none";
   }
@@ -753,7 +1390,59 @@
     });
   });
 
+  // Dark and light mode
+  const themeToggle = document.getElementById("themeToggle");
+  const savedTheme = localStorage.getItem("prashna-portfolio-theme");
+
+  function updateThemeButton() {
+    const isDark =
+      document.documentElement.getAttribute("data-theme") === "dark";
+
+    themeToggle.textContent = isDark ? "☀️ Light Mode" : "🌙 Dark Mode";
+  }
+
+  if (savedTheme === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  }
+
+  updateThemeButton();
+
+  themeToggle.addEventListener("click", function () {
+    const isDark =
+      document.documentElement.getAttribute("data-theme") === "dark";
+
+    if (isDark) {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("prashna-portfolio-theme", "light");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+      localStorage.setItem("prashna-portfolio-theme", "dark");
+    }
+
+    updateThemeButton();
+  });
+
+  // Back-to-top button
+  const backToTop = document.getElementById("backToTop");
+
+  window.addEventListener("scroll", function () {
+    if (window.scrollY > 450) {
+      backToTop.classList.add("visible");
+    } else {
+      backToTop.classList.remove("visible");
+    }
+  }, { passive: true });
+
+  backToTop.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  // Initial filtering
   applyFilters();
+
 })();
 </script>
 

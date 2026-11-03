@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance Optimization | Week 9 Monday</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --purple: #7952d8;
+      --purple-dark: #5d3bb2;
+      --purple-light: #f1ebff;
+      --text: #29243a;
+      --muted: #777187;
+      --white: #ffffff;
+      --background: #faf9ff;
+      --border: #e9e3f5;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      width: min(100% - 40px, 1000px);
+      margin: auto;
+    }
+
+    header {
+      padding: 22px 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--purple);
+    }
+
+    .back-link {
+      color: var(--purple);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .back-link:hover {
+      color: var(--purple-dark);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 75px 20px 55px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--purple-light);
+      color: var(--purple-dark);
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      line-height: 1.2;
+      margin-bottom: 18px;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: auto;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    section {
+      margin-bottom: 35px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 5px 20px rgba(65, 42, 110, 0.04);
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .score-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+      text-align: left;
+      flex-wrap: wrap;
+    }
+
+    .score {
+      width: 120px;
+      height: 120px;
+      border: 8px solid #e8f5e9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #27834c;
+      font-size: 36px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .score-info h3 {
+      margin-bottom: 6px;
+    }
+
+    .optimization-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .optimization {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      background: var(--white);
+      padding: 22px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .number {
+      background: var(--purple-light);
+      color: var(--purple);
+      min-width: 38px;
+      height: 38px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 12px;
+      font-weight: 800;
+    }
+
+    .optimization h3 {
+      font-size: 17px;
+      margin-bottom: 5px;
+    }
+
+    .optimization p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .screenshots {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .screenshot-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px;
+      overflow: hidden;
+    }
+
+    .screenshot-card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .screenshot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+
+    .placeholder {
+      background: var(--purple-light);
+      color: var(--purple-dark);
+      min-height: 180px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .reflection {
+      background: var(--purple-light);
+      border: 1px solid #e2d6ff;
+      border-radius: 18px;
+      padding: 28px;
+    }
+
+    .reflection p {
+      color: #51416f;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 15px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+      margin-top: 60px;
+    }
+
+    @media (max-width: 650px) {
+      .screenshots {
+        grid-template-columns: 1fr;
+      }
+
+      .score-card {
+        text-align: center;
+      }
+
+      .card {
+        padding: 22px;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">My Web Portfolio</div>
+        <a class="back-link" href="../index.html">← Back to Portfolio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="hero">
+      <span class="tag">WEEK 9 · MONDAY</span>
+      <h1>Performance Optimization</h1>
+      <p>
+        Improving my personal portfolio website by applying performance
+        optimization techniques and comparing Lighthouse results.
+      </p>
+    </div>
+
+    <section>
+      <h2 class="section-title">01. Assignment Overview</h2>
+      <div class="card">
+        <p>
+          The goal of this assignment was to analyze the performance of my
+          personal website using Google Lighthouse, apply at least three
+          optimization techniques, and run Lighthouse again to compare the
+          results.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">02. Before Optimization</h2>
+      <div class="card score-card">
+        <div class="score">99</div>
+        <div class="score-info">
+          <h3>Initial Performance Score</h3>
+          <p>
+            My website received a Performance score of 98 before applying
+            the optimizations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">03. Optimizations Applied</h2>
+
+      <div class="optimization-list">
+
+        <div class="optimization">
+          <div class="number">1</div>
+          <div>
+            <h3>Optimized Google Fonts Loading</h3>
+            <p>
+              Added preconnect to Google Fonts and its font server to establish
+              connections earlier and improve font loading.
+            </p>
+          </div>
+        </div>
+
+        <div class="optimization">
+          <div class="number">2</div>
+          <div>
+            <h3>Improved JavaScript DOM Rendering</h3>
+            <p>
+              Used DocumentFragment to group dynamically created cards before
+              adding them to the page, reducing repeated DOM updates.
+            </p>
+          </div>
+        </div>
+
+        <div class="optimization">
+          <div class="number">3</div>
+          <div>
+            <h3>Minified CSS</h3>
+            <p>
+              Removed unnecessary spaces and line breaks from the CSS code
+              to reduce its size and make the stylesheet more compact.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">04. Lighthouse Comparison</h2>
+
+      <div class="screenshots">
+
+        <div class="screenshot-card">
+          <h3>Before Optimization</h3>
+          <!-- Replace with your actual screenshot filename -->
+          <img
+            src="performance before.png"
+            alt="Lighthouse performance report before optimization"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="placeholder" style="display:none;">
+            Add before-performance.png to this folder
+          </div>
+        </div>
+
+        <div class="screenshot-card">
+          <h3>After Optimization</h3>
+          <!-- Replace with your actual screenshot filename -->
+          <img
+            src="performance after.png"
+            alt="Lighthouse performance report after optimization"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="placeholder" style="display:none;">
+            Add after-performance.png to this folder
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">05. Reflection</h2>
+      <div class="reflection">
+        <p>
+          Through this assignment, I learned how small changes in font loading,
+          JavaScript rendering, and CSS can help improve website performance.
+          Comparing the Lighthouse reports helped me understand the importance
+          of testing and optimizing a website instead of focusing only on its appearance.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Week 9 Monday · Web Programming Portfolio</p>
+    <p>Designed and developed by me.</p>
+  </footer>
+
+</body>
+</html>

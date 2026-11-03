@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E1 - Lighthouse Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #faf9ff;
+      color: #29243a;
+      line-height: 1.7;
+    }
+    header {
+      background: white;
+      padding: 20px 7%;
+      border-bottom: 1px solid #e9e3f5;
+    }
+    header a { color: #7952d8; text-decoration: none; font-weight: 700; }
+    main { max-width: 900px; margin: 55px auto; padding: 0 22px; }
+    .tag {
+      display: inline-block;
+      background: #f1ebff;
+      color: #5d3bb2;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    h1 { font-size: clamp(30px, 5vw, 43px); margin: 15px 0; }
+    h2 { font-size: 22px; margin-bottom: 14px; }
+    p { color: #777187; }
+    section {
+      background: white;
+      border: 1px solid #e9e3f5;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+    .scores {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .score {
+      background: #faf9ff;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+    }
+    .score strong {
+      display: block;
+      font-size: 42px;
+      color: #7952d8;
+    }
+    .score span { color: #777187; font-size: 14px; }
+    .screenshot {
+      width: 100%;
+      height: auto;
+      border: 1px solid #e9e3f5;
+      border-radius: 10px;
+      margin-top: 14px;
+    }
+    .note {
+      background: #f1ebff;
+      padding: 16px;
+      border-radius: 10px;
+      color: #51416f;
+      margin-top: 15px;
+    }
+    footer { text-align: center; padding: 30px; color: #777187; }
+    @media (max-width: 600px) {
+      .scores { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="./performance.html">← Back to Week 9 Performance</a>
+  </header>
+
+  <main>
+    <span class="tag">WEEK 9 · EXERCISE 1</span>
+    <h1>Lighthouse Performance Results</h1>
+    <p>Testing and analyzing the performance of my personal portfolio website using Google Lighthouse.</p>
+
+    <section>
+      <h2>Objective</h2>
+      <p>
+        The objective of this exercise is to measure my website's performance
+        using Lighthouse, identify areas that need improvement, and compare
+        the results before and after optimization.
+      </p>
+    </section>
+
+    <section>
+      <h2>Performance Score Comparison</h2>
+      <div class="scores">
+        <div class="score">
+          <strong>99</strong>
+          <span>Before Optimization</span>
+        </div>
+        <div class="score">
+       <strong>100</strong>
+          <span>After Optimization</span>
+        </div>
+      </div>
+      <div class="note">
+        Update the after score after running Lighthouse again. Do not enter
+        an estimated score.
+      </div>
+    </section>
+
+    <section>
+      <h2>Before Optimization</h2>
+      <p>My initial Lighthouse Performance score was 98.</p>
+      <img class="screenshot"
+           src="performance before.png"
+           alt="Lighthouse desktop report before optimization">
+    </section>
+
+    <section>
+      <h2>After Optimization</h2>
+      <p>My updated Lighthouse report after applying the performance improvements.</p>
+      <img class="screenshot"
+           src="performance after.png"
+           alt="Lighthouse desktop report after optimization">
+    </section>
+
+    <section>
+      <h2>What I Learned</h2>
+      <p>
+        Lighthouse helped me understand how website performance can be
+        measured and improved. Comparing the reports allows me to see
+        whether the changes I made actually improved my website.
+      </p>
+    </section>
+  </main>
+
+  <footer>Web Programming Portfolio · Week 9 Monday</footer>
+</body>
+</html>

@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E3 - Defer JavaScript</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="script.js" defer></script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #faf9ff;
+      color: #29243a;
+      line-height: 1.7;
+    }
+    header {
+      background: white;
+      padding: 20px 7%;
+      border-bottom: 1px solid #e9e3f5;
+    }
+    header a { color: #7952d8; text-decoration: none; font-weight: 700; }
+    main { max-width: 900px; margin: 55px auto; padding: 0 22px; }
+    .tag {
+      display: inline-block;
+      background: #f1ebff;
+      color: #5d3bb2;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    h1 { font-size: clamp(30px, 5vw, 43px); margin: 15px 0; }
+    h2 { font-size: 22px; margin-bottom: 14px; }
+    p { color: #777187; }
+    section {
+      background: white;
+      border: 1px solid #e9e3f5;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+    pre {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      background: #29243a;
+      color: #f4efff;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+    button {
+      background: #7952d8;
+      color: white;
+      border: 0;
+      padding: 12px 20px;
+      border-radius: 9px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 15px;
+    }
+    button:hover { background: #5d3bb2; }
+    #demoMessage {
+      margin-top: 15px;
+      padding: 14px;
+      border-radius: 10px;
+      background: #f1ebff;
+      color: #51416f;
+      min-height: 50px;
+    }
+    footer { text-align: center; padding: 30px; color: #777187; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <a href="./performance.html">← Back to Week 9 Performance</a>
+  </header>
+
+  <main>
+    <span class="tag">WEEK 9 · EXERCISE 3</span>
+    <h1>Defer JavaScript Loading</h1>
+    <p>Learning how the defer attribute helps improve the loading process of a webpage.</p>
+
+    <section>
+      <h2>Objective</h2>
+      <p>
+        The objective of this exercise is to understand how JavaScript
+        affects HTML parsing and how the defer attribute allows an external
+        JavaScript file to download without blocking HTML parsing.
+      </p>
+    </section>
+
+    <section>
+      <h2>What Does Defer Do?</h2>
+      <p>
+        Normally, a regular script can pause HTML parsing while the browser
+        downloads and executes it. When the defer attribute is used with an
+        external script, the browser downloads the script while parsing HTML
+        and executes it after the HTML has been parsed.
+      </p>
+    </section>
+
+    <section>
+      <h2>Before Optimization</h2>
+      <p>A normal external script without defer:</p>
+
+      <pre><code>&lt;script src="script.js"&gt;&lt;/script&gt;</code></pre>
+      <p style="margin-top:12px;">
+        This can block HTML parsing while the script is downloaded and executed.
+      </p>
+    </section>
+
+    <section>
+      <h2>After Optimization</h2>
+      <p>Using the defer attribute:</p>
+
+      <pre><code>&lt;script src="script.js" defer&gt;&lt;/script&gt;</code></pre>
+      <p style="margin-top:12px;">
+        The browser can continue parsing HTML while downloading the script.
+        The script executes after HTML parsing is complete.
+      </p>
+    </section>
+
+    <section>
+      <h2>Interactive JavaScript Demo</h2>
+      <p>Click the button below to check that the deferred JavaScript file works.</p>
+
+      <button id="demoButton" type="button">Test JavaScript</button>
+      <div id="demoMessage" aria-live="polite">
+        JavaScript demo is ready.
+      </div>
+    </section>
+
+    <section>
+      <h2>What I Learned</h2>
+      <p>
+        I learned that the defer attribute helps prevent external JavaScript
+        from blocking HTML parsing. Separating JavaScript into an external
+        file also makes the code easier to organize and maintain.
+      </p>
+    </section>
+  </main>
+
+  <footer>Web Programming Portfolio · Week 9 Monday</footer>
+</body>
+</html>

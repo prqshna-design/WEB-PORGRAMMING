@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SeoulMate | Team Project</title>
+
+    <meta name="description" content="SeoulMate is a travel companion connecting international visitors with local guides and authentic Seoul experiences.">
+
+    <style>
+        :root {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --surface-alt: #f1f5f9;
+            --text: #0f172a;
+            --muted: #64748b;
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --accent: #f59e0b;
+            --border: #e2e8f0;
+            --shadow: 0 12px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="dark"] {
+            --bg: #090d16;
+            --surface: #111827;
+            --surface-alt: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --primary: #2dd4bf;
+            --primary-dark: #0f766e;
+            --accent: #fbbf24;
+            --border: #334155;
+            --shadow: 0 12px 35px rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            transition: 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .container {
+            width: min(1100px, 90%);
+            margin: auto;
+        }
+
+        /* Navigation */
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 22px 0;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .theme-btn {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 9px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        /* Hero */
+
+        .hero {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0b253a, #0f766e);
+            color: white;
+            border-radius: 26px;
+            padding: 85px 60px;
+            margin: 25px 0 65px;
+            box-shadow: var(--shadow);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            right: -80px;
+            top: -100px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.14);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 7px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #d1e5e6;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 22px;
+            border-radius: 9px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #115e59;
+        }
+
+        .btn-outline {
+            color: white;
+            border: 1px solid rgba(255,255,255,0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Section */
+
+        section {
+            margin-bottom: 75px;
+            scroll-margin-top: 30px;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            color: var(--muted);
+            max-width: 700px;
+            margin-bottom: 30px;
+        }
+
+        /* Overview */
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 25px;
+        }
+
+        .overview-card,
+        .info-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .overview-card p {
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .info-card {
+            background: var(--surface-alt);
+            box-shadow: none;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+        }
+
+        .info-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-bottom: 3px;
+        }
+
+        .info-item strong {
+            font-size: 1rem;
+        }
+
+        /* Features */
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 9px;
+        }
+
+        .feature-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Problem and solution */
+
+        .problem-box {
+            background: var(--surface-alt);
+            border-left: 4px solid var(--accent);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+        }
+
+        .problem-box p {
+            color: var(--muted);
+        }
+
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .solution-card {
+            background: var(--surface);
+            padding: 23px;
+            border: 1px solid var(--border);
+            border-radius: 15px;
+        }
+
+        .solution-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .solution-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        /* Technology */
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .tech-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 23px 15px;
+            border-radius: 14px;
+            text-align: center;
+        }
+
+        .tech-card strong {
+            display: block;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .tech-card span {
+            color: var(--muted);
+            font-size: 0.8rem;
+        }
+
+        /* Team */
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .team-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 30px 20px;
+            border-radius: 18px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .team-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .avatar {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: grid;
+            place-items: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0 auto 18px;
+        }
+
+        .team-card h3 {
+            margin-bottom: 5px;
+        }
+
+        .team-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .team-role {
+            display: inline-block;
+            margin-top: 12px;
+            color: var(--primary);
+            background: var(--surface-alt);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* CTA */
+
+        .cta {
+            background: linear-gradient(135deg, #0b253a, #0f766e);
+            color: white;
+            text-align: center;
+            padding: 55px 25px;
+            border-radius: 22px;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #d1e5e6;
+            margin-bottom: 25px;
+        }
+
+        /* Footer */
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--muted);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+        }
+
+        footer a {
+            color: var(--primary);
+        }
+
+        @media (max-width: 750px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                padding: 55px 25px;
+            }
+
+            .overview-grid,
+            .feature-grid,
+            .solution-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tech-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *, *::before, *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#" class="logo">SeoulMate.</a>
+
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#features">Features</a>
+            <a href="#technology">Technology</a>
+            <a href="#team">Our Team</a>
+        </div>
+
+        <button class="theme-btn" id="theme-toggle">
+            🌙 Theme
+        </button>
+    </nav>
+
+    <!-- Hero -->
+    <header class="hero">
+        <span class="tag">WEB PROGRAMMING · TEAM PROJECT</span>
+
+        <h1>Discover Seoul.<br>Experience More.</h1>
+
+        <p>
+            Your Seoul, your way. SeoulMate connects international
+            travelers with local guides, exciting group experiences,
+            and smarter travel planning.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="https://seoulmate-chi.vercel.app/en"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-primary">
+                Explore Live Website ↗
+            </a>
+
+            <a href="#about" class="btn btn-outline">
+                Discover Our Project
+            </a>
+        </div>
+    </header>
+
+    <!-- About -->
+    <section id="about">
+
+        <p class="section-label">01 — Introduction</p>
+
+        <h2 class="section-title">What is SeoulMate?</h2>
+
+        <p class="section-description">
+            A digital travel companion designed to make exploring
+            Seoul easier, more personal, and more meaningful for
+            international visitors.
+        </p>
+
+        <div class="overview-grid">
+
+            <div class="overview-card">
+                <h3>Our Idea</h3>
+
+                <p>
+                    Exploring a new country can be exciting, but
+                    language barriers, unfamiliar transportation,
+                    and difficulty finding authentic local experiences
+                    can make traveling challenging.
+                </p>
+
+                <p>
+                    SeoulMate brings essential travel services together
+                    in one platform. Travelers can discover destinations,
+                    plan daily itineraries, connect with local guides,
+                    and join group experiences.
+                </p>
+
+                <p>
+                    Our goal is to help visitors experience Seoul
+                    beyond ordinary tourist attractions.
+                </p>
+            </div>
+
+            <div class="info-card">
+
+                <div class="info-item">
+                    <span>Project Name</span>
+                    <strong>SeoulMate</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Project Category</span>
+                    <strong>Travel & Cultural Technology</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Platform</span>
+                    <strong>Web Application</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Deployment</span>
+                    <strong>Vercel</strong>
+                </div>
+
+                <div class="info-item">
+                    <span>Target Users</span>
+                    <strong>International Travelers</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Problem and Solution -->
+    <section>
+
+        <p class="section-label">02 — Our Approach</p>
+
+        <h2 class="section-title">Making Seoul Easier to Explore</h2>
+
+        <p class="section-description">
+            We identified common challenges faced by international
+            visitors and designed SeoulMate to address them.
+        </p>
+
+        <div class="problem-box">
+            <h3>The Challenge</h3>
+            <p>
+                Travelers may struggle with language barriers,
+                unfamiliar transportation systems, disconnected
+                travel information, and finding people to explore
+                the city with.
+            </p>
+        </div>
+
+        <div class="solution-grid">
+
+            <div class="solution-card">
+                <h3>Independent Planning</h3>
+                <p>
+                    Create personalized daily itineraries and
+                    organize destinations into practical routes.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <h3>Group Experiences</h3>
+                <p>
+                    Discover themed tours and meet other travelers
+                    through local group activities.
+                </p>
+            </div>
+
+            <div class="solution-card">
+                <h3>Private Local Guides</h3>
+                <p>
+                    Connect with local guides based on language,
+                    interests, and neighborhood knowledge.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Features -->
+    <section id="features">
+
+        <p class="section-label">03 — Platform Features</p>
+
+        <h2 class="section-title">What Makes SeoulMate Special?</h2>
+
+        <p class="section-description">
+            Our platform brings different travel services together
+            to create a smoother experience.
+        </p>
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+                <div class="feature-icon">🗺️</div>
+                <h3>Smart Day Planner</h3>
+                <p>
+                    Organize destinations and plan practical
+                    daily travel routes.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👤</div>
+                <h3>Local Guide Profiles</h3>
+                <p>
+                    Explore guide profiles, languages,
+                    specialties, and reviews.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>Group Tours</h3>
+                <p>
+                    Discover themed experiences and
+                    connect with other travelers.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💳</div>
+                <h3>Online Payments</h3>
+                <p>
+                    Designed to support convenient
+                    international payment experiences.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌤️</div>
+                <h3>Weather Information</h3>
+                <p>
+                    Help travelers consider weather
+                    conditions when planning their day.
+                </p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🌐</div>
+                <h3>Bilingual Support</h3>
+                <p>
+                    English and Korean language options
+                    for a more accessible experience.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Technology -->
+    <section id="technology">
+
+        <p class="section-label">04 — Development</p>
+
+        <h2 class="section-title">Technology Behind the Project</h2>
+
+        <p class="section-description">
+            The project proposal identifies the following
+            technologies for the SeoulMate platform.
+        </p>
+
+        <div class="tech-grid">
+
+            <div class="tech-card">
+                <strong>Next.js</strong>
+                <span>Frontend Framework</span>
+            </div>
+
+            <div class="tech-card">
+                <strong>React</strong>
+                <span>UI Development</span>
+            </div>
+
+            <div class="tech-card">
+                <strong>Tailwind CSS</strong>
+                <span>Styling</span>
+            </div>
+
+            <div class="tech-card">
+                <strong>Vercel</strong>
+                <span>Deployment</span>
+            </div>
+
+            <div class="tech-card">
+                <strong>Stripe</strong>
+                <span>Payment Integration</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Team -->
+    <section id="team">
+
+        <p class="section-label">05 — Collaboration</p>
+
+        <h2 class="section-title">Meet Our Team</h2>
+
+        <p class="section-description">
+            SeoulMate was developed collaboratively by our
+            Web Programming team.
+        </p>
+
+        <div class="team-grid">
+
+            <div class="team-card">
+                <div class="avatar">SC</div>
+                <h3>Sabhyata Chhetri</h3>
+                <p>Team Member</p>
+                <span class="team-role">Web Programming Team</span>
+                <p style="margin-top:12px;">
+                    <a href="https://github.com/sabhyatachhetri45-dev/web-programming"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        GitHub Repository ↗
+                    </a>
+                </p>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar">VP</div>
+                <h3>Vision Parajuli</h3>
+                <p>Team Member</p>
+                <span class="team-role">Web Programming Team</span>
+                <p style="margin-top:12px;">
+                    <a href="https://vision123-hub.github.io/WebProgramming_Assignment1/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Assignment Portfolio ↗
+                    </a>
+                </p>
+            </div>
+
+            <div class="team-card">
+                <div class="avatar">PR</div>
+                <h3>Prashna Rai</h3>
+                <p>Team Member</p>
+                <span class="team-role">Web Programming Team</span>
+                <p style="margin-top:12px;">
+                    <a href="https://prqshna-design.github.io/WEB-PORGRAMMING/"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        Assignment Portfolio ↗
+                    </a>
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Live Website -->
+    <section class="cta">
+
+        <h2>Ready to Explore Seoul?</h2>
+
+        <p>
+            Discover the project and experience what
+            SeoulMate has to offer.
+        </p>
+
+        <a href="https://seoulmate-chi.vercel.app/en"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn btn-primary">
+            Visit SeoulMate ↗
+        </a>
+
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>SeoulMate</strong> — Web Programming Team Project</p>
+        <p>Developed by Sabhyata Chhetri, Vision Parajuli & Prashna Rai</p>
+        <p>© 2026 SeoulMate Team. All rights reserved.</p>
+    </footer>
+
+</div>
+
+<script>
+    // Dark and light theme toggle
+    const themeButton = document.getElementById("theme-toggle");
+
+    const savedTheme = localStorage.getItem("seoulmate-project-theme");
+
+    if (savedTheme === "dark") {
+        document.documentElement.setAttribute("data-theme", "dark");
+        themeButton.textContent = "☀️ Theme";
+    }
+
+    themeButton.addEventListener("click", () => {
+        const isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+            document.documentElement.removeAttribute("data-theme");
+            localStorage.setItem("seoulmate-project-theme", "light");
+            themeButton.textContent = "🌙 Theme";
+        } else {
+            document.documentElement.setAttribute("data-theme", "dark");
+            localStorage.setItem("seoulmate-project-theme", "dark");
+            themeButton.textContent = "☀️ Theme";
+        }
+    });
+</script>
+
+</body>
+</html>

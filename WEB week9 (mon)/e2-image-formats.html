@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E2 - Image Format Optimization</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: #faf9ff;
+      color: #29243a;
+      line-height: 1.7;
+    }
+
+    header {
+      background: white;
+      padding: 20px 7%;
+      border-bottom: 1px solid #e9e3f5;
+    }
+
+    header a {
+      color: #7952d8;
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    header a:hover {
+      color: #5d3bb2;
+    }
+
+    main {
+      max-width: 950px;
+      margin: 55px auto;
+      padding: 0 22px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #f1ebff;
+      color: #5d3bb2;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: clamp(30px, 5vw, 43px);
+      margin: 15px 0;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    p {
+      color: #777187;
+    }
+
+    section {
+      background: white;
+      border: 1px solid #e9e3f5;
+      border-radius: 16px;
+      padding: 25px;
+      margin: 25px 0;
+    }
+
+    .image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+      margin: 18px 0;
+      border: 1px solid #e9e3f5;
+    }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+
+    .comparison div {
+      background: #faf9ff;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    .comparison strong {
+      display: block;
+      color: #7952d8;
+      font-size: 25px;
+      margin-bottom: 4px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 13px;
+      border-bottom: 1px solid #e9e3f5;
+    }
+
+    th {
+      background: #f1ebff;
+      color: #5d3bb2;
+    }
+
+    pre {
+      overflow-x: auto;
+      white-space: pre-wrap;
+      background: #29243a;
+      color: #f4efff;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 15px;
+      font-size: 13px;
+    }
+
+    .result {
+      background: #f1ebff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 18px;
+    }
+
+    .result strong {
+      color: #5d3bb2;
+      font-size: 28px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #777187;
+      border-top: 1px solid #e9e3f5;
+      margin-top: 50px;
+    }
+
+    @media (max-width: 600px) {
+      .comparison {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="./performance.html">← Back to Week 9 Performance</a>
+</header>
+
+<main>
+
+  <span class="tag">WEEK 9 · EXERCISE 2</span>
+
+  <h1>Image Format Optimization</h1>
+
+  <p>
+    Exploring modern image formats and reducing image file sizes
+    to improve website loading performance.
+  </p>
+
+  <section>
+    <h2>01. Objective</h2>
+
+    <p>
+      The objective of this exercise is to understand different image
+      formats and learn how converting images into modern formats
+      such as WebP can reduce file sizes and improve website performance.
+    </p>
+  </section>
+
+  <section>
+    <h2>02. Image Format Comparison</h2>
+
+    <p>
+      Different image formats use different compression methods.
+      Choosing the right format can help reduce the amount of data
+      a browser needs to download.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Characteristics</th>
+          <th>Common Use</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>JPG / JPEG</td>
+          <td>Lossy compression</td>
+          <td>Photographs</td>
+        </tr>
+
+        <tr>
+          <td>PNG</td>
+          <td>Supports transparency and lossless compression</td>
+          <td>Graphics and screenshots</td>
+        </tr>
+
+        <tr>
+          <td>WebP</td>
+          <td>Supports lossy and lossless compression</td>
+          <td>Optimized website images</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>03. Original Image (PNG)</h2>
+
+    <p>
+      This is my original image before optimization.
+      It was saved in PNG format.
+    </p>
+
+    <img
+      class="image"
+      src="images/original-image.png"
+      alt="Original image before WebP optimization">
+
+    <div class="comparison">
+      <div>
+        <strong>PNG</strong>
+        Original image format
+      </div>
+
+      <div>
+        <strong>3,534 KB</strong>
+        Original file size
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>04. Optimized Image (WebP)</h2>
+
+    <p>
+      I converted the same original image into WebP format.
+      The optimized version has a much smaller file size.
+    </p>
+
+    <picture>
+      <source
+        srcset="images/optimized-image.webp"
+        type="image/webp">
+
+      <img
+        class="image"
+        src="images/original-image.png"
+        alt="Image converted into WebP format">
+    </picture>
+
+    <div class="comparison">
+      <div>
+        <strong>WebP</strong>
+        Optimized image format
+      </div>
+
+      <div>
+        <strong>357 KB</strong>
+        Optimized file size
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>05. File Size Comparison</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Image</th>
+          <th>Format</th>
+          <th>File Size</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Original Image</td>
+          <td>PNG</td>
+          <td>3,534 KB</td>
+        </tr>
+
+        <tr>
+          <td>Optimized Image</td>
+          <td>WebP</td>
+          <td>357 KB</td>
+        </tr>
+
+        <tr>
+          <td><strong>File Size Saved</strong></td>
+          <td>—</td>
+          <td><strong>3,177 KB</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="result">
+      <strong>89.9% Reduction</strong>
+      <p>
+        Converting the original PNG image into WebP reduced
+        its file size by approximately 89.9%.
+        This means the optimized image requires significantly
+        less data to download.
+      </p>
+    </div>
+  </section>
+
+  <section>
+    <h2>06. HTML Implementation</h2>
+
+    <p>
+      I used the HTML picture element to provide the WebP image
+      with the original PNG as a fallback.
+    </p>
+
+    <pre><code>&lt;picture&gt;
+  &lt;source
+    srcset="images/optimized-image.webp"
+    type="image/webp"&gt;
+
+  &lt;img
+    src="images/original-image.png"
+    alt="Optimized image"
+    loading="lazy"&gt;
+&lt;/picture&gt;</code></pre>
+  </section>
+
+  <section>
+    <h2>07. What I Learned</h2>
+
+    <p>
+      Through this exercise, I learned that image optimization can
+      significantly reduce the size of website resources. By converting
+      my original PNG image into WebP, I reduced its file size by 89.9%,
+      which can help improve loading performance while maintaining
+      visually acceptable image quality.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  Web Programming Portfolio · Week 9 Monday
+</footer>
+
+</body>
+</html>
