@@ -64,13 +64,9 @@
       transition: background 0.3s, color 0.3s;
     }
 
-    a {
-      color: inherit;
-    }
+    a { color: inherit; }
 
-    button, input {
-      font: inherit;
-    }
+    button, input { font: inherit; }
 
     a:focus-visible,
     button:focus-visible,
@@ -90,9 +86,7 @@
       border-radius: 8px;
     }
 
-    .skip-link:focus {
-      top: 12px;
-    }
+    .skip-link:focus { top: 12px; }
 
     .container {
       max-width: 1180px;
@@ -127,9 +121,7 @@
       white-space: nowrap;
     }
 
-    .brand span {
-      color: var(--pink);
-    }
+    .brand span { color: var(--pink); }
 
     .nav-links {
       display: flex;
@@ -145,9 +137,7 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--purple);
-    }
+    .nav-links a:hover { color: var(--purple); }
 
     .theme-toggle {
       border: 1px solid var(--border);
@@ -200,9 +190,7 @@
       background: rgba(255, 255, 255, 0.08);
     }
 
-    .hero-content {
-      max-width: 760px;
-    }
+    .hero-content { max-width: 760px; }
 
     .hero-badge {
       display: inline-flex;
@@ -228,9 +216,7 @@
       color: white;
     }
 
-    .hero h1 span {
-      color: #f4c7e8;
-    }
+    .hero h1 span { color: #f4c7e8; }
 
     .hero-description {
       max-width: 680px;
@@ -260,9 +246,7 @@
       transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-    }
+    .btn:hover { transform: translateY(-2px); }
 
     .btn-hero {
       background: white;
@@ -293,9 +277,7 @@
       border-color: var(--border);
     }
 
-    .btn-secondary:hover {
-      background: var(--surface-alt);
-    }
+    .btn-secondary:hover { background: var(--surface-alt); }
 
     /* Statistics */
 
@@ -417,9 +399,7 @@
       font-size: 0.88rem;
     }
 
-    .search-input::placeholder {
-      color: var(--muted);
-    }
+    .search-input::placeholder { color: var(--muted); }
 
     .filter-pills {
       display: flex;
@@ -492,9 +472,7 @@
       border-color: var(--purple);
     }
 
-    .project-card:hover::before {
-      opacity: 1;
-    }
+    .project-card:hover::before { opacity: 1; }
 
     .tag {
       display: inline-flex;
@@ -610,13 +588,9 @@
       padding: 20px;
     }
 
-    .team-visual .big-icon {
-      font-size: 3.5rem;
-    }
+    .team-visual .big-icon { font-size: 3.5rem; }
 
-    .team-visual strong {
-      font-size: 1.3rem;
-    }
+    .team-visual strong { font-size: 1.3rem; }
 
     .team-visual span {
       font-size: 0.8rem;
@@ -669,9 +643,7 @@
       font-size: 0.84rem;
     }
 
-    footer p {
-      margin-bottom: 5px;
-    }
+    footer p { margin-bottom: 5px; }
 
     footer a {
       color: var(--purple);
@@ -679,9 +651,7 @@
       text-decoration: none;
     }
 
-    footer a:hover {
-      text-decoration: underline;
-    }
+    footer a:hover { text-decoration: underline; }
 
     .back-to-top {
       position: fixed;
@@ -712,88 +682,53 @@
     /* Responsive */
 
     @media (max-width: 800px) {
-      .nav-links {
-        gap: 12px;
-      }
-
-      .nav-links a {
-        font-size: 0.76rem;
-      }
-
-      .team-spotlight {
-        grid-template-columns: 1fr;
-      }
-
-      .team-visual {
-        min-height: 150px;
-      }
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 0.76rem; }
+      .team-spotlight { grid-template-columns: 1fr; }
+      .team-visual { min-height: 150px; }
     }
 
     @media (max-width: 620px) {
-      body {
-        padding: 0 10px 35px;
-      }
+      body { padding: 0 10px 35px; }
 
       .top-nav {
         top: 5px;
         padding: 11px 12px;
       }
 
-      .nav-links {
-        display: none;
-      }
+      .nav-links { display: none; }
 
       .hero {
         border-radius: 20px;
         padding: 35px 23px;
       }
 
-      .hero h1 {
-        letter-spacing: -1.5px;
-      }
+      .hero h1 { letter-spacing: -1.5px; }
 
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
       }
 
-      .stat-card {
-        padding: 15px;
-      }
-
-      .stat-number {
-        font-size: 1.55rem;
-      }
+      .stat-card { padding: 15px; }
+      .stat-number { font-size: 1.55rem; }
 
       .toolbar {
         align-items: stretch;
         padding: 13px;
       }
 
-      .search-wrapper {
-        max-width: none;
-      }
+      .search-wrapper { max-width: none; }
 
       .filter-pills {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .filter-btn {
-        padding: 9px 6px;
-      }
-
-      .section-header {
-        align-items: start;
-      }
-
-      .team-spotlight {
-        padding: 22px;
-      }
-
-      .card-actions .btn {
-        min-width: 0;
-      }
+      .filter-btn { padding: 9px 6px; }
+      .section-header { align-items: start; }
+      .team-spotlight { padding: 22px; }
+      .card-actions .btn { min-width: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -873,7 +808,7 @@
       </div>
 
       <div class="stat-card">
-        <span class="stat-number">13</span>
+        <span class="stat-number">16</span>
         <span class="stat-label">Weekly Exercises</span>
       </div>
 
@@ -944,7 +879,6 @@
           <strong>SeoulMate</strong>
           <span>Travel · Culture · Connection</span>
         </div>
-
       </article>
     </section>
 
@@ -1062,7 +996,7 @@
           <p class="section-kicker">Learning in Progress</p>
           <h2 class="section-title" id="exercisesHeading">
             Weekly Web Programming Exercises
-            <span class="section-count" id="exercisesCount">13</span>
+            <span class="section-count" id="exercisesCount">16</span>
           </h2>
           <p class="section-subtitle">
             A collection of class exercises, practice tasks, and technical improvements.
@@ -1252,6 +1186,72 @@
           </div>
         </article>
 
+        <!-- Week 9 Monday: E1 -->
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 9 e1 lighthouse results performance audit score">
+          <div>
+            <span class="tag tag-performance">Week 09 · E1</span>
+            <h3 class="card-title">Lighthouse Performance Results</h3>
+            <p class="card-desc">
+              Review Lighthouse performance results and examine
+              website performance measurements and optimization findings.
+            </p>
+            <div class="card-path">WEB week9 (mon)/e1-lighthouse-results.html</div>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-secondary"
+               href="./WEB%20week9%20%28mon%29/e1-lighthouse-results.html"
+               target="_blank" rel="noopener noreferrer">View Exercise</a>
+            <a class="btn btn-primary"
+               href="https://github.com/prqshna-design/WEB-PORGRAMMING/blob/main/WEB%20week9%20%28mon%29/e1-lighthouse-results.html"
+               target="_blank" rel="noopener noreferrer">View Source</a>
+          </div>
+        </article>
+
+        <!-- Week 9 Monday: E2 -->
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 9 e2 image formats webp png jpg optimization">
+          <div>
+            <span class="tag tag-performance">Week 09 · E2</span>
+            <h3 class="card-title">Image Formats</h3>
+            <p class="card-desc">
+              Explore different image formats and learn how image
+              choices affect website size and loading performance.
+            </p>
+            <div class="card-path">WEB week9 (mon)/e2-image-formats.html</div>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-secondary"
+               href="./WEB%20week9%20%28mon%29/e2-image-formats.html"
+               target="_blank" rel="noopener noreferrer">View Exercise</a>
+            <a class="btn btn-primary"
+               href="https://github.com/prqshna-design/WEB-PORGRAMMING/blob/main/WEB%20week9%20%28mon%29/e2-image-formats.html"
+               target="_blank" rel="noopener noreferrer">View Source</a>
+          </div>
+        </article>
+
+        <!-- Week 9 Monday: E3 -->
+        <article class="project-card" data-category="exercise"
+          data-keywords="week 9 e3 defer scripts javascript loading performance">
+          <div>
+            <span class="tag tag-performance">Week 09 · E3</span>
+            <h3 class="card-title">Defer Scripts</h3>
+            <p class="card-desc">
+              Learn how deferred JavaScript loading helps scripts
+              execute without unnecessarily blocking HTML parsing.
+            </p>
+            <div class="card-path">WEB week9 (mon)/e3-defer-scripts.html</div>
+          </div>
+          <div class="card-actions">
+            <a class="btn btn-secondary"
+               href="./WEB%20week9%20%28mon%29/e3-defer-scripts.html"
+               target="_blank" rel="noopener noreferrer">View Exercise</a>
+            <a class="btn btn-primary"
+               href="https://github.com/prqshna-design/WEB-PORGRAMMING/blob/main/WEB%20week9%20%28mon%29/e3-defer-scripts.html"
+               target="_blank" rel="noopener noreferrer">View Source</a>
+          </div>
+        </article>
+
         <!-- Week 9 Friday: Accessibility -->
         <article class="project-card" data-category="exercise"
           data-keywords="week 9 friday accessibility lighthouse audit before after aria">
@@ -1310,7 +1310,6 @@
 (function () {
   "use strict";
 
-  // Search and filter elements
   const searchInput = document.getElementById("searchInput");
   const filterButtons = document.querySelectorAll(".filter-btn");
   const cards = document.querySelectorAll(".project-card[data-category]");
@@ -1334,7 +1333,7 @@
     let visibleTeam = 0;
 
     cards.forEach(function (card) {
-      const title = card.querySelector(".card-title").textContent.toLowerCase();
+      const title = card.querySelector("h3").textContent.toLowerCase();
       const description = card.querySelector(".card-desc").textContent.toLowerCase();
       const keywords = (card.dataset.keywords || "").toLowerCase();
       const path = card.querySelector(".card-path").textContent.toLowerCase();
@@ -1440,7 +1439,6 @@
     });
   });
 
-  // Initial filtering
   applyFilters();
 
 })();
