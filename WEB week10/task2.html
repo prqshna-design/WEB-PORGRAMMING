@@ -4,96 +4,439 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Week 10 Task 2 - Personal portfolio deployment and accessibility checklist.">
-<title>Week 10 | Portfolio Deployment</title>
+<meta name="description" content="Prashna Rai's Week 10 portfolio deployment assignment report.">
+<title>Portfolio Deployment | Prashna Rai</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+:root {
+    --purple: #7651c9;
+    --dark-purple: #513394;
+    --light-purple: #f0eaff;
+    --background: #faf9fd;
+    --white: #ffffff;
+    --text: #29243a;
+    --muted: #777184;
+    --border: #e9e3f2;
+    --green: #25845b;
+}
+
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #fff8f5;
-    color: #493746;
-    line-height: 1.6;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.7;
+    transition: background .3s, color .3s;
 }
 
-header {
-    background: #f2dce5;
-    text-align: center;
-    padding: 45px 20px;
+body.dark {
+    --background: #171421;
+    --white: #211d2e;
+    --text: #f5f1ff;
+    --muted: #b8b0c9;
+    --border: #383047;
+    --light-purple: #302544;
 }
 
-header h1 {
-    margin: 0 0 10px;
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 8%;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-main {
-    max-width: 850px;
-    margin: 35px auto;
-    padding: 0 20px;
-}
-
-section {
-    background: white;
-    padding: 25px;
-    margin-bottom: 22px;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.06);
-}
-
-h2 {
-    color: #a65376;
-}
-
-ul {
-    padding-left: 22px;
-}
-
-li {
-    margin: 10px 0;
-}
-
-a {
-    color: #8d365f;
-    font-weight: bold;
-}
-
-.site-link {
-    display: inline-block;
-    background: #a65376;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
+.logo {
+    font-size: 19px;
+    font-weight: 800;
+    color: var(--purple);
     text-decoration: none;
 }
 
-.site-link:hover {
-    background: #793653;
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+.nav-right a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.theme-button {
+    border: 1px solid var(--border);
+    background: var(--light-purple);
+    color: var(--dark-purple);
     border-radius: 10px;
-    border: 1px solid #eee;
+    padding: 9px 12px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero {
+    padding: 75px 8% 65px;
+    background: linear-gradient(130deg, #eee6ff, #ffffff, #f7eaff);
+}
+
+body.dark .hero {
+    background: linear-gradient(130deg, #302544, #211d2e, #30213c);
+}
+
+.hero-content {
+    max-width: 1050px;
+    margin: auto;
+}
+
+.eyebrow {
+    color: var(--dark-purple);
+    background: white;
+    border: 1px solid #e4d8fa;
+    padding: 7px 13px;
+    border-radius: 30px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+body.dark .eyebrow {
+    background: #302544;
+    color: #d9c7ff;
+    border-color: var(--border);
+}
+
+h1 {
+    font-size: clamp(34px, 6vw, 55px);
+    line-height: 1.2;
+    margin: 22px 0 15px;
+}
+
+.highlight {
+    color: var(--purple);
+}
+
+.hero p {
+    max-width: 680px;
+    color: #625b70;
+    font-size: 14px;
+}
+
+body.dark .hero p {
+    color: var(--muted);
+}
+
+.hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.button {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 11px;
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
+}
+
+.button.primary {
+    background: var(--purple);
+    color: white;
+}
+
+.button.secondary {
+    background: white;
+    color: var(--dark-purple);
+    border: 1px solid var(--border);
+}
+
+.button:hover {
+    transform: translateY(-2px);
+}
+
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 7%;
+}
+
+.section {
+    margin-bottom: 55px;
+}
+
+.section-label {
+    color: var(--purple);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+}
+
+h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.section-intro {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 23px;
+}
+
+.overview {
+    background: var(--white);
+    border: 1px solid var(--border);
+    padding: 27px;
+    border-radius: 18px;
+}
+
+.overview p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.overview-details {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 23px;
+}
+
+.detail {
+    background: var(--light-purple);
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.detail span {
+    display: block;
+    color: var(--muted);
+    font-size: 10px;
+    margin-bottom: 4px;
+}
+
+.detail strong {
+    font-size: 13px;
+    color: var(--dark-purple);
+}
+
+body.dark .detail strong {
+    color: #d9c7ff;
+}
+
+.requirements {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+}
+
+.requirement {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 19px;
+    display: flex;
+    gap: 13px;
+}
+
+.check {
+    flex-shrink: 0;
+    width: 25px;
+    height: 25px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #e6f6ee;
+    color: #176b46;
+    font-weight: 800;
+    font-size: 13px;
+}
+
+.requirement h3 {
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.requirement p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.implementation {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.implementation-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.implementation-card .number {
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.implementation-card h3 {
+    font-size: 15px;
+    margin: 8px 0 5px;
+}
+
+.implementation-card p {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.evidence-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.evidence-header {
+    padding: 20px 23px;
+    border-bottom: 1px solid var(--border);
+}
+
+.evidence-header h3 {
+    font-size: 16px;
+}
+
+.evidence-header p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+.evidence-image {
+    padding: 20px;
+    background: var(--light-purple);
+}
+
+.evidence-image img {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: contain;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+.evidence-caption {
+    padding: 15px 22px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.score {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    border-radius: 30px;
+    background: #e6f6ee;
+    color: #176b46;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.final-links {
+    background: linear-gradient(130deg, #eee6ff, #ffffff);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 30px;
+    text-align: center;
+}
+
+body.dark .final-links {
+    background: #302544;
+}
+
+.final-links p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 8px auto 18px;
+}
+
+.final-links .hero-buttons {
+    justify-content: center;
 }
 
 footer {
+    padding: 25px 7%;
     text-align: center;
-    padding: 25px;
-    background: #f2dce5;
+    border-top: 1px solid var(--border);
+    background: var(--white);
+    color: var(--muted);
+    font-size: 11px;
 }
 
-@media (max-width: 600px) {
-    header {
-        padding: 30px 15px;
+footer strong {
+    color: var(--purple);
+}
+
+@media(max-width: 650px) {
+    nav {
+        padding: 14px 5%;
     }
 
-    section {
-        padding: 18px;
+    .nav-right {
+        gap: 10px;
+    }
+
+    .nav-right a {
+        display: none;
+    }
+
+    .hero {
+        padding: 55px 6% 45px;
+    }
+
+    main {
+        padding: 40px 5%;
+    }
+
+    .overview-details,
+    .requirements,
+    .implementation {
+        grid-template-columns: 1fr;
+    }
+
+    .evidence-image {
+        padding: 10px;
+    }
+
+    .final-links {
+        padding: 23px 16px;
     }
 }
 </style>
@@ -101,69 +444,321 @@ footer {
 
 <body>
 
-<header>
-    <h1>Week 10 – Task 2</h1>
-    <p>Personal Portfolio Deployment on GitHub Pages</p>
+<nav>
+    <a href="./portfolio.html" class="logo">PR.</a>
+
+    <div class="nav-right">
+        <a href="#requirements">Requirements</a>
+        <a href="#testing">Testing</a>
+
+        <button
+            class="theme-button"
+            id="theme-toggle"
+            type="button"
+            aria-label="Toggle dark mode"
+            aria-pressed="false">
+            🌙 Dark Mode
+        </button>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="hero-content">
+        <span class="eyebrow">WEEK 10 · TASK 2</span>
+
+        <h1>
+            Personal Portfolio<br>
+            <span class="highlight">Deployment Report.</span>
+        </h1>
+
+        <p>
+            This project documents the development and deployment of
+            my personal portfolio website using HTML, CSS, and
+            JavaScript. It focuses on responsive design, accessibility,
+            and an interactive user experience.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="button primary"
+               href="https://prqshna-design.github.io/Portfolio/"
+               target="_blank" rel="noopener noreferrer">
+                View Live Portfolio ↗
+            </a>
+
+            <a class="button secondary"
+               href="https://github.com/prqshna-design/Portfolio"
+               target="_blank" rel="noopener noreferrer">
+                View GitHub Repository ↗
+            </a>
+        </div>
+    </div>
 </header>
 
 <main>
 
-    <section>
-        <h2>About This Assignment</h2>
-        <p>
-            For this assignment, I deployed my personal portfolio
-            website using GitHub Pages. I also checked its
-            accessibility, responsiveness, and overall usability.
-        </p>
+    <!-- PROJECT OVERVIEW -->
+    <section class="section">
+        <div class="section-label">01 / PROJECT OVERVIEW</div>
+        <h2>About the Project</h2>
 
-        <p>
-            <a class="site-link"
-               href="https://prqshna-design.github.io/Portfolio/"
-               target="_blank"
-               rel="noopener noreferrer">
-               Visit My Live Portfolio
-            </a>
-        </p>
+        <div class="overview">
+            <p>
+                The goal of this assignment was to create and deploy
+                a personal portfolio website that introduces me,
+                presents my skills and projects, and works properly
+                across different screen sizes. I also implemented
+                accessibility improvements and tested the final
+                website using Lighthouse.
+            </p>
+
+            <div class="overview-details">
+                <div class="detail">
+                    <span>TECHNOLOGIES</span>
+                    <strong>HTML, CSS, JavaScript</strong>
+                </div>
+
+                <div class="detail">
+                    <span>DEPLOYMENT</span>
+                    <strong>GitHub Pages</strong>
+                </div>
+
+                <div class="detail">
+                    <span>PROJECT TYPE</span>
+                    <strong>Personal Portfolio</strong>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section>
-        <h2>Assignment Requirements</h2>
-        <ul>
-            <li>Semantic HTML: header, nav, main, and footer</li>
-            <li>Responsive CSS for mobile devices</li>
-            <li>JavaScript interaction: Dark Mode Toggle</li>
-            <li>Lighthouse Accessibility score: 100/100</li>
-            <li>Meaningful alt text for images</li>
-            <li>WCAG AA color contrast</li>
-        </ul>
+    <!-- ASSIGNMENT REQUIREMENTS -->
+    <section class="section" id="requirements">
+        <div class="section-label">02 / REQUIREMENTS</div>
+        <h2>Assignment Checklist</h2>
+        <p class="section-intro">
+            All required features were implemented in my portfolio website.
+        </p>
+
+        <div class="requirements">
+
+            <article class="requirement">
+                <span class="check" aria-hidden="true">✓</span>
+                <div>
+                    <h3>Semantic HTML</h3>
+                    <p>
+                        Used header, nav, main, and footer elements
+                        to organize the webpage structure.
+                    </p>
+                </div>
+            </article>
+
+            <article class="requirement">
+                <span class="check" aria-hidden="true">✓</span>
+                <div>
+                    <h3>Responsive CSS</h3>
+                    <p>
+                        Used responsive layouts and media queries
+                        to support mobile devices.
+                    </p>
+                </div>
+            </article>
+
+            <article class="requirement">
+                <span class="check" aria-hidden="true">✓</span>
+                <div>
+                    <h3>JavaScript Interaction</h3>
+                    <p>
+                        Added a dark mode toggle to switch
+                        between light and dark themes.
+                    </p>
+                </div>
+            </article>
+
+            <article class="requirement">
+                <span class="check" aria-hidden="true">✓</span>
+                <div>
+                    <h3>Lighthouse Accessibility</h3>
+                    <p>
+                        Achieved a final Accessibility score
+                        of 100 out of 100.
+                    </p>
+                </div>
+            </article>
+
+            <article class="requirement">
+                <span class="check" aria-hidden="true">✓</span>
+                <div>
+                    <h3>Meaningful Image Alt Text</h3>
+                    <p>
+                        Added descriptive alternative text
+                        to images for accessibility.
+                    </p>
+                </div>
+            </article>
+
+            <article class="requirement">
+                <span class="check" aria-hidden="true">✓</span>
+                <div>
+                    <h3>WCAG AA Color Contrast</h3>
+                    <p>
+                        Checked text and background contrast
+                        to support readability.
+                    </p>
+                </div>
+            </article>
+
+        </div>
     </section>
 
-    <section>
-        <h2>Mobile Responsiveness</h2>
-        <p>
-            I tested my portfolio using Chrome DevTools in mobile
-            device mode, including a 360px screen width.
+    <!-- IMPLEMENTATION -->
+    <section class="section">
+        <div class="section-label">03 / IMPLEMENTATION</div>
+        <h2>Key Features</h2>
+        <p class="section-intro">
+            Important features and techniques used during development.
         </p>
-        <p>
-            The navigation, photo, text, and project cards displayed
-            correctly on the smaller screen.
-        </p>
+
+        <div class="implementation">
+
+            <article class="implementation-card">
+                <span class="number">FEATURE 01</span>
+                <h3>Structured Webpage</h3>
+                <p>
+                    Organized the content using semantic HTML
+                    elements for a clear and meaningful structure.
+                </p>
+            </article>
+
+            <article class="implementation-card">
+                <span class="number">FEATURE 02</span>
+                <h3>Mobile-Friendly Layout</h3>
+                <p>
+                    Adjusted navigation, images, text, and project
+                    cards to fit smaller screen sizes.
+                </p>
+            </article>
+
+            <article class="implementation-card">
+                <span class="number">FEATURE 03</span>
+                <h3>Dark Mode</h3>
+                <p>
+                    Used JavaScript to allow visitors to switch
+                    between light mode and dark mode.
+                </p>
+            </article>
+
+            <article class="implementation-card">
+                <span class="number">FEATURE 04</span>
+                <h3>Accessibility Improvements</h3>
+                <p>
+                    Improved image descriptions, text contrast,
+                    and overall accessibility.
+                </p>
+            </article>
+
+        </div>
     </section>
 
-    <section>
-        <h2>Lighthouse Accessibility Report</h2>
-        <p>My final Lighthouse Accessibility score was 100/100.</p>
+    <!-- TESTING AND EVIDENCE -->
+    <section class="section" id="testing">
+        <div class="section-label">04 / TESTING & RESULTS</div>
+        <h2>Testing Evidence</h2>
+        <p class="section-intro">
+            Screenshots showing the testing and final results of my portfolio.
+        </p>
 
-        <img src="accessibility after10.png"
-             alt="Lighthouse report showing a 100 out of 100 Accessibility score">
-        <p><small>Final Lighthouse accessibility screenshot.</small></p>
+        <!-- MOBILE RESPONSIVENESS -->
+        <article class="evidence-card">
+            <div class="evidence-header">
+                <h3>01. Mobile Responsiveness Test</h3>
+                <p>Chrome DevTools · Mobile viewport · 360px width</p>
+            </div>
+
+            <div class="evidence-image">
+                <img
+                    src="mobile.png"
+                    alt="Screenshot of my personal portfolio tested in mobile device mode at 360 pixels wide, showing its responsive layout."
+                    loading="lazy">
+            </div>
+
+            <div class="evidence-caption">
+                I tested my portfolio using Chrome DevTools in mobile
+                device mode, including a 360px screen width. The
+                navigation, photo, text, and project cards displayed
+                correctly on the smaller screen.
+            </div>
+        </article>
+
+        <!-- LIGHTHOUSE ACCESSIBILITY -->
+        <article class="evidence-card">
+            <div class="evidence-header">
+                <h3>02. Lighthouse Accessibility Report</h3>
+                <p>Final accessibility testing result</p>
+                <span class="score">100 / 100 Accessibility</span>
+            </div>
+
+            <div class="evidence-image">
+                <img
+                    src="accessibility%20after10.png"
+                    alt="Final Lighthouse accessibility report showing a score of 100 out of 100."
+                    loading="lazy">
+            </div>
+
+            <div class="evidence-caption">
+                My final Lighthouse Accessibility score was
+                100/100, demonstrating that the portfolio passed
+                the accessibility checks measured by Lighthouse.
+            </div>
+        </article>
+
+    </section>
+
+    <!-- FINAL LINKS -->
+    <section class="section">
+        <div class="final-links">
+            <div class="section-label">05 / FINAL PROJECT</div>
+            <h2>Explore My Portfolio</h2>
+            <p>
+                Visit the deployed website or explore the source
+                code to see the completed project.
+            </p>
+
+            <div class="hero-buttons">
+                <a class="button primary"
+                   href="https://prqshna-design.github.io/Portfolio/"
+                   target="_blank" rel="noopener noreferrer">
+                    Open Live Website ↗
+                </a>
+
+                <a class="button secondary"
+                   href="https://github.com/prqshna-design/Portfolio"
+                   target="_blank" rel="noopener noreferrer">
+                    Explore Source Code ↗
+                </a>
+            </div>
+        </div>
     </section>
 
 </main>
 
 <footer>
-    <p>Web Programming | Week 10 | Prashna Rai</p>
+    <strong>Prashna Rai</strong> · Week 10 Portfolio Deployment Assignment
+    <br>
+    Web Programming
 </footer>
+
+<script>
+const themeButton = document.getElementById("theme-toggle");
+
+themeButton.addEventListener("click", function() {
+    const isDark = document.body.classList.toggle("dark");
+
+    themeButton.textContent = isDark
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+
+    themeButton.setAttribute("aria-pressed", String(isDark));
+});
+</script>
 
 </body>
 </html>
