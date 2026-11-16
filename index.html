@@ -8,17 +8,21 @@
 <title>Prashna Rai | Web Programming Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --purple: #7950d9;
-  --dark: #5932b0;
-  --light: #f1ebff;
-  --bg: #faf8ff;
-  --text: #28223b;
-  --muted: #777188;
-  --border: #e9e2f5;
+  --red: #a72e37;
+  --red-dark: #79232d;
+  --green: #31513d;
+  --cream: #f7f4e9;
+  --white: #fffdf5;
+  --sage: #e5eadf;
+  --rose: #f2e4df;
+  --text: #401c25;
+  --muted: #78675f;
+  --border: #e5d9c7;
 }
 
 * {
@@ -30,18 +34,18 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  background: var(--bg);
+  font-family: 'DM Mono', monospace;
+  background: var(--cream);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .navbar {
-  padding: 18px 7%;
+  padding: 19px 7%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: white;
+  background: var(--cream);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -49,112 +53,141 @@ body {
 }
 
 .logo {
-  font-size: 18px;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 27px;
   font-weight: 800;
-  color: var(--dark);
+  color: var(--red);
   text-decoration: none;
 }
 
 .nav-link {
-  color: var(--muted);
+  color: var(--green);
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 1.5px;
 }
 
+.nav-link:hover { color: var(--red); }
+
 .hero {
-  padding: 75px 7% 55px;
+  padding: 95px 7% 70px;
   text-align: center;
-  background: linear-gradient(135deg, #f2eaff, white 60%, #fcefff);
+  border-bottom: 1px solid var(--border);
 }
 
 .eyebrow {
   display: inline-block;
-  padding: 7px 14px;
-  border-radius: 30px;
-  background: white;
-  color: var(--dark);
-  border: 1px solid var(--border);
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: 1px;
+  padding: 8px 15px;
+  border: 1px solid var(--red);
+  color: var(--red);
+  font-size: 10px;
+  letter-spacing: 2px;
 }
 
 h1 {
-  font-size: clamp(34px, 6vw, 58px);
-  line-height: 1.15;
-  margin: 18px 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(48px, 8vw, 92px);
+  line-height: 1.05;
+  margin: 25px 0;
+  letter-spacing: -2px;
 }
 
-.gradient { color: var(--purple); }
+.gradient {
+  color: var(--red);
+  font-style: italic;
+}
 
 .hero p {
   max-width: 650px;
   margin: auto;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 12px;
+  line-height: 2;
 }
 
 .button {
   display: inline-block;
-  margin: 25px 5px 0;
-  padding: 12px 19px;
-  border-radius: 12px;
+  margin: 28px 5px 0;
+  padding: 13px 20px;
   text-decoration: none;
-  font-size: 13px;
-  font-weight: 800;
+  font-size: 11px;
+  transition: .25s ease;
 }
 
 .primary {
-  background: var(--purple);
-  color: white;
+  background: var(--red);
+  color: var(--white);
+  border: 1px solid var(--red);
+}
+
+.primary:hover {
+  background: var(--red-dark);
+  transform: translateY(-3px);
 }
 
 .secondary {
-  background: white;
-  color: var(--dark);
-  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+
+.secondary:hover {
+  background: var(--green);
+  color: white;
 }
 
 .stats {
-  max-width: 760px;
-  margin: 35px auto 0;
+  max-width: 800px;
+  margin: 55px auto 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
 }
 
 .stat {
-  padding: 17px 10px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 15px;
+  padding: 23px 10px;
+  border-right: 1px solid var(--border);
 }
+
+.stat:last-child { border-right: none; }
 
 .stat strong {
   display: block;
-  color: var(--dark);
-  font-size: 22px;
+  color: var(--red);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 25px;
 }
 
 .stat span {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 main {
   max-width: 1250px;
   margin: auto;
-  padding: 50px 6% 75px;
+  padding: 75px 6% 90px;
 }
 
-.section-heading { margin-bottom: 24px; }
+.section-heading {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 17px;
+}
 
-.section-heading h2 { font-size: 27px; }
+.section-heading h2,
+.about h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--red);
+  font-size: 32px;
+}
 
 .section-heading p {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 11px;
   margin-top: 5px;
 }
 
@@ -162,16 +195,18 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
-.search-box, .filter {
+.search-box,
+.filter {
   padding: 13px 15px;
-  background: white;
+  background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 12px;
-  font: inherit;
-  font-size: 13px;
+  border-radius: 2px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 11px;
 }
 
 .search-box {
@@ -179,144 +214,160 @@ main {
   min-width: 200px;
 }
 
+.search-box:focus,
+.filter:focus {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
 .week-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
 
 .week-card {
-  background: white;
+  background: var(--white);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 23px;
+  border-radius: 3px;
+  padding: 27px;
   min-width: 0;
-  box-shadow: 0 5px 20px rgba(63, 37, 103, .035);
-  transition: .2s;
+  box-shadow: 5px 6px 0 #e8dfd0;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
+.week-card:nth-child(3n + 2) { background: #f0ebe0; }
+.week-card:nth-child(3n) { background: var(--sage); }
+
 .week-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(63, 37, 103, .08);
+  transform: translateY(-6px);
+  box-shadow: 8px 12px 0 #d9c9b6;
 }
 
 .card-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 
 .week-label {
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1px;
-  color: var(--purple);
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--red);
 }
 
 .file-count {
-  background: var(--light);
-  color: var(--dark);
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: 800;
+  background: var(--green);
+  color: white;
+  padding: 5px 10px;
+  font-size: 9px;
 }
 
 .week-card h3 {
-  font-size: 19px;
-  margin-bottom: 7px;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--text);
+  font-size: 23px;
+  line-height: 1.3;
+  margin-bottom: 10px;
 }
 
 .week-description {
   color: var(--muted);
-  font-size: 12px;
-  margin-bottom: 18px;
+  font-size: 11px;
+  line-height: 1.9;
+  margin-bottom: 20px;
 }
 
 .task-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 9px;
 }
 
 .task-link {
   display: inline-flex;
-  padding: 8px 11px;
-  background: #f6f2ff;
-  color: var(--dark);
-  border: 1px solid #eee5ff;
-  border-radius: 9px;
+  padding: 9px 12px;
+  background: var(--red);
+  color: white;
+  border: 1px solid var(--red);
   text-decoration: none;
-  font-size: 11px;
-  font-weight: 700;
-  overflow-wrap: anywhere;
+  font-size: 10px;
   transition: .2s;
+  overflow-wrap: anywhere;
 }
 
 .task-link:hover {
-  background: var(--purple);
-  color: white;
+  background: var(--red-dark);
+  border-color: var(--red-dark);
+  transform: translateY(-2px);
 }
 
 .source-link {
-  background: white;
-  color: var(--muted);
-  border-color: var(--border);
+  background: transparent;
+  color: var(--green);
+  border-color: var(--green);
+}
+
+.source-link:hover {
+  background: var(--green);
+  color: white;
+  border-color: var(--green);
 }
 
 .empty-message {
   display: none;
   text-align: center;
   color: var(--muted);
-  padding: 30px;
+  padding: 35px;
+  font-size: 12px;
 }
 
-/* TEAM PROJECTS */
-.team-projects {
-  margin-bottom: 60px;
-}
+.team-projects { margin-bottom: 75px; }
 
 .project-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
 
 .project-card {
-  background: white;
+  background: var(--sage);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 25px;
-  box-shadow: 0 5px 20px rgba(63, 37, 103, .035);
-  transition: .2s;
+  border-radius: 3px;
+  padding: 30px;
+  box-shadow: 5px 6px 0 #d9dfd2;
+  transition: .25s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(63, 37, 103, .08);
+  transform: translateY(-5px);
+  box-shadow: 8px 12px 0 #d0d9ca;
 }
 
 .project-tag {
   display: inline-block;
-  padding: 5px 10px;
-  border-radius: 20px;
-  background: var(--light);
-  color: var(--dark);
-  font-size: 10px;
-  font-weight: 800;
-  margin-bottom: 12px;
+  padding: 6px 10px;
+  background: var(--green);
+  color: white;
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
 }
 
 .project-card h3 {
-  font-size: 21px;
-  margin-bottom: 8px;
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--red);
+  font-size: 28px;
+  margin-bottom: 10px;
 }
 
 .project-card p {
   color: var(--muted);
-  font-size: 13px;
-  margin-bottom: 18px;
+  font-size: 11px;
+  line-height: 1.9;
+  margin-bottom: 20px;
 }
 
 .project-links {
@@ -327,64 +378,80 @@ main {
 
 .project-links a {
   display: inline-block;
-  padding: 9px 13px;
-  background: var(--purple);
+  padding: 10px 13px;
+  background: var(--green);
   color: white;
-  border-radius: 9px;
+  border: 1px solid var(--green);
   text-decoration: none;
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 10px;
   transition: .2s;
 }
 
 .project-links a:hover {
-  background: var(--dark);
+  background: var(--red);
+  border-color: var(--red);
 }
 
 .project-links a:last-child {
-  background: white;
-  color: var(--dark);
-  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--green);
 }
 
 .project-links a:last-child:hover {
-  background: var(--light);
+  background: var(--green);
+  color: white;
 }
 
 .about {
-  margin-top: 60px;
-  background: linear-gradient(135deg, #eee5ff, white);
+  margin-top: 75px;
+  background: var(--rose);
   border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 30px;
+  padding: 35px;
 }
 
-.about h2 { font-size: 23px; }
+.about h2 { font-size: 27px; }
 
 .about p {
   max-width: 760px;
-  font-size: 13px;
+  font-size: 11px;
   color: var(--muted);
-  margin-top: 8px;
+  margin-top: 12px;
+  line-height: 2;
 }
 
 footer {
-  padding: 27px 7%;
+  padding: 30px 7%;
   text-align: center;
   border-top: 1px solid var(--border);
-  background: white;
+  background: #f0ebe0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 10px;
+  letter-spacing: .5px;
 }
 
-footer strong { color: var(--dark); }
+footer strong { color: var(--red); }
 
 @media (max-width: 700px) {
-  .week-grid, .project-grid { grid-template-columns: 1fr; }
-  .hero { padding: 55px 5% 40px; }
-  main { padding: 38px 5% 55px; }
-  .stats { gap: 7px; }
-  .stat strong { font-size: 17px; }
+  .week-grid,
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero { padding: 65px 5% 50px; }
+
+  .hero p { font-size: 11px; }
+
+  main { padding: 50px 5% 65px; }
+
+  .section-heading h2 { font-size: 27px; }
+
+  .stat { padding: 18px 5px; }
+
+  .stat strong { font-size: 19px; }
+
+  .stat span { font-size: 8px; }
+
+  .week-card { padding: 23px; }
 }
 </style>
 </head>
@@ -407,7 +474,7 @@ footer strong { color: var(--dark); }
   <p>
     Hi, I'm Prashna Rai! Welcome to my web programming portfolio.
     Explore my weekly assignments, coding exercises, forms,
-    JavaScript projects, and accessibility work.
+    JavaScript projects, React projects, and accessibility work.
   </p>
 
   <a class="button primary" href="#homework">Explore Homework ↓</a>
@@ -420,7 +487,7 @@ footer strong { color: var(--dark); }
 
   <div class="stats">
     <div class="stat">
-      <strong>10</strong>
+      <strong>11</strong>
       <span>Weeks of Learning</span>
     </div>
     <div class="stat">
@@ -436,9 +503,7 @@ footer strong { color: var(--dark); }
 
 <main>
 
-<!-- TEAM PROJECTS FIRST -->
 <section id="team-projects" class="team-projects">
-
   <div class="section-heading">
     <h2>Team Projects ✦</h2>
     <p>Projects created through teamwork, creativity, and collaboration.</p>
@@ -446,35 +511,30 @@ footer strong { color: var(--dark); }
 
   <div class="project-grid">
     <article class="project-card">
-      <div class="project-content">
-        <span class="project-tag">Group Project</span>
-        <h3>SeoulMate</h3>
-        <p>
-          A travel agency project introducing shopping experiences
-          in Myeongdong, Seoul, including Daiso, Nike, and CASETiFY.
-          Discover shopping destinations and experiences in Seoul.
-        </p>
+      <span class="project-tag">Group Project</span>
+      <h3>SeoulMate</h3>
+      <p>
+        A travel agency project introducing shopping experiences
+        in Myeongdong, Seoul, including Daiso, Nike, and CASETiFY.
+        Discover shopping destinations and experiences in Seoul.
+      </p>
 
-        <div class="project-links">
-          <a href="./TEAM%20PROJECTS/SeoulMate/project.html"
-             target="_blank" rel="noopener noreferrer">
-            View Project ↗
-          </a>
+      <div class="project-links">
+        <a href="./TEAM%20PROJECTS/SeoulMate/project.html"
+           target="_blank" rel="noopener noreferrer">
+          View Project ↗
+        </a>
 
-          <a href="https://seolmate-chi.vercel.app/en"
-             target="_blank" rel="noopener noreferrer">
-            Visit SeoulMate Website ↗
-          </a>
-        </div>
+        <a href="https://seoulmate-chi.vercel.app/en/guide"
+           target="_blank" rel="noopener noreferrer">
+          Visit SeoulMate Website ↗
+        </a>
       </div>
     </article>
   </div>
-
 </section>
 
-<!-- WEEKLY HOMEWORK -->
 <section id="homework">
-
   <div class="section-heading">
     <h2>My Homework Collection ✦</h2>
     <p>Choose any task to open its result. Search for a specific assignment.</p>
@@ -499,6 +559,7 @@ footer strong { color: var(--dark); }
       <option value="8">Week 8</option>
       <option value="9">Week 9</option>
       <option value="10">Week 10</option>
+      <option value="11">Week 11</option>
     </select>
   </div>
 
@@ -507,23 +568,23 @@ footer strong { color: var(--dark); }
   <div class="empty-message" id="empty-message" role="status">
     No matching homework found. Try another search.
   </div>
-
 </section>
 
 <section class="about">
-  <h2>About This Portfolio 💜</h2>
+  <h2>About This Portfolio ✦</h2>
   <p>
     This portfolio documents my progress in web programming, from
     basic HTML and CSS to JavaScript projects, forms, performance
-    optimization, and web accessibility. Each task links to its
-    corresponding file in this repository.
+    optimization, React development, and web accessibility.
+    Each task links to its corresponding file or project source
+    in this repository.
   </p>
 </section>
 
 </main>
 
 <footer>
-  Made with 💜 by <strong>Prashna Rai</strong> · Web Programming Portfolio
+  Made with ♡ by <strong>Prashna Rai</strong> · Web Programming Portfolio
 </footer>
 
 <script>
@@ -706,8 +767,6 @@ const weeks = [
       ["Lighthouse — After", "after lighthouse.png"]
     ]
   },
-
-  /* WEEK 10 — PERSONAL PORTFOLIO & DEPLOYMENT */
   {
     week: 10,
     title: "Personal Portfolio Website & GitHub Pages Deployment",
@@ -716,6 +775,19 @@ const weeks = [
     files: [
       ["View Personal Portfolio", "portfolio.html"],
       ["View Task 2 – Portfolio Deployment", "task2.html"]
+    ]
+  },
+  {
+    week: 11,
+    title: "React Portfolio Gallery",
+    description: "A React project featuring reusable components, project cards, technology filters, and a responsive editorial design.",
+    folder: "WEB week11 (react)",
+    githubFolder: "WEB week11 (react)",
+    files: [
+      ["Project Source — App.jsx", "src/App.jsx"],
+      ["Project Source — ProjectCard", "src/components/ProjectCard.jsx"],
+      ["Project Source — ProjectList", "src/components/ProjectList.jsx"],
+      ["Project Source — FilterBar", "src/components/FilterBar.jsx"]
     ]
   }
 ];
@@ -738,7 +810,9 @@ function createCard(item) {
 
   const count = document.createElement("span");
   count.className = "file-count";
-  count.textContent = item.files.length + " tasks";
+  count.textContent = item.week === 11
+    ? "React Project"
+    : item.files.length + " tasks";
 
   top.append(label, count);
 
@@ -756,8 +830,10 @@ function createCard(item) {
     const link = document.createElement("a");
     link.className = "task-link";
 
-    link.href = "./" + encodeURIComponent(item.folder) +
-                "/" + encodeURIComponent(file[1]);
+    link.href = "./" +
+      encodeURIComponent(item.folder) +
+      "/" +
+      file[1].split("/").map(encodeURIComponent).join("/");
 
     link.textContent = file[0] + " ↗";
     link.target = "_blank";
@@ -768,6 +844,7 @@ function createCard(item) {
 
   const source = document.createElement("a");
   source.className = "task-link source-link";
+
   source.href =
     "https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/" +
     item.folder.split("/").map(encodeURIComponent).join("/");
@@ -778,13 +855,6 @@ function createCard(item) {
   links.appendChild(source);
 
   card.append(top, title, description, links);
-
-  card.dataset.week = item.week;
-  card.dataset.search = (
-    "week " + item.week + " " + item.title + " " +
-    item.description + " " +
-    item.files.map(file => file[0]).join(" ")
-  ).toLowerCase();
 
   return card;
 }
