@@ -1,899 +1,1411 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Prashna Rai's Web Programming homework and project portfolio.">
-<title>Prashna Rai | Web Programming Portfolio</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --red: #a72e37;
-  --red-dark: #79232d;
-  --green: #31513d;
-  --cream: #f7f4e9;
-  --white: #fffdf5;
-  --sage: #e5eadf;
-  --rose: #f2e4df;
-  --text: #401c25;
-  --muted: #78675f;
-  --border: #e5d9c7;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'DM Mono', monospace;
-  background: var(--cream);
-  color: var(--text);
-  line-height: 1.7;
-}
-
-.navbar {
-  padding: 19px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--cream);
-  border-bottom: 1px solid var(--border);
-  position: sticky;
-  top: 0;
-  z-index: 10;
-}
-
-.logo {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 27px;
-  font-weight: 800;
-  color: var(--red);
-  text-decoration: none;
-}
-
-.nav-link {
-  color: var(--green);
-  text-decoration: none;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-}
-
-.nav-link:hover { color: var(--red); }
-
-.hero {
-  padding: 95px 7% 70px;
-  text-align: center;
-  border-bottom: 1px solid var(--border);
-}
-
-.eyebrow {
-  display: inline-block;
-  padding: 8px 15px;
-  border: 1px solid var(--red);
-  color: var(--red);
-  font-size: 10px;
-  letter-spacing: 2px;
-}
-
-h1 {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(48px, 8vw, 92px);
-  line-height: 1.05;
-  margin: 25px 0;
-  letter-spacing: -2px;
-}
-
-.gradient {
-  color: var(--red);
-  font-style: italic;
-}
-
-.hero p {
-  max-width: 650px;
-  margin: auto;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 2;
-}
-
-.button {
-  display: inline-block;
-  margin: 28px 5px 0;
-  padding: 13px 20px;
-  text-decoration: none;
-  font-size: 11px;
-  transition: .25s ease;
-}
-
-.primary {
-  background: var(--red);
-  color: var(--white);
-  border: 1px solid var(--red);
-}
-
-.primary:hover {
-  background: var(--red-dark);
-  transform: translateY(-3px);
-}
-
-.secondary {
-  background: transparent;
-  color: var(--green);
-  border: 1px solid var(--green);
-}
-
-.secondary:hover {
-  background: var(--green);
-  color: white;
-}
-
-.stats {
-  max-width: 800px;
-  margin: 55px auto 0;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.stat {
-  padding: 23px 10px;
-  border-right: 1px solid var(--border);
-}
-
-.stat:last-child { border-right: none; }
-
-.stat strong {
-  display: block;
-  color: var(--red);
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 25px;
-}
-
-.stat span {
-  color: var(--muted);
-  font-size: 9px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-main {
-  max-width: 1250px;
-  margin: auto;
-  padding: 75px 6% 90px;
-}
-
-.section-heading {
-  margin-bottom: 30px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 17px;
-}
-
-.section-heading h2,
-.about h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  color: var(--red);
-  font-size: 32px;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 11px;
-  margin-top: 5px;
-}
-
-.toolbar {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 30px;
-}
-
-.search-box,
-.filter {
-  padding: 13px 15px;
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 2px;
-  color: var(--text);
-  font-family: inherit;
-  font-size: 11px;
-}
-
-.search-box {
-  flex: 1;
-  min-width: 200px;
-}
-
-.search-box:focus,
-.filter:focus {
-  outline: 2px solid var(--red);
-  outline-offset: 2px;
-}
-
-.week-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.week-card {
-  background: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 27px;
-  min-width: 0;
-  box-shadow: 5px 6px 0 #e8dfd0;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-.week-card:nth-child(3n + 2) { background: #f0ebe0; }
-.week-card:nth-child(3n) { background: var(--sage); }
-
-.week-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 8px 12px 0 #d9c9b6;
-}
-
-.card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 15px;
-}
-
-.week-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  color: var(--red);
-}
-
-.file-count {
-  background: var(--green);
-  color: white;
-  padding: 5px 10px;
-  font-size: 9px;
-}
-
-.week-card h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  color: var(--text);
-  font-size: 23px;
-  line-height: 1.3;
-  margin-bottom: 10px;
-}
-
-.week-description {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.9;
-  margin-bottom: 20px;
-}
-
-.task-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-
-.task-link {
-  display: inline-flex;
-  padding: 9px 12px;
-  background: var(--red);
-  color: white;
-  border: 1px solid var(--red);
-  text-decoration: none;
-  font-size: 10px;
-  transition: .2s;
-  overflow-wrap: anywhere;
-}
-
-.task-link:hover {
-  background: var(--red-dark);
-  border-color: var(--red-dark);
-  transform: translateY(-2px);
-}
-
-.source-link {
-  background: transparent;
-  color: var(--green);
-  border-color: var(--green);
-}
-
-.source-link:hover {
-  background: var(--green);
-  color: white;
-  border-color: var(--green);
-}
-
-.empty-message {
-  display: none;
-  text-align: center;
-  color: var(--muted);
-  padding: 35px;
-  font-size: 12px;
-}
-
-.team-projects { margin-bottom: 75px; }
-
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-.project-card {
-  background: var(--sage);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 30px;
-  box-shadow: 5px 6px 0 #d9dfd2;
-  transition: .25s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 8px 12px 0 #d0d9ca;
-}
-
-.project-tag {
-  display: inline-block;
-  padding: 6px 10px;
-  background: var(--green);
-  color: white;
-  font-size: 9px;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-}
-
-.project-card h3 {
-  font-family: 'Playfair Display', Georgia, serif;
-  color: var(--red);
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.project-card p {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.9;
-  margin-bottom: 20px;
-}
-
-.project-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-}
-
-.project-links a {
-  display: inline-block;
-  padding: 10px 13px;
-  background: var(--green);
-  color: white;
-  border: 1px solid var(--green);
-  text-decoration: none;
-  font-size: 10px;
-  transition: .2s;
-}
-
-.project-links a:hover {
-  background: var(--red);
-  border-color: var(--red);
-}
-
-.project-links a:last-child {
-  background: transparent;
-  color: var(--green);
-}
-
-.project-links a:last-child:hover {
-  background: var(--green);
-  color: white;
-}
-
-.about {
-  margin-top: 75px;
-  background: var(--rose);
-  border: 1px solid var(--border);
-  padding: 35px;
-}
-
-.about h2 { font-size: 27px; }
-
-.about p {
-  max-width: 760px;
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 12px;
-  line-height: 2;
-}
-
-footer {
-  padding: 30px 7%;
-  text-align: center;
-  border-top: 1px solid var(--border);
-  background: #f0ebe0;
-  color: var(--muted);
-  font-size: 10px;
-  letter-spacing: .5px;
-}
-
-footer strong { color: var(--red); }
-
-@media (max-width: 700px) {
-  .week-grid,
-  .project-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero { padding: 65px 5% 50px; }
-
-  .hero p { font-size: 11px; }
-
-  main { padding: 50px 5% 65px; }
-
-  .section-heading h2 { font-size: 27px; }
-
-  .stat { padding: 18px 5px; }
-
-  .stat strong { font-size: 19px; }
-
-  .stat span { font-size: 8px; }
-
-  .week-card { padding: 23px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prashna Rai's Web Programming homework and project portfolio.">
+  <meta name="theme-color" content="#f7f3ff">
+  <title>Prashna Rai | Web Programming Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple: #7953b8;
+      --purple-dark: #4f347e;
+      --purple-deep: #382452;
+      --lavender: #e9defa;
+      --lavender-light: #f1eafd;
+      --background: #f8f5ff;
+      --white: #ffffff;
+      --text: #302442;
+      --muted: #81758f;
+      --border: #e5dcf1;
+      --pink: #f4e8f7;
+      --shadow: 0 12px 35px rgba(79, 52, 126, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      min-height: 76px;
+      padding: 14px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+      background: rgba(248, 245, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--purple-dark);
+      text-decoration: none;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--purple);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--purple);
+    }
+
+    .nav-contact {
+      padding: 10px 17px;
+      border: 1px solid var(--purple);
+      border-radius: 30px;
+      color: var(--purple-dark) !important;
+    }
+
+    .nav-contact:hover {
+      background: var(--purple);
+      color: white !important;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 570px;
+      padding: 90px 9% 75px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      align-items: center;
+      gap: 50px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid #d8c6f2;
+      border-radius: 30px;
+      color: var(--purple);
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
+
+    .eyebrow-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--purple);
+    }
+
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(55px, 7vw, 88px);
+      line-height: 1.06;
+      margin: 25px 0 22px;
+      letter-spacing: -3px;
+      color: var(--purple-deep);
+    }
+
+    .gradient {
+      color: var(--purple);
+      font-style: italic;
+    }
+
+    .hero-description {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 11px;
+      transition: 0.25s ease;
+    }
+
+    .primary {
+      background: var(--purple);
+      color: white;
+      border: 1px solid var(--purple);
+    }
+
+    .primary:hover {
+      background: var(--purple-dark);
+      transform: translateY(-3px);
+    }
+
+    .secondary {
+      background: transparent;
+      color: var(--purple-dark);
+      border: 1px solid #cbb9e7;
+    }
+
+    .secondary:hover {
+      background: var(--lavender);
+      transform: translateY(-3px);
+    }
+
+    .hero-note {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 45px;
+      color: #a193b5;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    /* HERO DECORATION */
+
+    .hero-art {
+      position: relative;
+      min-height: 350px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .art-circle {
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .circle-one {
+      width: 310px;
+      height: 310px;
+      background: #e9defa;
+    }
+
+    .circle-two {
+      width: 225px;
+      height: 225px;
+      background: #d4c0f1;
+    }
+
+    .art-card {
+      position: relative;
+      z-index: 2;
+      width: 235px;
+      height: 280px;
+      padding: 23px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border: 1px solid #eee5fa;
+      box-shadow: 12px 15px 0 rgba(79, 52, 126, 0.12);
+      transform: rotate(-5deg);
+    }
+
+    .art-card small,
+    .art-card-bottom {
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 1px;
+    }
+
+    .art-initial {
+      text-align: center;
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 145px;
+      line-height: 1;
+      color: var(--purple);
+    }
+
+    .art-star {
+      position: absolute;
+      z-index: 3;
+      top: 12px;
+      right: 25px;
+      color: var(--purple);
+      font-size: 55px;
+    }
+
+    .art-sticker {
+      position: absolute;
+      z-index: 4;
+      right: 0;
+      bottom: 25px;
+      padding: 12px 17px;
+      background: var(--purple-dark);
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      transform: rotate(5deg);
+    }
+
+    /* STATS */
+
+    .stats {
+      max-width: 850px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat {
+      padding: 25px 12px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:last-child {
+      border-right: none;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--purple);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 27px;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* MAIN CONTENT */
+
+    main {
+      max-width: 1300px;
+      margin: auto;
+      padding: 85px 7% 90px;
+    }
+
+    section[id] {
+      scroll-margin-top: 100px;
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 25px;
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-label {
+      color: var(--purple);
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1.5px;
+    }
+
+    .section-heading h2,
+    .about h2 {
+      margin-top: 10px;
+      color: var(--purple-dark);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(30px, 4vw, 40px);
+      line-height: 1.2;
+    }
+
+    .section-heading h2 span {
+      color: var(--purple);
+      font-style: italic;
+    }
+
+    .section-heading p {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    .section-side-note {
+      color: #a193b5;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    /* TEAM PROJECT */
+
+    .team-projects {
+      margin-bottom: 95px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      padding: 30px;
+      background: #eee8fa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 17px 35px rgba(79, 52, 126, 0.12);
+    }
+
+    .project-tag {
+      display: inline-block;
+      padding: 6px 11px;
+      background: var(--purple);
+      color: white;
+      border-radius: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    .project-card h3 {
+      margin: 16px 0 10px;
+      color: var(--purple-dark);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 29px;
+    }
+
+    .project-card p {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.9;
+    }
+
+    .project-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .project-links a {
+      display: inline-block;
+      padding: 10px 14px;
+      background: var(--purple);
+      color: white;
+      border: 1px solid var(--purple);
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 10px;
+      transition: 0.2s ease;
+    }
+
+    .project-links a:hover {
+      background: var(--purple-dark);
+      border-color: var(--purple-dark);
+      transform: translateY(-2px);
+    }
+
+    .project-links a:last-child {
+      background: transparent;
+      color: var(--purple-dark);
+    }
+
+    .project-links a:last-child:hover {
+      background: var(--purple-dark);
+      color: white;
+    }
+
+    /* HOMEWORK TOOLBAR */
+
+    .homework-section {
+      margin-bottom: 90px;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .search-box,
+    .filter {
+      min-height: 46px;
+      padding: 12px 15px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .filter {
+      min-width: 145px;
+      cursor: pointer;
+    }
+
+    .search-box:focus,
+    .filter:focus {
+      outline: 2px solid var(--purple);
+      outline-offset: 2px;
+    }
+
+    /* HOMEWORK CARDS */
+
+    .week-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .week-card {
+      min-width: 0;
+      padding: 27px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 6px 22px rgba(79, 52, 126, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .week-card:nth-child(3n + 2) {
+      background: #f1eafd;
+    }
+
+    .week-card:nth-child(3n) {
+      background: #f7effa;
+    }
+
+    .week-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 30px rgba(79, 52, 126, 0.1);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+
+    .week-label {
+      color: var(--purple);
+      font-family: 'DM Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+    }
+
+    .file-count {
+      padding: 5px 10px;
+      background: #e8def7;
+      color: var(--purple-dark);
+      border-radius: 20px;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+    }
+
+    .week-card h3 {
+      margin-bottom: 10px;
+      color: var(--purple-dark);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 23px;
+      line-height: 1.35;
+    }
+
+    .week-description {
+      margin-bottom: 20px;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .task-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .task-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 9px 12px;
+      background: var(--purple);
+      color: white;
+      border: 1px solid var(--purple);
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 10px;
+      overflow-wrap: anywhere;
+      transition: 0.2s ease;
+    }
+
+    .task-link:hover {
+      background: var(--purple-dark);
+      border-color: var(--purple-dark);
+      transform: translateY(-2px);
+    }
+
+    .source-link {
+      background: transparent;
+      color: var(--purple-dark);
+      border-color: #bda9df;
+    }
+
+    .source-link:hover {
+      background: var(--purple-dark);
+      color: white;
+      border-color: var(--purple-dark);
+    }
+
+    .empty-message {
+      display: none;
+      padding: 35px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      position: relative;
+      overflow: hidden;
+      padding: 45px;
+      background: #eee7fa;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+    }
+
+    .about h2 {
+      font-size: 30px;
+    }
+
+    .about p {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+      margin-top: 15px;
+      color: #766a88;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .about-decoration {
+      position: absolute;
+      right: 7%;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #d7c6ef;
+      font-size: 150px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 30px 7%;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      background: #f0eafb;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .footer-logo {
+      color: var(--purple-dark);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .footer-logo span,
+    footer strong {
+      color: var(--purple);
+    }
+
+    .back-top {
+      color: var(--purple);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 1px;
+    }
+
+    /* ACCESSIBILITY */
+
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    select:focus-visible {
+      outline: 3px solid #a98bdc;
+      outline-offset: 3px;
+    }
+
+    /* RESPONSIVE DESIGN */
+
+    @media (max-width: 850px) {
+      .hero {
+        padding-left: 6%;
+        padding-right: 6%;
+        gap: 20px;
+      }
+
+      .hero-art {
+        transform: scale(0.85);
+      }
+
+      main {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .navbar {
+        padding: 13px 5%;
+        gap: 12px;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links a {
+        font-size: 9px;
+      }
+
+      .nav-contact {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 65px 6% 45px;
+        gap: 15px;
+      }
+
+      h1 {
+        font-size: clamp(53px, 12vw, 72px);
+        letter-spacing: -2px;
+      }
+
+      .hero-art {
+        min-height: 300px;
+        transform: scale(0.82);
+        margin-top: -10px;
+      }
+
+      .stats {
+        margin: 0 5%;
+      }
+
+      .stat {
+        padding: 20px 5px;
+      }
+
+      .stat strong {
+        font-size: 20px;
+      }
+
+      .stat span {
+        font-size: 8px;
+      }
+
+      main {
+        padding-top: 60px;
+        padding-bottom: 65px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .section-side-note {
+        display: none;
+      }
+
+      .project-grid,
+      .week-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .team-projects,
+      .homework-section {
+        margin-bottom: 70px;
+      }
+
+      .project-card,
+      .week-card {
+        padding: 24px;
+      }
+
+      .about {
+        padding: 32px 25px;
+      }
+
+      .about-decoration {
+        right: 10px;
+        top: 15px;
+        transform: none;
+        font-size: 90px;
+        opacity: 0.65;
+      }
+
+      .about h2 {
+        position: relative;
+        z-index: 1;
+        font-size: 26px;
+      }
+
+      footer {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        padding: 28px 5%;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .nav-links {
+        gap: 10px;
+      }
+
+      .nav-links a {
+        font-size: 8px;
+      }
+
+      .hero-note {
+        gap: 7px;
+        font-size: 8px;
+      }
+
+      .filter {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<nav class="navbar">
-  <a class="logo" href="./">PR.</a>
-  <a class="nav-link" href="#homework">MY HOMEWORK ↓</a>
-</nav>
+  <!-- NAVIGATION -->
+  <nav class="navbar">
+    <a class="logo" href="#home">PR<span>.</span></a>
 
-<header class="hero">
-  <span class="eyebrow">MY LEARNING JOURNEY</span>
+    <ul class="nav-links">
+      <li><a href="#home">HOME</a></li>
+      <li><a href="#team-projects">PROJECTS</a></li>
+      <li><a href="#homework">HOMEWORK</a></li>
+      <li><a href="#about">ABOUT</a></li>
+    </ul>
 
-  <h1>
-    Web Programming<br>
-    <span class="gradient">Portfolio.</span>
-  </h1>
+    <a class="nav-contact" href="mailto:prashna@gmail.com">LET'S CONNECT ↗</a>
+  </nav>
 
-  <p>
-    Hi, I'm Prashna Rai! Welcome to my web programming portfolio.
-    Explore my weekly assignments, coding exercises, forms,
-    JavaScript projects, React projects, and accessibility work.
-  </p>
+  <!-- HERO -->
+  <header class="hero" id="home">
+    <div class="hero-content">
+      <span class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        MY WEB DEVELOPMENT JOURNEY
+      </span>
 
-  <a class="button primary" href="#homework">Explore Homework ↓</a>
+      <h1>
+        Web Programming
+        <br>
+        <span class="gradient">Portfolio.</span>
+      </h1>
 
-  <a class="button secondary"
-     href="https://github.com/prqshna-design/WEB-PORGRAMMING"
-     target="_blank" rel="noopener noreferrer">
-    View GitHub ↗
-  </a>
+      <p class="hero-description">
+        Hi, I'm Prashna Rai! Welcome to my web programming portfolio.
+        This is where I share my learning journey, weekly assignments,
+        creative experiments, and projects built with code.
+      </p>
 
+      <div class="hero-buttons">
+        <a class="button primary" href="#homework">
+          Explore My Work ↓
+        </a>
+
+        <a class="button secondary"
+           href="https://github.com/prqshna-design/WEB-PORGRAMMING"
+           target="_blank"
+           rel="noopener noreferrer">
+          View GitHub ↗
+        </a>
+      </div>
+
+      <div class="hero-note">
+        <span>DESIGN</span>
+        <span>✳</span>
+        <span>DEVELOPMENT</span>
+        <span>✳</span>
+        <span>CREATIVITY</span>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="art-circle circle-one"></div>
+      <div class="art-circle circle-two"></div>
+
+      <div class="art-card">
+        <small>A LITTLE BIT ABOUT ME</small>
+        <div class="art-initial">P.</div>
+        <span class="art-card-bottom">LEARNING · BUILDING · GROWING</span>
+      </div>
+
+      <div class="art-star">✳</div>
+      <div class="art-sticker">MADE WITH ♡</div>
+    </div>
+  </header>
+
+  <!-- STATS -->
   <div class="stats">
     <div class="stat">
       <strong>11</strong>
       <span>Weeks of Learning</span>
     </div>
+
     <div class="stat">
       <strong id="total-files">0</strong>
       <span>Assignment Links</span>
     </div>
+
     <div class="stat">
       <strong>HTML · CSS · JS</strong>
       <span>Core Technologies</span>
     </div>
   </div>
-</header>
 
-<main>
+  <main>
 
-<section id="team-projects" class="team-projects">
-  <div class="section-heading">
-    <h2>Team Projects ✦</h2>
-    <p>Projects created through teamwork, creativity, and collaboration.</p>
-  </div>
+    <!-- TEAM PROJECTS -->
+    <section id="team-projects" class="team-projects">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">01 / COLLABORATION</span>
+          <h2>Team <span>Projects.</span></h2>
+          <p>Projects created through teamwork, creativity, and collaboration.</p>
+        </div>
 
-  <div class="project-grid">
-    <article class="project-card">
-      <span class="project-tag">Group Project</span>
-      <h3>SeoulMate</h3>
+        <span class="section-side-note">WORKING TOGETHER ✳</span>
+      </div>
+
+      <div class="project-grid">
+        <article class="project-card">
+          <span class="project-tag">GROUP PROJECT</span>
+
+          <h3>SeoulMate</h3>
+
+          <p>
+            A travel and shopping guide introducing exciting destinations
+            in Myeongdong, Seoul, including Daiso, Nike, and CASETiFY.
+            Explore shopping places and experiences around the city.
+          </p>
+
+          <div class="project-links">
+            <a href="https://seoulmate-chi.vercel.app/en/guide"
+               target="_blank"
+               rel="noopener noreferrer">
+              Visit SeoulMate Website ↗
+            </a>
+
+            <a href="https://github.com/sabhyatachhetri45-dev/seoul"
+               target="_blank"
+               rel="noopener noreferrer">
+              View Source ↗
+            </a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOMEWORK COLLECTION -->
+    <section id="homework" class="homework-section">
+      <div class="section-heading">
+        <div>
+          <span class="section-label">02 / LEARNING BY DOING</span>
+          <h2>My Homework <span>Collection.</span></h2>
+          <p>Explore my weekly assignments, exercises, and coding projects.</p>
+        </div>
+
+        <span class="section-side-note">WEEK 02 — WEEK 11</span>
+      </div>
+
+      <div class="toolbar">
+        <input
+          type="search"
+          id="search"
+          class="search-box"
+          placeholder="Search weeks, tasks, or projects..."
+          aria-label="Search homework">
+
+        <select id="week-filter" class="filter" aria-label="Filter by week">
+          <option value="all">All Weeks</option>
+          <option value="2">Week 2</option>
+          <option value="3">Week 3</option>
+          <option value="4">Week 4</option>
+          <option value="5">Week 5</option>
+          <option value="6">Week 6</option>
+          <option value="7">Week 7</option>
+          <option value="8">Week 8</option>
+          <option value="9">Week 9</option>
+          <option value="10">Week 10</option>
+          <option value="11">Week 11</option>
+        </select>
+      </div>
+
+      <div class="week-grid" id="week-grid"></div>
+
+      <div class="empty-message" id="empty-message" role="status">
+        No matching homework found. Try another search.
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+      <span class="section-label">03 / ABOUT THIS WEBSITE</span>
+
+      <h2>A little about this portfolio ✳</h2>
+
       <p>
-        A travel agency project introducing shopping experiences
-        in Myeongdong, Seoul, including Daiso, Nike, and CASETiFY.
-        Discover shopping destinations and experiences in Seoul.
+        This portfolio documents my progress in web programming, from
+        basic HTML and CSS to JavaScript projects, forms, performance
+        optimization, React development, and web accessibility.
+        Each assignment links to its corresponding project or source
+        file in my GitHub repository. It represents what I've learned,
+        what I've built, and how I'm growing as a developer.
       </p>
 
-      <div class="project-links">
-        <a href="./TEAM%20PROJECTS/SeoulMate/project.html"
-           target="_blank" rel="noopener noreferrer">
-          View Project ↗
-        </a>
+      <div class="about-decoration" aria-hidden="true">✳</div>
+    </section>
 
-        <a href="https://seoulmate-chi.vercel.app/en/guide"
-           target="_blank" rel="noopener noreferrer">
-          Visit SeoulMate Website ↗
-        </a>
-      </div>
-    </article>
-  </div>
-</section>
+  </main>
 
-<section id="homework">
-  <div class="section-heading">
-    <h2>My Homework Collection ✦</h2>
-    <p>Choose any task to open its result. Search for a specific assignment.</p>
-  </div>
+  <!-- FOOTER -->
+  <footer>
+    <a href="#home" class="footer-logo">PR<span>.</span></a>
 
-  <div class="toolbar">
-    <input
-      type="search"
-      id="search"
-      class="search-box"
-      placeholder="Search weeks, tasks, or projects..."
-      aria-label="Search homework">
+    <p>Made with ♡ by <strong>Prashna Rai</strong></p>
 
-    <select id="week-filter" class="filter" aria-label="Filter by week">
-      <option value="all">All Weeks</option>
-      <option value="2">Week 2</option>
-      <option value="3">Week 3</option>
-      <option value="4">Week 4</option>
-      <option value="5">Week 5</option>
-      <option value="6">Week 6</option>
-      <option value="7">Week 7</option>
-      <option value="8">Week 8</option>
-      <option value="9">Week 9</option>
-      <option value="10">Week 10</option>
-      <option value="11">Week 11</option>
-    </select>
-  </div>
+    <a href="#home" class="back-top">BACK TO TOP ↑</a>
 
-  <div class="week-grid" id="week-grid"></div>
+    <p>© 2026 · WEB PROGRAMMING PORTFOLIO</p>
+  </footer>
 
-  <div class="empty-message" id="empty-message" role="status">
-    No matching homework found. Try another search.
-  </div>
-</section>
+  <script>
+    const weeks = [
+      {
+        week: 2,
+        title: "Monday — HTML Basics",
+        description: "Foundational HTML exercises and webpage practice.",
+        folder: "WEB week2 (mon)",
+        files: [
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"],
+          ["Task 3", "task3.html"],
+          ["Task 4", "task4.html"],
+          ["Task 5", "task5.html"],
+          ["Task 6", "task6.html"],
+          ["Task 7", "task7.html"],
+          ["Task 8", "task8.html"]
+        ]
+      },
+      {
+        week: 2,
+        title: "Friday — HTML & CSS",
+        description: "More HTML and CSS practice from Friday's class.",
+        folder: "WEB week2 (fri)",
+        files: [
+          ["Main Page", "index.html"],
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"],
+          ["Task 3", "task3.html"],
+          ["Task 4", "task4.html"],
+          ["Task 5", "task5.html"],
+          ["Task 6", "task6.html"],
+          ["Task 7", "task7.html"],
+          ["Task 8", "task8.html"]
+        ]
+      },
+      {
+        week: 3,
+        title: "Monday — Web Exercises",
+        description: "Weekly HTML and web development practice.",
+        folder: "WEB week3 (mon)",
+        files: [
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"],
+          ["Task 3", "task3.html"],
+          ["Task 4", "task4.html"],
+          ["Task 5", "task5.html"],
+          ["Task 6", "task6.html"],
+          ["Task 7", "task7.html"],
+          ["Task 8", "task8.html"]
+        ]
+      },
+      {
+        week: 3,
+        title: "Friday — Web Exercises",
+        description: "Friday's coding assignments.",
+        folder: "WEB week3 (fri)",
+        files: [
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"],
+          ["Task 3", "task3.html"],
+          ["Task 4", "task4.html"],
+          ["Task 5", "task5.html"],
+          ["Task 6", "task6.html"],
+          ["Task 7", "task7.html"]
+        ]
+      },
+      {
+        week: 4,
+        title: "Monday — JavaScript",
+        description: "JavaScript exercises and interactive webpage practice.",
+        folder: "WEB week4 (mon)",
+        files: [
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"],
+          ["Task 3", "task3.html"],
+          ["Task 4", "task4.html"]
+        ]
+      },
+      {
+        week: 5,
+        title: "Web Programming Exercises",
+        description: "HTML, CSS, and programming practice.",
+        folder: "WEB week5",
+        files: [
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"]
+        ]
+      },
+      {
+        week: 6,
+        title: "Monday — Random Joke",
+        description: "JavaScript joke-fetching project.",
+        folder: "WEB week6 (mon)",
+        files: [
+          ["Random Joke", "task1(JOKE).html"]
+        ]
+      },
+      {
+        week: 6,
+        title: "Friday — JavaScript Projects",
+        description: "Weather, cryptocurrency, country data, and API projects.",
+        folder: "WEB week6 (fri)",
+        files: [
+          ["Main Page", "index.html"],
+          ["Country Demographic", "country demographic.html"],
+          ["Cryptocurrency Tracker", "cryptocurrency tracker.html"],
+          ["GitHub Repo", "github repo.html"],
+          ["JSONPlaceholder", "jsoonplaceholder.html"],
+          ["Open Meteo Weather", "openmetoe weather.html"],
+          ["Random Dog", "random dog.html"],
+          ["Untitled Project", "Untitled-4.html"]
+        ]
+      },
+      {
+        week: 7,
+        title: "Web Accessibility",
+        description: "Accessibility exercises and inclusive web design.",
+        folder: "WEB week7",
+        files: [
+          ["Main Page", "index.html"],
+          ["Task 1", "task1.html"],
+          ["Task 2", "task2.html"],
+          ["Task 3", "task3.html"],
+          ["Task 4", "task4.html"],
+          ["Task 5", "task5.html"],
+          ["Task 6", "task6.html"]
+        ]
+      },
+      {
+        week: 8,
+        title: "Monday — HTML Forms",
+        description: "Contact forms, registration forms, and form structure.",
+        folder: "WEB week8 (mon)",
+        files: [
+          ["Main Page", "index.html"],
+          ["Contact Form", "contact form.html"],
+          ["Student Registration", "student registration.html"]
+        ]
+      },
+      {
+        week: 8,
+        title: "Friday — Form Elements",
+        description: "Input types, labels, grouping, CSS pseudo-classes, and validation.",
+        folder: "WEB week8 (fri)",
+        files: [
+          ["Main Page", "index.html"],
+          ["CSS Pseudo Classes", "css pseudo classes.html"],
+          ["Element", "element.html"],
+          ["Grouping Fields", "grouping fields.html"],
+          ["Homework Registration", "homework registration.html"],
+          ["Input Types", "input types.html"],
+          ["JavaScript Validation", "js validation.html"],
+          ["Labels & Accessibility", "labels & accessibility.html"],
+          ["Validation Attributes", "validation attributes.html"],
+          ["Why Forms?", "why forms.html"]
+        ]
+      },
+      {
+        week: 9,
+        title: "Monday — Performance Optimization",
+        description: "Lighthouse results, image formats, and deferred scripts.",
+        folder: "WEB week9 (mon)",
+        files: [
+          ["Performance Overview", "performance.html"],
+          ["E1 — Lighthouse Results", "e1-lighthouse-results.html"],
+          ["E2 — Image Formats", "e2-image-formats.html"],
+          ["E3 — Defer Scripts", "e3-defer-scripts.html"]
+        ]
+      },
+      {
+        week: 9,
+        title: "Friday — Accessibility",
+        description: "Accessibility homework and Lighthouse screenshots.",
+        folder: "WEB week9 (fri)",
+        files: [
+          ["Accessibility", "accessibility.html"],
+          ["Lighthouse — Before", "before lighthouse.png"],
+          ["Lighthouse — After", "after lighthouse.png"]
+        ]
+      },
+      {
+        week: 10,
+        title: "Personal Portfolio Website & GitHub Pages Deployment",
+        description: "My personal portfolio website, deployed using GitHub Pages, with responsive design, dark mode, and accessibility testing.",
+        folder: "WEB week10",
+        files: [
+          ["View Personal Portfolio", "portfolio.html"],
+          ["View Task 2 – Portfolio Deployment", "task2.html"]
+        ]
+      },
+      {
+        week: 11,
+        title: "React Portfolio Gallery",
+        description: "A React project featuring reusable components, project cards, technology filters, and a responsive editorial design.",
+        folder: "WEB week11",
+        files: [
+          ["Live Demo — React Portfolio Gallery", "dist/"]
+        ]
+      }
+    ];
 
-<section class="about">
-  <h2>About This Portfolio ✦</h2>
-  <p>
-    This portfolio documents my progress in web programming, from
-    basic HTML and CSS to JavaScript projects, forms, performance
-    optimization, React development, and web accessibility.
-    Each task links to its corresponding file or project source
-    in this repository.
-  </p>
-</section>
+    const grid = document.getElementById("week-grid");
+    const search = document.getElementById("search");
+    const filter = document.getElementById("week-filter");
+    const emptyMessage = document.getElementById("empty-message");
 
-</main>
+    function createCard(item) {
+      const card = document.createElement("article");
+      card.className = "week-card";
 
-<footer>
-  Made with ♡ by <strong>Prashna Rai</strong> · Web Programming Portfolio
-</footer>
+      const top = document.createElement("div");
+      top.className = "card-top";
 
-<script>
-const weeks = [
-  {
-    week: 2,
-    title: "Monday — HTML Basics",
-    description: "Foundational HTML exercises and webpage practice.",
-    folder: "WEB week2 (mon)",
-    files: [
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"],
-      ["Task 3", "task3.html"],
-      ["Task 4", "task4.html"],
-      ["Task 5", "task5.html"],
-      ["Task 6", "task6.html"],
-      ["Task 7", "task7.html"],
-      ["Task 8", "task8.html"]
-    ]
-  },
-  {
-    week: 2,
-    title: "Friday — HTML & CSS",
-    description: "More HTML and CSS practice from Friday's class.",
-    folder: "WEB week2 (fri)",
-    files: [
-      ["Main Page", "index.html"],
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"],
-      ["Task 3", "task3.html"],
-      ["Task 4", "task4.html"],
-      ["Task 5", "task5.html"],
-      ["Task 6", "task6.html"],
-      ["Task 7", "task7.html"],
-      ["Task 8", "task8.html"]
-    ]
-  },
-  {
-    week: 3,
-    title: "Monday — Web Exercises",
-    description: "Weekly HTML and web development practice.",
-    folder: "WEB week3 (mon)",
-    files: [
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"],
-      ["Task 3", "task3.html"],
-      ["Task 4", "task4.html"],
-      ["Task 5", "task5.html"],
-      ["Task 6", "task6.html"],
-      ["Task 7", "task7.html"],
-      ["Task 8", "task8.html"]
-    ]
-  },
-  {
-    week: 3,
-    title: "Friday — Web Exercises",
-    description: "Friday's coding assignments.",
-    folder: "WEB week3 (fri)",
-    files: [
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"],
-      ["Task 3", "task3.html"],
-      ["Task 4", "task4.html"],
-      ["Task 5", "task5.html"],
-      ["Task 6", "task6.html"],
-      ["Task 7", "task7.html"]
-    ]
-  },
-  {
-    week: 4,
-    title: "Monday — JavaScript",
-    description: "JavaScript exercises and interactive webpage practice.",
-    folder: "WEB week4 (mon)",
-    files: [
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"],
-      ["Task 3", "task3.html"],
-      ["Task 4", "task4.html"]
-    ]
-  },
-  {
-    week: 5,
-    title: "Web Programming Exercises",
-    description: "HTML, CSS, and programming practice.",
-    folder: "WEB week5",
-    files: [
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"]
-    ]
-  },
-  {
-    week: 6,
-    title: "Monday — Random Joke",
-    description: "JavaScript joke-fetching project.",
-    folder: "WEB week6 (mon)",
-    files: [
-      ["Random Joke", "task1(JOKE).html"]
-    ]
-  },
-  {
-    week: 6,
-    title: "Friday — JavaScript Projects",
-    description: "Weather, cryptocurrency, country data, and API projects.",
-    folder: "WEB week6 (fri)",
-    files: [
-      ["Main Page", "index.html"],
-      ["Country Demographic", "country demographic.html"],
-      ["Cryptocurrency Tracker", "cryptocurrency tracker.html"],
-      ["GitHub Repo", "github repo.html"],
-      ["JSONPlaceholder", "jsoonplaceholder.html"],
-      ["Open Meteo Weather", "openmetoe weather.html"],
-      ["Random Dog", "random dog.html"],
-      ["Untitled Project", "Untitled-4.html"]
-    ]
-  },
-  {
-    week: 7,
-    title: "Web Accessibility",
-    description: "Accessibility exercises and inclusive web design.",
-    folder: "WEB week7",
-    files: [
-      ["Main Page", "index.html"],
-      ["Task 1", "task1.html"],
-      ["Task 2", "task2.html"],
-      ["Task 3", "task3.html"],
-      ["Task 4", "task4.html"],
-      ["Task 5", "task5.html"],
-      ["Task 6", "task6.html"]
-    ]
-  },
-  {
-    week: 8,
-    title: "Monday — HTML Forms",
-    description: "Contact forms, registration forms, and form structure.",
-    folder: "WEB week8 (mon)",
-    files: [
-      ["Main Page", "index.html"],
-      ["Contact Form", "contact form.html"],
-      ["Student Registration", "student registration.html"]
-    ]
-  },
-  {
-    week: 8,
-    title: "Friday — Form Elements",
-    description: "Input types, labels, grouping, CSS pseudo-classes, and validation.",
-    folder: "WEB week8 (fri)",
-    files: [
-      ["Main Page", "index.html"],
-      ["CSS Pseudo Classes", "css pseudo classes.html"],
-      ["Element", "element.html"],
-      ["Grouping Fields", "grouping fields.html"],
-      ["Homework Registration", "homework registration.html"],
-      ["Input Types", "input types.html"],
-      ["JavaScript Validation", "js validation.html"],
-      ["Labels & Accessibility", "labels & accessibility.html"],
-      ["Validation Attributes", "validation attributes.html"],
-      ["Why Forms?", "why forms.html"]
-    ]
-  },
-  {
-    week: 9,
-    title: "Monday — Performance Optimization",
-    description: "Lighthouse results, image formats, and deferred scripts.",
-    folder: "WEB week9 (mon)",
-    files: [
-      ["Performance Overview", "performance.html"],
-      ["E1 — Lighthouse Results", "e1-lighthouse-results.html"],
-      ["E2 — Image Formats", "e2-image-formats.html"],
-      ["E3 — Defer Scripts", "e3-defer-scripts.html"]
-    ]
-  },
-  {
-    week: 9,
-    title: "Friday — Accessibility",
-    description: "Accessibility homework and Lighthouse screenshots.",
-    folder: "WEB week9 (fri)",
-    files: [
-      ["Accessibility", "accessibility.html"],
-      ["Lighthouse — Before", "before lighthouse.png"],
-      ["Lighthouse — After", "after lighthouse.png"]
-    ]
-  },
-  {
-    week: 10,
-    title: "Personal Portfolio Website & GitHub Pages Deployment",
-    description: "My personal portfolio website, deployed using GitHub Pages, with responsive design, dark mode, and accessibility testing.",
-    folder: "WEB week10",
-    files: [
-      ["View Personal Portfolio", "portfolio.html"],
-      ["View Task 2 – Portfolio Deployment", "task2.html"]
-    ]
-  },
-  {
-    week: 11,
-    title: "React Portfolio Gallery",
-    description: "A React project featuring reusable components, project cards, technology filters, and a responsive editorial design.",
-    folder: "WEB week11",
-    files: [
-      ["Live Demo — React Portfolio Gallery", "dist/"]
-    ]
-  }
-];
+      const label = document.createElement("span");
+      label.className = "week-label";
+      label.textContent = "WEEK " + item.week;
 
-const grid = document.getElementById("week-grid");
-const search = document.getElementById("search");
-const filter = document.getElementById("week-filter");
-const emptyMessage = document.getElementById("empty-message");
+      const count = document.createElement("span");
+      count.className = "file-count";
+      count.textContent = item.week === 11
+        ? "React Project"
+        : item.files.length + " tasks";
 
-function createCard(item) {
-  const card = document.createElement("article");
-  card.className = "week-card";
+      top.append(label, count);
 
-  const top = document.createElement("div");
-  top.className = "card-top";
+      const title = document.createElement("h3");
+      title.textContent = item.title;
 
-  const label = document.createElement("span");
-  label.className = "week-label";
-  label.textContent = "WEEK " + item.week;
+      const description = document.createElement("p");
+      description.className = "week-description";
+      description.textContent = item.description;
 
-  const count = document.createElement("span");
-  count.className = "file-count";
-  count.textContent = item.week === 11
-    ? "React Project"
-    : item.files.length + " tasks";
+      const links = document.createElement("div");
+      links.className = "task-links";
 
-  top.append(label, count);
+      item.files.forEach(function(file) {
+        const link = document.createElement("a");
+        link.className = "task-link";
 
-  const title = document.createElement("h3");
-  title.textContent = item.title;
+        link.href = "./" +
+          encodeURIComponent(item.folder) +
+          "/" +
+          file[1].split("/").map(encodeURIComponent).join("/");
 
-  const description = document.createElement("p");
-  description.className = "week-description";
-  description.textContent = item.description;
+        link.textContent = file[0] + " ↗";
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
 
-  const links = document.createElement("div");
-  links.className = "task-links";
+        links.appendChild(link);
+      });
 
-  item.files.forEach(function(file) {
-    const link = document.createElement("a");
-    link.className = "task-link";
+      const source = document.createElement("a");
+      source.className = "task-link source-link";
 
-    link.href = "./" +
-      encodeURIComponent(item.folder) +
-      "/" +
-      file[1].split("/").map(encodeURIComponent).join("/");
+      source.href =
+        "https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/" +
+        item.folder.split("/").map(encodeURIComponent).join("/");
 
-    link.textContent = file[0] + " ↗";
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
+      source.textContent = "View Source ↗";
+      source.target = "_blank";
+      source.rel = "noopener noreferrer";
 
-    links.appendChild(link);
-  });
+      links.appendChild(source);
 
-  const source = document.createElement("a");
-  source.className = "task-link source-link";
+      card.append(top, title, description, links);
 
-  source.href =
-    "https://github.com/prqshna-design/WEB-PORGRAMMING/tree/main/" +
-    item.folder.split("/").map(encodeURIComponent).join("/");
+      return card;
+    }
 
-  source.textContent = "View Source ↗";
-  source.target = "_blank";
-  source.rel = "noopener noreferrer";
-  links.appendChild(source);
+    function renderCards() {
+      const query = search.value.trim().toLowerCase();
+      const selectedWeek = filter.value;
 
-  card.append(top, title, description, links);
+      grid.innerHTML = "";
 
-  return card;
-}
+      const filtered = weeks.filter(function(item) {
+        const matchesWeek =
+          selectedWeek === "all" ||
+          String(item.week) === selectedWeek;
 
-function renderCards() {
-  const query = search.value.trim().toLowerCase();
-  const selectedWeek = filter.value;
+        const searchableText = (
+          "week " + item.week + " " +
+          item.title + " " +
+          item.description + " " +
+          item.files.map(file => file[0]).join(" ")
+        ).toLowerCase();
 
-  grid.innerHTML = "";
+        return matchesWeek && searchableText.includes(query);
+      });
 
-  const filtered = weeks.filter(function(item) {
-    const matchesWeek =
-      selectedWeek === "all" ||
-      String(item.week) === selectedWeek;
+      filtered.forEach(function(item) {
+        grid.appendChild(createCard(item));
+      });
 
-    const searchableText = (
-      "week " + item.week + " " + item.title + " " +
-      item.description + " " +
-      item.files.map(file => file[0]).join(" ")
-    ).toLowerCase();
+      emptyMessage.style.display =
+        filtered.length === 0 ? "block" : "none";
+    }
 
-    return matchesWeek && searchableText.includes(query);
-  });
+    const totalFiles = weeks.reduce(function(total, item) {
+      return total + item.files.length;
+    }, 0);
 
-  filtered.forEach(function(item) {
-    grid.appendChild(createCard(item));
-  });
+    document.getElementById("total-files").textContent = totalFiles;
 
-  emptyMessage.style.display =
-    filtered.length === 0 ? "block" : "none";
-}
+    search.addEventListener("input", renderCards);
+    filter.addEventListener("change", renderCards);
 
-const totalFiles = weeks.reduce(function(total, item) {
-  return total + item.files.length;
-}, 0);
-
-document.getElementById("total-files").textContent = totalFiles;
-
-search.addEventListener("input", renderCards);
-filter.addEventListener("change", renderCards);
-
-renderCards();
-</script>
+    renderCards();
+  </script>
 
 </body>
 </html>
+```
